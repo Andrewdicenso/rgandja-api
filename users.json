@@ -1,0 +1,14 @@
+[
+  {
+    "email": "andrew@rgandja.com",
+    "password": "rgandja2026",
+    "licenza": "Oro",
+    "scadenza": "2026-12-31"
+  },
+  {
+    "email": "demo@rgandja.com",
+    "password": "demo123",
+    "licenza": "Bronzo",
+    "scadenza": "2026-03-31"
+  }
+]

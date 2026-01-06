@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note Legali - RGandja Corporate Identity</title>
+    
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .imprint-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            text-align: left;
+        }
+        .imprint-block h3 {
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
+        }
+        .imprint-block p {
+            color: #cbd5e0;
+            line-height: 1.8;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+        .imprint-block a {
+            color: #63b3ed;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .imprint-block a:hover { color: var(--accent-gold); }
+        
+        .full-width {
+            grid-column: 1 / -1;
+            background: rgba(255,255,255,0.02);
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 10px;
+        }
+        .disclaimer {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            border: 1px dashed var(--border);
+            background: rgba(0,0,0,0.2);
+        }
+        @media (max-width: 768px) {
+            .imprint-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-inner container">
+            <div class="header-brand">
+                <img src="logo.png" alt="Logo RGandja" class="brand-logo">
+                <h1>RGandja</h1>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="chi-siamo.html">Chi Siamo</a>
+                <a href="prezzi.html">Prezzi</a>
+                <a href="demo.html">Demo</a>
+                <a href="contatti.html">Contatti</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-premium">
+        <div class="container text-center">
+            <span class="badge-status">CORPORATE TRANSPARENCY</span>
+            <h1>Note Legali & Proprietà</h1>
+            <p class="hero-subtitle">
+                Informazioni ufficiali sulla struttura societaria e sulla tutela della proprietà intellettuale <strong>RGandja</strong>.
+            </p>
+        </div>
+    </section>
+
+    <main class="section container">
+        <div class="card-expert dark-card" style="padding: 50px; border: 1px solid var(--border);">
+            <div class="imprint-grid">
+                
+                <div class="imprint-block">
+                    <h3>Identità del Titolare</h3>
+                    <p><strong>RGandja Decision Systems</strong></p>
+                    <p>Fondatore e Architetto Capo:<br>Andrew Di Censo</p>
+                    <p>Sede Operativa: <br>Sepolion 10445, Atene (Attiki, Grecia)</p>
+                </div>
+
+                <div class="imprint-block">
+                    <h3>Canali Ufficiali</h3>
+                    <p>Relazioni Commerciali:<br><a href="mailto:andrew@rgandja.com">andrew@rgandja.com</a></p>
+                    <p>Ufficio Legale & Compliance:<br><a href="mailto:legal@rgandja.com">legal@rgandja.com</a></p>
+                    <p>DPO / Privacy Support:<br><a href="mailto:privacy@rgandja.com">privacy@rgandja.com</a></p>
+                </div>
+
+                <div class="imprint-block full-width">
+                    <h3>Proprietà Intellettuale & Copyright</h3>
+                    <p>
+                        Il marchio <strong>RGandja™</strong> e i relativi loghi sono asset di proprietà esclusiva, protetti dalle normative EUIPO sulla proprietà intellettuale. Ogni riproduzione non autorizzata sarà perseguita secondo le leggi vigenti.
+                    </p>
+                    <p>
+                        L'architettura neurale denominata <strong>Protocollo RGD-Alpha</strong> e il framework <strong>Architettura della Certezza</strong> sono opere dell'ingegno depositate. È severamente vietato ogni tentativo di decompilazione, reverse engineering o utilizzo del codice sorgente senza licenza scritta.
+                    </p>
+                </div>
+
+                <div class="imprint-block full-width disclaimer">
+                    <h3>Dichiarazione di Limitazione di Responsabilità</h3>
+                    <p>
+                        RGandja fornisce analisi di scenario basate su algoritmi predittivi e input forniti dall'utente. Tali elaborazioni hanno finalità di supporto decisionale strategico e non costituiscono in alcun modo consulenza legale, finanziaria o fiscale certificata. 
+                    </p>
+                    <p>
+                        Andrew Di Censo e il marchio RGandja declinano ogni responsabilità per perdite economiche o danni derivanti da decisioni d'impresa assunte sulla base degli output del sistema. Si raccomanda sempre la validazione umana esperta prima di ogni investimento di capitale.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer container text-center">
+        <hr style="border: 0; border-top: 1px solid #1a2332; margin-bottom: 30px;">
+        <p>© 2026 RGandja — Advanced Decision Intelligence. Sviluppato ad Atene, Grecia.</p>
+        <p style="margin-top: 10px;">
+            <a href="privacy.html">Privacy Policy</a> | 
+            <a href="cookies.html">Cookie Policy</a> |
+            <a href="imprint.html">Note Legali</a>
+        </p>
+    </footer>
+
+</body>
+</html>

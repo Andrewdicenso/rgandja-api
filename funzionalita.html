@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funzionalità - RGandja: L'Ingegneria della Decisione</title>
+    
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estensioni specifiche per la pagina funzionalità */
+        .feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    display: inline-block;
+    background: linear-gradient(135deg, #d4af37, #f2d472);
+    -webkit-background-clip: text; /* Quella che c'è già */
+    background-clip: text;         /* AGGIUNGI QUESTA RIGA */
+    -webkit-text-fill-color: transparent;
+}
+
+        .custom-list {
+            list-style: none;
+            padding: 0;
+            margin: 25px 0;
+        }
+
+        .custom-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+            color: #cbd5e0;
+            line-height: 1.6;
+        }
+
+        .custom-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold);
+            font-weight: bold;
+        }
+
+        .gold-card {
+            background: linear-gradient(135deg, #d4af37 0%, #9a7b1f 100%);
+            color: #000;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .visual-demo-box {
+            background: #0f172a;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 250px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-inner container">
+            <div class="header-brand">
+                <img src="logo.png" alt="Logo RGandja" class="brand-logo">
+                <h1>RGandja</h1>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="chi-siamo.html">Chi Siamo</a>
+                <a href="prezzi.html">Prezzi</a>
+                <a href="demo.html">Demo</a>
+                <a href="contatti.html">Contatti</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-premium">
+      <div class="container text-center">
+        <span class="badge-status">ADVANCED CAPABILITIES</span>
+        <h1>L'Ingegneria della Decisione</h1>
+        <p class="hero-subtitle">
+          Il sistema RGandja non si limita a elaborare dati: progetta percorsi di crescita attraverso 
+          simulazioni neurali ad alta fedeltà e protocolli di sicurezza industriale.
+        </p>
+      </div>
+    </section>
+
+    <section class="section container grid-2">
+      <div class="info-block">
+        <span class="feature-icon">🔮</span>
+        <h2>Simulazioni Predittive "What-If"</h2>
+        <p>
+          Il Protocollo RGD-Alpha permette di testare scenari di mercato prima di impegnare il capitale. 
+          Il nostro motore neurale calcola le variabili di rischio e le probabilità di successo basandosi su vincoli reali.
+        </p>
+        <ul class="custom-list">
+          <li>Analisi comparativa istantanea tra diversi modelli di budget</li>
+          <li>Valutazione dell'impatto sul ROI a medio e lungo termine</li>
+          <li>Stress-test dei KPI in condizioni di mercato volatili</li>
+        </ul>
+      </div>
+      <div class="visual-demo-box glass-effect">
+        <p class="quote" style="font-style: italic; color: var(--accent-gold); font-size: 1.25rem; text-align: center; max-width: 80%;">
+            "Il vantaggio competitivo risiede nella capacità di simulare il futuro prima che diventi realtà."
+        </p>
+      </div>
+    </section>
+
+    <section class="section alt-bg" style="background: rgba(15, 23, 42, 0.4); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+      <div class="container grid-2" style="align-items: center;">
+        <div class="card-expert dark-card" style="border-left: 4px solid var(--accent-gold); padding: 40px;">
+           <h3 style="color: #fff; margin-bottom: 15px;">Safety & Compliance</h3>
+           <p style="color: #a0aec0; font-size: 0.95rem; line-height: 1.8;">
+             Il sistema riduce drasticamente i margini di errore legale e operativo, tracciando ogni logica decisionale 
+             in un registro immutabile e verificabile.
+           </p>
+        </div>
+        <div class="info-block" style="padding-left: 40px;">
+          <span class="feature-icon">🛡️</span>
+          <h2>Motore di Regole Incorruttibile</h2>
+          <p>
+            Ogni output generato è difendibile in sede di audit. Applichiamo la conformità "by design", 
+            assicurando che le tue strategie rispettino sia le policy interne che le normative internazionali.
+          </p>
+          <ul class="custom-list">
+            <li>Audit-trail completo per la massima trasparenza societaria</li>
+            <li>Filtri di protezione normativa aggiornati in tempo reale</li>
+            <li>Tracciabilità granulare della logica algoritmica</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container grid-2">
+      <div class="info-block">
+        <span class="feature-icon">📊</span>
+        <h2>Explainable Intelligence (X-IA)</h2>
+        <p>
+          Abbiamo eliminato l'effetto "Black Box". RGandja non fornisce solo un numero, ma ne spiega il <strong>perché</strong>. 
+          Ogni previsione è accompagnata dai fattori determinanti che l'hanno generata.
+        </p>
+        <ul class="custom-list">
+          <li>Dashboard intuitive con nessi di causalità evidenti</li>
+          <li>Indicatori di salute e stabilità della strategia</li>
+          <li>Mappatura visiva del rischio residuo e delle zone d'ombra</li>
+        </ul>
+      </div>
+      <div class="gold-card">
+        <h3 style="font-size: 1.5rem; margin-bottom: 20px; font-weight: 800;">Upgrade Strategico</h3>
+        <p style="margin-bottom: 25px; font-weight: 500;">
+          Accedi alle dashboard di alto livello: analisi temporale avanzata e proiezioni di mercato con precisione neurale fino a 12 mesi.
+        </p>
+        <a href="prezzi.html" class="btn btn-dark" style="background: #000; color: #fff; text-decoration: none; padding: 12px; text-align: center; border-radius: 6px; font-weight: bold;">Scopri i Piani</a>
+      </div>
+    </section>
+
+    <section class="section text-center" style="background: radial-gradient(circle at center, #1e293b 0%, #020617 100%);">
+      <div class="container">
+        <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Prendi il comando del tuo mercato</h2>
+        <p style="color: #a0aec0; margin-bottom: 40px;">Attiva il Neural Engine e trasforma i dati in certezze operative.</p>
+        <div style="display: flex; justify-content: center; gap: 20px;">
+            <a href="demo.html" class="btn btn-gold" style="padding: 15px 35px;">Avvia Demo</a>
+            <a href="contatti.html" class="btn btn-outline" style="padding: 15px 35px; border: 1px solid var(--accent-gold); color: var(--accent-gold); text-decoration: none; border-radius: 6px;">Consulenza Advisory</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer container text-center">
+        <hr style="border: 0; border-top: 1px solid #1a2332; margin-bottom: 30px;">
+        <p>© 2026 RGandja — Architettura dei sistemi progettata e sviluppata da <strong>Andrew Di Censo</strong></p>
+        <p style="margin-top: 10px; font-size: 0.85rem;">
+            <a href="privacy.html">Privacy</a> | <a href="cookies.html">Cookies</a> | <a href="imprint.html">Note Legali</a>
+        </p>
+    </footer>
+
+</body>
+</html>

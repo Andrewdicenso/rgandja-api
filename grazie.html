@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocollo Ricevuto - RGandja</title>
+    
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .btn-execute { 
+            background: linear-gradient(90deg, #d4af37, #f2d472); 
+            color: #000; 
+            border: none; 
+            border-radius: 6px; 
+            font-weight: 800; 
+            cursor: pointer; 
+            text-transform: uppercase; 
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+        }
+        .btn-execute:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+        
+        .confirmation-box {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .status-scan {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.8rem;
+            color: #63b3ed;
+            margin-top: 15px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-inner container">
+            <div class="header-brand">
+                <img src="logo.png" alt="Logo RGandja" class="brand-logo">
+                <h1>RGandja</h1>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="chi-siamo.html">Chi Siamo</a>
+                <a href="prezzi.html">Prezzi</a>
+                <a href="demo.html">Demo</a>
+                <a href="contatti.html">Contatti</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section container text-center" style="padding-top: 100px; min-height: 70vh;">
+        <div class="card-expert dark-card shadow-lg confirmation-box" style="max-width: 650px; margin: 0 auto; border-top: 4px solid var(--accent-gold); padding: 60px 40px;">
+            <div style="font-size: 5rem; margin-bottom: 25px; filter: drop-shadow(0 0 15px rgba(212,175,55,0.3));">🛡️</div>
+            
+            <h1 style="color: var(--accent-gold); letter-spacing: 2px; text-transform: uppercase; font-size: 1.8rem; margin-bottom: 20px;">
+                Trasmissione Completata
+            </h1>
+            
+            <p style="font-size: 1.1rem; color: #cbd5e0; margin-bottom: 30px; line-height: 1.8;">
+                Il tuo protocollo è stato acquisito dai server della sede di <strong>Atene (Attiki)</strong>. 
+                Il nostro Concierge Strategico ha avviato la fase di pre-analisi neurale. 
+                Riceverai la notifica di accesso ai sistemi entro <strong>4 ore lavorative</strong>.
+            </p>
+
+            <div id="loading-status" class="status-scan">
+                Inizializzazione crittografia end-to-end... [OK]
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #2d3748; margin: 40px 0;">
+            
+            <a href="index.html" class="btn-execute" style="padding: 18px 40px; letter-spacing: 1px;">
+                Ritorna alla Home
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer container text-center">
+        <hr style="border: 0; border-top: 1px solid #1a2332; margin-bottom: 30px;">
+        <p>© 2026 RGandja — Architettura dei sistemi progettata e sviluppata da <strong>Andrew Di Censo</strong></p>
+        <p style="margin-top: 10px; font-size: 0.85rem;">
+            <a href="privacy.html">Privacy Policy</a> | <a href="cookies.html">Cookie Policy</a>
+        </p>
+    </footer>
+
+    <script>
+        // Simulazione di log di sistema per aumentare il feeling tecnologico
+        const status = document.getElementById('loading-status');
+        const logs = [
+            "Connessione sicura stabilita...",
+            "Validazione ID Aziendale in corso...",
+            "Protocollo RGD-Alpha assegnato alla coda prioritaria.",
+            "PRONTO PER ANALISI STRATEGICA."
+        ];
+        let i = 0;
+        const interval = setInterval(() => {
+            if (i < logs.length) {
+                status.innerText = logs[i];
+                i++;
+            } else {
+                clearInterval(interval);
+            }
+        }, 1500);
+    </script>
+</body>
+</html>

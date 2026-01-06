@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RGandja - Decision Intelligence & RGD-Alpha Protocol</title>
+    
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Sottile animazione per le card della home */
+        .card-expert {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+        .card-expert:hover {
+            transform: translateY(-10px);
+            border-color: #d4af37;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        }
+        .cta-group .btn {
+            transition: transform 0.2s ease;
+        }
+        .cta-group .btn:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner container">
+            <div class="header-brand">
+                <img src="logo.png" alt="Logo RGandja" class="brand-logo">
+                <h1>RGandja</h1>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html" class="active">Home</a>
+                <a href="chi-siamo.html">Chi Siamo</a>
+                <a href="prezzi.html">Prezzi</a>
+                <a href="demo.html">Demo</a>
+                <a href="contatti.html">Contatti</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-premium">
+            <div class="container text-center">
+                <span class="badge-status">ADVANCED NEURAL SYSTEMS 2026</span>
+                <h1>L'Era della Decisione Infallibile</h1>
+                <p class="hero-subtitle">Trasformiamo l'incertezza aziendale in potere predittivo con l'esclusivo <strong>Protocollo RGD-Alpha</strong>.</p>
+                <div class="cta-group" style="margin-top: 30px;">
+                    <a href="demo.html" class="btn btn-primary">Inizia Analisi Neurale</a>
+                    <a href="prezzi.html" class="btn btn-outline" style="margin-left:10px;">Piani di Licenza</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section container">
+            <div class="grid-3">
+                <div class="card-expert text-center" onclick="location.href='demo.html?tipo=junior'">
+                    <div style="font-size: 3rem; margin-bottom: 15px;">🚀</div>
+                    <h2>RGD-JUNIOR</h2>
+                    <h4 style="color: #d4af37; margin-bottom: 15px;">Ottimizzazione & Crescita</h4>
+                    <p>Ideale per Retail e Small Business. Analizziamo i flussi di cassa per eliminare dispersioni e incrementare i margini operativi.</p>
+                    <a href="demo.html?tipo=junior" style="display:inline-block; margin-top:15px; color:#d4af37; text-decoration:none; font-weight:bold; font-size: 0.8rem; letter-spacing: 1px;">AVVIA CONFIGURAZIONE →</a>
+                </div>
+
+                <div class="card-expert text-center" style="border: 2px solid #d4af37; background: rgba(20, 26, 35, 0.9);" onclick="location.href='demo.html?tipo=pmi'">
+                    <div style="font-size: 3rem; margin-bottom: 15px;">📊</div>
+                    <h2>RGD-PMI</h2>
+                    <h4 style="color: #d4af37; margin-bottom: 15px;">Efficienza Neurale 2080</h4>
+                    <p>Recupero del capitale umano tramite Neural Productivity Suite e monitoraggio liquidità. Riprogettazione per massimizzare il ROI.</p>
+                    <a href="demo.html?tipo=pmi" style="display:inline-block; margin-top:15px; color:#d4af37; text-decoration:none; font-weight:bold; font-size: 0.8rem; letter-spacing: 1px;">ATTIVA PROTOCOLLO →</a>
+                </div>
+
+                <div class="card-expert text-center" onclick="location.href='demo.html?tipo=enterprise'">
+                    <div style="font-size: 3rem; margin-bottom: 15px;">🏢</div>
+                    <h2>RGD-ENTERPRISE</h2>
+                    <h4 style="color: #d4af37; margin-bottom: 15px;">Resilienza & Risk Management</h4>
+                    <p>Algoritmi avanzati per fusioni sinergiche e verifica integrità dati Quantum. Il massimo livello di protezione per grandi asset.</p>
+                    <a href="demo.html?tipo=enterprise" style="display:inline-block; margin-top:15px; color:#63b3ed; text-decoration:none; font-weight:bold; font-size: 0.8rem; letter-spacing: 1px;">ADVISORY DEDICATA →</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer container text-center">
+        <hr style="border: 0; border-top: 1px solid #1a2332; margin-bottom: 30px;">
+        <p style="color: #a0aec0; font-size: 0.85rem;">© 2026 RGandja — Architettura dei sistemi proprietaria</p>
+        <p style="margin-bottom: 20px;">
+            <a href="privacy.html" style="color: #63b3ed; font-size: 0.8rem;">Privacy</a> | 
+            <a href="cookies.html" style="color: #63b3ed; font-size: 0.8rem;">Cookies</a> |
+            <a href="imprint.html" style="color: #63b3ed; font-size: 0.8rem;">Note Legali</a>
+        </p>
+        
+        <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; border: 1px solid #1a2332; display: inline-block; max-width: 600px;">
+            <p style="font-size: 10px; color: #636e7b; margin: 0; text-transform: uppercase; letter-spacing: 1px;">
+                © 2026 Andrew Di Censo. <strong>RGandja™</strong> è un marchio registrato (EUIPO 2026).<br>
+                Il Protocollo RGD-Alpha e l'Architettura della Certezza sono asset intellettuali protetti.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

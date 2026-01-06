@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RGandja - Neural Playground v5.2 PRO</title>
+    
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --terminal-bg: #0a0e14; --accent-gold: #d4af37; --text-gray: #a0aec0; }
+        body { background: #05070a; font-family: 'Fira Code', monospace; color: white; margin: 0; }
+        
+        /* HEADER ORIGINALE */
+        .header { background: rgba(10, 14, 20, 0.95); border-bottom: 1px solid #1a2332; padding: 15px 0; }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .main-nav a { color: var(--text-gray); text-decoration: none; margin-left: 20px; font-size: 0.9rem; }
+        .main-nav a.active { color: var(--accent-gold); }
+
+        /* TERMINALE */
+        .terminal { background: var(--terminal-bg); border: 1px solid #1a2332; border-radius: 12px; max-width: 900px; margin: 40px auto; position: relative; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.8); }
+        .term-header { background: #1a2332; padding: 12px; display: flex; gap: 8px; align-items: center; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; }
+        .term-content { padding: 35px; transition: filter 0.5s ease; }
+        
+        /* GRIGLIA INPUT CORRISPONDENTE AL MAIN.PY */
+        .grid-inputs { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 25px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 8px; color: var(--text-gray); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; }
+        input, select { width: 100%; padding: 12px; background: #161b22; border: 1px solid #2d3748; color: #fff; border-radius: 6px; box-sizing: border-box; font-family: 'Fira Code'; }
+        input:focus { border-color: var(--accent-gold); outline: none; }
+
+        .btn-execute { background: linear-gradient(90deg, #d4af37, #f2d472); color: #000; border: none; padding: 20px; width: 100%; border-radius: 6px; font-weight: 800; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; }
+        
+        /* PAYWALL OVERLAY */
+        .premium-blur { filter: blur(10px); opacity: 0.3; pointer-events: none; user-select: none; }
+        .paywall-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 14, 20, 0.85); display: none; flex-direction: column; justify-content: center; align-items: center; z-index: 100; text-align: center; padding: 20px; }
+
+        #resultBox { margin-top: 25px; padding: 20px; border: 1px solid var(--accent-gold); border-radius: 8px; background: rgba(212, 175, 55, 0.05); display: none; }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-inner">
+            <div class="header-brand" style="display:flex; align-items:center; gap:10px;">
+                <img src="logo.png" alt="Logo" style="width:30px;">
+                <h1 style="margin:0; font-size:1.2rem; letter-spacing:2px;">RGandja</h1>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="chi-siamo.html">Chi Siamo</a>
+                <a href="prezzi.html">Prezzi</a>
+                <a href="demo.html" class="active">Demo</a>
+                <a href="contatti.html">Contatti</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container text-center" style="margin-top: 50px;">
+        <h2 style="color: white; font-size: 2rem;">Neural Engine v5.2 Alpha</h2>
+        <p style="color: var(--text-gray);">Configura i parametri per l'analisi predittiva professionale.</p>
+    </div>
+
+    <div class="terminal">
+        <div id="paywall" class="paywall-overlay">
+            <h2 style="color: var(--accent-gold); margin-bottom: 10px;">ANALISI COMPLETATA</h2>
+            <p style="max-width: 500px; color: #e2e8f0; margin-bottom: 30px;">Abbiamo individuato risparmi potenziali significativi. Per visualizzare i dettagli tecnici e scaricare il Report PDF completo, attiva una licenza.</p>
+            <button class="btn-execute" style="width:auto; padding: 15px 40px;" onclick="location.href='prezzi.html'">SBLOCCA REPORT COMPLETO</button>
+        </div>
+
+        <div class="term-header">
+            <div class="dot" style="background:#ff5f56"></div>
+            <div class="dot" style="background:#ffbd2e"></div>
+            <div class="dot" style="background:#27c93f"></div>
+            <span id="node-status" style="margin-left:15px; font-size:0.7rem; color:#636e7b;">CORE: RG-ALPHA-PRIMARY // READY</span>
+        </div>
+
+        <div class="term-content" id="terminalMain">
+            <div class="grid-inputs">
+                <div class="form-group">
+                    <label>Algoritmo</label>
+                    <select id="algoritmo">
+                        <option value="junior">Junior (Startup)</option>
+                        <option value="pmi" selected>PMI (Efficiency)</option>
+                        <option value="enterprise">Enterprise (Resilience)</option>
+                    </select>
+                </div>
+                <div class="form-group"><label>Metri Quadri (mq)</label><input type="number" id="mq" value="250"></div>
+                <div class="form-group"><label>Dipendenti</label><input type="number" id="dipendenti" value="15"></div>
+                <div class="form-group"><label>Ore Assenze/Sett</label><input type="number" id="assenze" value="12"></div>
+                <div class="form-group"><label>Standby Watt</label><input type="number" id="watt" value="450"></div>
+                <div class="form-group"><label>Budget Annuale (€)</label><input type="number" id="budget" value="150000"></div>
+            </div>
+
+            <button onclick="runNeuralAnalysis()" class="btn-execute" id="btnRun">Esegui Elaborazione</button>
+
+            <div id="resultBox">
+                <div id="loadingText" style="color: var(--accent-gold); font-size: 0.8rem; margin-bottom: 10px;"></div>
+                <div id="finalOutput" style="font-size: 0.9rem; line-height: 1.6;"></div>
+                <div id="pdfDownloadArea" style="margin-top: 15px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function runNeuralAnalysis() {
+            const btn = document.getElementById("btnRun");
+            const terminalMain = document.getElementById("terminalMain");
+            const paywall = document.getElementById("paywall");
+            const resultBox = document.getElementById("resultBox");
+            const loadingText = document.getElementById("loadingText");
+            const finalOutput = document.getElementById("finalOutput");
+            const pdfArea = document.getElementById("pdfDownloadArea");
+
+            // Reset Interfaccia
+            btn.disabled = true;
+            resultBox.style.display = "block";
+            loadingText.innerHTML = "> Inizializzazione Neural Strategy Core...";
+            
+            // Raccolta dati dal modulo
+            const payload = {
+                algoritmo: document.getElementById("algoritmo").value,
+                budget: parseFloat(document.getElementById("budget").value),
+                resilienza: true,
+                ore_assenze: parseFloat(document.getElementById("assenze").value),
+                standby_watt: parseFloat(document.getElementById("watt").value),
+                metri_quadri: parseFloat(document.getElementById("mq").value),
+                num_dipendenti: parseInt(document.getElementById("dipendenti").value)
+            };
+
+            try {
+                const response = await fetch('http://127.0.0.1:8000/calcola', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const data = await response.json();
+
+                // Simulazione di caricamento "scenica"
+                setTimeout(() => {
+                    loadingText.innerHTML = "> Analisi flussi completata. Generazione Report...";
+                    
+                    setTimeout(() => {
+                        loadingText.innerHTML = "";
+                        finalOutput.innerHTML = data.risultato;
+                        
+                        // Mostriamo il link al PDF Preview
+                        pdfArea.innerHTML = `<a href="${data.pdf_link}" target="_blank" style="color: var(--accent-gold); font-weight: bold;">[SCARICA REPORT PREVIEW.PDF]</a>`;
+
+                        // ATTIVAZIONE PAYWALL se il server dice "is_premium_locked"
+                        if(data.is_premium_locked) {
+                            setTimeout(() => {
+                                terminalMain.classList.add("premium-blur");
+                                paywall.style.display = "flex";
+                            }, 2000); // L'utente ha 2 secondi per vedere il risultato prima che si sfumi
+                        }
+                    }, 1000);
+                }, 1000);
+
+            } catch (err) {
+                loadingText.innerHTML = "ERRORE: Connessione al server RG-Alpha fallita.";
+                btn.disabled = false;
+            }
+        }
+    </script>
+
+    <footer style="text-align:center; padding: 60px 0; color: #636e7b; font-size: 0.8rem;">
+        © 2026 RGandja — Engineering by Andrew Di Censo
+    </footer>
+</body>
+</html>

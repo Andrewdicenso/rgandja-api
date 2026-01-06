@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prezzi e Licenze - Protocolli RGandja 2026</title>
+    
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="style.css"> 
+    <style>
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .price-box { 
+            background: rgba(15, 23, 42, 0.5); 
+            padding: 20px; 
+            border-radius: 12px; 
+            margin-top: 15px; 
+            border: 1px solid var(--border); 
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .price-value { 
+            font-size: 2.2rem; 
+            color: var(--accent-gold); 
+            font-weight: 800; 
+            margin: 5px 0; 
+        }
+
+        .tier-label { 
+            font-size: 0.7rem; 
+            text-transform: uppercase; 
+            color: var(--text-muted); 
+            letter-spacing: 2px; 
+            font-weight: 700; 
+        }
+        
+        .feature-list {
+            margin: 25px 0;
+            padding: 0;
+            list-style: none;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            color: #cbd5e0;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            color: var(--accent-gold);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+
+        /* Stato evidenziato (Triggerato dalla Demo) */
+        .featured-card { 
+            border: 2px solid var(--accent-gold) !important; 
+            transform: translateY(-10px);
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.15);
+            background: rgba(20, 26, 35, 0.95) !important;
+        }
+
+        .highlight-glow { 
+            animation: glow-premium 1.5s infinite alternate; 
+        }
+
+        @keyframes glow-premium { 
+            from { box-shadow: 0 0 10px rgba(212, 175, 55, 0.2); } 
+            to { box-shadow: 0 0 30px rgba(212, 175, 55, 0.5); } 
+        }
+
+        .license-tag { 
+            font-size: 0.65rem; 
+            background: rgba(99, 179, 237, 0.1);
+            color: #63b3ed; 
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold; 
+        }
+
+        .guarantee-box { 
+            background: rgba(15, 23, 42, 0.8); 
+            border: 1px dashed var(--accent-gold); 
+            padding: 40px; 
+            border-radius: 20px; 
+            margin-top: 80px; 
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-inner container">
+            <div class="header-brand">
+                <img src="logo.png" alt="Logo RGandja" class="brand-logo">
+                <h1>RGandja</h1>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="chi-siamo.html">Chi Siamo</a>
+                <a href="prezzi.html" class="active">Prezzi</a>
+                <a href="demo.html">Demo</a>
+                <a href="contatti.html">Contatti</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-premium">
+        <div class="container text-center">
+            <span class="badge-status">SISTEMA DI LICENZIAMENTO 2026</span>
+            <h1>Investi in Certezze</h1>
+            <p class="hero-subtitle">Scegli il livello di profondità neurale richiesto dal tuo modello di business.</p>
+        </div>
+    </section>
+
+    <main class="container section">
+        <div class="pricing-grid">
+
+            <div class="pricing-card card-expert" id="card-junior">
+                <div class="tier-header">
+                    <h2 style="color: #fff;">Protocollo JUNIOR</h2>
+                    <p style="color: #63b3ed; font-size: 0.8rem;">Ideale per Professionisti & Startups</p>
+                </div>
+                
+                <ul class="feature-list">
+                    <li>Analisi di 1 processo core</li>
+                    <li>Nodi Neurali: 128 Standard</li>
+                    <li>Report PDF trimestrale</li>
+                    <li>Supporto Ticket 48h</li>
+                </ul>
+
+                <div class="price-box">
+                    <p class="tier-label">Versione BASIC</p>
+                    <p class="price-value">€450</p>
+                    <span class="license-tag">LICENZA 12 MESI</span>
+                </div>
+
+                <div class="price-box" style="border-color: #3182ce;">
+                    <p class="tier-label">Versione FULL (Consigliata)</p>
+                    <p class="price-value">€1.200</p>
+                    <span class="license-tag">PRIORITY SUPPORT</span>
+                </div>
+                <a href="contatti.html" class="btn btn-outline" style="margin-top:25px; width:100%;">Acquista Junior</a>
+            </div>
+
+            <div class="pricing-card card-expert featured-card" id="card-pmi">
+                <div class="tier-header">
+                    <span class="badge-status" style="background: var(--accent-gold); color: #000; border:none;">STANDARD INDUSTRIALE</span>
+                    <h2 style="color: #fff;">Protocollo PMI</h2>
+                    <p style="color: var(--accent-gold); font-size: 0.8rem;">Efficienza e Decision Intelligence</p>
+                </div>
+
+                <ul class="feature-list">
+                    <li>Analisi Multi-processo (fino a 5)</li>
+                    <li>Nodi Neurali: 1024 High-Performance</li>
+                    <li>Dashboard in tempo reale</li>
+                    <li>Audit di conformità incluso</li>
+                </ul>
+
+                <div class="price-box">
+                    <p class="tier-label">Versione BASIC</p>
+                    <p class="price-value">€2.500</p>
+                </div>
+
+                <div class="price-box" style="background: rgba(212, 175, 55, 0.05); border-color: var(--accent-gold);">
+                    <p class="tier-label" style="color: var(--accent-gold);">Versione FULL (Advanced)</p>
+                    <p class="price-value">€5.800</p>
+                    <span class="license-tag">TOP PRIORITY</span>
+                </div>
+                <a href="contatti.html" class="btn btn-gold" style="margin-top: 25px; width:100%;">Sblocca Protocollo PMI</a>
+            </div>
+
+            <div class="pricing-card card-expert" id="card-enterprise">
+                <div class="tier-header">
+                    <h2 style="color: #fff;">ENTERPRISE</h2>
+                    <p style="color: #63b3ed; font-size: 0.8rem;">Infrastruttura su Misura</p>
+                </div>
+
+                <ul class="feature-list">
+                    <li>Processi illimitati</li>
+                    <li>Infrastruttura dedicata (Atene HPC)</li>
+                    <li>Integrazione API Custom</li>
+                    <li>Consulente Dedicato 24/7</li>
+                </ul>
+
+                <div class="price-box">
+                    <p class="tier-label">Setup Iniziale</p>
+                    <p class="price-value">€12.000</p>
+                </div>
+
+                <div class="price-box">
+                    <p class="tier-label">Licenza Annuale</p>
+                    <p class="price-value" style="font-size: 1.8rem;">SU PREVENTIVO</p>
+                </div>
+                <a href="contatti.html" class="btn btn-outline" style="margin-top: 25px; width:100%; border-color:#63b3ed; color:#63b3ed;">Contatta Advisory</a>
+            </div>
+        </div>
+
+        <div class="guarantee-box text-center">
+            <h4 style="color:var(--accent-gold); font-size: 1.5rem; margin-bottom: 15px;">🛡️ RG-Alpha Integrity Guarantee</h4>
+            <p style="color:#cbd5e0; font-size:1rem; max-width: 800px; margin: 0 auto; line-height: 1.6;">
+                Le analisi del sistema RGandja sono garantite matematicamente. Se l'ottimizzazione dei costi rilevata dal software nel primo trimestre 
+                è inferiore al costo della licenza stessa, forniremo un audit tecnico manuale e un'estensione gratuita della licenza per 6 mesi.
+            </p>
+        </div>
+    </main>
+
+    <footer class="footer container text-center">
+        <p>© 2026 RGandja — Architettura dei sistemi ideata e progettata da Andrew Di Censo</p>
+    </footer>
+
+    <script>
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const tipo = urlParams.get('tipo'); 
+            
+            if(tipo) {
+                // Rimuove l'evidenziazione di default (PMI)
+                document.querySelectorAll('.pricing-card').forEach(c => {
+                    c.classList.remove('featured-card');
+                    c.classList.remove('highlight-glow');
+                });
+                
+                // Evidenzia il target dalla demo
+                const targetCard = document.getElementById('card-' + tipo.toLowerCase());
+                if(targetCard) {
+                    targetCard.classList.add('featured-card');
+                    targetCard.classList.add('highlight-glow');
+                    targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

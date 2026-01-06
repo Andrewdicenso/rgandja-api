@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Il Metodo - RGandja Ingegneria Decisionale</title>
+    
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .method-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .step-card {
+            background: #0a0e14;
+            padding: 45px 40px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+        }
+        .step-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
+        }
+        .step-num {
+            font-family: 'serif', 'Times New Roman';
+            font-size: 5rem;
+            font-weight: 900;
+            color: rgba(212, 175, 55, 0.05);
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            pointer-events: none;
+        }
+        .step-card h3 {
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            position: relative;
+        }
+        .step-card p {
+            color: #a0aec0;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+        
+        /* Animazione Simbolica della Fusione */
+        .ai-human-fusion {
+            font-size: 6rem;
+            text-shadow: 0 0 50px rgba(212, 175, 55, 0.3);
+            text-align: center;
+            animation: pulse-gold 3s infinite ease-in-out;
+        }
+
+        @keyframes pulse-gold {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; text-shadow: 0 0 70px rgba(212, 175, 55, 0.5); }
+        }
+
+        .logic-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(99, 179, 237, 0.1);
+            color: #63b3ed;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-inner container">
+            <div class="header-brand">
+                <img src="logo.png" alt="Logo RGandja" class="brand-logo">
+                <h1>RGandja</h1>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="chi-siamo.html">Chi Siamo</a>
+                <a href="prezzi.html">Prezzi</a>
+                <a href="demo.html">Demo</a>
+                <a href="contatti.html">Contatti</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-premium">
+        <div class="container text-center">
+            <span class="badge-status">PROPRIETARY METHODOLOGY</span>
+            <h1>Ingegneria Decisionale Applicata</h1>
+            <p class="hero-subtitle">
+                Trasformiamo l'incertezza in algoritmi deterministici attraverso il Protocollo RGD-Alpha.
+            </p>
+        </div>
+    </section>
+
+    <main class="section container">
+        <div class="method-steps">
+            <div class="step-card">
+                <div class="step-num">01</div>
+                <span class="logic-tag">Data Ingestion</span>
+                <h3>Analisi Predittiva Multilivello</h3>
+                <p>Il sistema riceve i parametri core (budget, tempi, KPI). L'IA non si limita a una media statistica, ma simula milioni di micro-scenari per identificare il percorso a minor attrito e massimo rendimento.</p>
+            </div>
+
+            <div class="step-card">
+                <div class="step-num">02</div>
+                <span class="logic-tag">Neural Shield</span>
+                <h3>RG-Compliance Validation</h3>
+                <p>Ogni opzione viene passata attraverso il nostro scudo di compliance. Un set di regole fisse verifica la sicurezza contrattuale, legale e operativa, eliminando alla radice le scelte "ad alto rischio invisibile".</p>
+            </div>
+
+            <div class="step-card">
+                <div class="step-num">03</div>
+                <span class="logic-tag">Execution</span>
+                <h3>Output Operativo Deterministico</h3>
+                <p>Il risultato finale non è un report descrittivo, ma una direttiva d'azione. Ricevi lo schema esatto degli investimenti e le tutele da attivare per blindare il tuo ROI nel mercato 2026.</p>
+            </div>
+        </div>
+    </main>
+
+    <section class="section alt-bg" style="background: linear-gradient(180deg, rgba(10, 14, 20, 0.9) 0%, #020617 100%);">
+        <div class="container">
+            <div class="grid-2 align-center">
+                <div class="info-block">
+                    <h2 style="color: #fff; margin-bottom: 20px;">Sinergia Core: Velocità & Controllo</h2>
+                    <p style="font-size: 1.1rem; color: #cbd5e0; line-height: 1.8;">
+                        Il Metodo RGandja risolve il paradosso dell'IA moderna: la velocità senza controllo produce caos. 
+                        Noi utilizziamo l'intelligenza artificiale per la <strong>potenza di calcolo</strong>, 
+                        ma la filtriamo attraverso una <strong>logica di controllo umana</strong> basata su decenni di esperienza strategica.
+                    </p>
+                    <p style="margin-top: 20px; color: var(--accent-gold); font-weight: bold;">
+                        È questo doppio controllo che rende il nostro output inattaccabile.
+                    </p>
+                </div>
+                <div class="method-graphic text-center">
+                    <div class="ai-human-fusion">🧠 + ⚡</div>
+                    <p style="color: #63b3ed; font-family: monospace; letter-spacing: 2px; margin-top: 20px;">HYBRID INTELLIGENCE ACTIVE</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section text-center" style="padding: 100px 0; background: #000;">
+        <div class="container">
+            <h2 style="margin-bottom: 30px; font-size: 2.5rem;">Pronto a implementare il metodo?</h2>
+            <p style="color: #a0aec0; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Accedi alla demo interattiva per vedere come il sistema elabora le tue specifiche in tempo reale.
+            </p>
+            <a href="demo.html" class="btn btn-gold" style="padding: 18px 40px; font-size: 1.1rem;">Avvia Analisi Protocollo</a>
+        </div>
+    </section>
+
+    <footer class="footer container text-center">
+        <hr style="border: 0; border-top: 1px solid #1a2332; margin-bottom: 30px;">
+        <p>© 2026 RGandja — Architettura dei sistemi progettata e sviluppata da <strong>Andrew Di Censo</strong></p>
+        <p style="margin-top: 10px;">
+             <a href="privacy.html">Privacy Policy</a> | 
+             <a href="cookies.html">Cookie Policy</a> |
+             <a href="imprint.html">Note Legali</a>
+        </p>
+    </footer>
+
+</body>
+</html>
