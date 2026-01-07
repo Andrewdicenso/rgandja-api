@@ -514,3 +514,41 @@ def elabora_pmi(data: InputData):
         "timestamp": datetime.datetime.now().isoformat()
     }
     return risultato
+# ==========================
+# Endpoint JUNIOR
+# ==========================
+class JuniorInput(BaseModel):
+    nome: Optional[str]
+    settore: Optional[str]
+
+@app.post("/junior")
+def elabora_junior(data: JuniorInput):
+    risultato = {
+        "tipo": "Junior",
+        "nome": data.nome,
+        "settore": data.settore,
+        "valutazione": "Base",
+        "timestamp": datetime.datetime.now().isoformat()
+    }
+    return risultato
+
+
+# ==========================
+# Endpoint ENTERPRISE
+# ==========================
+class EnterpriseInput(BaseModel):
+    azienda: Optional[str]
+    fatturato: Optional[float]
+    dipendenti: Optional[int]
+
+@app.post("/enterprise")
+def elabora_enterprise(data: EnterpriseInput):
+    risultato = {
+        "tipo": "Enterprise",
+        "azienda": data.azienda,
+        "fatturato": data.fatturato,
+        "dipendenti": data.dipendenti,
+        "valutazione": "Avanzata",
+        "timestamp": datetime.datetime.now().isoformat()
+    }
+    return risultato
