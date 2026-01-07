@@ -494,3 +494,23 @@ def config_limiti(piano: str):
         return {"error": "Piano non valido"}
 
     return limiti[piano]
+# ==========================
+# Endpoint per demo RGandja
+# ==========================
+
+class InputData(BaseModel):
+    nome: Optional[str]
+    settore: Optional[str]
+    dipendenti: Optional[int]
+
+@app.post("/pmi")
+def elabora_pmi(data: InputData):
+    # Simulazione di elaborazione
+    risultato = {
+        "nome": data.nome,
+        "settore": data.settore,
+        "dipendenti": data.dipendenti,
+        "valutazione": "Eccellente",
+        "timestamp": datetime.datetime.now().isoformat()
+    }
+    return risultato
