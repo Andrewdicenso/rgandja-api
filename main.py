@@ -12,7 +12,7 @@ app = FastAPI(title="RGandja Neural API", version="1.0.0")
 # ==========================
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # quando hai dominio definitivo, puoi mettere ["https://rgandja.com"]
+    allow_origins=["https://rgandja.com", "https://www.rgandja.com"]
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -541,3 +541,61 @@ def config_limiti(piano: str):
         return {"error": "Piano non valido"}
 
     return limiti[piano]
+# ==========================
+# Endpoint per demo RGandja
+# ==========================
+
+class InputData(BaseModel):
+    nome: Optional[str]
+    settore: Optional[str]
+    dipendenti: Optional[int]
+
+@app.post("/pmi")
+def elabora_pmi(data: InputData):
+    # Simulazione di elaborazione
+    risultato = {
+        "nome": data.nome,
+        "settore": data.settore,
+        "dipendenti": data.dipendenti,
+        "valutazione": "Eccellente",
+        "timestamp": datetime.datetime.now().isoformat()
+    }
+    return risultato
+# ==========================
+# Endpoint JUNIOR
+# ==========================
+class JuniorInput(BaseModel):
+    nome: Optional[str]
+    settore: Optional[str]
+
+@app.post("/junior")
+def elabora_junior(data: JuniorInput):
+    risultato = {
+        "tipo": "Junior",
+        "nome": data.nome,
+        "settore": data.settore,
+        "valutazione": "Base",
+        "timestamp": datetime.datetime.now().isoformat()
+    }
+    return risultato
+
+
+# ==========================
+# Endpoint ENTERPRISE
+# ==========================
+class EnterpriseInput(BaseModel):
+    azienda: Optional[str]
+    fatturato: Optional[float]
+    dipendenti: Optional[int]
+
+@app.post("/enterprise")
+def elabora_enterprise(data: EnterpriseInput):
+    risultato = {
+        "tipo": "Enterprise",
+        "azienda": data.azienda,
+        "fatturato": data.fatturato,
+        "dipendenti": data.dipendenti,
+        "valutazione": "Avanzata",
+        "timestamp": datetime.datetime.now().isoformat()
+    }
+    return risultato
