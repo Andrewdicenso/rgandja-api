@@ -66,10 +66,13 @@
     <div class="terminal">
         <div id="paywall" class="paywall-overlay">
             <h2 style="color: var(--accent-gold); margin-bottom: 10px;">ANALISI COMPLETATA</h2>
-            <p style="max-width: 500px; color: #e2e8f0; margin-bottom: 30px;">Abbiamo individuato risparmi potenziali significativi. Per visualizzare i dettagli tecnici e scaricare il Report PDF completo, attiva una licenza.</p>
-            <button class="btn-execute" style="width:auto; padding: 15px 40px;" onclick="location.href='prezzi.html'">SBLOCCA REPORT COMPLETO</button>
-        </div>
+            <p style="max-width: 500px; color: #e2e8f0; margin-bottom: 20px;">Inserisci la tua email per ricevere immediatamente il report tecnico completo e i grafici di risparmio.</p>
 
+<input type="email" id="user-email" placeholder="La tua email professionale" 
+       style="width: 100%; max-width: 400px; padding: 12px; margin-bottom: 20px; border-radius: 8px; border: none; color: #333;">
+
+<button class="btn-execute" style="width:auto; padding: 15px 40px;" onclick="spedisciReport()">INVIA REPORT GRATUITO</button>
+</div>
         <div class="term-header">
             <div class="dot" style="background:#ff5f56"></div>
             <div class="dot" style="background:#ffbd2e"></div>
@@ -170,5 +173,43 @@
     <footer style="text-align:center; padding: 60px 0; color: #636e7b; font-size: 0.8rem;">
         © 2026 RGandja — Engineering by Andrew Di Censo
     </footer>
+    <script>
+function spedisciReport() {
+    const emailUtente = document.getElementById('user-email').value;
+    
+    if (!emailUtente || !emailUtente.includes('@')) {
+        alert("Per favore, inserisci un indirizzo email valido.");
+        return;
+    }
+
+    const bottone = document.querySelector('.btn-execute');
+    bottone.innerText = "INVIO IN CORSO...";
+    bottone.disabled = true;
+
+    // Questo comunica con il tuo server Render che abbiamo sistemato prima
+    fetch('https://rgandja-api.onrender.com/email/invia-report', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+            email: emailUtente,
+            pdf_link: "https://rgandja.com/reports/demo-report.pdf" 
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            alert("Perfetto! Il report è stato inviato alla tua email.");
+            bottone.innerText = "REPORT INVIATO!";
+        } else {
+            alert("C'è stato un problema. Riprova tra pochi minuti.");
+            bottone.innerText = "INVIA REPORT GRATUITO";
+            bottone.disabled = false;
+        }
+    })
+    .catch(error => {
+        console.error("Errore:", error);
+        alert("Errore di connessione al server.");
+    });
+}
+</script>
 </body>
 </html>
