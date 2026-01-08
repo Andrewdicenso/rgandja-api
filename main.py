@@ -12,7 +12,7 @@ app = FastAPI(title="RGandja Neural API", version="1.0.0")
 # ==========================
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://rgandja.com", "https://www.rgandja.com"]
+    allow_origins=["https://rgandja.com", "https://www.rgandja.com"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -355,7 +355,7 @@ from sib_api_v3_sdk.rest import ApiException
 
 def invia_email_brevo(destinatario: str, oggetto: str, contenuto: str):
     configuration = sib_api_v3_sdk.Configuration()
-    configuration.api_key['api-key'] = configuration.api_key['api-key'] = os.getenv('BREVO_API_KEY')
+    configuration.api_key['api-key'] = "configuration.api_key['api-key'] = os.getenv('BREVO_API_KEY')"
 
     api_instance = sib_api_v3_sdk.TransactionalEmailsApi(
         sib_api_v3_sdk.ApiClient(configuration)
@@ -419,7 +419,7 @@ def email_onboarding(email: str):
 
 
 # ==========================================
-# API /email/invia-report
+ # API /email/invia-report
 # ==========================================
 @app.post("/email/invia-report")
 def email_invia_report(email: str, pdf_link: str):
