@@ -1,3 +1,4 @@
+from weakref import ref
 from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
@@ -118,13 +119,19 @@ def calcola(data: InputData):
 # ==========================
 @app.post("/genera-pdf")
 def genera_pdf(req: PdfRequest):
+    # Controllo licenza via email
+    if not req.email or not verifica_licenza(req.email):
+        return {"error": "Accesso negato: licenza non valida"}
+
     pdf_link = genera_link_pdf_placeholder(premium=True)
 
     return {
         "status": "ok",
-        "premium": req.premium,
+        "premium": True,
         "pdf_link": pdf_link
     }
+
+
 
 
 # ==========================
@@ -154,6 +161,24 @@ def status():
     }
 import json
 import os
+def verifica_licenza(email: str) -> bool:
+    """
+    Restituisce True se l'utente ha licenza Argento o Oro.
+    Restituisce False se l'utente ha licenza Bronzo o non esiste.
+    """
+    path = "users.json"
+    if not os.path.exists(path):
+        return False
+
+    with open(path, "r") as f:
+        users = json.load(f)
+
+    for u in users:
+        if u["email"] == email:
+            return u["licenza"] in ["Argento", "Oro"]
+
+    return False
+
 
 # -----------------------------
 # API /register
@@ -325,37 +350,61 @@ def kpi_utente(email: str):
 # MODULO 4 — EMAIL & NOTIFICHE
 # ==============================
 
-def invia_email_placeholder(destinatario: str, oggetto: str, contenuto: str):
-    """
-    Placeholder: in futuro qui collegheremo l'API Brevo.
-    Ora simula l'invio email.
-    """
-    print(f"[EMAIL SIMULATA] A: {destinatario} | Oggetto: {oggetto}")
-    print(contenuto)
-    return True
+import sib_api_v3_sdk
+from sib_api_v3_sdk.rest import ApiException
+
+def invia_email_brevo(destinatario: str, oggetto: str, contenuto: str):
+    configuration = sib_api_v3_sdk.Configuration()
+    configuration.api_key['api-key'] = "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"
+
+    api_instance = sib_api_v3_sdk.TransactionalEmailsApi(
+        sib_api_v3_sdk.ApiClient(configuration)
+    )
+
+    email = sib_api_v3_sdk.SendSmtpEmail(
+        to=[{"email": destinatario}],
+        subject=oggetto,
+        html_content=contenuto,
+        sender={"email": "support@rgandja.com", "name": "RGandja"}
+    )
+
+    try:
+        api_instance.send_transac_email(email)
+        return True
+    except ApiException as e:
+        print("Errore invio email:", e)
+        return False
 
 
-# -----------------------------
-# API /email/invia-report
-# -----------------------------
-@app.post("/email/invia-report")
-def email_invia_report(email: str, pdf_link: str):
-    oggetto = "Il tuo Report RGandja è pronto"
-    contenuto = f"""
-Ciao,
+    email = sib_api_v3_sdk.SendSmtpEmail(
+        to=[{"email": destinatario}],
+        subject=oggetto,
+        html_content=contenuto,
+        sender={"email": "support@rgandja.com", "name": "RGandja"}
+    )
 
-il tuo report è stato generato con successo.
+    try:
+        api_instance.send_transac_email(email)
+        return True
+    except ApiException as e:
+        print("Errore invio email:", e)
+        return False
 
-Puoi scaricarlo qui:
-{pdf_link}
 
-Grazie per aver utilizzato RGandja Decision Systems.
-"""
+    email = sib_api_v3_sdk.SendSmtpEmail(
+        to=[{"email": destinatario}],
+        subject=oggetto,
+        html_content=contenuto,
+        sender={"email": "support@rgandja.com", "name": "RGandja"}
+    )
 
-    invia_email_placeholder(email, oggetto, contenuto)
-
-    return {"status": "email inviata", "destinatario": email}
-
+    try:
+        api_instance.send_transac_email(email)
+        return True
+    except ApiException as e:
+        print("Errore invio email:", e)
+        return False
+    
 
 # -----------------------------
 # API /email/onboarding
@@ -363,38 +412,36 @@ Grazie per aver utilizzato RGandja Decision Systems.
 @app.post("/email/onboarding")
 def email_onboarding(email: str):
     oggetto = "Benvenuto in RGandja"
-    contenuto = f"""
-Ciao,
+    contenuto = f"""Ciao, benvenuto nella piattaforma RGandja Decision Intelligence. La tua registrazione è attiva e puoi iniziare subito a utilizzare il sistema. Per assistenza: support@rgandja.com"""
 
-benvenuto nella piattaforma RGandja Decision Intelligence.
-
-La tua registrazione è attiva e puoi iniziare subito a utilizzare il sistema.
-
-Per assistenza: support@rgandja.com
-"""
-
-    invia_email_placeholder(email, oggetto, contenuto)
-
-    return {"status": "email onboarding inviata", "destinatario": email}
+    invia_email_brevo(InputData.destinatario, datetime.date.oggetto, ref.contenuto)
+    return {"status": "email onboarding inviata", "destinatario": ref.destinatario}
 
 
-# -----------------------------
+# ==========================================
+# API /email/invia-report
+# ==========================================
+@app.post("/email/invia-report")
+def email_invia_report(email: str, pdf_link: str):
+    oggetto = "Il tuo Report RGandja è pronto"
+    contenuto = f"Ciao, il tuo report è stato generato. Scaricalo qui: {pdf_link}"
+    
+    # Indentazione corretta (4 spazi)
+    invia_email_brevo(email, oggetto, contenuto)
+    return {"status": "email inviata", "destinatario": email}
+
+# ==========================================
 # API /email/alert-licenza
-# -----------------------------
+# ==========================================
 @app.post("/email/alert-licenza")
 def email_alert_licenza(email: str, giorni_rimanenti: int):
     oggetto = "La tua licenza RGandja sta per scadere"
-    contenuto = f"""
-Ciao,
-
-la tua licenza RGandja scadrà tra {giorni_rimanenti} giorni.
-
-Per rinnovarla, accedi alla tua area personale o contatta support@rgandja.com.
-"""
-
-    invia_email_placeholder(email, oggetto, contenuto)
-
+    contenuto = f"Ciao, la tua licenza scadrà tra {giorni_rimanenti} giorni. Rinnova su support@rgandja.com"
+    
+    # Indentazione corretta (4 spazi)
+    invia_email_brevo(email, oggetto, contenuto)
     return {"status": "alert licenza inviato", "destinatario": email}
+
 # ==============================
 # MODULO 5 — SISTEMA & SICUREZZA
 # ==============================
