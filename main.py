@@ -11,7 +11,7 @@ app = FastAPI(title="RGandja Neural API", version="1.0.0")
 # ==========================
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # quando hai dominio definitivo, puoi mettere ["https://rgandja.com"]
+    allow_origins=["https://rgandja.com", "https://www.rgandja.com"]
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
