@@ -355,7 +355,7 @@ from sib_api_v3_sdk.rest import ApiException
 
 def invia_email_brevo(destinatario: str, oggetto: str, contenuto: str):
     configuration = sib_api_v3_sdk.Configuration()
-    configuration.api_key['api-key'] = "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"
+    configuration.api_key['api-key'] = configuration.api_key['api-key'] = os.getenv('BREVO_API_KEY')
 
     api_instance = sib_api_v3_sdk.TransactionalEmailsApi(
         sib_api_v3_sdk.ApiClient(configuration)
