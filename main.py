@@ -421,14 +421,21 @@ def email_onboarding(email: str):
 # ==========================================
  # API /email/invia-report
 # ==========================================
+class ReportEmailRequest(BaseModel):
+    email: str
+    pdf_link: str
 @app.post("/email/invia-report")
-def email_invia_report(email: str, pdf_link: str):
+def email_invia_report(req: ReportEmailRequest):
     oggetto = "Il tuo Report RGandja è pronto"
-    contenuto = f"Ciao, il tuo report è stato generato. Scaricalo qui: {pdf_link}"
+    contenuto = f"Ciao, il tuo report è stato generato. Scaricalo qui: {req.pdf_link}"
     
-    # Indentazione corretta (4 spazi)
-    invia_email_brevo(email, oggetto, contenuto)
-    return {"status": "email inviata", "destinatario": email}
+    # Usiamo req.email per estrarre l'indirizzo dal pacchetto
+    successo = invia_email_brevo(req.email, oggetto, contenuto)
+    
+    if successo:
+        return {"status": "email inviata", "destinatario": req.email}
+    else:
+        return {"status": "errore", "messaggio": "Invio fallito"}
 
 # ==========================================
 # API /email/alert-licenza
