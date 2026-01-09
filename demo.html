@@ -64,14 +64,12 @@
     </div>
 
     <div class="terminal">
-        <div id="paywall" class="paywall-overlay">
-            <h2 style="color: var(--accent-gold); margin-bottom: 10px;">ANALISI COMPLETATA</h2>
-            <p style="max-width: 500px; color: #e2e8f0; margin-bottom: 20px;">Inserisci la tua email per ricevere immediatamente il report tecnico completo e i grafici di risparmio.</p>
-
-<input type="email" id="user-email" placeholder="La tua email professionale" 
-       style="width: 100%; max-width: 400px; padding: 12px; margin-bottom: 20px; border-radius: 8px; border: none; color: #333;">
-
-<button class="btn-execute" style="width:auto; padding: 15px 40px;" onclick="spedisciReport()">INVIA REPORT GRATUITO</button>
+        <div id="paywall" class="paywall-overlay" style="display: none; background: rgba(10, 14, 20, 0.98); z-index: 999;">
+    <h2 style="color: var(--accent-gold); margin-bottom: 10px;">ANALISI COMPLETATA</h2>
+    <p style="max-width: 500px; color: #e2e8f0; margin-bottom: 20px;">Inserisci la tua email per ricevere il report completo.</p>
+    <input type="email" id="user-email" placeholder="La tua email professionale" 
+           style="width: 100%; max-width: 400px; padding: 12px; margin-bottom: 20px; border-radius: 8px; border: none; color: #333; display: block; margin-left: auto; margin-right: auto;">
+    <button class="btn-execute" style="width:auto; padding: 15px 40px;" onclick="spedisciReport()">INVIA REPORT GRATUITO</button>
 </div>
         <div class="term-header">
             <div class="dot" style="background:#ff5f56"></div>
