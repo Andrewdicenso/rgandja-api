@@ -14,41 +14,64 @@
             gap: 40px;
             text-align: left;
         }
+
         .imprint-block h3 {
             color: var(--accent-gold);
-            margin-bottom: 15px;
-            font-size: 1.1rem;
+            margin-bottom: 20px;
+            font-size: 1rem;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
+            font-weight: 800;
             border-bottom: 1px solid var(--border);
-            padding-bottom: 8px;
+            padding-bottom: 12px;
         }
+
         .imprint-block p {
-            color: #cbd5e0;
+            color: var(--text-muted);
             line-height: 1.8;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             font-size: 0.95rem;
         }
+
+        .imprint-block strong { color: #fff; }
+
         .imprint-block a {
             color: #63b3ed;
             text-decoration: none;
-            transition: 0.3s;
+            transition: var(--transition-smooth);
+            font-weight: 600;
         }
+
         .imprint-block a:hover { color: var(--accent-gold); }
         
         .full-width {
             grid-column: 1 / -1;
             background: rgba(255,255,255,0.02);
-            padding: 30px;
+            padding: 40px;
             border-radius: 12px;
-            margin-top: 10px;
+            border: 1px solid var(--border);
         }
-        .disclaimer {
+
+        .disclaimer-box {
             font-size: 0.85rem;
-            opacity: 0.8;
-            border: 1px dashed var(--border);
-            background: rgba(0,0,0,0.2);
+            border-left: 4px solid var(--accent-gold);
+            background: rgba(212, 175, 55, 0.03);
+            padding: 30px;
+            margin-top: 20px;
         }
+
+        .legal-stamp {
+            display: inline-block;
+            padding: 5px 12px;
+            border: 1px solid #4a5568;
+            color: #4a5568;
+            font-size: 0.65rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
         @media (max-width: 768px) {
             .imprint-grid { grid-template-columns: 1fr; }
         }
@@ -74,49 +97,54 @@
 
     <section class="hero-premium">
         <div class="container text-center">
-            <span class="badge-status">CORPORATE TRANSPARENCY</span>
-            <h1>Note Legali & Proprietà</h1>
+            <span class="badge-status">LEGAL COMPLIANCE</span>
+            <h1>Note Legali & Imprint</h1>
             <p class="hero-subtitle">
-                Informazioni ufficiali sulla struttura societaria e sulla tutela della proprietà intellettuale <strong>RGandja</strong>.
+                Trasparenza societaria e tutela della proprietà intellettuale del network <strong>RGandja</strong>.
             </p>
         </div>
     </section>
 
     <main class="section container">
-        <div class="card-expert dark-card" style="padding: 50px; border: 1px solid var(--border);">
+        <div class="card-expert dark-card" style="padding: 60px; border: 1px solid var(--border);">
+            <div class="legal-stamp">Official Document v2.1</div>
+            
             <div class="imprint-grid">
                 
                 <div class="imprint-block">
-                    <h3>Identità del Titolare</h3>
-                    <p><strong>RGandja Decision Systems</strong></p>
-                    <p>Fondatore e Architetto Capo:<br>Andrew Di Censo</p>
-                    <p>Sede Operativa: <br>Sepolion 10445, Atene (Attiki, Grecia)</p>
+                    <h3>Proprietà e Governance</h3>
+                    <p><strong>Andrew Di Censo Intelligence Systems</strong></p>
+                    <p>Fondatore e Chief Architect:<br>Andrew Di Censo</p>
+                    <p>Sede Operativa Pre-Lancio:<br>Sepolion 10445, Atene<br>Attiki, Grecia (EU)</p>
+                    <p style="color: var(--accent-gold); font-size: 0.75rem; font-weight: 800; letter-spacing: 1px;">
+                        STATUS: FASE DI ATTIVAZIONE FISCALE 2026
+                    </p>
                 </div>
 
                 <div class="imprint-block">
-                    <h3>Canali Ufficiali</h3>
-                    <p>Relazioni Commerciali:<br><a href="mailto:andrew@rgandja.com">andrew@rgandja.com</a></p>
-                    <p>Ufficio Legale & Compliance:<br><a href="mailto:legal@rgandja.com">legal@rgandja.com</a></p>
-                    <p>DPO / Privacy Support:<br><a href="mailto:privacy@rgandja.com">privacy@rgandja.com</a></p>
+                    <h3>Comunicazioni Formali</h3>
+                    <p>Relazioni Strategiche:<br><a href="mailto:andrew@rgandja.com">andrew@rgandja.com</a></p>
+                    <p>Affari Legali:<br><a href="mailto:legal@rgandja.com">legal@rgandja.com</a></p>
+                    <p>Data Protection Officer (DPO):<br><a href="mailto:privacy@rgandja.com">privacy@rgandja.com</a></p>
                 </div>
 
                 <div class="imprint-block full-width">
-                    <h3>Proprietà Intellettuale & Copyright</h3>
+                    <h3>Proprietà Intellettuale & Segreto Industriale</h3>
                     <p>
-                        Il marchio <strong>RGandja™</strong> e i relativi loghi sono asset di proprietà esclusiva, protetti dalle normative EUIPO sulla proprietà intellettuale. Ogni riproduzione non autorizzata sarà perseguita secondo le leggi vigenti.
+                        Il marchio <strong>RGandja™</strong>, l'identità visiva e il framework dell'interfaccia sono asset di proprietà esclusiva registrati presso l'<strong>EUIPO (European Union Intellectual Property Office)</strong>. Ogni utilizzo non autorizzato o imitazione fraudolenta sarà perseguito nelle sedi competenti.
                     </p>
-                    <p>
-                        L'architettura neurale denominata <strong>Protocollo RGD-Alpha</strong> e il framework <strong>Architettura della Certezza</strong> sono opere dell'ingegno depositate. È severamente vietato ogni tentativo di decompilazione, reverse engineering o utilizzo del codice sorgente senza licenza scritta.
+                    <p style="border-left: 2px solid var(--accent-gold); padding-left: 25px; margin-top: 25px;">
+                        <strong>Protocollo RGD-Alpha:</strong> Il motore di calcolo, le architetture neurali e i set di dati proprietari sono protetti come <strong>Segreto Industriale</strong> ai sensi della <strong>Direttiva UE 2016/943</strong>. Qualsiasi attività di reverse engineering o sniffing dei flussi dati è severamente proibita e costituisce reato di spionaggio industriale.
                     </p>
                 </div>
 
-                <div class="imprint-block full-width disclaimer">
-                    <h3>Dichiarazione di Limitazione di Responsabilità</h3>
+                <div class="imprint-block full-width disclaimer-box">
+                    <h3 style="border: none; margin-bottom: 10px; font-size: 0.9rem;">Limitazione di Responsabilità e Stato Operativo</h3>
                     <p>
-                        RGandja fornisce analisi di scenario basate su algoritmi predittivi e input forniti dall'utente. Tali elaborazioni hanno finalità di supporto decisionale strategico e non costituiscono in alcun modo consulenza legale, finanziaria o fiscale certificata. 
+                        <strong>Avviso Fase Pre-Lancio:</strong> Questo ecosistema digitale ha scopo informativo e di acquisizione partner per la fase di early access. Non vengono processate transazioni economiche dirette fino alla piena operatività fiscale prevista per il Q1 2026.
                     </p>
                     <p>
-                        Andrew Di Censo e il marchio RGandja declinano ogni responsabilità per perdite economiche o danni derivanti da decisioni d'impresa assunte sulla base degli output del sistema. Si raccomanda sempre la validazione umana esperta prima di ogni investimento di capitale.
+                        <strong>Esonero di Responsabilità:</strong> Gli output generati dai sistemi RGandja costituiscono supporto decisionale basato su logiche predittive. Tali risultati non sostituiscono pareri legali, fiscali o finanziari certificati. La proprietà declina ogni responsabilità per l'implementazione autonoma delle strategie suggerite.
                     </p>
                 </div>
             </div>
@@ -124,12 +152,12 @@
     </main>
 
     <footer class="footer container text-center">
-        <hr style="border: 0; border-top: 1px solid #1a2332; margin-bottom: 30px;">
-        <p>© 2026 RGandja — Advanced Decision Intelligence. Sviluppato ad Atene, Grecia.</p>
-        <p style="margin-top: 10px;">
-            <a href="privacy.html">Privacy Policy</a> | 
-            <a href="cookies.html">Cookie Policy</a> |
-            <a href="imprint.html">Note Legali</a>
+        <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 40px;">
+        <p>© 2026 <strong>RGandja</strong> — Ingegneria dei Sistemi Strategici. Sviluppato ad Atene, Grecia.</p>
+        <p style="margin-top: 20px; font-size: 0.85rem;">
+            <a href="privacy.html">Privacy</a> | 
+            <a href="cookies.html">Cookies</a> |
+            <a href="imprint.html" class="active-nav">Note Legali</a>
         </p>
     </footer>
 

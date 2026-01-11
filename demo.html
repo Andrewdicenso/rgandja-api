@@ -3,107 +3,221 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RGandja - Neural Playground v5.2 PRO</title>
+    <title>Neural Playground v5.2 PRO - RGandja</title>
     
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        :root { --terminal-bg: #0a0e14; --accent-gold: #d4af37; --text-gray: #a0aec0; }
-        body { background: #05070a; font-family: 'Fira Code', monospace; color: white; margin: 0; }
-        
-        /* HEADER ORIGINALE */
-        .header { background: rgba(10, 14, 20, 0.95); border-bottom: 1px solid #1a2332; padding: 15px 0; }
-        .header-inner { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        .main-nav a { color: var(--text-gray); text-decoration: none; margin-left: 20px; font-size: 0.9rem; }
-        .main-nav a.active { color: var(--accent-gold); }
+        :root { 
+            --terminal-bg: #0a0e14; 
+            --accent-gold: #d4af37; 
+            --text-gray: #a0aec0; 
+            --term-red: #ff5f56;
+            --term-yellow: #ffbd2e;
+            --term-green: #27c93f;
+        }
 
-        /* TERMINALE */
-        .terminal { background: var(--terminal-bg); border: 1px solid #1a2332; border-radius: 12px; max-width: 900px; margin: 40px auto; position: relative; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.8); }
-        .term-header { background: #1a2332; padding: 12px; display: flex; gap: 8px; align-items: center; }
-        .dot { width: 10px; height: 10px; border-radius: 50%; }
-        .term-content { padding: 35px; transition: filter 0.5s ease; }
+        body { 
+            background: #05070a; 
+            font-family: 'Fira Code', monospace; 
+            color: white; 
+            margin: 0; 
+        }
         
-        /* GRIGLIA INPUT CORRISPONDENTE AL MAIN.PY */
-        .grid-inputs { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 25px; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 8px; color: var(--text-gray); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; }
-        input, select { width: 100%; padding: 12px; background: #161b22; border: 1px solid #2d3748; color: #fff; border-radius: 6px; box-sizing: border-box; font-family: 'Fira Code'; }
-        input:focus { border-color: var(--accent-gold); outline: none; }
+        /* Navigazione Specifica per Demo */
+        .header { background: rgba(10, 14, 20, 0.98); border-bottom: 1px solid var(--border); }
 
-        .btn-execute { background: linear-gradient(90deg, #d4af37, #f2d472); color: #000; border: none; padding: 20px; width: 100%; border-radius: 6px; font-weight: 800; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; }
+        /* Estetica Terminale Avanzata */
+        .terminal { 
+            background: var(--terminal-bg); 
+            border: 1px solid #1a2332; 
+            border-radius: 12px; 
+            max-width: 950px; 
+            margin: 60px auto; 
+            position: relative; 
+            overflow: hidden; 
+            box-shadow: 0 40px 100px rgba(0,0,0,0.9);
+        }
+
+        .term-header { 
+            background: #161b22; 
+            padding: 15px 20px; 
+            display: flex; 
+            gap: 10px; 
+            align-items: center; 
+            border-bottom: 1px solid #2d3748;
+        }
+
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
         
-        /* PAYWALL OVERLAY */
-        .premium-blur { filter: blur(10px); opacity: 0.3; pointer-events: none; user-select: none; }
-        .paywall-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 14, 20, 0.85); display: none; flex-direction: column; justify-content: center; align-items: center; z-index: 100; text-align: center; padding: 20px; }
+        .term-content { 
+            padding: 40px; 
+            transition: filter 0.6s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+        
+        .grid-inputs { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 20px; 
+            margin-bottom: 30px; 
+        }
 
-        #resultBox { margin-top: 25px; padding: 20px; border: 1px solid var(--accent-gold); border-radius: 8px; background: rgba(212, 175, 55, 0.05); display: none; }
+        .form-group label { 
+            display: block; 
+            margin-bottom: 10px; 
+            color: var(--accent-gold); 
+            font-size: 0.7rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            font-weight: 700;
+        }
+
+        input, select { 
+            width: 100%; 
+            padding: 14px; 
+            background: #0d1117; 
+            border: 1px solid #30363d; 
+            color: #58a6ff; 
+            border-radius: 8px; 
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            transition: border 0.3s;
+        }
+
+        input:focus { border-color: var(--accent-gold); outline: none; background: #161b22; }
+
+        /* Paywall & Modalità Premium */
+        .premium-blur { filter: blur(15px); opacity: 0.2; pointer-events: none; }
+        
+        .paywall-overlay { 
+            position: absolute; 
+            top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(5, 7, 10, 0.95); 
+            display: none; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            z-index: 1000; 
+            text-align: center; 
+            padding: 40px; 
+        }
+
+        .btn-execute { 
+            background: var(--accent-gold); 
+            color: #000; 
+            border: none; 
+            padding: 22px 40px; 
+            border-radius: 8px; 
+            font-weight: 900; 
+            cursor: pointer; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-execute:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5); }
+        .btn-execute:disabled { opacity: 0.4; cursor: wait; }
+
+        #resultBox { 
+            margin-top: 30px; 
+            padding: 25px; 
+            border: 1px solid rgba(212, 175, 55, 0.3); 
+            border-radius: 10px; 
+            background: rgba(212, 175, 55, 0.02); 
+            display: none; 
+            font-size: 0.9rem;
+        }
+
+        .status-line { color: var(--term-green); margin-bottom: 5px; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
     <header class="header">
-        <div class="header-inner">
-            <div class="header-brand" style="display:flex; align-items:center; gap:10px;">
-                <img src="logo.png" alt="Logo" style="width:30px;">
-                <h1 style="margin:0; font-size:1.2rem; letter-spacing:2px;">RGandja</h1>
+        <div class="header-inner container">
+            <div class="header-brand">
+                <img src="logo.png" alt="Logo" class="brand-logo">
+                <h1>RGandja</h1>
             </div>
             <nav class="main-nav">
                 <a href="index.html">Home</a>
                 <a href="chi-siamo.html">Chi Siamo</a>
                 <a href="prezzi.html">Prezzi</a>
-                <a href="demo.html" class="active">Demo</a>
+                <a href="demo.html" class="active-nav">Demo</a>
                 <a href="contatti.html">Contatti</a>
             </nav>
         </div>
     </header>
 
-    <div class="container text-center" style="margin-top: 50px;">
-        <h2 style="color: white; font-size: 2rem;">Neural Engine v5.2 Alpha</h2>
-        <p style="color: var(--text-gray);">Configura i parametri per l'analisi predittiva professionale.</p>
+    <div class="container text-center" style="margin-top: 70px; margin-bottom: 40px;">
+        <span class="badge-status">SANDBOX ENVIRONMENT</span>
+        <h2 style="font-size: 2.5rem; letter-spacing: -1px; margin-top: 15px;">Neural Engine v5.2 Alpha</h2>
+        <p style="color: var(--text-muted); max-width: 600px; margin: 20px auto;">Accesso limitato al Protocollo RGD-Alpha per test di resilienza operativa e ottimizzazione dei costi.</p>
     </div>
 
+    
+
     <div class="terminal">
-        <div id="paywall" class="paywall-overlay" style="display: none; background: rgba(10, 14, 20, 0.98); z-index: 999;">
-    <h2 style="color: var(--accent-gold); margin-bottom: 10px;">ANALISI COMPLETATA</h2>
-    <p style="max-width: 500px; color: #e2e8f0; margin-bottom: 20px;">Inserisci la tua email per ricevere il report completo.</p>
-    <input type="email" id="user-email" placeholder="La tua email professionale" 
-           style="width: 100%; max-width: 400px; padding: 12px; margin-bottom: 20px; border-radius: 8px; border: none; color: #333; display: block; margin-left: auto; margin-right: auto;">
-    <button class="btn-execute" style="width:auto; padding: 15px 40px;" onclick="spedisciReport()">INVIA REPORT GRATUITO</button>
-</div>
+        <div id="paywall" class="paywall-overlay">
+            <div style="font-size: 4rem; margin-bottom: 20px;">🔒</div>
+            <h2 style="color: var(--accent-gold); margin-bottom: 15px; font-size: 2rem;">ANALISI COMPLETATA</h2>
+            <p style="max-width: 500px; color: var(--text-gray); margin-bottom: 30px; line-height: 1.6;">
+                I nodi neurali hanno elaborato i dati. Inserisci la tua email aziendale per decriptare il report completo e ricevere la roadmap strategica.
+            </p>
+            
+            <input type="email" id="user-email" placeholder="email@azienda.it" 
+                   style="width: 100%; max-width: 420px; padding: 16px; margin-bottom: 20px; background: #fff; color: #000; font-weight: bold;">
+            
+            <div style="margin-bottom: 30px; max-width: 420px; text-align: left;">
+                <label style="display: flex; align-items: flex-start; gap: 12px; cursor: pointer; color: var(--text-muted); font-family: sans-serif; font-size: 0.75rem; line-height: 1.4;">
+                    <input type="checkbox" id="privacy-check" style="width: auto; margin-top: 2px;">
+                    <span>Dichiaro di aver letto la <a href="privacy.html" target="_blank" style="color: var(--accent-gold);">Privacy Policy</a>. Acconsento al trattamento dei dati per la ricezione del report tecnico e comunicazioni di pre-lancio.</span>
+                </label>
+            </div>
+
+            <button class="btn-execute" onclick="spedisciReport()">SBLOCCA E INVIA REPORT</button>
+        </div>
+
         <div class="term-header">
-            <div class="dot" style="background:#ff5f56"></div>
-            <div class="dot" style="background:#ffbd2e"></div>
-            <div class="dot" style="background:#27c93f"></div>
-            <span id="node-status" style="margin-left:15px; font-size:0.7rem; color:#636e7b;">CORE: RG-ALPHA-PRIMARY // READY</span>
+            <div class="dot" style="background:var(--term-red)"></div>
+            <div class="dot" style="background:var(--term-yellow)"></div>
+            <div class="dot" style="background:var(--term-green)"></div>
+            <span style="margin-left:15px; font-size:0.7rem; color:#4a5568; font-weight: 700;">RG-ALPHA-CORE // SESSION: ACTIVE // ENCRYPTED_MOD</span>
         </div>
 
         <div class="term-content" id="terminalMain">
             <div class="grid-inputs">
                 <div class="form-group">
-                    <label>Algoritmo</label>
+                    <label>Modello Logico</label>
                     <select id="algoritmo">
-                        <option value="junior">Junior (Startup)</option>
-                        <option value="pmi" selected>PMI (Efficiency)</option>
-                        <option value="enterprise">Enterprise (Resilience)</option>
+                        <option value="junior">Junior (Agile Start)</option>
+                        <option value="pmi" selected>PMI (Efficiency Boost)</option>
+                        <option value="enterprise">Enterprise (Max Resilience)</option>
                     </select>
                 </div>
-                <div class="form-group"><label>Metri Quadri (mq)</label><input type="number" id="mq" value="250"></div>
-                <div class="form-group"><label>Dipendenti</label><input type="number" id="dipendenti" value="15"></div>
-                <div class="form-group"><label>Ore Assenze/Sett</label><input type="number" id="assenze" value="12"></div>
-                <div class="form-group"><label>Standby Watt</label><input type="number" id="watt" value="450"></div>
-                <div class="form-group"><label>Budget Annuale (€)</label><input type="number" id="budget" value="150000"></div>
+                <div class="form-group"><label>Superficie Operativa (mq)</label><input type="number" id="mq" value="250"></div>
+                <div class="form-group"><label>Capitale Umano</label><input type="number" id="dipendenti" value="12"></div>
+                <div class="form-group"><label>Ore Inattività/Sett</label><input type="number" id="assenze" value="8"></div>
+                <div class="form-group"><label>Assorbimento Standby (W)</label><input type="number" id="watt" value="320"></div>
+                <div class="form-group"><label>Budget Operativo Anno (€)</label><input type="number" id="budget" value="120000"></div>
             </div>
 
-            <button onclick="runNeuralAnalysis()" class="btn-execute" id="btnRun">Esegui Elaborazione</button>
+            <button onclick="runNeuralAnalysis()" class="btn-execute" id="btnRun">LANCIA ELABORAZIONE NEURALE</button>
 
             <div id="resultBox">
-                <div id="loadingText" style="color: var(--accent-gold); font-size: 0.8rem; margin-bottom: 10px;"></div>
-                <div id="finalOutput" style="font-size: 0.9rem; line-height: 1.6;"></div>
-                <div id="pdfDownloadArea" style="margin-top: 15px;"></div>
+                <div id="loadingText" class="status-line"></div>
+                <div id="finalOutput" style="line-height: 1.8; color: #cbd5e0;"></div>
+                <div id="pdfDownloadArea" style="margin-top: 20px; border-top: 1px solid #2d3748; padding-top: 15px;"></div>
             </div>
         </div>
     </div>
+
+    <footer class="container text-center" style="padding: 80px 0; color: #4a5568; font-size: 0.8rem; letter-spacing: 1px;">
+        <p>© 2026 RGandja — Strategic Engineering Hub</p>
+        <p style="margin-top: 10px;">L'uso del motore RG-Alpha è soggetto a monitoraggio di sicurezza. Segreto Industriale protetto.</p>
+    </footer>
 
     <script>
         async function runNeuralAnalysis() {
@@ -115,12 +229,23 @@
             const finalOutput = document.getElementById("finalOutput");
             const pdfArea = document.getElementById("pdfDownloadArea");
 
-            // Reset Interfaccia
             btn.disabled = true;
+            btn.innerText = "CALCOLO IN CORSO...";
             resultBox.style.display = "block";
-            loadingText.innerHTML = "> Inizializzazione Neural Strategy Core...";
             
-            // Raccolta dati dal modulo
+            // Simulazione step di caricamento "hacker-style"
+            const steps = [
+                "> Caricamento driver RGD-Alpha...",
+                "> Connessione ai nodi neurali di Atene...",
+                "> Iniezione parametri nel cluster...",
+                "> Ottimizzazione flussi in corso..."
+            ];
+
+            for (let step of steps) {
+                loadingText.innerText = step;
+                await new Promise(r => setTimeout(r, 600));
+            }
+            
             const payload = {
                 algoritmo: document.getElementById("algoritmo").value,
                 budget: parseFloat(document.getElementById("budget").value),
@@ -140,74 +265,69 @@
 
                 const data = await response.json();
 
-                // Simulazione di caricamento "scenica"
-                setTimeout(() => {
-                    loadingText.innerHTML = "> Analisi flussi completata. Generazione Report...";
-                    
+                loadingText.innerText = "> ELABORAZIONE COMPLETATA.";
+                finalOutput.innerHTML = data.risultato;
+                pdfArea.innerHTML = `<span style="color: #4a5568;">[DOCUMENTAZIONE PDF: CRIPTATA]</span>`;
+
+                if(data.is_premium_locked) {
                     setTimeout(() => {
-                        loadingText.innerHTML = "";
-                        finalOutput.innerHTML = data.risultato;
-                        
-                        // Mostriamo il link al PDF Preview
-                        pdfArea.innerHTML = `<a href="${data.pdf_link}" target="_blank" style="color: var(--accent-gold); font-weight: bold;">[SCARICA REPORT PREVIEW.PDF]</a>`;
-
-                        // ATTIVAZIONE PAYWALL se il server dice "is_premium_locked"
-                        if(data.is_premium_locked) {
-                            setTimeout(() => {
-                                terminalMain.classList.add("premium-blur");
-                                paywall.style.display = "flex";
-                            }, 2000); // L'utente ha 2 secondi per vedere il risultato prima che si sfumi
-                        }
-                    }, 1000);
-                }, 1000);
-
+                        terminalMain.classList.add("premium-blur");
+                        paywall.style.display = "flex";
+                        window.scrollTo({ top: 200, behavior: 'smooth' });
+                    }, 2000);
+                }
             } catch (err) {
-                loadingText.innerHTML = "ERRORE: Connessione al server RG-Alpha fallita.";
+                loadingText.innerText = "ERRORE: Impossibile contattare il server neurale.";
                 btn.disabled = false;
+                btn.innerText = "LANCIA ELABORAZIONE NEURALE";
             }
         }
-    </script>
 
-    <footer style="text-align:center; padding: 60px 0; color: #636e7b; font-size: 0.8rem;">
-        © 2026 RGandja — Engineering by Andrew Di Censo
-    </footer>
-    <script>
-function spedisciReport() {
-    const emailUtente = document.getElementById('user-email').value;
-    
-    if (!emailUtente || !emailUtente.includes('@')) {
-        alert("Per favore, inserisci un indirizzo email valido.");
-        return;
-    }
+        function spedisciReport() {
+            const emailUtente = document.getElementById('user-email').value;
+            const privacyChecked = document.getElementById('privacy-check').checked;
+            
+            if (!privacyChecked) {
+                alert("Consenso obbligatorio per procedere.");
+                return;
+            }
 
-    const bottone = document.querySelector('.btn-execute');
-    bottone.innerText = "INVIO IN CORSO...";
-    bottone.disabled = true;
+            if (!emailUtente || !emailUtente.includes('@')) {
+                alert("Inserisci un'email aziendale valida.");
+                return;
+            }
 
-    // Questo comunica con il tuo server Render che abbiamo sistemato prima
-    fetch('https://rgandja-api.onrender.com/email/invia-report', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-            email: emailUtente,
-            pdf_link: "https://rgandja.com/reports/demo-report.pdf" 
-        })
-    })
-    .then(response => {
-        if (response.ok) {
-            alert("Perfetto! Il report è stato inviato alla tua email.");
-            bottone.innerText = "REPORT INVIATO!";
-        } else {
-            alert("C'è stato un problema. Riprova tra pochi minuti.");
-            bottone.innerText = "INVIA REPORT GRATUITO";
-            bottone.disabled = false;
+            const bottone = document.querySelector('.paywall-overlay .btn-execute');
+            bottone.innerText = "GENERAZIONE PDF & INVIO...";
+            bottone.disabled = true;
+
+            fetch('https://rgandja-api.onrender.com/email/invia-report', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    email: emailUtente,
+                    pdf_link: "https://rgandja.com/reports/RGD-ALPHA-GEN-2026.pdf" 
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert("Protocollo inviato! Controlla la posta (anche spam).");
+                    bottone.innerText = "REPORT INVIATO";
+                    // Reindirizzamento opzionale ai prezzi con il parametro scelto
+                    const scelto = document.getElementById('algoritmo').value;
+                    setTimeout(() => {
+                        window.location.href = `prezzi.html?tipo=${scelto}`;
+                    }, 1500);
+                } else {
+                    alert("Errore tecnico. Riprova.");
+                    bottone.disabled = false;
+                }
+            })
+            .catch(error => {
+                alert("Errore di rete.");
+                bottone.disabled = false;
+            });
         }
-    })
-    .catch(error => {
-        console.error("Errore:", error);
-        alert("Errore di connessione al server.");
-    });
-}
-</script>
+    </script>
 </body>
 </html>

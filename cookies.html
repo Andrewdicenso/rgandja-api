@@ -10,14 +10,17 @@
     
     <link rel="stylesheet" href="style.css">
     <style>
+        :root { --accent-gold: #d4af37; --border: #1a2332; }
         .cookie-content h3 { color: var(--accent-gold); margin-top: 40px; margin-bottom: 15px; font-size: 1.3rem; }
-        .cookie-content p { color: #cbd5e0; line-height: 1.8; margin-bottom: 20px; }
+        .cookie-content h4 { color: #63b3ed; margin-top: 25px; font-size: 1.1rem; }
+        .cookie-content p, .cookie-content li { color: #cbd5e0; line-height: 1.8; margin-bottom: 15px; }
         .cookie-table-wrapper { overflow-x: auto; margin-top: 30px; border-radius: 12px; border: 1px solid var(--border); }
-        .cookie-table { width: 100%; border-collapse: collapse; background: rgba(10, 14, 20, 0.5); min-width: 500px; }
+        .cookie-table { width: 100%; border-collapse: collapse; background: rgba(10, 14, 20, 0.5); min-width: 600px; }
         .cookie-table th, .cookie-table td { border-bottom: 1px solid var(--border); padding: 18px; text-align: left; }
         .cookie-table th { color: var(--accent-gold); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; background: rgba(255,255,255,0.02); }
         .cookie-table td { font-size: 0.9rem; color: #e2e8f0; }
-        .cookie-table tr:last-child td { border-bottom: none; }
+        .browser-links a { color: #63b3ed; text-decoration: none; margin-right: 15px; font-size: 0.85rem; border-bottom: 1px solid transparent; }
+        .browser-links a:hover { border-bottom: 1px solid #63b3ed; }
     </style>
 </head>
 <body>
@@ -41,61 +44,80 @@
         <div class="container text-center">
             <span class="badge-status">TRANSPARENCY PROTOCOL</span>
             <h1>Cookie Policy</h1>
-            <p class="hero-subtitle">Gestione dei tracciatori e delle preferenze utente per il sistema RGandja.</p>
+            <p class="hero-subtitle">Informativa estesa sull'uso dei cookie e strumenti di tracciamento conforme al GDPR e Direttiva ePrivacy.</p>
         </div>
     </section>
 
     <main class="container section">
-        <div class="card-expert dark-card cookie-content" style="padding: 40px;">
-            <h3>1. Cosa sono i Cookie</h3>
-            <p>I cookie sono piccoli file di testo che i siti visitati dall'utente inviano al suo terminale, dove vengono memorizzati per essere poi ritrasmessi agli stessi siti alla visita successiva. RGandja utilizza esclusivamente cookie tecnici necessari al funzionamento dell'algoritmo e cookie analitici anonimizzati.</p>
+        <div class="card-expert dark-card cookie-content" style="padding: 40px; background: rgba(20, 26, 35, 0.9);">
+            <p style="font-size: 0.8rem; color: #636e7b;">Ultimo aggiornamento: 11 Gennaio 2026</p>
 
-            <h3>2. Cookie utilizzati dal sistema</h3>
+            <h3>1. Definizioni e Quadro Normativo</h3>
+            <p>La presente Cookie Policy ha lo scopo di illustrare come <strong>RGandja</strong> utilizza i cookie e tecnologie similari sul proprio sito web per fornire un'esperienza sicura e performante. Operiamo in conformità con il Regolamento UE 2016/679 (GDPR), il D.Lgs. 196/2003 e le linee guida internazionali sulla protezione della privacy digitale.</p>
+
+            <h3>2. Tipologie di Cookie Utilizzate</h3>
+            <p>Il nostro sistema adotta un approccio "Privacy by Design", limitando l'uso dei tracciatori allo stretto necessario per l'erogazione del servizio.</p>
+            
             <div class="cookie-table-wrapper">
                 <table class="cookie-table">
                     <thead>
                         <tr>
+                            <th>Categoria</th>
                             <th>Identificativo</th>
-                            <th>Funzione Strategica</th>
-                            <th>Permanenza</th>
+                            <th>Scopo Tecnico/Strategico</th>
+                            <th>Scadenza</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>RG_SESSION</strong></td>
-                            <td>Tecnico: Mantiene l'integrità dei dati durante la simulazione neurale.</td>
-                            <td>Fine Sessione</td>
+                            <td><strong>Essenziale</strong></td>
+                            <td>RG_SESSION</td>
+                            <td>Gestione della sessione utente e protezione dei dati nel Neural Playground.</td>
+                            <td>Sessione</td>
                         </tr>
                         <tr>
-                            <td><strong>RG_CONSENT</strong></td>
-                            <td>Tecnico: Memorizza l'autorizzazione dell'utente ai protocolli di trasparenza.</td>
+                            <td><strong>Essenziale</strong></td>
+                            <td>RG_CONSENT</td>
+                            <td>Memorizzazione delle preferenze sul consenso cookie (obbligatorio per legge).</td>
                             <td>12 Mesi</td>
                         </tr>
                         <tr>
-                            <td><strong>_ga_RG</strong></td>
-                            <td>Analitico: Monitoraggio delle prestazioni del motore di calcolo (anonimo).</td>
+                            <td><strong>Analitico</strong></td>
+                            <td>_ga_RG / _gid</td>
+                            <td>Monitoraggio anonimizzato delle performance del server (IP mascherato).</td>
                             <td>24 Mesi</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-            <h3>3. Controllo dell'Utente</h3>
-            <p>È possibile gestire le preferenze sui cookie direttamente dalle impostazioni del browser. Tuttavia, si informa che la disabilitazione dei cookie tecnici potrebbe inibire l'accesso al <strong>Neural Playground</strong> e la generazione corretta dei report PDF dinamici.</p>
+            <h3>3. Base Giuridica del Trattamento</h3>
+            <p>L'uso di <strong>cookie tecnici</strong> è necessario per il corretto funzionamento del sito e non richiede il consenso preventivo dell'utente (Art. 6, par. 1, lett. f del GDPR). Per i <strong>cookie analitici</strong>, RGandja utilizza strumenti di anonimizzazione che equiparano tali tracciatori ai cookie tecnici.</p>
 
-            <div style="margin-top: 50px; border-top: 1px solid var(--border); padding-top: 30px; text-align: center;">
-                <p style="font-size: 0.9rem;">Per ulteriori dettagli sulla sicurezza dei dati, visita il nostro <a href="privacy.html" style="color: var(--accent-gold); text-decoration: none; font-weight: bold;">Protocollo Privacy</a>.</p>
+            <h3>4. Gestione delle Preferenze e Disabilitazione</h3>
+            <p>L'utente può revocare il consenso o modificare le impostazioni dei cookie in qualsiasi momento attraverso le configurazioni del proprio browser. Di seguito i link alle istruzioni per i principali fornitori:</p>
+            <div class="browser-links">
+                <a href="https://support.google.com/chrome/answer/95647" target="_blank">Google Chrome</a>
+                <a href="https://support.mozilla.org/it/kb/Attivare%20e%20disattivare%20i%20cookie" target="_blank">Mozilla Firefox</a>
+                <a href="https://support.apple.com/it-it/guide/safari/sfri11471/mac" target="_blank">Apple Safari</a>
+                <a href="https://support.microsoft.com/it-it/windows/eliminare-e-gestire-i-cookie-168dab11-0753-043d-7c16-ede5947798d2" target="_blank">Microsoft Edge</a>
             </div>
+
+            <h3>5. Trasferimento Dati Extra-UE</h3>
+            <p>RGandja non trasferisce attivamente dati raccolti tramite cookie al di fuori dello Spazio Economico Europeo (SEE), se non attraverso servizi cloud certificati (come Render o Google Analytics anonimizzato) che garantiscono clausole contrattuali standard di protezione.</p>
+
+            <h3>6. Diritti dell'Interessato</h3>
+            <p>Per esercitare i diritti di accesso, rettifica o cancellazione dei dati legati ai tracciatori, è possibile contattare il nostro Responsabile Protezione Dati tramite la pagina <a href="contatti.html" style="color: var(--accent-gold);">Contatti</a>.</p>
         </div>
     </main>
 
     <footer class="footer container text-center">
         <hr style="border: 0; border-top: 1px solid #1a2332; margin-bottom: 30px;">
-        <p>© 2026 RGandja — Advanced Decision Intelligence</p>
-        <p>
-            <a href="privacy.html" style="color: #63b3ed;">Privacy Policy</a> | 
-            <a href="cookies.html" style="color: #63b3ed;">Cookie Policy</a> |
-            <a href="imprint.html" style="color: #63b3ed;">Note Legali</a>
+        <p>© 2026 RGandja — Architettura dei sistemi progettata da <strong>Andrew Di Censo</strong></p>
+        <p style="margin-top: 20px;">
+            <a href="privacy.html" style="color: #63b3ed; text-decoration: none;">Privacy Policy</a> | 
+            <a href="cookies.html" style="color: #63b3ed; text-decoration: none;">Cookie Policy</a> |
+            <a href="imprint.html" style="color: #63b3ed; text-decoration: none;">Note Legali</a>
         </p>
     </footer>
 </body>

@@ -8,39 +8,75 @@
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="style.css">
     <style>
-        .btn-execute { 
-            background: linear-gradient(90deg, #d4af37, #f2d472); 
-            color: #000; 
-            border: none; 
-            border-radius: 6px; 
-            font-weight: 800; 
-            cursor: pointer; 
-            text-transform: uppercase; 
-            transition: all 0.3s ease;
-            display: inline-block;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
-        }
-        .btn-execute:hover { 
-            transform: translateY(-2px); 
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
-        }
+        :root { --accent-gold: #d4af37; --border: #1a2332; }
         
-        .confirmation-box {
-            animation: fadeIn 0.8s ease-out;
+        .confirmation-card {
+            animation: slideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+            background: rgba(10, 14, 20, 0.8);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+        /* Effetto Scanline Digitale */
+        .confirmation-card::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 2px;
+            background: rgba(212, 175, 55, 0.2);
+            animation: scanline 4s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes scanline {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .status-scan {
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.8rem;
+        .status-terminal {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.7rem;
             color: #63b3ed;
-            margin-top: 15px;
+            margin-top: 25px;
+            background: #05070a;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent-gold);
+            text-align: left;
+            min-height: 80px;
+        }
+
+        .check-icon {
+            font-size: 4rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            display: inline-block;
+            filter: drop-shadow(0 0 20px rgba(212,175,55,0.4));
+        }
+
+        .btn-home {
+            background: transparent;
+            color: var(--accent-gold);
+            border: 1px solid var(--accent-gold);
+            padding: 15px 35px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
             text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-home:hover {
+            background: var(--accent-gold);
+            color: #000;
         }
     </style>
 </head>
@@ -62,58 +98,71 @@
         </div>
     </header>
 
-    <section class="section container text-center" style="padding-top: 100px; min-height: 70vh;">
-        <div class="card-expert dark-card shadow-lg confirmation-box" style="max-width: 650px; margin: 0 auto; border-top: 4px solid var(--accent-gold); padding: 60px 40px;">
-            <div style="font-size: 5rem; margin-bottom: 25px; filter: drop-shadow(0 0 15px rgba(212,175,55,0.3));">🛡️</div>
+    <main class="section container" style="min-height: 80vh; display: flex; align-items: center; justify-content: center;">
+        <div class="card-expert confirmation-card" style="max-width: 700px; padding: 60px; text-align: center;">
+            <div class="check-icon">🛡️</div>
             
-            <h1 style="color: var(--accent-gold); letter-spacing: 2px; text-transform: uppercase; font-size: 1.8rem; margin-bottom: 20px;">
-                Trasmissione Completata
+            <h1 style="color: #fff; letter-spacing: -1px; font-size: 2.2rem; margin-bottom: 15px;">
+                Protocollo Acquisito
             </h1>
             
-            <p style="font-size: 1.1rem; color: #cbd5e0; margin-bottom: 30px; line-height: 1.8;">
-                Il tuo protocollo è stato acquisito dai server della sede di <strong>Atene (Attiki)</strong>. 
-                Il nostro Concierge Strategico ha avviato la fase di pre-analisi neurale. 
-                Riceverai la notifica di accesso ai sistemi entro <strong>4 ore lavorative</strong>.
+            <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px;">
+                La tua trasmissione è stata instradata correttamente verso i nostri server di <strong>Atene</strong>.<br>
+                Il Concierge Strategico ha preso in carico la richiesta per la fase di validazione. 
+                Riceverai i parametri di accesso crittografati entro <strong>4 ore lavorative</strong>.
             </p>
 
-            <div id="loading-status" class="status-scan">
-                Inizializzazione crittografia end-to-end... [OK]
+            <div id="status-terminal" class="status-terminal">
+                <span style="color: var(--accent-gold)">[SYSTEM]:</span> INIZIALIZZAZIONE LOG...
             </div>
 
-            <hr style="border: 0; border-top: 1px solid #2d3748; margin: 40px 0;">
-            
-            <a href="index.html" class="btn-execute" style="padding: 18px 40px; letter-spacing: 1px;">
-                Ritorna alla Home
-            </a>
+            <div style="margin-top: 40px; display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                <a href="index.html" class="btn-home">Ritorna alla Home</a>
+                
+                <div style="font-size: 0.7rem; color: #4a5568; letter-spacing: 1px;">
+                    TRANSACTION ID: <span id="trans-id" style="color: #718096;"></span> // STATUS: ENCRYPTED
+                </div>
+            </div>
         </div>
-    </section>
+    </main>
+
+    
 
     <footer class="footer container text-center">
-        <hr style="border: 0; border-top: 1px solid #1a2332; margin-bottom: 30px;">
-        <p>© 2026 RGandja — Architettura dei sistemi progettata e sviluppata da <strong>Andrew Di Censo</strong></p>
-        <p style="margin-top: 10px; font-size: 0.85rem;">
-            <a href="privacy.html">Privacy Policy</a> | <a href="cookies.html">Cookie Policy</a>
+        <p style="color: #4a5568; font-size: 0.8rem;">
+            © 2026 RGandja — Strategic Intelligence Unit<br>
+            Secure Data Center: Attiki, Greece
         </p>
     </footer>
 
     <script>
-        // Simulazione di log di sistema per aumentare il feeling tecnologico
-        const status = document.getElementById('loading-status');
+        // Generatore ID Transazione Professionale
+        const timestamp = Date.now().toString().slice(-6);
+        const rand = Math.floor(Math.random() * 1000);
+        document.getElementById('trans-id').innerText = `RGD-${timestamp}-${rand}`;
+
+        // Simulazione Feed Terminale
+        const term = document.getElementById('status-terminal');
         const logs = [
-            "Connessione sicura stabilita...",
-            "Validazione ID Aziendale in corso...",
-            "Protocollo RGD-Alpha assegnato alla coda prioritaria.",
-            "PRONTO PER ANALISI STRATEGICA."
+            "Connessione sicura stabilita con Hub Atene...",
+            "Controllo integrità pacchetti dati... [OK]",
+            "Crittografia RSA-4096 applicata al record.",
+            "Inserimento in coda prioritaria RGD-Alpha.",
+            "Protocollo di risposta generato correttamente.",
+            "FINE TRASMISSIONE. SESSIONE PROTETTA."
         ];
-        let i = 0;
-        const interval = setInterval(() => {
-            if (i < logs.length) {
-                status.innerText = logs[i];
-                i++;
-            } else {
-                clearInterval(interval);
+        
+        let line = 0;
+        function updateTerminal() {
+            if (line < logs.length) {
+                term.innerHTML += `<br><span style="color: #27c93f;">></span> ${logs[line]}`;
+                line++;
+                setTimeout(updateTerminal, 1000);
             }
-        }, 1500);
+        }
+        
+        // Inizia dopo un breve delay
+        setTimeout(updateTerminal, 800);
     </script>
 </body>
 </html>

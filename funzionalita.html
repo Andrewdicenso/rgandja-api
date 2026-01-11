@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Funzionalità - RGandja: L'Ingegneria della Decisione</title>
+    <title>Funzionamento - RGandja: L'Ingegneria della Decisione</title>
     
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Estensioni specifiche per la pagina funzionalità */
+        :root { --accent-gold: #d4af37; --border: #1a2332; }
+        
         .feature-icon {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    display: inline-block;
-    background: linear-gradient(135deg, #d4af37, #f2d472);
-    -webkit-background-clip: text; /* Quella che c'è già */
-    background-clip: text;         /* AGGIUNGI QUESTA RIGA */
-    -webkit-text-fill-color: transparent;
-}
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            background: linear-gradient(135deg, #d4af37, #f2d472);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
         .custom-list {
             list-style: none;
@@ -28,9 +29,10 @@
         .custom-list li {
             position: relative;
             padding-left: 30px;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             color: #cbd5e0;
             line-height: 1.6;
+            font-size: 0.95rem;
         }
 
         .custom-list li::before {
@@ -38,29 +40,72 @@
             position: absolute;
             left: 0;
             color: var(--accent-gold);
-            font-weight: bold;
+            font-weight: 900;
         }
 
         .gold-card {
-            background: linear-gradient(135deg, #d4af37 0%, #9a7b1f 100%);
+            background: linear-gradient(145deg, #d4af37 0%, #9a7b1f 100%);
             color: #000;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            padding: 45px;
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(212, 175, 55, 0.25);
             display: flex;
             flex-direction: column;
             justify-content: center;
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
         .visual-demo-box {
             background: #0f172a;
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 16px;
             padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 350px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .visual-placeholder {
+            width: 100%;
+            height: 200px;
+            background: rgba(255,255,255,0.03);
+            border: 1px dashed rgba(99, 179, 237, 0.3);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 250px;
+            margin-bottom: 20px;
+        }
+
+        .btn-gold {
+            background: linear-gradient(90deg, #d4af37, #f2d472);
+            color: #000;
+            padding: 18px 35px;
+            text-decoration: none;
+            font-weight: 800;
+            border-radius: 8px;
+            transition: var(--transition-smooth);
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-gold:hover { 
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .process-step {
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -84,100 +129,103 @@
 
     <section class="hero-premium">
       <div class="container text-center">
-        <span class="badge-status">ADVANCED CAPABILITIES</span>
-        <h1>L'Ingegneria della Decisione</h1>
+        <span class="badge-status">SYSTEM ARCHITECTURE</span>
+        <h1>Ingegneria della Decisione</h1>
         <p class="hero-subtitle">
-          Il sistema RGandja non si limita a elaborare dati: progetta percorsi di crescita attraverso 
-          simulazioni neurali ad alta fedeltà e protocolli di sicurezza industriale.
+            Il framework RGandja trasforma il caos dei dati in traiettorie di business deterministiche attraverso simulazioni neurali ad alta fedeltà.
         </p>
       </div>
     </section>
 
-    <section class="section container grid-2">
+    <section class="section container grid-2" style="align-items: center;">
       <div class="info-block">
         <span class="feature-icon">🔮</span>
         <h2>Simulazioni Predittive "What-If"</h2>
         <p>
-          Il Protocollo RGD-Alpha permette di testare scenari di mercato prima di impegnare il capitale. 
-          Il nostro motore neurale calcola le variabili di rischio e le probabilità di successo basandosi su vincoli reali.
+          Il cuore tecnologico di RGandja è il <strong>Motore RGD-Alpha</strong>. Non si limita a proiettare dati storici, ma genera migliaia di scenari sintetici per identificare il percorso di minor resistenza verso i tuoi obiettivi.
         </p>
         <ul class="custom-list">
-          <li>Analisi comparativa istantanea tra diversi modelli di budget</li>
-          <li>Valutazione dell'impatto sul ROI a medio e lungo termine</li>
-          <li>Stress-test dei KPI in condizioni di mercato volatili</li>
+          <li><strong>Analisi Multi-Scenario:</strong> Testiamo decisioni di scalabilità in ambienti controllati.</li>
+          <li><strong>Calcolo Probabilistico del ROI:</strong> Definiamo la forchetta di rendimento basata sulla volatilità reale.</li>
+          <li><strong>Stress-Test Operativo:</strong> Simuliamo crisi di supply chain o cali di domanda improvvisi.</li>
         </ul>
       </div>
       <div class="visual-demo-box glass-effect">
-        <p class="quote" style="font-style: italic; color: var(--accent-gold); font-size: 1.25rem; text-align: center; max-width: 80%;">
-            "Il vantaggio competitivo risiede nella capacità di simulare il futuro prima che diventi realtà."
+        
+        <p style="font-size: 0.8rem; color: #63b3ed; text-transform: uppercase; letter-spacing: 1px; margin-top: 15px;">
+            Visualizzazione Flusso Decisionale RGD-Alpha
         </p>
       </div>
     </section>
 
-    <section class="section alt-bg" style="background: rgba(15, 23, 42, 0.4); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <section class="section" style="background: rgba(15, 23, 42, 0.4); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
       <div class="container grid-2" style="align-items: center;">
-        <div class="card-expert dark-card" style="border-left: 4px solid var(--accent-gold); padding: 40px;">
-           <h3 style="color: #fff; margin-bottom: 15px;">Safety & Compliance</h3>
-           <p style="color: #a0aec0; font-size: 0.95rem; line-height: 1.8;">
-             Il sistema riduce drasticamente i margini di errore legale e operativo, tracciando ogni logica decisionale 
-             in un registro immutabile e verificabile.
-           </p>
+        <div class="visual-demo-box" style="background: #05070a;">
+            
+            <div style="margin-top: 20px; font-family: monospace; color: #27c93f; font-size: 0.75rem;">
+                LOG_ID: RG-992 // STATUS: VERIFIED // ENCRYPTION: ACTIVE
+            </div>
         </div>
         <div class="info-block" style="padding-left: 40px;">
           <span class="feature-icon">🛡️</span>
-          <h2>Motore di Regole Incorruttibile</h2>
+          <h2>Protocolli di Sicurezza Immutabili</h2>
           <p>
-            Ogni output generato è difendibile in sede di audit. Applichiamo la conformità "by design", 
-            assicurando che le tue strategie rispettino sia le policy interne che le normative internazionali.
+            In un'era di incertezza normativa, RGandja integra la conformità direttamente nel calcolo strategico. Ogni output è accompagnato da un "Audit Trail" che ne giustifica la logica.
           </p>
           <ul class="custom-list">
-            <li>Audit-trail completo per la massima trasparenza societaria</li>
-            <li>Filtri di protezione normativa aggiornati in tempo reale</li>
-            <li>Tracciabilità granulare della logica algoritmica</li>
+            <li><strong>Conformità "By Design":</strong> Filtri automatici per normative GDPR ed EU-AI Act.</li>
+            <li><strong>Integrità del Dato:</strong> Registro immutabile delle variabili utilizzate per ogni audit.</li>
+            <li><strong>Protezione Asset:</strong> Crittografia end-to-end su tutti i dati aziendali processati.</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section class="section container grid-2">
+    <section class="section container grid-2" style="align-items: center;">
       <div class="info-block">
         <span class="feature-icon">📊</span>
-        <h2>Explainable Intelligence (X-IA)</h2>
+        <h2>Explainable Intelligence (X-AI)</h2>
         <p>
-          Abbiamo eliminato l'effetto "Black Box". RGandja non fornisce solo un numero, ma ne spiega il <strong>perché</strong>. 
-          Ogni previsione è accompagnata dai fattori determinanti che l'hanno generata.
+          Rompiamo la "scatola nera" dell'intelligenza artificiale. RGandja non fornisce solo suggerimenti, ma illustra i <strong>Driving Factors</strong>: i nessi di causalità dietro ogni previsione.
         </p>
         <ul class="custom-list">
-          <li>Dashboard intuitive con nessi di causalità evidenti</li>
-          <li>Indicatori di salute e stabilità della strategia</li>
-          <li>Mappatura visiva del rischio residuo e delle zone d'ombra</li>
+          <li>Mappatura visiva delle correlazioni tra KPI aziendali.</li>
+          <li>Identificazione istantanea dei "colli di bottiglia" strategici.</li>
+          <li>Dashboard di controllo per la governance e i Board direttivi.</li>
         </ul>
       </div>
       <div class="gold-card">
-        <h3 style="font-size: 1.5rem; margin-bottom: 20px; font-weight: 800;">Upgrade Strategico</h3>
-        <p style="margin-bottom: 25px; font-weight: 500;">
-          Accedi alle dashboard di alto livello: analisi temporale avanzata e proiezioni di mercato con precisione neurale fino a 12 mesi.
+        <h3 style="font-size: 1.6rem; margin-bottom: 20px; font-weight: 900; text-transform: uppercase; letter-spacing: -0.5px;">Soluzioni Enterprise</h3>
+        <p style="margin-bottom: 30px; font-weight: 600; line-height: 1.6; opacity: 0.9;">
+          Per organizzazioni che richiedono integrazioni API dirette, analisi di big data custom e supporto operativo prioritario 24/7.
         </p>
-        <a href="prezzi.html" class="btn btn-dark" style="background: #000; color: #fff; text-decoration: none; padding: 12px; text-align: center; border-radius: 6px; font-weight: bold;">Scopri i Piani</a>
+        <a href="prezzi.html" style="background: #000; color: #fff; text-decoration: none; padding: 20px; text-align: center; border-radius: 8px; font-weight: 800; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">Sblocca Protocolli Custom</a>
       </div>
     </section>
 
-    <section class="section text-center" style="background: radial-gradient(circle at center, #1e293b 0%, #020617 100%);">
+    <section class="section text-center" style="background: radial-gradient(circle at center, #111827 0%, #020617 100%); padding: 100px 20px;">
       <div class="container">
-        <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Prendi il comando del tuo mercato</h2>
-        <p style="color: #a0aec0; margin-bottom: 40px;">Attiva il Neural Engine e trasforma i dati in certezze operative.</p>
-        <div style="display: flex; justify-content: center; gap: 20px;">
-            <a href="demo.html" class="btn btn-gold" style="padding: 15px 35px;">Avvia Demo</a>
-            <a href="contatti.html" class="btn btn-outline" style="padding: 15px 35px; border: 1px solid var(--accent-gold); color: var(--accent-gold); text-decoration: none; border-radius: 6px;">Consulenza Advisory</a>
+        <h2 style="font-size: 2.8rem; margin-bottom: 25px; color: #fff; letter-spacing: -1px;">Assumi il controllo del tuo futuro</h2>
+        <p style="color: #94a3b8; margin-bottom: 50px; max-width: 750px; margin-left: auto; margin-right: auto; font-size: 1.1rem;">
+            Non lasciare la crescita al caso. Utilizza gli stessi strumenti dei leader di mercato per orchestrare la tua scalabilità.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 25px; flex-wrap: wrap;">
+            <a href="demo.html" class="btn-gold">Avvia Simulazione Demo</a>
+            <a href="contatti.html" style="padding: 18px 40px; border: 1px solid var(--accent-gold); color: var(--accent-gold); text-decoration: none; border-radius: 8px; font-weight: 700; text-transform: uppercase; font-size: 0.9rem; transition: 0.3s;">Consultazione Privata</a>
         </div>
       </div>
     </section>
 
     <footer class="footer container text-center">
-        <hr style="border: 0; border-top: 1px solid #1a2332; margin-bottom: 30px;">
-        <p>© 2026 RGandja — Architettura dei sistemi progettata e sviluppata da <strong>Andrew Di Censo</strong></p>
-        <p style="margin-top: 10px; font-size: 0.85rem;">
-            <a href="privacy.html">Privacy</a> | <a href="cookies.html">Cookies</a> | <a href="imprint.html">Note Legali</a>
+        <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 40px;">
+        <p>© 2026 RGandja — Strategic Engineering Hub. Progettato da <strong>Andrew Di Censo</strong>.</p>
+        <p style="margin-top: 12px; font-size: 0.8rem; color: #4a5568;">
+            Atene, Grecia — EU Proprietary Technology License
+        </p>
+        <p style="margin-top: 25px; font-size: 0.85rem;">
+            <a href="privacy.html" style="color: #63b3ed; text-decoration: none; margin: 0 10px;">Privacy</a> | 
+            <a href="cookies.html" style="color: #63b3ed; text-decoration: none; margin: 0 10px;">Cookies</a> | 
+            <a href="imprint.html" style="color: #63b3ed; text-decoration: none; margin: 0 10px;">Note Legali</a>
         </p>
     </footer>
 

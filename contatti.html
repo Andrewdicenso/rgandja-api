@@ -9,37 +9,64 @@
     <link rel="stylesheet" href="style.css">
     <style>
         .form-control {
-            width: 100%; padding: 14px; border-radius: 6px; 
-            border: 1px solid #2d3748; background: #0f172a; 
+            width: 100%; padding: 16px; border-radius: 8px; 
+            border: 1px solid var(--border); background: rgba(15, 23, 42, 0.6); 
             color: white; font-family: 'Inter', sans-serif;
-            margin-top: 5px; transition: 0.3s;
-            box-sizing: border-box;
+            margin-top: 8px; transition: var(--transition-smooth);
+            box-sizing: border-box; font-size: 0.95rem;
         }
+
         .form-control:focus { 
             border-color: var(--accent-gold); 
             outline: none; 
-            box-shadow: 0 0 15px rgba(212,175,55,0.1); 
-            background: #161e2e;
+            box-shadow: 0 0 20px rgba(212,175,55,0.1); 
+            background: #0f172a;
         }
-        label { font-size: 0.75rem; color: #63b3ed; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; }
+
+        label { font-size: 0.7rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 2px; font-weight: 800; }
         
-        .grid-contact { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .grid-contact-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         
-        .checkbox-group { display: flex; align-items: flex-start; gap: 12px; margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.02); border-radius: 8px; }
-        .checkbox-group input { margin-top: 4px; accent-color: var(--accent-gold); }
-        .checkbox-group label { text-transform: none; font-weight: 400; letter-spacing: 0; color: #a0aec0; font-size: 0.85rem; }
-        
-        .btn-gold { 
-            background: linear-gradient(90deg, #d4af37, #f2d472); 
-            color: #000; font-weight: 800; border: none; 
-            cursor: pointer; transition: all 0.3s; 
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+        .checkbox-group { 
+            display: flex; 
+            align-items: flex-start; 
+            gap: 15px; 
+            margin-top: 25px; 
+            padding: 20px; 
+            background: rgba(212, 175, 55, 0.03); 
+            border: 1px solid rgba(212, 175, 55, 0.1); 
+            border-radius: 12px; 
         }
-        .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4); }
 
-        .contact-sidebar { display: flex; flex-direction: column; gap: 20px; }
+        .checkbox-group input { margin-top: 4px; accent-color: var(--accent-gold); transform: scale(1.2); }
+        .checkbox-group label { text-transform: none; font-weight: 400; letter-spacing: 0; color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; }
+        
+        .contact-sidebar { display: flex; flex-direction: column; gap: 25px; }
+        
+        .security-status { 
+            font-size: 0.65rem; 
+            color: #4a5568; 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            margin-top: 15px; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
 
-        @media (max-width: 768px) { .grid-contact { grid-template-columns: 1fr; } }
+        .location-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(99, 179, 237, 0.1);
+            color: #63b3ed;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) { .grid-contact-fields { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -55,120 +82,133 @@
                 <a href="chi-siamo.html">Chi Siamo</a>
                 <a href="prezzi.html">Prezzi</a>
                 <a href="demo.html">Demo</a>
-                <a href="contatti.html" class="active">Contatti</a>
+                <a href="contatti.html" class="active-nav">Contatti</a>
             </nav>
         </div>
     </header>
 
-    <section class="hero-premium">
-      <div class="container text-center">
-        <span class="badge-status">SECURE ACCESS</span>
-        <h1>Concierge Strategico</h1>
-        <p class="hero-subtitle">
-            Attiva il tuo <strong>Protocollo RGD-Alpha</strong> o richiedi assistenza specializzata per l'integrazione neurale.
-        </p>
-      </div>
-    </section>
-
-    <section class="section container grid-2">
-        <div class="contact-sidebar">
-            <div class="card-expert" style="border-left: 4px solid var(--accent-gold);">
-                <h3 style="color:var(--accent-gold); margin-bottom: 10px;">📍 Sede Operativa</h3>
-                <p style="color: #fff; margin-bottom: 5px;">Sepolion, 10445</p>
-                <p style="color: #fff;">Attiki, Atene (Grecia)</p>
-                <p style="font-size: 0.8rem; color: #63b3ed; margin-top: 15px;">Hub Tecnologico: Lun–Ven | 09:00 - 18:00 EET</p>
+    <main>
+        <section class="hero-premium">
+            <div class="container text-center">
+                <span class="badge-status">SECURE HUB</span>
+                <h1>Concierge Strategico</h1>
+                <p class="hero-subtitle">Attiva il tuo <strong>Protocollo RGD-Alpha</strong> o richiedi un audit preliminare per la tua infrastruttura decisionale.</p>
             </div>
+        </section>
 
-            <div class="card-expert dark-card">
-                <h3 style="margin-bottom: 10px;">💎 Canale Prioritario</h3>
-                <p style="font-size: 0.95rem; color: #a0aec0;">
-                    I partner con licenza <strong>PMI</strong> o <strong>Enterprise</strong> dispongono di una linea diretta crittografata end-to-end attiva 24/7.
-                </p>
-            </div>
-
-            <div class="card-expert glass-effect" style="border: 1px solid rgba(99, 179, 237, 0.2);">
-                <p style="font-style: italic; color: #e2e8f0;">
-                    "L'efficienza di un sistema si misura dalla velocità con cui trasforma una richiesta in un asset."
-                </p>
-                <p style="text-align: right; color: #63b3ed; font-weight: bold; margin-top: 10px;">— RGD-Alpha Logic</p>
-            </div>
-        </div>
-
-        <div class="card-expert shadow-lg" style="background: rgba(20, 26, 35, 0.8); border: 1px solid var(--border);">
-            <form name="contact-rgandja" method="POST" data-netlify="true" id="contact-form">
-                
-                <div class="form-group" style="margin-bottom: 25px;">
-                    <label>Azienda / Entity</label>
-                    <input type="text" name="azienda" class="form-control" placeholder="es. Global Strategic Partner Ltd" required>
+        <section class="section container grid-2">
+            <div class="contact-sidebar">
+                <div class="card-expert" style="border-top: 3px solid var(--accent-gold);">
+                    <span class="location-badge">HQ EUROPE</span>
+                    <h3 style="color:#fff; margin-bottom: 15px; letter-spacing: -0.5px;">Sede Operativa</h3>
+                    <p style="color: var(--text-muted); line-height: 1.6;">
+                        Sepolion, 10445<br>
+                        <strong>Attiki, Atene (Grecia)</strong>
+                    </p>
+                    <p style="font-size: 0.8rem; color: #63b3ed; margin-top: 20px; font-weight: 600;">
+                        Supporto Live: Lun–Ven | 09:00 - 18:00 EET
+                    </p>
                 </div>
 
-                <div class="grid-contact">
+                <div class="card-expert" style="background: rgba(15, 23, 42, 0.4);">
+                    <h3 style="color:#fff; margin-bottom: 12px; font-size: 1.1rem;">💎 Canale Prioritario</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">
+                        I partner con licenza <strong>PMI</strong> o <strong>Enterprise</strong> accedono a una linea di comunicazione crittografata end-to-end con Advisory dedicato.
+                    </p>
+                </div>
+
+                <div class="card-expert glass-effect" style="border: 1px solid rgba(212, 175, 55, 0.15);">
+                    <p style="font-style: italic; color: #e2e8f0; font-size: 0.85rem; line-height: 1.7;">
+                        "L'integrità del dato è il fondamento della nostra ingegneria. Ogni interazione è protetta da protocolli di segretezza industriale RGandja."
+                    </p>
+                    <p style="text-align: right; color: var(--accent-gold); font-weight: 800; margin-top: 15px; font-size: 0.7rem; text-transform: uppercase;">
+                        — Data Integrity Office
+                    </p>
+                </div>
+            </div>
+
+            <div class="card-expert" style="background: var(--glass); border: 1px solid var(--border); padding: 45px;">
+                <form name="contact-rgandja" method="POST" data-netlify="true" id="contact-form">
+                    <input type="hidden" name="form-name" value="contact-rgandja">
+                    
                     <div class="form-group" style="margin-bottom: 25px;">
-                        <label>Email Ufficiale</label>
-                        <input type="email" name="email" class="form-control" placeholder="direzione@esempio.com" required>
+                        <label>Organizzazione / Entity</label>
+                        <input type="text" name="azienda" class="form-control" placeholder="Nome della società" required>
                     </div>
-                </div>
 
-                <div class="form-group" style="margin-bottom: 25px;">
-                    <label>Settore Operativo</label>
-                    <select name="settore" class="form-control">
-                        <option value="retail">Retail / E-commerce</option>
-                        <option value="pmi">Media Impresa / Servizi</option>
-                        <option value="finance">Finance / Real Estate</option>
-                        <option value="tech">Infrastrutture Tech</option>
-                    </select>
-                </div>
+                    <div class="grid-contact-fields">
+                        <div class="form-group" style="margin-bottom: 25px;">
+                            <label>Email Referente</label>
+                            <input type="email" name="email" class="form-control" placeholder="nome@azienda.it" required>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 25px;">
+                            <label>Protocollo di Interesse</label>
+                            <select name="obiettivo" id="select-protocol" class="form-control">
+                                <option value="junior">RGD-Junior (Startup)</option>
+                                <option value="pmi" selected>RGD-PMI (Standard)</option>
+                                <option value="enterprise">RGD-Enterprise (Custom)</option>
+                                <option value="support">Informazioni Tecniche</option>
+                            </select>
+                        </div>
+                    </div>
 
-                <div class="form-group" style="margin-bottom: 25px;">
-                    <label>Protocollo di Interesse</label>
-                    <select name="obiettivo" id="select-protocol" class="form-control">
-                        <option value="junior">Protocollo RGD-Junior (€450 - €1.200)</option>
-                        <option value="pmi">Protocollo RGD-PMI (€2.500 - €5.800)</option>
-                        <option value="enterprise">Protocollo RGD-Enterprise (Custom)</option>
-                        <option value="support">Supporto Tecnico / Informazioni</option>
-                    </select>
-                </div>
+                    <div class="form-group" style="margin-bottom: 25px;">
+                        <label>Scenario Operativo</label>
+                        <textarea name="messaggio" class="form-control" rows="5" placeholder="Descrivi brevemente i processi che desideri ottimizzare..."></textarea>
+                    </div>
 
-                <div class="form-group" style="margin-bottom: 25px;">
-                    <label>Specifiche dello Scenario</label>
-                    <textarea name="messaggio" class="form-control" rows="4" placeholder="Indica gli obiettivi di ottimizzazione o i nodi critici da analizzare..."></textarea>
-                </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="privacy" name="privacy_accepted" required>
+                        <label for="privacy">
+                            Accetto la <a href="privacy.html" target="_blank" style="color: var(--accent-gold); text-decoration: none; font-weight: 700;">Privacy Policy</a>. 
+                            Riconosco che RGandja opera in fase di pre-lancio e che la presente richiesta costituisce una manifestazione d'interesse non vincolante.
+                        </label>
+                    </div>
 
-                <div class="checkbox-group">
-                    <input type="checkbox" id="privacy" name="privacy_accepted" required>
-                    <label for="privacy">Dichiaro di aver preso visione del <a href="privacy.html" target="_blank" style="color: #63b3ed; text-decoration: underline;">Protocollo Protezione Dati</a> (GDPR 2026).</label>
-                </div>
-
-                <button id="submit-btn" type="submit" class="form-control btn-gold">Invia Richiesta</button>
-            </form>
-        </div>
-    </section>
+                    <button id="submit-btn" type="submit" class="btn btn-gold" style="margin-top: 30px; width: 100%; padding: 20px;">
+                        Invia Richiesta Criptata
+                    </button>
+                    
+                    <div class="security-status">
+                        <span style="color: #27c93f;">●</span> RSA-4096 BIT ENCRYPTION ACTIVE // TLS 1.3
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
 
     <footer class="footer container text-center">
-        <hr style="border: 0; border-top: 1px solid #1a2332; margin-bottom: 30px;">
-        <p>© 2026 RGandja — Architettura dei sistemi ideata e progettata da Andrew Di Censo</p>
-        <p style="margin-top: 10px;">
-             <a href="privacy.html">Privacy Policy</a> | <a href="cookies.html">Cookie Policy</a> | <a href="imprint.html">Note Legali</a>
+        <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 40px;">
+        <p style="font-weight: 600;">© 2026 <strong>RGandja</strong> — Strategic Engineering Hub</p>
+        <p style="margin-top: 12px; font-size: 0.8rem; color: var(--text-muted);">
+             Atene, Grecia — EU Intellectual Property Center
+        </p>
+        <p style="margin-top: 25px; font-size: 0.85rem;">
+             <a href="privacy.html">Privacy</a> | 
+             <a href="cookies.html">Cookies</a> | 
+             <a href="imprint.html">Note Legali</a>
         </p>
     </footer>
 
     <script>
+        // Gestione automatica selezione piano da URL
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
-            const plan = urlParams.get('plan'); 
+            const plan = urlParams.get('tipo'); // Coerente con il parametro di demo.html
             if(plan) {
                 const select = document.getElementById('select-protocol');
                 if(select) select.value = plan.toLowerCase();
             }
         };
 
+        // Feedback visivo all'invio
         const form = document.getElementById('contact-form');
         const btn = document.getElementById('submit-btn');
         if(form && btn) {
             form.onsubmit = function() {
-                btn.innerHTML = "CRITTOGRAFIA E INVIO IN CORSO...";
-                btn.style.opacity = "0.7";
-                btn.style.cursor = "not-allowed";
+                btn.innerHTML = "CRITTOGRAFIA E INVIO...";
+                btn.style.opacity = "0.6";
+                btn.style.cursor = "wait";
             };
         }
     </script>
