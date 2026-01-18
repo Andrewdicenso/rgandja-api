@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6TTVMQFNY6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6TTVMQFNY6');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chi Siamo - RGandja: L'Architettura della Certezza</title>
@@ -37,9 +45,53 @@
             border-top: 1px solid var(--border);
             line-height: 1.7;
         }
+
+        /* STILE BANNER COOKIE INTEGRATO */
+        #cookie-banner {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--accent-gold);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 9999;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+        }
+        #cookie-banner p { color: #fff; font-size: 0.9rem; margin: 0; max-width: 70%; }
+        #cookie-banner .btn-accept {
+            background: #d4af37;
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
     </style>
 </head>
 <body>
+
+    <div id="cookie-banner">
+        <p>Utilizziamo i cookie per analizzare l'interazione con la nostra visione aziendale. <a href="privacy.html" style="color:#d4af37">Privacy Policy</a>.</p>
+        <button class="btn-accept" onclick="acceptCookies()">Accetto</button>
+    </div>
+
+    <script>
+        function acceptCookies() {
+            document.getElementById('cookie-banner').style.display = 'none';
+            localStorage.setItem('cookieConsent', 'true');
+        }
+        if (localStorage.getItem('cookieConsent') === 'true') {
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+    </script>
 
     <header class="header">
         <div class="header-inner container">
@@ -143,10 +195,6 @@
             <a href="cookies.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px;">Cookie Policy</a> | 
             <a href="imprint.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px;">Note Legali</a>
         </p>
-        <div style="opacity: 0.4; font-size: 9px; color: var(--text-muted); max-width: 500px; margin: 0 auto; text-transform: uppercase; letter-spacing: 0.5px;">
-            Proprietà intellettuale di A. Di Censo. RGandja™ è un marchio registrato. 
-            Tutti i protocolli neurali sono protetti da licenza internazionale 2026.
-        </div>
     </footer>
 
 </body>

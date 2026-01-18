@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6TTVMQFNY6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6TTVMQFNY6');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contatti - RGandja Concierge Strategico</title>
@@ -66,10 +74,33 @@
             margin-bottom: 10px;
         }
 
+        /* BANNER COOKIE INTEGRATO */
+        #cookie-banner {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--border);
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 9999;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+        }
+
         @media (max-width: 768px) { .grid-contact-fields { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
+
+    <div id="cookie-banner">
+        <p style="color: #fff; font-size: 0.85rem; margin: 0;">Usiamo i cookie per ottimizzare la tua esperienza di contatto. <a href="privacy.html" style="color:var(--accent-gold)">Privacy Policy</a>.</p>
+        <button onclick="acceptCookies()" style="background: var(--accent-gold); border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-weight: bold;">Accetto</button>
+    </div>
 
     <header class="header">
         <div class="header-inner container">
@@ -113,22 +144,13 @@
                 <div class="card-expert" style="background: rgba(15, 23, 42, 0.4);">
                     <h3 style="color:#fff; margin-bottom: 12px; font-size: 1.1rem;">💎 Canale Prioritario</h3>
                     <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">
-                        I partner con licenza <strong>PMI</strong> o <strong>Enterprise</strong> accedono a una linea di comunicazione crittografata end-to-end con Advisory dedicato.
-                    </p>
-                </div>
-
-                <div class="card-expert glass-effect" style="border: 1px solid rgba(212, 175, 55, 0.15);">
-                    <p style="font-style: italic; color: #e2e8f0; font-size: 0.85rem; line-height: 1.7;">
-                        "L'integrità del dato è il fondamento della nostra ingegneria. Ogni interazione è protetta da protocolli di segretezza industriale RGandja."
-                    </p>
-                    <p style="text-align: right; color: var(--accent-gold); font-weight: 800; margin-top: 15px; font-size: 0.7rem; text-transform: uppercase;">
-                        — Data Integrity Office
+                        I partner con licenza <strong>PMI</strong> o <strong>Enterprise</strong> accedono a una linea di comunicazione crittografata end-to-end.
                     </p>
                 </div>
             </div>
 
             <div class="card-expert" style="background: var(--glass); border: 1px solid var(--border); padding: 45px;">
-                <form name="contact-rgandja" method="POST" data-netlify="true" action="/grazie.html" id="contact-form"></form>
+                <form name="contact-rgandja" method="POST" data-netlify="true" action="/grazie.html" id="contact-form">
                     <input type="hidden" name="form-name" value="contact-rgandja">
                     
                     <div class="form-group" style="margin-bottom: 25px;">
@@ -161,7 +183,7 @@
                         <input type="checkbox" id="privacy" name="privacy_accepted" required>
                         <label for="privacy">
                             Accetto la <a href="privacy.html" target="_blank" style="color: var(--accent-gold); text-decoration: none; font-weight: 700;">Privacy Policy</a>. 
-                            Riconosco che RGandja opera in fase di pre-lancio e che la presente richiesta costituisce una manifestazione d'interesse non vincolante.
+                            Riconosco che RGandja opera in fase di pre-lancio.
                         </label>
                     </div>
 
@@ -180,21 +202,21 @@
     <footer class="footer container text-center">
         <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 40px;">
         <p style="font-weight: 600;">© 2026 <strong>RGandja</strong> — Strategic Engineering Hub</p>
-        <p style="margin-top: 12px; font-size: 0.8rem; color: var(--text-muted);">
-             Atene, Grecia — EU Intellectual Property Center
-        </p>
-        <p style="margin-top: 25px; font-size: 0.85rem;">
-             <a href="privacy.html">Privacy</a> | 
-             <a href="cookies.html">Cookies</a> | 
-             <a href="imprint.html">Note Legali</a>
-        </p>
     </footer>
 
     <script>
+        function acceptCookies() {
+            document.getElementById('cookie-banner').style.display = 'none';
+            localStorage.setItem('cookieConsent', 'true');
+        }
+        if (localStorage.getItem('cookieConsent') === 'true') {
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+
         // Gestione automatica selezione piano da URL
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
-            const plan = urlParams.get('tipo'); // Coerente con il parametro di demo.html
+            const plan = urlParams.get('tipo'); 
             if(plan) {
                 const select = document.getElementById('select-protocol');
                 if(select) select.value = plan.toLowerCase();

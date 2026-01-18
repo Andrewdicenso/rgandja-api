@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6TTVMQFNY6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6TTVMQFNY6');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prezzi e Licenze - RGandja Decision Intelligence</title>
@@ -74,7 +82,6 @@
             font-size: 0.8rem;
         }
 
-        /* Effetti Premium per il piano selezionato */
         .featured-card { 
             border: 2px solid var(--accent-gold) !important; 
             transform: translateY(-15px);
@@ -109,9 +116,53 @@
             border-radius: 24px; 
             margin-top: 100px; 
         }
+
+        /* STILE BANNER COOKIE */
+        #cookie-banner {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--accent-gold);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 9999;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+        }
+        #cookie-banner p { color: #fff; font-size: 0.9rem; margin: 0; max-width: 70%; }
+        #cookie-banner .btn-accept {
+            background: #d4af37;
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
     </style>
 </head>
 <body>
+
+    <div id="cookie-banner">
+        <p>Utilizziamo i cookie per analizzare il traffico e migliorare l'esperienza sul Protocollo RGD-Alpha. <a href="privacy.html" style="color:#d4af37">Privacy Policy</a>.</p>
+        <button class="btn-accept" onclick="acceptCookies()">Accetto</button>
+    </div>
+
+    <script>
+        function acceptCookies() {
+            document.getElementById('cookie-banner').style.display = 'none';
+            localStorage.setItem('cookieConsent', 'true');
+        }
+        if (localStorage.getItem('cookieConsent') === 'true') {
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+    </script>
 
     <header class="header">
         <div class="header-inner container">
@@ -134,7 +185,7 @@
             <div class="container text-center">
                 <span class="badge-status">SISTEMA DI LICENZE 2026</span>
                 <h1>Investi in Certezze</h1>
-                <p class="hero-subtitle">Scegli il livello di profondità neurale richiesto dal tuo modello di business.</p>
+                <p class="hero-subtitle">Prezzi in fase di Lancio Mondiale: Sconto Early Access applicato.</p>
             </div>
         </section>
 
@@ -156,13 +207,13 @@
 
                     <div class="price-box">
                         <p class="tier-label">Versione BASIC</p>
-                        <p class="price-value">€450</p>
+                        <p class="price-value">€360</p>
                         <span class="license-tag">LICENZA 12 MESI</span>
                     </div>
 
                     <div class="price-box" style="border-color: #3182ce; background: rgba(49, 130, 206, 0.05);">
                         <p class="tier-label" style="color:#63b3ed;">Versione FULL (Plus)</p>
-                        <p class="price-value" style="color: #63b3ed;">€1.200</p>
+                        <p class="price-value" style="color: #63b3ed;">€960</p>
                         <span class="license-tag" style="background: rgba(99, 179, 237, 0.1); color: #63b3ed; border-color: rgba(99, 179, 237, 0.2);">Support Prioritario</span>
                     </div>
                     <a href="contatti.html" class="btn btn-outline" style="margin-top:30px; width:100%; text-align:center;">Acquista Junior</a>
@@ -185,12 +236,12 @@
 
                     <div class="price-box">
                         <p class="tier-label">Versione BASIC</p>
-                        <p class="price-value">€2.500</p>
+                        <p class="price-value">€2.000</p>
                     </div>
 
                     <div class="price-box" style="background: rgba(212, 175, 55, 0.08); border-color: var(--accent-gold);">
                         <p class="tier-label" style="color: var(--accent-gold);">Versione FULL (Advanced)</p>
-                        <p class="price-value">€5.800</p>
+                        <p class="price-value">€4.640</p>
                         <span class="license-tag">TOP PRIORITY 24H</span>
                     </div>
                     <a href="contatti.html" class="btn btn-gold" style="margin-top: 30px; width:100%; text-align:center;">Sblocca Protocollo PMI</a>
@@ -212,7 +263,7 @@
 
                     <div class="price-box">
                         <p class="tier-label">Setup Iniziale</p>
-                        <p class="price-value">€12.000</p>
+                        <p class="price-value">€9.600</p>
                     </div>
 
                     <div class="price-box" style="border-color: #63b3ed;">
@@ -226,8 +277,8 @@
             <div class="guarantee-box text-center">
                 <h4 style="color:var(--accent-gold); font-size: 1.8rem; margin-bottom: 20px; letter-spacing: -1px;">🛡️ RG-Alpha Integrity Guarantee</h4>
                 <p style="color:var(--text-muted); font-size:1.1rem; max-width: 850px; margin: 0 auto; line-height: 1.8;">
-                    Le analisi del sistema RGandja sono garantite matematicamente dal Protocollo di Certezza. Se l'ottimizzazione rilevata dal software nel primo trimestre 
-                    è inferiore al costo della licenza stessa, forniremo un audit tecnico manuale della divisione ingegneristica e un'estensione gratuita del servizio per 6 mesi.
+                    Le analisi del sistema RGandja sono garantite matematicamente dal Protocollo di Certezza. Se l'ottimizzazione rilevata nel primo trimestre 
+                    è inferiore al costo della licenza, forniremo un audit manuale e un'estensione gratuita del servizio per 6 mesi.
                 </p>
             </div>
         </section>
@@ -241,25 +292,17 @@
             <a href="cookies.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-size: 0.85rem;">Cookies</a> | 
             <a href="imprint.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-size: 0.85rem;">Note Legali</a>
         </p>
-        <div style="opacity: 0.4; font-size: 9px; color: var(--text-muted); max-width: 550px; margin: 0 auto; text-transform: uppercase; letter-spacing: 1px; line-height: 1.4;">
-            Asset proprietario di A. Di Censo. RGandja™ è un marchio registrato (EUIPO). 
-            Tutti i diritti sui protocolli neurali RGD-Alpha sono riservati ai sensi delle leggi vigenti.
-        </div>
     </footer>
 
     <script>
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             const tipo = urlParams.get('tipo'); 
-            
             if(tipo) {
-                // Reset evidenziazione di default
                 document.querySelectorAll('.pricing-card').forEach(c => {
                     c.classList.remove('featured-card');
                     c.classList.remove('highlight-glow');
                 });
-                
-                // Evidenziazione dinamica basata sulla scelta nella Demo
                 const targetCard = document.getElementById('card-' + tipo.toLowerCase());
                 if(targetCard) {
                     targetCard.classList.add('featured-card');
@@ -271,6 +314,5 @@
             }
         }
     </script>
-
 </body>
 </html>
