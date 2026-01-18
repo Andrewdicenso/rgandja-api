@@ -1,7 +1,7 @@
 /* ============================================================
     RGANDJA NEURAL ENGINE - OFFICIAL DESIGN SYSTEM 2026
     Architect: Andrew Di Censo
-    Version: 5.2.1 - Stable Deployment (Optimized)
+    Version: 5.2.2 - Stable Deployment (Standard Compliant)
    ============================================================ */
 
 :root {
@@ -44,7 +44,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* Supporto Immagini Responsive (Refinement 1) */
+/* Supporto Immagini Responsive */
 img {
     max-width: 100%;
     height: auto;
@@ -132,7 +132,9 @@ img {
     line-height: 1.1;
     margin-bottom: 25px;
     background: linear-gradient(to bottom, #fff 40%, #94a3b8 100%);
+    /* Correzione VS Code: Aggiunta proprietà standard e vendor */
     -webkit-background-clip: text;
+    background-clip: text; 
     -webkit-text-fill-color: transparent;
 }
 
@@ -171,7 +173,6 @@ img {
     box-shadow: var(--shadow-premium);
 }
 
-/* Supporto specifico per varianti scure (Refinement 2) */
 .dark-card {
     background: rgba(0, 0, 0, 0.4) !important;
     backdrop-filter: blur(10px);
@@ -251,7 +252,7 @@ input:focus {
     transform: translateY(-3px);
 }
 
-/* 7. FOOTER & LINK ESTERNI (Refinement 3) */
+/* 7. FOOTER & LINK ESTERNI */
 .footer {
     padding: 80px 0 40px;
     background: #010409;
