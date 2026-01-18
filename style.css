@@ -132,7 +132,7 @@ img {
     line-height: 1.1;
     margin-bottom: 25px;
     background: linear-gradient(to bottom, #fff 40%, #94a3b8 100%);
-    /* Correzione VS Code: Aggiunta proprietà standard e vendor */
+    /* FIX VS CODE: Definizione standard per compatibilità */
     -webkit-background-clip: text;
     background-clip: text; 
     -webkit-text-fill-color: transparent;
