@@ -8,13 +8,24 @@
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="style.css">
     <style>
+        /* Variabili di sicurezza per coerenza con style.css */
+        :root {
+            --accent-gold: #d4af37;
+            --border: #1a2332;
+            --glass: rgba(15, 23, 42, 0.6);
+            --text-muted: #94a3b8;
+            --transition-smooth: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --shadow-premium: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(212, 175, 55, 0.1);
+        }
+
         /* Ottimizzazione Specifica per Step Card */
         .method-steps {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
             margin-top: 60px;
         }
+
         .step-card {
             background: var(--glass);
             padding: 50px 40px;
@@ -23,17 +34,20 @@
             position: relative;
             transition: var(--transition-smooth);
             overflow: hidden;
+            backdrop-filter: blur(10px);
         }
+
         .step-card:hover {
             transform: translateY(-12px);
             border-color: var(--accent-gold);
             box-shadow: var(--shadow-premium);
         }
+
         .step-num {
             font-family: 'Inter', sans-serif;
             font-size: 7rem;
             font-weight: 900;
-            color: rgba(212, 175, 55, 0.04);
+            color: rgba(212, 175, 55, 0.05);
             position: absolute;
             top: -10px;
             right: -10px;
@@ -42,22 +56,24 @@
         }
         
         .ai-human-fusion {
-            font-size: 5.5rem;
-            filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.3));
+            font-size: 5rem;
+            filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.3));
             text-align: center;
             animation: pulse-gold 4s infinite ease-in-out;
+            position: relative;
+            z-index: 1;
         }
 
         @keyframes pulse-gold {
-            0%, 100% { transform: scale(1); opacity: 0.7; }
-            50% { transform: scale(1.05); opacity: 1; }
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.08); opacity: 1; }
         }
 
         .logic-tag {
             display: inline-block;
             padding: 6px 14px;
             background: rgba(16, 185, 129, 0.1);
-            color: var(--accent);
+            color: #10b981;
             border-radius: 4px;
             font-size: 0.7rem;
             font-weight: 800;
@@ -65,6 +81,16 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .active-nav {
+            color: var(--accent-gold) !important;
+            border-bottom: 2px solid var(--accent-gold);
+        }
+
+        @media (max-width: 768px) {
+            .hero-premium h1 { font-size: 2.2rem; }
+            .step-card { padding: 40px 25px; }
         }
     </style>
 </head>
@@ -93,7 +119,7 @@
                 <span class="badge-status">PROPRIETARY METHODOLOGY</span>
                 <h1>Ingegneria Decisionale Applicata</h1>
                 <p class="hero-subtitle">
-                    Andiamo oltre l'analisi statistica tradizionale. Il Protocollo <strong>RGD-Alpha</strong> trasforma flussi di dati volatili in sequenze operative deterministiche ad alto rendimento.
+                    Il Protocollo <strong>RGD-Alpha</strong> trasforma flussi di dati volatili in sequenze operative deterministiche ad alto rendimento.
                 </p>
             </div>
         </section>
@@ -104,75 +130,72 @@
                     <div class="step-num">01</div>
                     <span class="logic-tag">Data Ingestion & Stress Test</span>
                     <h3>Analisi Predittiva Multilivello</h3>
-                    <p>Il sistema acquisisce i parametri core (Budget, Timeline, Target). Attraverso il motore neurale, RGandja simula milioni di micro-scenari di mercato per identificare il "Percorso di Minor Attrito" (LFP) massimizzando il rendimento atteso senza esporre il capitale.</p>
+                    <p>Il sistema acquisisce i parametri core. Attraverso il motore neurale, RGandja simula milioni di micro-scenari per identificare il "Percorso di Minor Attrito" (LFP) massimizzando il rendimento atteso.</p>
                 </div>
 
                 <div class="step-card">
                     <div class="step-num">02</div>
                     <span class="logic-tag">Neural Shield Compliance</span>
                     <h3>Validazione delle Tutele</h3>
-                    <p>Ogni opzione generata viene filtrata dal nostro scudo di compliance. Un set di algoritmi fissi verifica la sicurezza legale e la sostenibilità operativa, scartando istantaneamente le strategie che presentano vulnerabilità strutturali o rischi non calcolati.</p>
+                    <p>Ogni opzione generata viene filtrata dal nostro scudo di compliance. Algoritmi fissi verificano la sicurezza legale e la sostenibilità operativa, scartando istantaneamente i rischi non calcolati.</p>
                 </div>
 
                 <div class="step-card">
                     <div class="step-num">03</div>
                     <span class="logic-tag">Deterministic Output</span>
                     <h3>Protocollo d'Azione Diretto</h3>
-                    <p>Non forniamo semplici report, ma direttive d'esecuzione. Il metodo restituisce lo schema esatto degli investimenti, i tempi millimetrati di attivazione e le contromisure dinamiche da adottare per garantire la stabilità del progetto nel tempo.</p>
+                    <p>Restituiamo direttive d'esecuzione: lo schema esatto degli investimenti, tempi millimetrati di attivazione e contromisure dinamiche per garantire la stabilità totale del progetto.</p>
                 </div>
             </div>
         </section>
 
         <section class="section" style="background: #050810; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
             <div class="container">
-                <div class="grid-2">
+                <div class="grid-2" style="align-items: center;">
                     <div class="info-block">
                         <h2 style="color: #fff; margin-bottom: 30px; font-size: 2.2rem; letter-spacing: -1px;">Sinergia Core: Hybrid Intelligence</h2>
                         <p style="font-size: 1.15rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 25px;">
-                            Il Metodo RGandja risolve il paradosso della tecnologia moderna: la potenza senza controllo è inutile. 
-                            Utilizziamo il calcolo neurale per la <strong>velocità di elaborazione</strong>, 
-                            ma lo filtriamo attraverso un'architettura <strong>deterministica</strong> basata su rigorosi standard industriali.
+                            Risolviamo il paradosso della tecnologia moderna: la potenza senza controllo è inutile. Utilizziamo il calcolo neurale per la velocità, filtrandolo attraverso un'architettura deterministica.
                         </p>
                         <div style="border-left: 3px solid var(--accent-gold); padding-left: 25px; margin-top: 40px;">
-                            <p style="color: var(--accent-gold); font-weight: 700; font-style: italic; font-size: 1.1rem; line-height: 1.5;">
+                            <p style="color: var(--accent-gold); font-weight: 700; font-style: italic; font-size: 1.1rem;">
                                 "Ogni variabile è isolata. Ogni rischio è quantificato. Ogni decisione è blindata dal protocollo."
                             </p>
                         </div>
                     </div>
-                    <div class="method-graphic text-center" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                    <div class="method-graphic text-center">
                         <div class="ai-human-fusion">🧠+⚡</div>
-                        <p style="color: var(--accent); font-family: monospace; letter-spacing: 4px; margin-top: 30px; font-size: 0.75rem; font-weight: 800;">ENGINE STATUS: OPTIMIZED</p>
+                        <p style="color: var(--accent-gold); font-family: monospace; letter-spacing: 4px; margin-top: 30px; font-size: 0.75rem; font-weight: 800;">ENGINE STATUS: OPTIMIZED</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section container text-center" style="padding: 120px 0;">
-            <h2 style="margin-bottom: 30px; font-size: 2.8rem; letter-spacing: -1px;">Implementa l'Architettura della Certezza</h2>
-            <p style="color: var(--text-muted); margin-bottom: 50px; max-width: 750px; margin-left: auto; margin-right: auto; font-size: 1.2rem;">
-                Non lasciare la tua crescita al caso. Utilizza la stessa ingegneria decisionale dei top player internazionali per dominare la complessità del mercato attuale.
+        <section class="section container text-center" style="padding: 100px 20px;">
+            <h2 style="margin-bottom: 30px; font-size: 2.5rem; letter-spacing: -1px;">Implementa l'Architettura della Certezza</h2>
+            <p style="color: var(--text-muted); margin-bottom: 50px; max-width: 750px; margin-left: auto; margin-right: auto; font-size: 1.1rem;">
+                Utilizza la stessa ingegneria decisionale dei top player internazionali per dominare la complessità del mercato attuale.
             </p>
             <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                <a href="demo.html" class="btn btn-gold">Avvia Demo Metodologica</a>
-                <a href="contatti.html" class="btn btn-outline">Parla con un Advisor</a>
+                <a href="demo.html" class="btn-gold" style="padding: 18px 35px; text-decoration: none; color: #000; font-weight: 800; border-radius: 8px; background: linear-gradient(90deg, #d4af37, #f2d472); text-transform: uppercase;">Avvia Demo Metodologica</a>
+                <a href="contatti.html" style="padding: 18px 35px; text-decoration: none; color: var(--accent-gold); font-weight: 800; border-radius: 8px; border: 1px solid var(--accent-gold); text-transform: uppercase;">Parla con un Advisor</a>
             </div>
         </section>
     </main>
 
     <footer class="footer container text-center">
         <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 40px;">
-        <p style="color: var(--text-main); font-weight: 600;">© 2026 <strong>RGandja</strong> — Strategic Engineering Division</p>
+        <p>© 2026 <strong>RGandja</strong> — Strategic Engineering Division</p>
         <p style="margin-top: 15px; font-size: 0.85rem; color: var(--text-muted);">
             Attiki, Greece — International Decision Intelligence Hub
         </p>
         <p style="margin: 25px 0;">
-            <a href="privacy.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px;">Privacy Policy</a> | 
-            <a href="cookies.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px;">Cookie Policy</a> | 
-            <a href="imprint.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px;">Note Legali</a>
+            <a href="privacy.html" style="color: #63b3ed; text-decoration: none; margin: 0 10px;">Privacy Policy</a> | 
+            <a href="cookies.html" style="color: #63b3ed; text-decoration: none; margin: 0 10px;">Cookie Policy</a> | 
+            <a href="imprint.html" style="color: #63b3ed; text-decoration: none; margin: 0 10px;">Note Legali</a>
         </p>
-        <div style="opacity: 0.4; font-size: 9px; color: var(--text-muted); max-width: 500px; margin: 0 auto; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.4;">
-            Proprietà intellettuale di A. Di Censo. RGandja™ è un marchio registrato. 
-            Il Protocollo RGD-Alpha e l'Architettura della Certezza sono asset industriali protetti.
+        <div style="opacity: 0.4; font-size: 9px; color: var(--text-muted); max-width: 500px; margin: 0 auto; text-transform: uppercase; letter-spacing: 0.5px;">
+            Proprietà intellettuale di A. Di Censo. RGandja™ è un marchio registrato.
         </div>
     </footer>
 

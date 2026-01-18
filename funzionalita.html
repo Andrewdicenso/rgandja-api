@@ -55,31 +55,38 @@
             border: 1px solid rgba(255,255,255,0.2);
         }
 
+        /* Rafforzamento dei Visual Box */
         .visual-demo-box {
-            background: #0f172a;
+            background: #0a0e14;
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 40px;
+            padding: 30px;
+            min-height: 300px;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
-            min-height: 350px;
+            align-items: center;
             position: relative;
             overflow: hidden;
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
         }
 
-        .visual-placeholder {
-            width: 100%;
-            height: 200px;
-            background: rgba(255,255,255,0.03);
-            border: 1px dashed rgba(99, 179, 237, 0.3);
-            border-radius: 8px;
+        /* Simulazione Grafico CSS */
+        .chart-sim {
+            width: 80%;
+            height: 100px;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
+            align-items: flex-end;
+            gap: 8px;
         }
+        .bar { 
+            flex: 1; 
+            background: var(--accent-gold); 
+            opacity: 0.3; 
+            border-radius: 2px 2px 0 0;
+            animation: grow 2s ease-in-out infinite alternate;
+        }
+        @keyframes grow { from { height: 20%; } to { height: 80%; } }
 
         .btn-gold {
             background: linear-gradient(90deg, #d4af37, #f2d472);
@@ -97,11 +104,6 @@
         .btn-gold:hover { 
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
-        }
-
-        .process-step {
-            padding: 20px;
-            border-bottom: 1px solid var(--border);
         }
 
         @media (max-width: 768px) {
@@ -142,7 +144,7 @@
         <span class="feature-icon">🔮</span>
         <h2>Simulazioni Predittive "What-If"</h2>
         <p>
-          Il cuore tecnologico di RGandja è il <strong>Motore RGD-Alpha</strong>. Non si limita a proiettare dati storici, ma genera migliaia di scenari sintetici per identificare il percorso di minor resistenza verso i tuoi obiettivi.
+          Il cuore tecnologico di RGandja è il <strong>Motore RGD-Alpha</strong>. Non si limita a proiettare dati storici, ma genera migliaia di scenari sintetici per identificare il percorso di minor resistenza.
         </p>
         <ul class="custom-list">
           <li><strong>Analisi Multi-Scenario:</strong> Testiamo decisioni di scalabilità in ambienti controllati.</li>
@@ -151,9 +153,15 @@
         </ul>
       </div>
       <div class="visual-demo-box glass-effect">
-        
-        <p style="font-size: 0.8rem; color: #63b3ed; text-transform: uppercase; letter-spacing: 1px; margin-top: 15px;">
-            Visualizzazione Flusso Decisionale RGD-Alpha
+        <div class="chart-sim">
+            <div class="bar" style="animation-delay: 0.1s"></div>
+            <div class="bar" style="animation-delay: 0.3s"></div>
+            <div class="bar" style="animation-delay: 0.2s"></div>
+            <div class="bar" style="animation-delay: 0.5s"></div>
+            <div class="bar" style="animation-delay: 0.4s"></div>
+        </div>
+        <p style="font-size: 0.7rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 2px; margin-top: 25px; font-weight: bold;">
+            Neural Pathfinding Engine Active
         </p>
       </div>
     </section>
@@ -161,9 +169,16 @@
     <section class="section" style="background: rgba(15, 23, 42, 0.4); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
       <div class="container grid-2" style="align-items: center;">
         <div class="visual-demo-box" style="background: #05070a;">
-            
-            <div style="margin-top: 20px; font-family: monospace; color: #27c93f; font-size: 0.75rem;">
-                LOG_ID: RG-992 // STATUS: VERIFIED // ENCRYPTION: ACTIVE
+            <div style="border: 1px solid #27c93f; padding: 15px; border-radius: 5px; background: rgba(39, 201, 63, 0.05);">
+                <code style="color: #27c93f; font-size: 0.8rem; display: block;">
+                    > VERIFYING ASSET INTEGRITY...<br>
+                    > HASH_CHECK: VALID<br>
+                    > AUDIT_LOG: GENERATED [RG-992]<br>
+                    > STATUS: COMPLIANT
+                </code>
+            </div>
+            <div style="margin-top: 20px; font-family: monospace; color: #4a5568; font-size: 0.7rem;">
+                ENCRYPTION: AES-256-GCM
             </div>
         </div>
         <div class="info-block" style="padding-left: 40px;">
@@ -186,7 +201,7 @@
         <span class="feature-icon">📊</span>
         <h2>Explainable Intelligence (X-AI)</h2>
         <p>
-          Rompiamo la "scatola nera" dell'intelligenza artificiale. RGandja non fornisce solo suggerimenti, ma illustra i <strong>Driving Factors</strong>: i nessi di causalità dietro ogni previsione.
+          Rompiamo la "scatola nera" dell'IA. RGandja non fornisce solo suggerimenti, ma illustra i <strong>Driving Factors</strong>: i nessi di causalità dietro ogni previsione.
         </p>
         <ul class="custom-list">
           <li>Mappatura visiva delle correlazioni tra KPI aziendali.</li>
@@ -203,23 +218,10 @@
       </div>
     </section>
 
-    <section class="section text-center" style="background: radial-gradient(circle at center, #111827 0%, #020617 100%); padding: 100px 20px;">
-      <div class="container">
-        <h2 style="font-size: 2.8rem; margin-bottom: 25px; color: #fff; letter-spacing: -1px;">Assumi il controllo del tuo futuro</h2>
-        <p style="color: #94a3b8; margin-bottom: 50px; max-width: 750px; margin-left: auto; margin-right: auto; font-size: 1.1rem;">
-            Non lasciare la crescita al caso. Utilizza gli stessi strumenti dei leader di mercato per orchestrare la tua scalabilità.
-        </p>
-        <div style="display: flex; justify-content: center; gap: 25px; flex-wrap: wrap;">
-            <a href="demo.html" class="btn-gold">Avvia Simulazione Demo</a>
-            <a href="contatti.html" style="padding: 18px 40px; border: 1px solid var(--accent-gold); color: var(--accent-gold); text-decoration: none; border-radius: 8px; font-weight: 700; text-transform: uppercase; font-size: 0.9rem; transition: 0.3s;">Consultazione Privata</a>
-        </div>
-      </div>
-    </section>
-
     <footer class="footer container text-center">
         <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 40px;">
-        <p>© 2026 RGandja — Strategic Engineering Hub. Progettato da <strong>Andrew Di Censo</strong>.</p>
-        <p style="margin-top: 12px; font-size: 0.8rem; color: #4a5568;">
+        <p>© 2026 <strong>RGandja</strong> — Strategic Engineering Division</p>
+        <p style="margin-top: 12px; font-size: 0.8rem; color: #636e7b;">
             Atene, Grecia — EU Proprietary Technology License
         </p>
         <p style="margin-top: 25px; font-size: 0.85rem;">

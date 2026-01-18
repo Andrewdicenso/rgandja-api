@@ -19,8 +19,6 @@
     <style>
         :root { 
             --terminal-bg: #0a0e14; 
-            --accent-gold: #d4af37; 
-            --text-gray: #a0aec0; 
             --term-red: #ff5f56;
             --term-yellow: #ffbd2e;
             --term-green: #27c93f;
@@ -118,7 +116,7 @@
             cursor: pointer; 
             text-transform: uppercase; 
             letter-spacing: 2px; 
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
         }
 
@@ -136,41 +134,29 @@
 
         .status-line { color: var(--term-green); margin-bottom: 5px; font-size: 0.8rem; }
 
-        /* COOKIE BANNER MINIMAL PER DEMO */
         #cookie-banner {
             position: fixed;
             bottom: 20px;
             left: 20px;
             right: 20px;
-            background: rgba(10, 14, 20, 0.95);
-            border: 1px solid #1a2332;
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--accent-gold);
             padding: 15px 25px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 9999;
-            border-radius: 4px;
-            font-size: 0.8rem;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
         }
-        .btn-cookie { background: transparent; border: 1px solid var(--accent-gold); color: var(--accent-gold); padding: 5px 15px; cursor: pointer; }
     </style>
 </head>
 <body>
 
     <div id="cookie-banner">
-        <span>Sessione monitorata per scopi tecnici e analitici. <a href="privacy.html" style="color:var(--accent-gold)">Info</a></span>
-        <button class="btn-cookie" onclick="acceptCookies()">OK</button>
+        <span style="color:white; font-size:0.85rem;">Sessione crittografata attiva. Monitoraggio per scopi analitici RGD. <a href="privacy.html" style="color:var(--accent-gold)">Info</a></span>
+        <button onclick="acceptCookies()" style="background:var(--accent-gold); border:none; padding:8px 15px; border-radius:4px; font-weight:bold; cursor:pointer;">OK</button>
     </div>
-
-    <script>
-        function acceptCookies() {
-            document.getElementById('cookie-banner').style.display = 'none';
-            localStorage.setItem('cookieConsent', 'true');
-        }
-        if (localStorage.getItem('cookieConsent') === 'true') {
-            document.getElementById('cookie-banner').style.display = 'none';
-        }
-    </script>
 
     <header class="header">
         <div class="header-inner container">
@@ -191,7 +177,7 @@
     <div class="container text-center" style="margin-top: 70px; margin-bottom: 40px;">
         <span class="badge-status">SANDBOX ENVIRONMENT</span>
         <h2 style="font-size: 2.5rem; letter-spacing: -1px; margin-top: 15px;">Neural Engine v5.2 Alpha</h2>
-        <p style="color: var(--text-muted); max-width: 600px; margin: 20px auto;">Accesso limitato al Protocollo RGD-Alpha per test di resilienza operativa e ottimizzazione dei costi.</p>
+        <p style="color: var(--text-muted); max-width: 600px; margin: 20px auto;">Simulatore limitato del Protocollo RGD-Alpha. Testa la resilienza operativa della tua struttura.</p>
     </div>
 
     <div class="terminal">
@@ -199,27 +185,27 @@
             <div style="font-size: 4rem; margin-bottom: 20px;">🔒</div>
             <h2 style="color: var(--accent-gold); margin-bottom: 15px; font-size: 2rem;">ANALISI COMPLETATA</h2>
             <p style="max-width: 500px; color: var(--text-gray); margin-bottom: 30px; line-height: 1.6;">
-                I nodi neurali hanno elaborato i dati. Inserisci la tua email aziendale per decriptare il report completo e ricevere la roadmap strategica.
+                I nodi neurali hanno identificato i punti di attrito. Inserisci la tua email per decriptare il report e ricevere la <strong>Roadmap Strategica</strong>.
             </p>
             
             <input type="email" id="user-email" placeholder="email@azienda.it" 
-                   style="width: 100%; max-width: 420px; padding: 16px; margin-bottom: 20px; background: #fff; color: #000; font-weight: bold;">
+                   style="width: 100%; max-width: 420px; padding: 16px; margin-bottom: 20px; background: #fff; color: #000; font-weight: bold; border: none;">
             
             <div style="margin-bottom: 30px; max-width: 420px; text-align: left;">
-                <label style="display: flex; align-items: flex-start; gap: 12px; cursor: pointer; color: var(--text-muted); font-family: sans-serif; font-size: 0.75rem; line-height: 1.4;">
+                <label style="display: flex; align-items: flex-start; gap: 12px; cursor: pointer; color: var(--text-gray); font-family: sans-serif; font-size: 0.75rem; line-height: 1.4;">
                     <input type="checkbox" id="privacy-check" style="width: auto; margin-top: 2px;">
-                    <span>Dichiaro di aver letto la <a href="privacy.html" target="_blank" style="color: var(--accent-gold);">Privacy Policy</a>. Acconsento al trattamento dei dati.</span>
+                    <span>Accetto il trattamento dati per ricevere l'analisi e l'accesso prioritario Early Access. <a href="privacy.html" target="_blank" style="color: var(--accent-gold);">Privacy Policy</a>.</span>
                 </label>
             </div>
 
-            <button class="btn-execute" onclick="spedisciReport()">SBLOCCA E INVIA REPORT</button>
+            <button class="btn-execute" onclick="spedisciReport()">DECRIPTA REPORT & ROADMAP</button>
         </div>
 
         <div class="term-header">
             <div class="dot" style="background:var(--term-red)"></div>
             <div class="dot" style="background:var(--term-yellow)"></div>
             <div class="dot" style="background:var(--term-green)"></div>
-            <span style="margin-left:15px; font-size:0.7rem; color:#4a5568; font-weight: 700;">RG-ALPHA-CORE // SESSION: ACTIVE</span>
+            <span style="margin-left:15px; font-size:0.7rem; color:#4a5568; font-weight: 700;">RG-ALPHA-CORE // ATHENS_NODE_ACTIVE</span>
         </div>
 
         <div class="term-content" id="terminalMain">
@@ -236,7 +222,7 @@
                 <div class="form-group"><label>Capitale Umano</label><input type="number" id="dipendenti" value="12"></div>
                 <div class="form-group"><label>Ore Inattività/Sett</label><input type="number" id="assenze" value="8"></div>
                 <div class="form-group"><label>Assorbimento Standby (W)</label><input type="number" id="watt" value="320"></div>
-                <div class="form-group"><label>Budget Operativo Anno (€)</label><input type="number" id="budget" value="120000"></div>
+                <div class="form-group"><label>Budget Operativo (€)</label><input type="number" id="budget" value="120000"></div>
             </div>
 
             <button onclick="runNeuralAnalysis()" class="btn-execute" id="btnRun">LANCIA ELABORAZIONE NEURALE</button>
@@ -244,12 +230,19 @@
             <div id="resultBox">
                 <div id="loadingText" class="status-line"></div>
                 <div id="finalOutput" style="line-height: 1.8; color: #cbd5e0;"></div>
-                <div id="pdfDownloadArea" style="margin-top: 20px; border-top: 1px solid #2d3748; padding-top: 15px;"></div>
             </div>
         </div>
     </div>
 
     <script>
+        function acceptCookies() {
+            document.getElementById('cookie-banner').style.display = 'none';
+            localStorage.setItem('cookieConsent', 'true');
+        }
+        if (localStorage.getItem('cookieConsent') === 'true') {
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+
         async function runNeuralAnalysis() {
             const btn = document.getElementById("btnRun");
             const terminalMain = document.getElementById("terminalMain");
@@ -266,6 +259,7 @@
                 "> Caricamento driver RGD-Alpha...",
                 "> Connessione ai nodi neurali di Atene...",
                 "> Iniezione parametri nel cluster...",
+                "> Analisi delle inefficienze...",
                 "> Ottimizzazione flussi in corso..."
             ];
 
@@ -292,7 +286,7 @@
                 });
 
                 const data = await response.json();
-                loadingText.innerText = "> ELABORAZIONE COMPLETATA.";
+                loadingText.innerText = "> ELABORAZIONE COMPLETATA. NODI SINCRONIZZATI.";
                 finalOutput.innerHTML = data.risultato;
 
                 if(data.is_premium_locked) {
@@ -300,12 +294,12 @@
                         terminalMain.classList.add("premium-blur");
                         paywall.style.display = "flex";
                         window.scrollTo({ top: 200, behavior: 'smooth' });
-                    }, 2000);
+                    }, 2500);
                 }
             } catch (err) {
-                loadingText.innerText = "ERRORE: Impossibile contattare il server neurale.";
+                loadingText.innerText = "ERRORE: Cluster di Atene non raggiungibile. Riprovare.";
                 btn.disabled = false;
-                btn.innerText = "LANCIA ELABORAZIONE NEURALE";
+                btn.innerText = "RIESEGUI ANALISI";
             }
         }
 
@@ -314,12 +308,12 @@
             const privacyChecked = document.getElementById('privacy-check').checked;
             
             if (!privacyChecked || !emailUtente || !emailUtente.includes('@')) {
-                alert("Verifica email e privacy policy.");
+                alert("Parametri mancanti: verifica email e consenso privacy.");
                 return;
             }
 
             const bottone = document.querySelector('.paywall-overlay .btn-execute');
-            bottone.innerText = "INVIO IN CORSO...";
+            bottone.innerText = "INVIO REPORT CRITTOGRAFATO...";
             bottone.disabled = true;
 
             fetch('https://rgandja-api.onrender.com/email/invia-report', {
@@ -331,10 +325,9 @@
                 })
             })
             .then(response => {
-                if (response.ok) {
-                    const scelto = document.getElementById('algoritmo').value;
-                    window.location.href = `prezzi.html?tipo=${scelto}`;
-                }
+                const scelto = document.getElementById('algoritmo').value;
+                // Reindirizziamo l'utente alla pagina prezzi portando con noi la sua scelta
+                window.location.href = `prezzi.html?tipo=${scelto}`;
             });
         }
     </script>

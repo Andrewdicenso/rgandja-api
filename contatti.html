@@ -74,14 +74,13 @@
             margin-bottom: 10px;
         }
 
-        /* BANNER COOKIE INTEGRATO */
         #cookie-banner {
             position: fixed;
             bottom: 20px;
             left: 20px;
             right: 20px;
             background: rgba(15, 23, 42, 0.95);
-            border: 1px solid var(--border);
+            border: 1px solid var(--accent-gold);
             padding: 15px 25px;
             display: flex;
             justify-content: space-between;
@@ -123,14 +122,17 @@
             <div class="container text-center">
                 <span class="badge-status">SECURE HUB</span>
                 <h1>Concierge Strategico</h1>
-                <p class="hero-subtitle">Attiva il tuo <strong>Protocollo RGD-Alpha</strong> o richiedi un audit preliminare per la tua infrastruttura decisionale.</p>
+                <p class="hero-subtitle">Attiva il tuo <strong>Protocollo RGD-Alpha</strong> o richiedi un audit per la tua infrastruttura.</p>
+                <div style="margin-top: 15px; display: inline-block; padding: 10px 20px; background: rgba(212, 175, 55, 0.1); border: 1px solid var(--accent-gold); border-radius: 4px;">
+                    <p style="color: var(--accent-gold); font-size: 0.9rem; margin: 0; font-weight: 700;">PROMO EARLY ACCESS: Invia la richiesta oggi per bloccare il bonus -20%.</p>
+                </div>
             </div>
         </section>
 
         <section class="section container grid-2">
             <div class="contact-sidebar">
                 <div class="card-expert" style="border-top: 3px solid var(--accent-gold);">
-                    <span class="location-badge">HQ EUROPE</span>
+                    <span class="location-badge">HQ EUROPE // HPC HUB</span>
                     <h3 style="color:#fff; margin-bottom: 15px; letter-spacing: -0.5px;">Sede Operativa</h3>
                     <p style="color: var(--text-muted); line-height: 1.6;">
                         Sepolion, 10445<br>
@@ -144,7 +146,7 @@
                 <div class="card-expert" style="background: rgba(15, 23, 42, 0.4);">
                     <h3 style="color:#fff; margin-bottom: 12px; font-size: 1.1rem;">💎 Canale Prioritario</h3>
                     <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">
-                        I partner con licenza <strong>PMI</strong> o <strong>Enterprise</strong> accedono a una linea di comunicazione crittografata end-to-end.
+                        I partner con licenza <strong>PMI</strong> o <strong>Enterprise</strong> accedono a una linea di comunicazione crittografata end-to-end con i nostri analisti ad Atene.
                     </p>
                 </div>
             </div>
@@ -183,7 +185,7 @@
                         <input type="checkbox" id="privacy" name="privacy_accepted" required>
                         <label for="privacy">
                             Accetto la <a href="privacy.html" target="_blank" style="color: var(--accent-gold); text-decoration: none; font-weight: 700;">Privacy Policy</a>. 
-                            Riconosco che RGandja opera in fase di pre-lancio.
+                            Riconosco che inviando ora la richiesta blocco lo sconto <strong>Early Access del 20%</strong>.
                         </label>
                     </div>
 
@@ -192,7 +194,7 @@
                     </button>
                     
                     <div class="security-status">
-                        <span style="color: #27c93f;">●</span> RSA-4096 BIT ENCRYPTION ACTIVE // TLS 1.3
+                        <span style="color: #27c93f;">●</span> RSA-4096 BIT ENCRYPTION ACTIVE // PROTOCOLLO ATENE-SECURE
                     </div>
                 </form>
             </div>
@@ -201,7 +203,15 @@
 
     <footer class="footer container text-center">
         <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 40px;">
-        <p style="font-weight: 600;">© 2026 <strong>RGandja</strong> — Strategic Engineering Hub</p>
+        <p style="color: var(--text-main); font-weight: 600; letter-spacing: 1px;">© 2026 <strong>RGandja</strong> — Strategic Engineering Division</p>
+        <p style="margin-top: 15px; font-size: 0.85rem; color: var(--text-muted);">
+            Attiki, Greece — International High Performance Computing Hub
+        </p>
+        <p style="margin: 20px 0;">
+            <a href="privacy.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-size: 0.85rem;">Privacy</a> | 
+            <a href="cookies.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-size: 0.85rem;">Cookies</a> | 
+            <a href="imprint.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-size: 0.85rem;">Note Legali</a>
+        </p>
     </footer>
 
     <script>
@@ -213,7 +223,6 @@
             document.getElementById('cookie-banner').style.display = 'none';
         }
 
-        // Gestione automatica selezione piano da URL
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             const plan = urlParams.get('tipo'); 
@@ -223,13 +232,12 @@
             }
         };
 
-        // Feedback visivo all'invio
         const form = document.getElementById('contact-form');
         const btn = document.getElementById('submit-btn');
         if(form && btn) {
             form.onsubmit = function() {
-                btn.innerHTML = "CRITTOGRAFIA E INVIO...";
-                btn.style.opacity = "0.6";
+                btn.innerHTML = "<span class='loader'></span> CRITTOGRAFIA E INVIO IN CORSO...";
+                btn.style.opacity = "0.7";
                 btn.style.cursor = "wait";
             };
         }

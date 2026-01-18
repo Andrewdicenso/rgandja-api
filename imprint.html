@@ -8,11 +8,19 @@
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="style.css">
     <style>
+        /* Variabili locali di sicurezza per evitare contrasti */
+        :root { 
+            --accent-gold: #d4af37; 
+            --border: #1a2332; 
+            --text-muted: #94a3b8;
+        }
+
         .imprint-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
             text-align: left;
+            margin-top: 30px;
         }
 
         .imprint-block h3 {
@@ -38,7 +46,7 @@
         .imprint-block a {
             color: #63b3ed;
             text-decoration: none;
-            transition: var(--transition-smooth);
+            transition: 0.3s ease;
             font-weight: 600;
         }
 
@@ -72,8 +80,11 @@
             margin-bottom: 20px;
         }
 
+        /* Gestione Mobile */
         @media (max-width: 768px) {
-            .imprint-grid { grid-template-columns: 1fr; }
+            .imprint-grid { grid-template-columns: 1fr; gap: 30px; }
+            .full-width { padding: 25px; }
+            .card-expert { padding: 30px !important; }
         }
     </style>
 </head>
@@ -106,7 +117,7 @@
     </section>
 
     <main class="section container">
-        <div class="card-expert dark-card" style="padding: 60px; border: 1px solid var(--border);">
+        <div class="card-expert dark-card" style="padding: 60px; border: 1px solid var(--border); background: #0a0e14; border-radius: 16px;">
             <div class="legal-stamp">Official Document v2.1</div>
             
             <div class="imprint-grid">
@@ -134,30 +145,30 @@
                         Il marchio <strong>RGandja™</strong>, l'identità visiva e il framework dell'interfaccia sono asset di proprietà esclusiva registrati presso l'<strong>EUIPO (European Union Intellectual Property Office)</strong>. Ogni utilizzo non autorizzato o imitazione fraudolenta sarà perseguito nelle sedi competenti.
                     </p>
                     <p style="border-left: 2px solid var(--accent-gold); padding-left: 25px; margin-top: 25px;">
-                        <strong>Protocollo RGD-Alpha:</strong> Il motore di calcolo, le architetture neurali e i set di dati proprietari sono protetti come <strong>Segreto Industriale</strong> ai sensi della <strong>Direttiva UE 2016/943</strong>. Qualsiasi attività di reverse engineering o sniffing dei flussi dati è severamente proibita e costituisce reato di spionaggio industriale.
+                        <strong>Protocollo RGD-Alpha:</strong> Il motore di calcolo, le architetture neurali e i set di dati proprietari sono protetti come <strong>Segreto Industriale</strong> ai sensi della <strong>Direttiva UE 2016/943</strong>. Qualsiasi attività di reverse engineering o sniffing dei flussi dati è severamente proibita.
                     </p>
                 </div>
 
                 <div class="imprint-block full-width disclaimer-box">
                     <h3 style="border: none; margin-bottom: 10px; font-size: 0.9rem;">Limitazione di Responsabilità e Stato Operativo</h3>
                     <p>
-                        <strong>Avviso Fase Pre-Lancio:</strong> Questo ecosistema digitale ha scopo informativo e di acquisizione partner per la fase di early access. Non vengono processate transazioni economiche dirette fino alla piena operatività fiscale prevista per il Q1 2026.
+                        <strong>Avviso Fase Pre-Lancio:</strong> Questo ecosistema digitale ha scopo informativo e di acquisizione partner per la fase di early access. Non vengono processate transazioni economiche dirette fino al Q1 2026.
                     </p>
                     <p>
-                        <strong>Esonero di Responsabilità:</strong> Gli output generati dai sistemi RGandja costituiscono supporto decisionale basato su logiche predittive. Tali risultati non sostituiscono pareri legali, fiscali o finanziari certificati. La proprietà declina ogni responsabilità per l'implementazione autonoma delle strategie suggerite.
+                        <strong>Esonero di Responsabilità:</strong> Gli output generati costituiscono supporto decisionale. Tali risultati non sostituiscono pareri legali o finanziari certificati. La proprietà declina ogni responsabilità per l'implementazione autonoma delle strategie suggerite.
                     </p>
                 </div>
             </div>
         </div>
     </main>
 
-    <footer class="footer container text-center">
+    <footer class="footer container text-center" style="padding: 60px 20px;">
         <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 40px;">
         <p>© 2026 <strong>RGandja</strong> — Ingegneria dei Sistemi Strategici. Sviluppato ad Atene, Grecia.</p>
         <p style="margin-top: 20px; font-size: 0.85rem;">
-            <a href="privacy.html">Privacy</a> | 
-            <a href="cookies.html">Cookies</a> |
-            <a href="imprint.html" class="active-nav">Note Legali</a>
+            <a href="privacy.html" style="margin: 0 10px; color: #63b3ed; text-decoration: none;">Privacy</a> | 
+            <a href="cookies.html" style="margin: 0 10px; color: #63b3ed; text-decoration: none;">Cookies</a> |
+            <a href="imprint.html" class="active-nav" style="margin: 0 10px; color: var(--accent-gold); text-decoration: none; font-weight: bold;">Note Legali</a>
         </p>
     </footer>
 

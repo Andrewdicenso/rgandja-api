@@ -10,22 +10,65 @@
     
     <link rel="stylesheet" href="style.css">
     <style>
-        .privacy-content h3 { color: #d4af37; margin-top: 30px; border-bottom: 1px solid #1a2332; padding-bottom: 10px; font-size: 1.2rem; }
-        .privacy-content p, .privacy-content li { color: #cbd5e0; line-height: 1.7; font-size: 0.95rem; }
-        .legal-box { background: #0a0e14; padding: 25px; border-radius: 8px; border: 1px solid #2d3748; margin-top: 20px; }
-        .card-expert h3 { margin-top: 0; }
+        /* Variabili locali per consistenza visiva */
+        :root { 
+            --accent-gold: #d4af37; 
+            --border: #1a2332; 
+            --bg-dark: #0a0e14;
+        }
+
+        .privacy-content h3 { 
+            color: var(--accent-gold); 
+            margin-top: 35px; 
+            border-bottom: 1px solid var(--border); 
+            padding-bottom: 12px; 
+            font-size: 1.25rem; 
+            letter-spacing: -0.5px;
+        }
+
+        .privacy-content p, .privacy-content li { 
+            color: #cbd5e0; 
+            line-height: 1.8; 
+            font-size: 0.95rem; 
+        }
+
+        .legal-box { 
+            background: var(--bg-dark); 
+            padding: 30px; 
+            border-radius: 12px; 
+            border: 1px solid #2d3748; 
+            margin-top: 25px; 
+        }
+
         ul { padding-left: 20px; margin-top: 15px; }
-        ul li { margin-bottom: 8px; }
-        .hero-premium { padding: 60px 0; }
-        
-        /* Rafforzamento visuale della nota pre-lancio */
+        ul li { margin-bottom: 10px; }
+
         .pre-launch-warning {
-            background: rgba(212, 175, 55, 0.1); 
+            background: rgba(212, 175, 55, 0.08); 
             padding: 20px; 
-            border-left: 4px solid #d4af37; 
+            border-left: 4px solid var(--accent-gold); 
             margin-top: 20px; 
             font-size: 0.9rem;
             color: #fff;
+            line-height: 1.6;
+        }
+
+        .active-nav {
+            color: var(--accent-gold) !important;
+            font-weight: bold;
+        }
+
+        /* Ottimizzazione Griglia */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-premium { padding: 40px 0; }
+            .privacy-content { padding: 20px; }
+            .legal-box { padding: 20px; }
         }
     </style>
 </head>
@@ -58,68 +101,64 @@
         
         <div class="legal-box">
             <h3>1. Titolare del Trattamento e Sede</h3>
-            <p>Il trattamento dei dati è gestito dalla <strong>Direzione Tecnica RGandja</strong>, con sede operativa in Atene, Attica (Grecia). Il Responsabile della Protezione Dati (DPO) opera in piena conformità con il Regolamento UE 2016/679 (GDPR).</p>
+            <p>Il trattamento dei dati è gestito dalla <strong>Direzione Tecnica RGandja</strong>, con sede operativa in Atene, Attica (Grecia). Il Responsabile della Protezione Dati (DPO) opera in conformità con il GDPR (Regolamento UE 2016/679).</p>
             <p style="margin-top: 15px;">
-                <strong>Identificativo:</strong> Andrew Di Censo Intelligence Systems<br>
+                <strong>Entità:</strong> Andrew Di Censo Intelligence Systems<br>
                 <strong>Sede Operativa:</strong> Sepolion, 10445 Attiki, Grecia<br>
-                <strong>Contatto DPO:</strong> <a href="mailto:privacy@rgandja.com" style="color: #63b3ed; text-decoration: none;">privacy@rgandja.com</a>
+                <strong>Contatto Diretto:</strong> <a href="mailto:privacy@rgandja.com" style="color: #63b3ed; text-decoration: none;">privacy@rgandja.com</a>
             </p>
             
             <div class="pre-launch-warning">
-                <strong>⚠️ NOTA PRE-LANCIO:</strong> Il progetto RGandja è attualmente in fase di finalizzazione burocratica. Attraverso questo sito non vengono effettuate transazioni commerciali né vendita di servizi fino all'attivazione della posizione fiscale. I dati raccolti servono esclusivamente per la gestione della lista d'attesa (Early Access) e comunicazioni tecniche.
+                <strong>⚠️ NOTA PRE-LANCIO:</strong> Il progetto RGandja è in fase di finalizzazione burocratica. Attraverso questo sito non vengono effettuate transazioni commerciali né vendita di servizi fino all'attivazione fiscale prevista per il 2026. I dati raccolti servono esclusivamente per la gestione dell'Early Access.
             </div>
         </div>
 
         <div class="grid-2" style="margin-top: 30px;">
-            <div class="card-expert dark-card">
+            <div class="card-expert dark-card" style="padding: 30px; border: 1px solid var(--border); border-radius: 12px; background: rgba(255,255,255,0.02);">
                 <h3>2. Zero-Training AI Policy</h3>
-                <p>RGandja implementa una politica rigorosa di <strong>Non-Addestramento</strong>. I dati inseriti nelle simulazioni basate su <strong>Protocollo RGD-Alpha</strong> vengono elaborati esclusivamente per generare l'output specifico richiesto. Nessun dato viene utilizzato per addestrare modelli globali di terze parti.</p>
+                <p>RGandja implementa una politica rigorosa di <strong>Non-Addestramento</strong>. I dati inseriti nel <strong>Protocollo RGD-Alpha</strong> vengono elaborati solo per generare l'output specifico richiesto. Nessun dato viene utilizzato per addestrare modelli IA globali di terze parti.</p>
             </div>
-            <div class="card-expert">
-                <h3>3. Tipologia di Dati e Terze Parti</h3>
+            <div class="card-expert" style="padding: 30px; border: 1px solid var(--border); border-radius: 12px;">
+                <h3>3. Tipologia di Dati</h3>
                 <ul>
-                    <li><strong>Dati di Contatto:</strong> Email gestite tramite piattaforma <strong>Brevo (Sendinblue)</strong> su server UE per l'invio sicuro dei report.</li>
-                    <li><strong>Dati Tecnici:</strong> Log per prevenzione frodi e cookie gestiti secondo la nostra <a href="cookies.html" style="color: #d4af37; text-decoration: none;">Cookie Policy</a>.</li>
-                    <li><strong>Parametri Strategici:</strong> Dati di input trattati come segreto industriale e crittografati tramite AES-256.</li>
-                    <li><strong>Proprietà Intellettuale:</strong> L'interazione con il sito non conferisce all'utente alcun diritto di reverse engineering, decompilazione o tentativo di accesso alla logica del Protocollo RGD-Alpha, protetto come segreto industriale (Dir. UE 2016/943).</li>
+                    <li><strong>Contatti:</strong> Email gestite tramite <strong>Brevo (Sendinblue)</strong> su server UE.</li>
+                    <li><strong>Tecnici:</strong> Log di sicurezza e cookie gestiti secondo la <a href="cookies.html" style="color: var(--accent-gold); text-decoration: none;">Cookie Policy</a>.</li>
+                    <li><strong>Segreto Industriale:</strong> Ogni interazione è protetta dalla Dir. UE 2016/943. È vietato ogni tentativo di reverse engineering del Protocollo Alpha.</li>
                 </ul>
             </div>
         </div>
 
-        <div class="legal-box" style="border-top: 2px solid #d4af37; margin-top: 30px;">
-            <h3>4. Standard di Sicurezza Globale (Encryption)</h3>
-            <p>Ogni flusso di dati è protetto da cifratura <strong>AES-256</strong> per i dati archiviati e <strong>TLS 1.3</strong> per i dati in transito. Questo garantisce l'inaccessibilità totale delle tue strategie aziendali a soggetti non autorizzati.</p>
+        <div class="legal-box" style="border-top: 2px solid var(--accent-gold); margin-top: 30px;">
+            <h3>4. Crittografia e Sicurezza</h3>
+            <p>Ogni flusso di dati è protetto da cifratura <strong>AES-256</strong> per i dati a riposo e <strong>TLS 1.3</strong> per i dati in transito. Questo garantisce l'inaccessibilità totale delle tue strategie aziendali.</p>
         </div>
 
         <h3>5. Trasferimento Internazionale dei Dati</h3>
-        <p>Operando su scala globale, RGandja assicura che il trattamento dei dati avvenga secondo le <strong>Standard Contractual Clauses (SCCs)</strong> della Commissione Europea, garantendo protezione equivalente a quella UE ovunque.</p>
+        <p>Garantiamo che il trattamento avvenga secondo le <strong>Standard Contractual Clauses (SCCs)</strong> della Commissione Europea, assicurando protezione equivalente a quella UE su scala globale.</p>
 
         <div class="grid-2" style="margin-top: 30px;">
-            <div class="card-expert">
-                <h3>6. CCPA & Diritti Internazionali</h3>
-                <p>Applichiamo la politica "Do Not Sell My Personal Information": la Direzione Tecnica RGandja non vende, né scambia dati per finalità pubblicitarie.</p>
+            <div class="card-expert" style="padding: 30px; border: 1px solid var(--border); border-radius: 12px;">
+                <h3>6. CCPA & Diritti Globali</h3>
+                <p>Applichiamo la politica "Do Not Sell My Personal Information": la Direzione Tecnica RGandja non vende dati per finalità pubblicitarie.</p>
             </div>
-            <div class="card-expert dark-card">
-                <h3>7. Diritti dell'Interessato (GDPR)</h3>
-                <p>In conformità al GDPR, hai il diritto di accedere, rettificare o richiedere la cancellazione immediata ("Diritto all'Oblio") di ogni parametro associato alla tua licenza.</p>
+            <div class="card-expert dark-card" style="padding: 30px; border: 1px solid var(--border); border-radius: 12px; background: rgba(255,255,255,0.02);">
+                <h3>7. Diritti GDPR</h3>
+                <p>Hai il diritto di accedere, rettificare o richiedere la cancellazione immediata ("Diritto all'Oblio") di ogni parametro associato alla tua licenza o sessione.</p>
             </div>
         </div>
 
-        <h3>8. Conservazione dei Dati</h3>
-        <p>I dati delle simulazioni temporanee vengono eliminati al termine della sessione. I report finali rimangono accessibili solo tramite il link crittografato inviato al cliente. Le analisi non confermate vengono rimosse dai sistemi ogni 30 giorni.</p>
-
-        <div class="text-center" style="margin-top: 60px;">
+        <div class="text-center" style="margin-top: 60px; border-top: 1px solid var(--border); padding-top: 30px;">
             <p style="opacity: 0.6;"><small>Ultimo aggiornamento: 2 Gennaio 2026 | Protocollo RGD-PRV-4.0-GLOBAL</small></p>
         </div>
     </main>
 
-    <footer class="footer container text-center">
-        <hr style="border: 0; border-top: 1px solid #1a2332; margin-bottom: 30px;">
-        <p>© 2026 RGandja — Architettura dei sistemi proprietaria</p>
-        <p>
-            <a href="privacy.html" style="color: #63b3ed;">Privacy Policy</a> | 
-            <a href="cookies.html" style="color: #63b3ed;">Cookie Policy</a> | 
-            <a href="imprint.html" style="color: #63b3ed;">Note Legali</a>
+    <footer class="footer container text-center" style="padding-bottom: 50px;">
+        <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 30px;">
+        <p>© 2026 <strong>RGandja</strong> — Architettura dei sistemi proprietaria</p>
+        <p style="margin-top: 15px;">
+            <a href="privacy.html" class="active-nav" style="text-decoration: none; margin: 0 10px;">Privacy Policy</a> | 
+            <a href="cookies.html" style="color: #63b3ed; text-decoration: none; margin: 0 10px;">Cookie Policy</a> | 
+            <a href="imprint.html" style="color: #63b3ed; text-decoration: none; margin: 0 10px;">Note Legali</a>
         </p>
     </footer>
 </body>

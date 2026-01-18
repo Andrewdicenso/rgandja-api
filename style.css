@@ -1,14 +1,14 @@
 /* ============================================================
     RGANDJA NEURAL ENGINE - OFFICIAL DESIGN SYSTEM 2026
     Architect: Andrew Di Censo
-    Version: 5.2.0 - Stable Deployment
+    Version: 5.2.1 - Stable Deployment (Optimized)
    ============================================================ */
 
 :root {
     /* Palette Core */
     --primary: #0f172a; 
-    --accent: #10b981;        /* Tech Green */
-    --accent-gold: #d4af37;   /* RGandja Premium Gold */
+    --accent: #10b981;         /* Tech Green */
+    --accent-gold: #d4af37;    /* RGandja Premium Gold */
     --accent-gold-light: #f2d472;
     
     /* Superfici e Testi */
@@ -42,6 +42,13 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+}
+
+/* Supporto Immagini Responsive (Refinement 1) */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 /* 2. HEADER & NAVIGATION */
@@ -164,6 +171,12 @@ body {
     box-shadow: var(--shadow-premium);
 }
 
+/* Supporto specifico per varianti scure (Refinement 2) */
+.dark-card {
+    background: rgba(0, 0, 0, 0.4) !important;
+    backdrop-filter: blur(10px);
+}
+
 /* 5. TERMINALE E INPUTS */
 .terminal {
     background: #050810;
@@ -213,6 +226,8 @@ input:focus {
     display: inline-block;
     border: none;
     cursor: pointer;
+    text-decoration: none;
+    text-align: center;
 }
 
 .btn-gold {
@@ -225,12 +240,33 @@ input:focus {
     box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
 }
 
-/* 7. FOOTER */
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--accent-gold);
+    color: var(--accent-gold);
+}
+
+.btn-outline:hover {
+    background: rgba(212, 175, 55, 0.1);
+    transform: translateY(-3px);
+}
+
+/* 7. FOOTER & LINK ESTERNI (Refinement 3) */
 .footer {
     padding: 80px 0 40px;
     background: #010409;
     border-top: 1px solid var(--border);
     color: var(--text-muted);
+}
+
+.footer a {
+    color: var(--text-muted);
+    transition: var(--transition-smooth);
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: var(--accent-gold);
 }
 
 /* 8. MEDIA QUERIES */
@@ -240,6 +276,8 @@ input:focus {
 }
 
 @media (max-width: 768px) {
-    .main-nav { display: none; } /* Qui potresti implementare un menu mobile */
+    .main-nav { display: none; } 
+    .header-inner { justify-content: center; }
     .section { padding: 60px 0; }
+    .container { padding: 0 20px; }
 }
