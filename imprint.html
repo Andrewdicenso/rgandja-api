@@ -80,6 +80,26 @@
             margin-bottom: 20px;
         }
 
+        /* Stile specifico per il blocco bancario */
+        .bank-info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .bank-info-list li {
+            margin-bottom: 8px;
+            color: var(--text-muted);
+            font-family: monospace;
+            font-size: 1rem;
+        }
+        .bank-info-list strong {
+            color: var(--accent-gold);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            margin-right: 10px;
+        }
+
         /* Gestione Mobile */
         @media (max-width: 768px) {
             .imprint-grid { grid-template-columns: 1fr; gap: 30px; }
@@ -118,7 +138,7 @@
 
     <main class="section container">
         <div class="card-expert dark-card" style="padding: 60px; border: 1px solid var(--border); background: #0a0e14; border-radius: 16px;">
-            <div class="legal-stamp">Official Document v2.2 - Jan 2026</div>
+            <div class="legal-stamp">Official Document v2.3 - Jan 2026</div>
             
             <div class="imprint-grid">
                 
@@ -137,6 +157,20 @@
                     <p>Informazioni Generali:<br><a href="mailto:info@rgandja.it">info@rgandja.it</a></p>
                     <p>Supporto Tecnico:<br><a href="mailto:supporto@rgandja.it">supporto@rgandja.it</a></p>
                     <p>Ufficio Amministrativo:<br><a href="mailto:amministrazione@rgandja.it">amministrazione@rgandja.it</a></p>
+                </div>
+
+                <div class="imprint-block full-width" style="background: rgba(212, 175, 55, 0.03); border: 1px solid rgba(212, 175, 55, 0.2);">
+                    <h3>Coordinate Bancarie (Corporate Payments)</h3>
+                    <p>Per l'attivazione di licenze Enterprise e transazioni B2B tramite bonifico bancario SEPA:</p>
+                    <ul class="bank-info-list">
+                        <li><strong>Istituto:</strong> EUROBANK S.A. (8, Othonos Str., Athens)</li>
+                        <li><strong>Beneficiario:</strong> ANDREW DI CENSO</li>
+                        <li><strong>IBAN:</strong> GR51 0260 2200 0009 1020 0946 152</li>
+                        <li><strong>Currency:</strong> EUR</li>
+                    </ul>
+                    <p style="margin-top: 15px; font-size: 0.8rem; font-style: italic;">
+                        Nota: Inserire il proprio ID Cliente o numero di proforma nella causale del versamento.
+                    </p>
                 </div>
 
                 <div class="imprint-block full-width">
