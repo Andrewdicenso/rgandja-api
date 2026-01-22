@@ -42,7 +42,6 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* Supporto Immagini Responsive */
 img { max-width: 100%; height: auto; display: block; }
 
 /* 2. HEADER & NAVIGATION */
@@ -94,7 +93,7 @@ img { max-width: 100%; height: auto; display: block; }
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
 
-/* 4. COMPONENTI PREMIUM */
+/* 4. COMPONENTI PREMIUM & EVIDENZIAZIONE CARD */
 .hero-premium {
     padding: 160px 0 100px;
     background: radial-gradient(circle at 50% 0%, #1e293b 0%, var(--bg-app) 80%);
@@ -139,6 +138,24 @@ img { max-width: 100%; height: auto; display: block; }
     border-color: var(--accent-gold);
     transform: translateY(-10px);
     box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+}
+
+/* LOGICA DI EVIDENZIAZIONE DINAMICA PER LA DEMO */
+.highlight-glow { 
+    animation: glow-premium 2s infinite alternate ease-in-out; 
+    border-color: var(--accent-gold) !important;
+}
+
+.featured-card { 
+    border: 2px solid var(--accent-gold) !important; 
+    transform: translateY(-15px);
+    box-shadow: 0 20px 50px rgba(212, 175, 55, 0.3);
+    background: rgba(15, 23, 42, 0.95) !important;
+}
+
+@keyframes glow-premium { 
+    from { box-shadow: 0 0 15px rgba(212, 175, 55, 0.1); } 
+    to { box-shadow: 0 0 40px rgba(212, 175, 55, 0.45); } 
 }
 
 /* 5. TERMINALE & FORM */
