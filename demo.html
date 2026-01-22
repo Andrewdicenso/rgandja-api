@@ -11,7 +11,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neural Playground v5.2 PRO - RGandja</title>
+    <title>Neural Playground v5.2 PRO - RGandja Decision Intelligence</title>
     
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="style.css">
@@ -154,14 +154,14 @@
 <body>
 
     <div id="cookie-banner">
-        <span style="color:white; font-size:0.85rem;">Sessione crittografata attiva. Monitoraggio per scopi analitici RGD. <a href="privacy.html" style="color:var(--accent-gold)">Info</a></span>
-        <button onclick="acceptCookies()" style="background:var(--accent-gold); border:none; padding:8px 15px; border-radius:4px; font-weight:bold; cursor:pointer;">OK</button>
+        <span style="color:white; font-size:0.85rem;">Protocollo di sicurezza attivo. Monitoraggio nodi per scopi analitici RGD. <a href="cookies.html" style="color:var(--accent-gold)">Info Cookie</a></span>
+        <button onclick="acceptCookies()" style="background:var(--accent-gold); border:none; padding:8px 15px; border-radius:4px; font-weight:bold; cursor:pointer;">ACCONSENTO</button>
     </div>
 
     <header class="header">
         <div class="header-inner container">
             <div class="header-brand">
-                <img src="logo.png" alt="Logo" class="brand-logo">
+                <img src="logo.png" alt="Logo RGandja" class="brand-logo">
                 <h1>RGandja</h1>
             </div>
             <nav class="main-nav">
@@ -177,7 +177,7 @@
     <div class="container text-center" style="margin-top: 70px; margin-bottom: 40px;">
         <span class="badge-status">SANDBOX ENVIRONMENT</span>
         <h2 style="font-size: 2.5rem; letter-spacing: -1px; margin-top: 15px;">Neural Engine v5.2 Alpha</h2>
-        <p style="color: var(--text-muted); max-width: 600px; margin: 20px auto;">Simulatore limitato del Protocollo RGD-Alpha. Testa la resilienza operativa della tua struttura.</p>
+        <p style="color: var(--text-muted); max-width: 600px; margin: 20px auto;">Interfaccia di simulazione limitata. Testa i parametri operativi sotto il Protocollo di Certezza.</p>
     </div>
 
     <div class="terminal">
@@ -185,20 +185,20 @@
             <div style="font-size: 4rem; margin-bottom: 20px;">🔒</div>
             <h2 style="color: var(--accent-gold); margin-bottom: 15px; font-size: 2rem;">ANALISI COMPLETATA</h2>
             <p style="max-width: 500px; color: var(--text-gray); margin-bottom: 30px; line-height: 1.6;">
-                I nodi neurali hanno identificato i punti di attrito. Inserisci la tua email per decriptare il report e ricevere la <strong>Roadmap Strategica</strong>.
+                I nodi neurali hanno processato i dati. Inserisci la tua email aziendale per decriptare il report e ricevere la <strong>Roadmap di Ottimizzazione 2026</strong>.
             </p>
             
-            <input type="email" id="user-email" placeholder="email@azienda.it" 
+            <input type="email" id="user-email" placeholder="nome@azienda.it" 
                    style="width: 100%; max-width: 420px; padding: 16px; margin-bottom: 20px; background: #fff; color: #000; font-weight: bold; border: none;">
             
             <div style="margin-bottom: 30px; max-width: 420px; text-align: left;">
                 <label style="display: flex; align-items: flex-start; gap: 12px; cursor: pointer; color: var(--text-gray); font-family: sans-serif; font-size: 0.75rem; line-height: 1.4;">
                     <input type="checkbox" id="privacy-check" style="width: auto; margin-top: 2px;">
-                    <span>Accetto il trattamento dati per ricevere l'analisi e l'accesso prioritario Early Access. <a href="privacy.html" target="_blank" style="color: var(--accent-gold);">Privacy Policy</a>.</span>
+                    <span>Dichiaro di aver letto la <a href="privacy.html" target="_blank" style="color: var(--accent-gold);">Privacy Policy</a> e acconsento al trattamento dei dati per la ricezione dell'analisi.</span>
                 </label>
             </div>
 
-            <button class="btn-execute" onclick="spedisciReport()">DECRIPTA REPORT & ROADMAP</button>
+            <button class="btn-execute" onclick="spedisciReport()">DECRIPTA & SCARICA REPORT</button>
         </div>
 
         <div class="term-header">
@@ -219,10 +219,10 @@
                     </select>
                 </div>
                 <div class="form-group"><label>Superficie Operativa (mq)</label><input type="number" id="mq" value="250"></div>
-                <div class="form-group"><label>Capitale Umano</label><input type="number" id="dipendenti" value="12"></div>
+                <div class="form-group"><label>Capitale Umano (risorse)</label><input type="number" id="dipendenti" value="12"></div>
                 <div class="form-group"><label>Ore Inattività/Sett</label><input type="number" id="assenze" value="8"></div>
                 <div class="form-group"><label>Assorbimento Standby (W)</label><input type="number" id="watt" value="320"></div>
-                <div class="form-group"><label>Budget Operativo (€)</label><input type="number" id="budget" value="120000"></div>
+                <div class="form-group"><label>Budget Operativo Annuo (€)</label><input type="number" id="budget" value="120000"></div>
             </div>
 
             <button onclick="runNeuralAnalysis()" class="btn-execute" id="btnRun">LANCIA ELABORAZIONE NEURALE</button>
@@ -233,6 +233,21 @@
             </div>
         </div>
     </div>
+
+    
+
+    <footer class="footer container text-center" style="margin-top: 100px; padding-bottom: 50px;">
+        <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 40px;">
+        <p style="color: var(--text-main); font-weight: 600; letter-spacing: 1px;">© 2026 <strong>RGANDJA ENTERPRISE ΜΟΝΟΠΡΟΣΩΠΗ ΙΚΕ</strong></p>
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 10px;">
+            Sepolion 42, 10445 Atene (Grecia) | P.IVA: EL803131007 | G.E.MI.: 190286401000
+        </p>
+        <p style="margin: 25px 0;">
+            <a href="privacy.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-size: 0.85rem;">Privacy</a> | 
+            <a href="cookies.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-size: 0.85rem;">Cookies</a> | 
+            <a href="imprint.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-size: 0.85rem;">Note Legali</a>
+        </p>
+    </footer>
 
     <script>
         function acceptCookies() {
@@ -308,12 +323,12 @@
             const privacyChecked = document.getElementById('privacy-check').checked;
             
             if (!privacyChecked || !emailUtente || !emailUtente.includes('@')) {
-                alert("Parametri mancanti: verifica email e consenso privacy.");
+                alert("Verifica i dati inseriti e accetta la Privacy Policy.");
                 return;
             }
 
             const bottone = document.querySelector('.paywall-overlay .btn-execute');
-            bottone.innerText = "INVIO REPORT CRITTOGRAFATO...";
+            bottone.innerText = "CRIPTAZIONE E INVIO...";
             bottone.disabled = true;
 
             fetch('https://rgandja-api.onrender.com/email/invia-report', {
@@ -326,7 +341,6 @@
             })
             .then(response => {
                 const scelto = document.getElementById('algoritmo').value;
-                // Reindirizziamo l'utente alla pagina prezzi portando con noi la sua scelta
                 window.location.href = `prezzi.html?tipo=${scelto}`;
             });
         }

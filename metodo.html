@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6TTVMQFNY6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6TTVMQFNY6');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Il Metodo - RGandja Decision Intelligence</title>
@@ -8,56 +16,54 @@
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Variabili di sicurezza per coerenza con style.css */
         :root {
             --accent-gold: #d4af37;
             --border: #1a2332;
-            --glass: rgba(15, 23, 42, 0.6);
+            --glass: rgba(10, 15, 25, 0.7);
             --text-muted: #94a3b8;
             --transition-smooth: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            --shadow-premium: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(212, 175, 55, 0.1);
+            --shadow-premium: 0 25px 50px rgba(0,0,0,0.5), 0 0 15px rgba(212, 175, 55, 0.05);
         }
 
-        /* Ottimizzazione Specifica per Step Card */
         .method-steps {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 80px;
         }
 
         .step-card {
             background: var(--glass);
-            padding: 50px 40px;
-            border-radius: 20px;
+            padding: 60px 45px;
+            border-radius: 12px;
             border: 1px solid var(--border);
             position: relative;
             transition: var(--transition-smooth);
             overflow: hidden;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
         }
 
         .step-card:hover {
-            transform: translateY(-12px);
+            transform: translateY(-15px);
             border-color: var(--accent-gold);
             box-shadow: var(--shadow-premium);
         }
 
         .step-num {
             font-family: 'Inter', sans-serif;
-            font-size: 7rem;
+            font-size: 8rem;
             font-weight: 900;
-            color: rgba(212, 175, 55, 0.05);
+            color: rgba(212, 175, 55, 0.03);
             position: absolute;
-            top: -10px;
+            top: -20px;
             right: -10px;
             pointer-events: none;
             line-height: 1;
         }
         
         .ai-human-fusion {
-            font-size: 5rem;
-            filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.3));
+            font-size: 5.5rem;
+            filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.4));
             text-align: center;
             animation: pulse-gold 4s infinite ease-in-out;
             position: relative;
@@ -65,22 +71,22 @@
         }
 
         @keyframes pulse-gold {
-            0%, 100% { transform: scale(1); opacity: 0.8; }
-            50% { transform: scale(1.08); opacity: 1; }
+            0%, 100% { transform: scale(1); filter: brightness(1); }
+            50% { transform: scale(1.05); filter: brightness(1.3); }
         }
 
         .logic-tag {
             display: inline-block;
-            padding: 6px 14px;
-            background: rgba(16, 185, 129, 0.1);
-            color: #10b981;
+            padding: 8px 16px;
+            background: rgba(39, 201, 63, 0.1);
+            color: #27c93f;
             border-radius: 4px;
             font-size: 0.7rem;
             font-weight: 800;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            border: 1px solid rgba(16, 185, 129, 0.2);
+            letter-spacing: 2.5px;
+            border: 1px solid rgba(39, 201, 63, 0.2);
         }
 
         .active-nav {
@@ -88,9 +94,10 @@
             border-bottom: 2px solid var(--accent-gold);
         }
 
-        @media (max-width: 768px) {
-            .hero-premium h1 { font-size: 2.2rem; }
-            .step-card { padding: 40px 25px; }
+        .info-block h3 {
+            color: #fff;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
         }
     </style>
 </head>
@@ -116,87 +123,93 @@
     <main>
         <section class="hero-premium">
             <div class="container text-center">
-                <span class="badge-status">PROPRIETARY METHODOLOGY</span>
-                <h1>Ingegneria Decisionale Applicata</h1>
-                <p class="hero-subtitle">
-                    Il Protocollo <strong>RGD-Alpha</strong> trasforma flussi di dati volatili in sequenze operative deterministiche ad alto rendimento.
+                <span class="badge-status">RGD-ALPHA PROTOCOL V.4.0</span>
+                <h1 style="font-size: 3.5rem;">Ingegneria Decisionale Applicata</h1>
+                <p class="hero-subtitle" style="max-width: 850px; margin: 0 auto;">
+                    Il sistema RGandja non si limita all'analisi. Il Protocollo <strong>RGD-Alpha</strong> progetta architetture deterministiche che isolano il valore dal rumore di mercato.
                 </p>
             </div>
         </section>
+
+        
 
         <section class="section container">
             <div class="method-steps">
                 <div class="step-card">
                     <div class="step-num">01</div>
-                    <span class="logic-tag">Data Ingestion & Stress Test</span>
-                    <h3>Analisi Predittiva Multilivello</h3>
-                    <p>Il sistema acquisisce i parametri core. Attraverso il motore neurale, RGandja simula milioni di micro-scenari per identificare il "Percorso di Minor Attrito" (LFP) massimizzando il rendimento atteso.</p>
+                    <span class="logic-tag">Stress Test Analysis</span>
+                    <h3>Ingestione & Simulazione</h3>
+                    <p style="color: var(--text-muted); line-height: 1.7;">Acquisiamo i parametri core del tuo business. Attraverso il cluster neurale di Atene, simuliamo milioni di scenari per mappare il <strong>Lowest Friction Path (LFP)</strong>: la via di massima crescita con il minor attrito operativo.</p>
                 </div>
 
                 <div class="step-card">
                     <div class="step-num">02</div>
-                    <span class="logic-tag">Neural Shield Compliance</span>
-                    <h3>Validazione delle Tutele</h3>
-                    <p>Ogni opzione generata viene filtrata dal nostro scudo di compliance. Algoritmi fissi verificano la sicurezza legale e la sostenibilità operativa, scartando istantaneamente i rischi non calcolati.</p>
+                    <span class="logic-tag">Neural Shield</span>
+                    <h3>Validazione & Compliance</h3>
+                    <p style="color: var(--text-muted); line-height: 1.7;">Ogni soluzione viene passata attraverso il "Neural Shield". Filtriamo le opzioni secondo rigidi parametri di sicurezza legale, sostenibilità e protezione degli asset, scartando istantaneamente i rischi asimmetrici.</p>
                 </div>
 
                 <div class="step-card">
                     <div class="step-num">03</div>
                     <span class="logic-tag">Deterministic Output</span>
-                    <h3>Protocollo d'Azione Diretto</h3>
-                    <p>Restituiamo direttive d'esecuzione: lo schema esatto degli investimenti, tempi millimetrati di attivazione e contromisure dinamiche per garantire la stabilità totale del progetto.</p>
+                    <h3>Esecuzione Blindata</h3>
+                    <p style="color: var(--text-muted); line-height: 1.7;">Il risultato è un Protocollo d'Azione. Riceverai direttive esatte: timing di esecuzione, allocazione millimetrica del capitale e contromisure dinamiche pre-impostate per garantire la stabilità totale del progetto.</p>
                 </div>
             </div>
         </section>
 
-        <section class="section" style="background: #050810; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+        <section class="section" style="background: #050810; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 100px 0;">
             <div class="container">
-                <div class="grid-2" style="align-items: center;">
+                <div class="grid-2" style="align-items: center; gap: 60px;">
                     <div class="info-block">
-                        <h2 style="color: #fff; margin-bottom: 30px; font-size: 2.2rem; letter-spacing: -1px;">Sinergia Core: Hybrid Intelligence</h2>
-                        <p style="font-size: 1.15rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 25px;">
-                            Risolviamo il paradosso della tecnologia moderna: la potenza senza controllo è inutile. Utilizziamo il calcolo neurale per la velocità, filtrandolo attraverso un'architettura deterministica.
+                        <h2 style="color: #fff; margin-bottom: 30px; font-size: 2.5rem; letter-spacing: -1.5px;">Sinergia Core: Hybrid Intelligence</h2>
+                        <p style="font-size: 1.2rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 25px;">
+                            Utilizziamo il calcolo neurale avanzato per processare la complessità, ma il verdetto finale è regolato da logiche deterministiche. Questo elimina l'allucinazione tecnologica e garantisce risultati ripetibili.
                         </p>
-                        <div style="border-left: 3px solid var(--accent-gold); padding-left: 25px; margin-top: 40px;">
-                            <p style="color: var(--accent-gold); font-weight: 700; font-style: italic; font-size: 1.1rem;">
-                                "Ogni variabile è isolata. Ogni rischio è quantificato. Ogni decisione è blindata dal protocollo."
+                        <div style="border-left: 4px solid var(--accent-gold); padding-left: 30px; margin-top: 45px; background: rgba(212,175,55,0.05); padding-top: 20px; padding-bottom: 20px;">
+                            <p style="color: var(--accent-gold); font-weight: 700; font-style: italic; font-size: 1.15rem; margin: 0;">
+                                "Isoliamo le variabili. Quantifichiamo l'impatto. Blindiamo il futuro."
                             </p>
                         </div>
                     </div>
                     <div class="method-graphic text-center">
-                        <div class="ai-human-fusion">🧠+⚡</div>
-                        <p style="color: var(--accent-gold); font-family: monospace; letter-spacing: 4px; margin-top: 30px; font-size: 0.75rem; font-weight: 800;">ENGINE STATUS: OPTIMIZED</p>
+                        <div class="ai-human-fusion">🧬</div>
+                        <p style="color: var(--accent-gold); font-family: 'Fira Code', monospace; letter-spacing: 5px; margin-top: 35px; font-size: 0.8rem; font-weight: 800; background: rgba(0,0,0,0.5); display: inline-block; padding: 10px 20px; border-radius: 4px; border: 1px solid rgba(212,175,55,0.2);">
+                            SYSTEM STATUS: OPTIMIZED
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section container text-center" style="padding: 100px 20px;">
-            <h2 style="margin-bottom: 30px; font-size: 2.5rem; letter-spacing: -1px;">Implementa l'Architettura della Certezza</h2>
-            <p style="color: var(--text-muted); margin-bottom: 50px; max-width: 750px; margin-left: auto; margin-right: auto; font-size: 1.1rem;">
-                Utilizza la stessa ingegneria decisionale dei top player internazionali per dominare la complessità del mercato attuale.
+        <section class="section container text-center" style="padding: 120px 20px;">
+            <h2 style="margin-bottom: 30px; font-size: 2.8rem; letter-spacing: -1.5px;">Domina la Complessità</h2>
+            <p style="color: var(--text-muted); margin-bottom: 60px; max-width: 800px; margin-left: auto; margin-right: auto; font-size: 1.2rem; line-height: 1.7;">
+                Non lasciare la tua strategia al caso o a algoritmi non controllati. Implementa oggi stesso l'architettura decisionale utilizzata dai leader della resilienza globale.
             </p>
-            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                <a href="demo.html" class="btn-gold" style="padding: 18px 35px; text-decoration: none; color: #000; font-weight: 800; border-radius: 8px; background: linear-gradient(90deg, #d4af37, #f2d472); text-transform: uppercase;">Avvia Demo Metodologica</a>
-                <a href="contatti.html" style="padding: 18px 35px; text-decoration: none; color: var(--accent-gold); font-weight: 800; border-radius: 8px; border: 1px solid var(--accent-gold); text-transform: uppercase;">Parla con un Advisor</a>
+            <div style="display: flex; justify-content: center; gap: 25px; flex-wrap: wrap;">
+                <a href="demo.html" class="btn-gold" style="padding: 20px 45px; text-decoration: none; color: #000; font-weight: 900; border-radius: 6px; background: var(--accent-gold); text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 10px 30px rgba(212,175,55,0.3);">Avvia Analisi Protocollo</a>
+                <a href="contatti.html" style="padding: 20px 45px; text-decoration: none; color: var(--accent-gold); font-weight: 800; border-radius: 6px; border: 1px solid var(--accent-gold); text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s;">Consultazione Senior Advisor</a>
             </div>
         </section>
     </main>
 
-    <footer class="footer container text-center">
-        <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 40px;">
-        <p>© 2026 <strong>RGandja</strong> — Strategic Engineering Division</p>
-        <p style="margin-top: 15px; font-size: 0.85rem; color: var(--text-muted);">
-            Attiki, Greece — International Decision Intelligence Hub
-        </p>
-        <p style="margin: 25px 0;">
-            <a href="privacy.html" style="color: #63b3ed; text-decoration: none; margin: 0 10px;">Privacy Policy</a> | 
-            <a href="cookies.html" style="color: #63b3ed; text-decoration: none; margin: 0 10px;">Cookie Policy</a> | 
-            <a href="imprint.html" style="color: #63b3ed; text-decoration: none; margin: 0 10px;">Note Legali</a>
-        </p>
-        <div style="opacity: 0.4; font-size: 9px; color: var(--text-muted); max-width: 500px; margin: 0 auto; text-transform: uppercase; letter-spacing: 0.5px;">
-            Proprietà intellettuale di A. Di Censo. RGandja™ è un marchio registrato.
+    <footer class="footer container text-center" style="padding-bottom: 50px;">
+        <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 50px;">
+        <div style="margin-bottom: 40px;">
+            <p style="font-size: 0.8rem; color: #fff; font-weight: 700; margin-bottom: 10px; letter-spacing: 1px;">
+                © 2026 RGANDJA ENTERPRISE ΜΟΝΟΠΡΟΣΩΠΗ ΙΚΕ
+            </p>
+            <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.8;">
+                VAT (AFM): EL803131007 | G.E.MI.: 190286401000<br>
+                Strategic Hub: Sepolion 42, 10445 Atene (Grecia)
+            </p>
         </div>
+        <p>
+            <a href="privacy.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem; margin: 0 15px;">Privacy Policy</a>
+            <a href="cookies.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem; margin: 0 15px;">Cookie Policy</a>
+            <a href="imprint.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem; margin: 0 15px;">Note Legali</a>
+        </p>
     </footer>
 
 </body>

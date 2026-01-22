@@ -1,15 +1,19 @@
-from weakref import ref
-from fastapi import FastAPI
+import json
+import os
+import math
+import datetime
+from typing import Optional
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-from typing import Optional
-import datetime
+import sib_api_v3_sdk
+from sib_api_v3_sdk.rest import ApiException
 
-app = FastAPI(title="RGandja Neural API", version="1.0.0")
+app = FastAPI(title="RGandja Neural Core", version="5.0.0")
 
-# ==========================
-# CORS (per il sito RGandja)
-# ==========================
+# ============================================================
+# CONFIGURAZIONE & CORS
+# ============================================================
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["https://rgandja.com", "https://www.rgandja.com"],
@@ -18,10 +22,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ==========================
-# MODELLI DATI
-# ==========================
-
+# ============================================================
+# MODELLI DATI (STRUTTURA RGD-ALPHA)
+# ============================================================
 class InputData(BaseModel):
     algoritmo: str           # junior / pmi / enterprise
     budget: float
@@ -31,7 +34,6 @@ class InputData(BaseModel):
     metri_quadri: float
     num_dipendenti: int
 
-
 class PdfRequest(BaseModel):
     algoritmo: str
     budget: float
@@ -39,570 +41,134 @@ class PdfRequest(BaseModel):
     premium: bool
     email: Optional[str] = None
 
-
-# ==========================
-# FUNZIONI INTERNE (PLACEHOLDER)
-# Qui inseriremo il vero algoritmo RGD-Alpha
-# ==========================
-
-def calcolo_rgandja_core(data: InputData) -> dict:
-    """
-    Placeholder logico: qui in futuro mettiamo il vero motore RGD-Alpha.
-    Ora restituisce solo una simulazione coerente.
-    """
-    risparmio_stimato = round(data.budget * 0.12, 2)
-    efficienza_neurale = max(0, round(100 - data.ore_assenze * 0.8, 2))
-    intensita_energetica = round(data.standby_watt * data.metri_quadri / 1000, 2)
-
-    risultato = f"""
-> RGandja Neural Engine v1.0
-> Algoritmo selezionato: {data.algoritmo.upper()}
-
-Budget annuale analizzato: €{data.budget:,.2f}
-Numero dipendenti: {data.num_dipendenti}
-Superficie operativa: {data.metri_quadri} mq
-Assenze settimanali: {data.ore_assenze} ore
-Standby energetico stimato: {data.standby_watt} W
-
-→ Risparmio potenziale stimato: €{risparmio_stimato:,.2f}
-→ Efficienza neurale stimata: {efficienza_neurale}%
-→ Intensità energetica: {intensita_energetica} kWh/unità
-
-Nota: Questo output è una preview strategica. I valori finali dipendono dalla calibrazione completa del Protocollo RGD-Alpha.
-""".strip()
-
-    return {
-        "risultato": risultato,
-        "risparmio_stimato": risparmio_stimato,
-        "efficienza_neurale": efficienza_neurale,
-        "intensita_energetica": intensita_energetica,
-    }
-
-
-def genera_link_pdf_placeholder(premium: bool) -> str:
-    """
-    Placeholder: in futuro qui collegheremo il vero generatore PDF.
-    Ora restituisce un URL fittizio coerente.
-    """
-    if premium:
-        return "https://rgandja.com/static/report-premium-sample.pdf"
-    else:
-        return "https://rgandja.com/static/report-preview-sample.pdf"
-
-
-# ==========================
-# 1) API /calcola
-# ==========================
-@app.post("/calcola")
-def calcola(data: InputData):
-    core = calcolo_rgandja_core(data)
-
-    # Logica paywall base: premium solo per alcuni casi (placeholder)
-    is_premium_locked = True
-
-    pdf_link = genera_link_pdf_placeholder(premium=False)
-
-    return {
-        "risultato": core["risultato"],
-        "is_premium_locked": is_premium_locked,
-        "pdf_link": pdf_link,
-        "kpi": {
-            "risparmio_stimato": core["risparmio_stimato"],
-            "efficienza_neurale": core["efficienza_neurale"],
-            "intensita_energetica": core["intensita_energetica"],
-        }
-    }
-
-
-# ==========================
-# 2) API /genera-pdf  (Premium)
-# ==========================
-@app.post("/genera-pdf")
-def genera_pdf(req: PdfRequest):
-    # Controllo licenza via email
-    if not req.email or not verifica_licenza(req.email):
-        return {"error": "Accesso negato: licenza non valida"}
-
-    pdf_link = genera_link_pdf_placeholder(premium=True)
-
-    return {
-        "status": "ok",
-        "premium": True,
-        "pdf_link": pdf_link
-    }
-
-
-
-
-# ==========================
-# 3) API /preview-pdf  (Free)
-# ==========================
-@app.post("/preview-pdf")
-def preview_pdf(req: PdfRequest):
-    pdf_link = genera_link_pdf_placeholder(premium=False)
-
-    return {
-        "status": "ok",
-        "premium": False,
-        "pdf_link": pdf_link
-    }
-
-
-# ==========================
-# 4) API /status
-# ==========================
-@app.get("/status")
-def status():
-    now = datetime.datetime.utcnow().isoformat() + "Z"
-    return {
-        "status": "online",
-        "engine": "RGandja Neural Core v1.0.0",
-        "timestamp": now
-    }
-import json
-import os
-def verifica_licenza(email: str) -> bool:
-    """
-    Restituisce True se l'utente ha licenza Argento o Oro.
-    Restituisce False se l'utente ha licenza Bronzo o non esiste.
-    """
-    path = "users.json"
-    if not os.path.exists(path):
-        return False
-
-    with open(path, "r") as f:
-        users = json.load(f)
-
-    for u in users:
-        if u["email"] == email:
-            return u["licenza"] in ["Argento", "Oro"]
-
-    return False
-
-
-# -----------------------------
-# API /register
-# -----------------------------
-@app.post("/register")
-def register(email: str, password: str):
-    path = "users.json"
-    if not os.path.exists(path):
-        return {"error": "File users.json non trovato"}
-
-    with open(path, "r") as f:
-        users = json.load(f)
-
-    if any(u["email"] == email for u in users):
-        return {"error": "Utente già esistente"}
-
-    new_user = {
-        "email": email,
-        "password": password,
-        "licenza": "Bronzo",
-        "scadenza": "2026-06-30"
-    }
-    users.append(new_user)
-
-    with open(path, "w") as f:
-        json.dump(users, f, indent=2)
-
-    return {"status": "registrazione completata", "licenza": "Bronzo"}
-
-# -----------------------------
-# API /login
-# -----------------------------
-@app.post("/login")
-def login(email: str, password: str):
-    path = "users.json"
-    if not os.path.exists(path):
-        return {"error": "File users.json non trovato"}
-
-    with open(path, "r") as f:
-        users = json.load(f)
-
-    for u in users:
-        if u["email"] == email and u["password"] == password:
-            return {"status": "accesso riuscito", "licenza": u["licenza"]}
-    
-    return {"error": "Credenziali non valide"}
-
-# -----------------------------
-# API /licenza/valida
-# -----------------------------
-@app.get("/licenza/valida")
-def licenza_valida(email: str):
-    path = "users.json"
-    if not os.path.exists(path):
-        return {"error": "File users.json non trovato"}
-
-    with open(path, "r") as f:
-        users = json.load(f)
-
-    for u in users:
-        if u["email"] == email:
-            return {
-                "licenza": u["licenza"],
-                "scadenza": u["scadenza"],
-                "premium": u["licenza"] in ["Argento", "Oro"]
-            }
-
-    return {"error": "Utente non trovato"}
-
-# -----------------------------
-# API /licenza/attiva
-# -----------------------------
-@app.post("/licenza/attiva")
-def licenza_attiva(email: str, nuova_licenza: str):
-    path = "users.json"
-    if not os.path.exists(path):
-        return {"error": "File users.json non trovato"}
-
-    with open(path, "r") as f:
-        users = json.load(f)
-
-    for u in users:
-        if u["email"] == email:
-            u["licenza"] = nuova_licenza
-            u["scadenza"] = "2026-12-31"
-
-            with open(path, "w") as f:
-                json.dump(users, f, indent=2)
-
-            return {"status": "licenza aggiornata", "licenza": nuova_licenza}
-
-    return {"error": "Utente non trovato"}
-
-# -----------------------------
-# API /licenza/dettagli
-# -----------------------------
-@app.get("/licenza/dettagli")
-def licenza_dettagli(email: str):
-    return licenza_valida(email)
-# -----------------------------
-# API /analytics/salva
-# -----------------------------
-@app.post("/analytics/salva")
-def salva_analisi(email: str, risultato: str, risparmio: float, efficienza: float):
-    path = "analytics.json"
-    if not os.path.exists(path):
-        return {"error": "File analytics.json non trovato"}
-
-    with open(path, "r") as f:
-        storico = json.load(f)
-
-    nuovo_record = {
-        "email": email,
-        "risultato": risultato,
-        "risparmio": risparmio,
-        "efficienza": efficienza,
-        "timestamp": datetime.datetime.utcnow().isoformat() + "Z"
-    }
-
-    storico.append(nuovo_record)
-
-    with open(path, "w") as f:
-        json.dump(storico, f, indent=2)
-
-    return {"status": "analisi salvata"}
-
-# -----------------------------
-# API /analytics/storico
-# -----------------------------
-@app.get("/analytics/storico")
-def storico_utente(email: str):
-    path = "analytics.json"
-    if not os.path.exists(path):
-        return {"error": "File analytics.json non trovato"}
-
-    with open(path, "r") as f:
-        storico = json.load(f)
-
-    filtrati = [r for r in storico if r["email"] == email]
-
-    return {"storico": filtrati, "totale": len(filtrati)}
-
-# -----------------------------
-# API /analytics/kpi
-# -----------------------------
-@app.get("/analytics/kpi")
-def kpi_utente(email: str):
-    path = "analytics.json"
-    if not os.path.exists(path):
-        return {"error": "File analytics.json non trovato"}
-
-    with open(path, "r") as f:
-        storico = json.load(f)
-
-    filtrati = [r for r in storico if r["email"] == email]
-
-    if not filtrati:
-        return {"error": "Nessuna analisi trovata"}
-
-    media_risparmio = round(sum(r["risparmio"] for r in filtrati) / len(filtrati), 2)
-    media_efficienza = round(sum(r["efficienza"] for r in filtrati) / len(filtrati), 2)
-
-    return {
-        "totale_analisi": len(filtrati),
-        "media_risparmio": media_risparmio,
-        "media_efficienza": media_efficienza
-    }
-# ==============================
-# MODULO 4 — EMAIL & NOTIFICHE
-# ==============================
-
-import sib_api_v3_sdk
-from sib_api_v3_sdk.rest import ApiException
-
-def invia_email_brevo(destinatario: str, oggetto: str, contenuto: str):
-    configuration = sib_api_v3_sdk.Configuration()
-    configuration.api_key['api-key'] = os.getenv('BREVO_API_KEY')
-
-    api_instance = sib_api_v3_sdk.TransactionalEmailsApi(
-        sib_api_v3_sdk.ApiClient(configuration)
-    )
-
-    email = sib_api_v3_sdk.SendSmtpEmail(
-        to=[{"email": destinatario}],
-        subject=oggetto,
-        html_content=contenuto,
-        sender={"email": "support@rgandja.com", "name": "RGandja"}
-    )
-
-    try:
-        api_instance.send_transac_email(email)
-        return True
-    except ApiException as e:
-        print("Errore invio email:", e)
-        return False
-
-
-    email = sib_api_v3_sdk.SendSmtpEmail(
-        to=[{"email": destinatario}],
-        subject=oggetto,
-        html_content=contenuto,
-        sender={"email": "support@rgandja.com", "name": "RGandja"}
-    )
-
-    try:
-        api_instance.send_transac_email(email)
-        return True
-    except ApiException as e:
-        print("Errore invio email:", e)
-        return False
-
-
-    email = sib_api_v3_sdk.SendSmtpEmail(
-        to=[{"email": destinatario}],
-        subject=oggetto,
-        html_content=contenuto,
-        sender={"email": "support@rgandja.com", "name": "RGandja"}
-    )
-
-    try:
-        api_instance.send_transac_email(email)
-        return True
-    except ApiException as e:
-        print("Errore invio email:", e)
-        return False
-    
-
-# -----------------------------
-# API /email/onboarding
-# -----------------------------
-@app.post("/email/onboarding")
-def email_onboarding(email: str):
-    oggetto = "Benvenuto in RGandja"
-    contenuto = f"""Ciao, benvenuto nella piattaforma RGandja Decision Intelligence. La tua registrazione è attiva e puoi iniziare subito a utilizzare il sistema. Per assistenza: support@rgandja.com"""
-
-    invia_email_brevo(InputData.destinatario, datetime.date.oggetto, ref.contenuto)
-    return {"status": "email onboarding inviata", "destinatario": ref.destinatario}
-
-
-# ==========================================
- # API /email/invia-report
-# ==========================================
 class ReportEmailRequest(BaseModel):
     email: str
     pdf_link: str
-@app.post("/email/invia-report")
-def email_invia_report(req: ReportEmailRequest):
-    oggetto = "Il tuo Report RGandja è pronto"
-    contenuto = f"Ciao, il tuo report è stato generato. Scaricalo qui: {req.pdf_link}"
-    
-    # Usiamo req.email per estrarre l'indirizzo dal pacchetto
-    successo = invia_email_brevo(req.email, oggetto, contenuto)
-    
-    if successo:
-        return {"status": "email inviata", "destinatario": req.email}
-    else:
-        return {"status": "errore", "messaggio": "Invio fallito"}
 
-# ==========================================
-# API /email/alert-licenza
-# ==========================================
-@app.post("/email/alert-licenza")
-def email_alert_licenza(email: str, giorni_rimanenti: int):
-    oggetto = "La tua licenza RGandja sta per scadere"
-    contenuto = f"Ciao, la tua licenza scadrà tra {giorni_rimanenti} giorni. Rinnova su support@rgandja.com"
+# ============================================================
+# IL CUORE: RGD-ALPHA ANALYTICS ENGINE
+# ============================================================
+class RGDAlphaEngine:
+    @staticmethod
+    def simula_successo_espansione(data: InputData) -> dict:
+        # Moltiplicatori di Crescita basati sull'Algoritmo
+        k_map = {"junior": 1.12, "pmi": 1.38, "enterprise": 1.72}
+        k = k_map.get(data.algoritmo.lower(), 1.20)
+
+        # Calcolo Attrito Operativo (Costi Invisibili)
+        # Più metri quadri e standby watt ci sono, più l'efficienza scende
+        attrito = (data.ore_assenze * 0.2) + ((data.standby_watt * data.metri_quadri) / 5000)
+        
+        # Fattore Resilienza (Riduzione volatilità)
+        stabilita = 0.98 if data.resilienza else 0.75
+
+        # Proiezione Guadagno Netto (Successo Aziendale)
+        proiezione_lorda = data.budget * k
+        incremento_netto = round((proiezione_lorda - data.budget) * stabilita, 2)
+        
+        # Probabilità Deterministica di Successo (Sigmoide)
+        prob_successo = round(100 / (1 + math.exp(-0.08 * (100 - attrito))), 2)
+        
+        # Efficienza Neurale (Ottimizzazione Risorse)
+        efficienza = max(0, round(100 - attrito, 2))
+
+        return {
+            "incremento_guadagno": incremento_netto,
+            "probabilita_successo": prob_successo,
+            "efficienza_neurale": efficienza,
+            "vettore": "Espansione" if incremento_netto > (data.budget * 0.1) else "Mantenimento"
+        }
+
+# ============================================================
+# API ENDPOINTS - CALCOLO & STRATEGIA
+# ============================================================
+@app.post("/calcola")
+def calcola(data: InputData):
+    analisi = RGDAlphaEngine.simula_successo_espansione(data)
     
-    # Indentazione corretta (4 spazi)
-    invia_email_brevo(email, oggetto, contenuto)
-    return {"status": "alert licenza inviato", "destinatario": email}
+    risultato_testo = f"""
+> PROTOCOLLO RGD-ALPHA V5 ACTIVATED
+> TARGET: SUCCESS OPTIMIZATION ({data.algoritmo.upper()})
 
-# ==============================
-# MODULO 5 — SISTEMA & SICUREZZA
-# ==============================
+[ANALISI STATISTICA]
+- Efficienza Neurale: {analisi['efficienza_neurale']}%
+- Neutralizzazione Rischio: {analisi['probabilita_successo']}%
 
-# -----------------------------
-# API /healthcheck
-# -----------------------------
-@app.get("/healthcheck")
-def healthcheck():
+[PROIEZIONE DI SUCCESSO]
+→ Incremento Guadagno Stimato: €{analisi['incremento_guadagno']:,.2f}
+→ Vettore Aziendale: {analisi['vettore']}
+
+Nota: L'algoritmo ha identificato un percorso di espansione a basso attrito.
+""".strip()
+
     return {
-        "status": "online",
-        "engine": "RGandja Neural Core v1.0.0",
-        "uptime": "OK",
-        "timestamp": datetime.datetime.utcnow().isoformat() + "Z"
+        "risultato": risultato_testo,
+        "kpi": analisi,
+        "pdf_link": "https://rgandja.com/static/preview.pdf",
+        "is_premium_locked": data.algoritmo.lower() != "junior"
     }
 
+# ============================================================
+# GESTIONE LICENZE & UTENTI
+# ============================================================
+def verifica_licenza(email: str) -> bool:
+    path = "users.json"
+    if not os.path.exists(path): return False
+    with open(path, "r") as f:
+        users = json.load(f)
+    for u in users:
+        if u["email"] == email:
+            return u["licenza"] in ["Argento", "Oro"]
+    return False
 
-# -----------------------------
-# Funzione interna per log
-# -----------------------------
-def salva_log(tipo: str, messaggio: str):
-    path = "logs.json"
-    if not os.path.exists(path):
+@app.post("/login")
+def login(email: str, password: str):
+    path = "users.json"
+    if not os.path.exists(path): return {"error": "Database non trovato"}
+    with open(path, "r") as f:
+        users = json.load(f)
+    for u in users:
+        if u["email"] == email and u["password"] == password:
+            return {"status": "success", "licenza": u["licenza"], "email": u["email"]}
+    return {"error": "Credenziali non valide"}
+
+# ============================================================
+# NOTIFICHE & EMAIL (INTEGRAZIONE BREVO)
+# ============================================================
+def invia_email_brevo(destinatario: str, oggetto: str, contenuto: str):
+    config = sib_api_v3_sdk.Configuration()
+    config.api_key['api-key'] = os.getenv('BREVO_API_KEY')
+    api_instance = sib_api_v3_sdk.TransactionalEmailsApi(sib_api_v3_sdk.ApiClient(config))
+    
+    email = sib_api_v3_sdk.SendSmtpEmail(
+        to=[{"email": destinatario}],
+        subject=oggetto,
+        html_content=f"<html><body>{contenuto}</body></html>",
+        sender={"email": "intelligence@rgandja.com", "name": "RGandja Neural Engine"}
+    )
+    try:
+        api_instance.send_transac_email(email)
+        return True
+    except ApiException:
         return False
 
-    with open(path, "r") as f:
-        logs = json.load(f)
+@app.post("/email/invia-report")
+def email_invia_report(req: ReportEmailRequest):
+    successo = invia_email_brevo(
+        req.email, 
+        "Il tuo Report Decisionale RGandja è Pronto", 
+        f"L'analisi RGD-Alpha è completa. Accedi al tuo vettore di espansione qui: {req.pdf_link}"
+    )
+    return {"status": "inviata" if successo else "errore"}
 
-    nuovo_log = {
-        "tipo": tipo,
-        "messaggio": messaggio,
-        "timestamp": datetime.datetime.utcnow().isoformat() + "Z"
-    }
-
-    logs.append(nuovo_log)
-
-    with open(path, "w") as f:
-        json.dump(logs, f, indent=2)
-
-    return True
-
-
-# -----------------------------
-# API /log/errori
-# -----------------------------
-@app.post("/log/errori")
-def log_errori(messaggio: str):
-    salva_log("errore", messaggio)
-    return {"status": "errore registrato"}
-
-
-# -----------------------------
-# API /log/eventi
-# -----------------------------
-@app.post("/log/eventi")
-def log_eventi(messaggio: str):
-    salva_log("evento", messaggio)
-    return {"status": "evento registrato"}
-
-
-# -----------------------------
-# API /config/versione
-# -----------------------------
-@app.get("/config/versione")
-def config_versione():
+# ============================================================
+# SISTEMA & MONITORAGGIO
+# ============================================================
+@app.get("/status")
+def status():
     return {
-        "engine": "RGandja Neural Core",
-        "versione": "1.0.0",
-        "protocollo": "RGD-Alpha"
+        "engine": "RGandja Neural Core v5.0",
+        "protocol": "RGD-Alpha",
+        "uptime": "Operational",
+        "timestamp": datetime.datetime.utcnow().isoformat()
     }
-
-
-# -----------------------------
-# API /config/limiti
-# -----------------------------
-@app.get("/config/limiti")
-def config_limiti(piano: str):
-    limiti = {
-        "Bronzo": {
-            "analisi_mensili": 10,
-            "pdf": False,
-            "supporto": "Email"
-        },
-        "Argento": {
-            "analisi_mensili": 50,
-            "pdf": True,
-            "supporto": "Prioritario"
-        },
-        "Oro": {
-            "analisi_mensili": "Illimitate",
-            "pdf": True,
-            "supporto": "Premium 24/7"
-        }
-    }
-
-    if piano not in limiti:
-        return {"error": "Piano non valido"}
-
-    return limiti[piano]
-# ==========================
-# Endpoint per demo RGandja
-# ==========================
-
-class InputData(BaseModel):
-    nome: Optional[str]
-    settore: Optional[str]
-    dipendenti: Optional[int]
-
-@app.post("/pmi")
-def elabora_pmi(data: InputData):
-    # Simulazione di elaborazione
-    risultato = {
-        "nome": data.nome,
-        "settore": data.settore,
-        "dipendenti": data.dipendenti,
-        "valutazione": "Eccellente",
-        "timestamp": datetime.datetime.now().isoformat()
-    }
-    return risultato
-# ==========================
-# Endpoint JUNIOR
-# ==========================
-class JuniorInput(BaseModel):
-    nome: Optional[str]
-    settore: Optional[str]
-
-@app.post("/junior")
-def elabora_junior(data: JuniorInput):
-    risultato = {
-        "tipo": "Junior",
-        "nome": data.nome,
-        "settore": data.settore,
-        "valutazione": "Base",
-        "timestamp": datetime.datetime.now().isoformat()
-    }
-    return risultato
-
-
-# ==========================
-# Endpoint ENTERPRISE
-# ==========================
-class EnterpriseInput(BaseModel):
-    azienda: Optional[str]
-    fatturato: Optional[float]
-    dipendenti: Optional[int]
-
-@app.post("/enterprise")
-def elabora_enterprise(data: EnterpriseInput):
-    risultato = {
-        "tipo": "Enterprise",
-        "azienda": data.azienda,
-        "fatturato": data.fatturato,
-        "dipendenti": data.dipendenti,
-        "valutazione": "Avanzata",
-        "timestamp": datetime.datetime.now().isoformat()
-    }
-    return risultato

@@ -17,28 +17,30 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protocollo Ricevuto - RGandja</title>
+    <title>Protocollo Acquisito - RGandja Intelligence</title>
     
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --accent-gold: #d4af37; --border: #1a2332; }
+        :root { --accent-gold: #d4af37; --border: #1a2332; --bg-dark: #05070a; }
         
         .confirmation-card {
             animation: slideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-            background: rgba(10, 14, 20, 0.8);
+            background: rgba(10, 14, 20, 0.95);
             border: 1px solid var(--border);
             backdrop-filter: blur(10px);
             position: relative;
             overflow: hidden;
             border-radius: 12px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
         }
 
         .confirmation-card::after {
             content: "";
             position: absolute;
             top: 0; left: 0; width: 100%; height: 2px;
-            background: rgba(212, 175, 55, 0.2);
+            background: rgba(212, 175, 55, 0.3);
             animation: scanline 4s linear infinite;
             pointer-events: none;
         }
@@ -55,55 +57,58 @@
 
         .status-terminal {
             font-family: 'Fira Code', monospace;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: #63b3ed;
             margin-top: 25px;
-            background: #05070a;
-            padding: 20px;
+            background: #0d1117;
+            padding: 25px;
             border-radius: 8px;
-            border-left: 3px solid var(--accent-gold);
+            border-left: 4px solid var(--accent-gold);
             text-align: left;
-            min-height: 120px;
-            line-height: 1.6;
+            min-height: 150px;
+            line-height: 1.7;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
         }
 
         .check-icon {
-            font-size: 4rem;
+            font-size: 5rem;
             color: var(--accent-gold);
             margin-bottom: 20px;
             display: inline-block;
-            filter: drop-shadow(0 0 20px rgba(212,175,55,0.4));
+            filter: drop-shadow(0 0 25px rgba(212,175,55,0.5));
         }
 
         .btn-home {
-            background: transparent;
-            color: var(--accent-gold);
-            border: 1px solid var(--accent-gold);
-            padding: 15px 35px;
-            border-radius: 6px;
+            background: var(--accent-gold);
+            color: #000;
+            padding: 18px 45px;
+            border-radius: 8px;
             text-decoration: none;
-            font-weight: 700;
+            font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s;
+            letter-spacing: 2px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: inline-block;
+            border: none;
         }
 
         .btn-home:hover {
-            background: var(--accent-gold);
-            color: #000;
-            box-shadow: 0 0 20px rgba(212,175,55,0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212,175,55,0.4);
         }
 
         .promo-success {
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 10px 20px;
-            border-radius: 4px;
-            color: var(--accent-gold);
-            font-size: 0.9rem;
+            background: rgba(39, 201, 63, 0.1);
+            border: 1px solid rgba(39, 201, 63, 0.3);
+            padding: 12px 25px;
+            border-radius: 50px;
+            color: #27c93f;
+            font-size: 0.85rem;
+            font-weight: 700;
             margin-bottom: 25px;
             display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
     </style>
 </head>
@@ -125,59 +130,66 @@
         </div>
     </header>
 
-    <main class="section container" style="min-height: 80vh; display: flex; align-items: center; justify-content: center;">
-        <div class="card-expert confirmation-card" style="max-width: 700px; padding: 60px; text-align: center;">
+    
+
+    <main class="section container" style="min-height: 85vh; display: flex; align-items: center; justify-content: center; padding: 40px 20px;">
+        <div class="confirmation-card" style="max-width: 800px; width: 100%; padding: 60px; text-align: center;">
             <div class="check-icon">🛡️</div>
             
-            <h1 style="color: #fff; letter-spacing: -1px; font-size: 2.2rem; margin-bottom: 15px;">
+            <h1 style="color: #fff; letter-spacing: -1.5px; font-size: 2.5rem; margin-bottom: 15px;">
                 Protocollo Acquisito
             </h1>
 
             <div class="promo-success">
-                ✅ Sconto Early Access -20% Riservato con Successo
+                ✅ Sconto Early Access -20% Riservato
             </div>
             
-            <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px;">
-                La tua trasmissione è stata instradata correttamente verso i nostri server di <strong>Atene</strong>.<br>
-                Riceverai i parametri di accesso crittografati entro <strong>4 ore lavorative</strong>.
+            <p style="color: var(--text-gray); font-size: 1.15rem; line-height: 1.8; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                La tua trasmissione è stata instradata correttamente verso i cluster di <strong>Atene</strong>.<br>
+                Analisi dei nodi in corso. Riceverai il report crittografato entro <strong>4 ore lavorative</strong>.
             </p>
 
             <div id="status-terminal" class="status-terminal">
                 <span style="color: var(--accent-gold)">[SYSTEM]:</span> INIZIALIZZAZIONE LOG...
             </div>
 
-            <div style="margin-top: 40px; display: flex; flex-direction: column; align-items: center; gap: 20px;">
+            <div style="margin-top: 50px; display: flex; flex-direction: column; align-items: center; gap: 25px;">
                 <a href="index.html" class="btn-home">Ritorna alla Home</a>
                 
-                <div style="font-size: 0.7rem; color: #4a5568; letter-spacing: 1px;">
-                    TRANSACTION ID: <span id="trans-id" style="color: #718096;"></span> // STATUS: ENCRYPTED
+                <div style="font-family: 'Fira Code', monospace; font-size: 0.75rem; color: #4a5568; letter-spacing: 1px; background: rgba(255,255,255,0.03); padding: 8px 15px; border-radius: 4px;">
+                    TRANSACTION ID: <span id="trans-id" style="color: var(--accent-gold);"></span> // STATUS: ENCRYPTED_STABLE
                 </div>
             </div>
         </div>
     </main>
 
-    <footer class="footer container text-center">
-        <p style="color: #4a5568; font-size: 0.8rem;">
-            © 2026 RGandja — Strategic Intelligence Unit<br>
-            Secure Data Center: Attiki, Greece
+    <footer class="footer container text-center" style="padding-bottom: 40px;">
+        <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 30px;">
+        <p style="color: var(--text-main); font-weight: 600; letter-spacing: 1px; margin-bottom: 5px;">
+            © 2026 <strong>RGANDJA ENTERPRISE ΜΟΝΟΠΡΟΣΩΠΗ ΙΚΕ</strong>
+        </p>
+        <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.6;">
+            Sepolion 42, 10445 Atene (Grecia) | P.IVA: EL803131007 | G.E.MI.: 190286401000<br>
+            Secure Strategic Unit // Node: Athens Alpha
         </p>
     </footer>
 
     <script>
         // Generatore ID Transazione Professionale
         const timestamp = Date.now().toString().slice(-6);
-        const rand = Math.floor(Math.random() * 1000);
+        const rand = Math.floor(Math.random() * 9000) + 1000;
         document.getElementById('trans-id').innerText = `RGD-${timestamp}-${rand}`;
 
         // Simulazione Feed Terminale
         const term = document.getElementById('status-terminal');
         const logs = [
-            "Connessione sicura stabilita con Hub Atene...",
-            "Controllo integrità pacchetti dati... [OK]",
+            "Connessione sicura stabilita con Hub Atene-Alpha...",
+            "Controllo integrità pacchetti dati (Checksum)... [OK]",
             "Crittografia RSA-4096 applicata al record.",
+            "Handshake eseguito con il cluster decisionale.",
             "Inserimento in coda prioritaria RGD-Alpha.",
             "Sconto Early Access convalidato (Code: EA2026).",
-            "Protocollo di risposta generato correttamente.",
+            "Report preliminare in generazione...",
             "FINE TRASMISSIONE. SESSIONE PROTETTA."
         ];
         
@@ -185,12 +197,14 @@
         function updateTerminal() {
             if (line < logs.length) {
                 term.innerHTML += `<br><span style="color: #27c93f;">></span> ${logs[line]}`;
+                term.scrollTop = term.scrollHeight; // Auto-scroll
                 line++;
-                setTimeout(updateTerminal, 900);
+                setTimeout(updateTerminal, 800);
             }
         }
         
-        setTimeout(updateTerminal, 800);
+        // Inizia dopo un piccolo delay per effetto drammatico
+        setTimeout(updateTerminal, 1000);
     </script>
 </body>
 </html>

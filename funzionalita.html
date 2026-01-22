@@ -1,113 +1,47 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6TTVMQFNY6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6TTVMQFNY6');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Funzionamento - RGandja: L'Ingegneria della Decisione</title>
+    <title>Finalità Operative - RGandja Decision Intelligence</title>
     
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        :root { --accent-gold: #d4af37; --border: #1a2332; }
-        
-        .feature-icon {
+        .purpose-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .purpose-card {
+            background: #0a0e14;
+            padding: 30px;
+            border: 1px solid #1a2332;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        .purpose-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-5px);
+        }
+        .icon-box {
             font-size: 2.5rem;
             margin-bottom: 20px;
-            display: inline-block;
-            background: linear-gradient(135deg, #d4af37, #f2d472);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .custom-list {
-            list-style: none;
-            padding: 0;
-            margin: 25px 0;
-        }
-
-        .custom-list li {
-            position: relative;
-            padding-left: 30px;
-            margin-bottom: 18px;
-            color: #cbd5e0;
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
-
-        .custom-list li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
             color: var(--accent-gold);
-            font-weight: 900;
         }
-
-        .gold-card {
-            background: linear-gradient(145deg, #d4af37 0%, #9a7b1f 100%);
-            color: #000;
-            padding: 45px;
-            border-radius: 16px;
-            box-shadow: 0 25px 50px -12px rgba(212, 175, 55, 0.25);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        /* Rafforzamento dei Visual Box */
-        .visual-demo-box {
-            background: #0a0e14;
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 30px;
-            min-height: 300px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
-        }
-
-        /* Simulazione Grafico CSS */
-        .chart-sim {
-            width: 80%;
-            height: 100px;
-            display: flex;
-            align-items: flex-end;
-            gap: 8px;
-        }
-        .bar { 
-            flex: 1; 
-            background: var(--accent-gold); 
-            opacity: 0.3; 
-            border-radius: 2px 2px 0 0;
-            animation: grow 2s ease-in-out infinite alternate;
-        }
-        @keyframes grow { from { height: 20%; } to { height: 80%; } }
-
-        .btn-gold {
-            background: linear-gradient(90deg, #d4af37, #f2d472);
-            color: #000;
-            padding: 18px 35px;
-            text-decoration: none;
-            font-weight: 800;
-            border-radius: 8px;
-            transition: var(--transition-smooth);
-            display: inline-block;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .btn-gold:hover { 
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
-        }
-
-        @media (max-width: 768px) {
-            .grid-2 { grid-template-columns: 1fr; }
+        .highlight-text {
+            color: var(--accent-gold);
+            font-weight: bold;
         }
     </style>
 </head>
@@ -129,105 +63,55 @@
         </div>
     </header>
 
-    <section class="hero-premium">
-      <div class="container text-center">
-        <span class="badge-status">SYSTEM ARCHITECTURE</span>
-        <h1>Ingegneria della Decisione</h1>
-        <p class="hero-subtitle">
-            Il framework RGandja trasforma il caos dei dati in traiettorie di business deterministiche attraverso simulazioni neurali ad alta fedeltà.
-        </p>
-      </div>
-    </section>
-
-    <section class="section container grid-2" style="align-items: center;">
-      <div class="info-block">
-        <span class="feature-icon">🔮</span>
-        <h2>Simulazioni Predittive "What-If"</h2>
-        <p>
-          Il cuore tecnologico di RGandja è il <strong>Motore RGD-Alpha</strong>. Non si limita a proiettare dati storici, ma genera migliaia di scenari sintetici per identificare il percorso di minor resistenza.
-        </p>
-        <ul class="custom-list">
-          <li><strong>Analisi Multi-Scenario:</strong> Testiamo decisioni di scalabilità in ambienti controllati.</li>
-          <li><strong>Calcolo Probabilistico del ROI:</strong> Definiamo la forchetta di rendimento basata sulla volatilità reale.</li>
-          <li><strong>Stress-Test Operativo:</strong> Simuliamo crisi di supply chain o cali di domanda improvvisi.</li>
-        </ul>
-      </div>
-      <div class="visual-demo-box glass-effect">
-        <div class="chart-sim">
-            <div class="bar" style="animation-delay: 0.1s"></div>
-            <div class="bar" style="animation-delay: 0.3s"></div>
-            <div class="bar" style="animation-delay: 0.2s"></div>
-            <div class="bar" style="animation-delay: 0.5s"></div>
-            <div class="bar" style="animation-delay: 0.4s"></div>
+    <main class="container" style="margin-top: 100px;">
+        <div class="text-center">
+            <span class="badge-status">STRATEGIC VISION 2026</span>
+            <h2 style="font-size: 3rem; margin-top: 20px;">Finalità del Protocollo RGD</h2>
+            <p style="color: var(--text-muted); max-width: 700px; margin: 20px auto; font-size: 1.1rem;">
+                Non forniamo semplici consulenze. Implementiamo architetture decisionali progettate per la resilienza estrema e l'efficienza assoluta.
+            </p>
         </div>
-        <p style="font-size: 0.7rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 2px; margin-top: 25px; font-weight: bold;">
-            Neural Pathfinding Engine Active
-        </p>
-      </div>
-    </section>
 
-    <section class="section" style="background: rgba(15, 23, 42, 0.4); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
-      <div class="container grid-2" style="align-items: center;">
-        <div class="visual-demo-box" style="background: #05070a;">
-            <div style="border: 1px solid #27c93f; padding: 15px; border-radius: 5px; background: rgba(39, 201, 63, 0.05);">
-                <code style="color: #27c93f; font-size: 0.8rem; display: block;">
-                    > VERIFYING ASSET INTEGRITY...<br>
-                    > HASH_CHECK: VALID<br>
-                    > AUDIT_LOG: GENERATED [RG-992]<br>
-                    > STATUS: COMPLIANT
-                </code>
+        <div class="purpose-grid">
+            <div class="purpose-card">
+                <div class="icon-box">⚡</div>
+                <h3>Efficienza Neurale</h3>
+                <p>Riduzione degli attriti operativi attraverso l'analisi dei flussi di lavoro. Il nostro obiettivo è eliminare il <span class="highlight-text">"rumore decisionale"</span> che drena risorse e tempo.</p>
             </div>
-            <div style="margin-top: 20px; font-family: monospace; color: #4a5568; font-size: 0.7rem;">
-                ENCRYPTION: AES-256-GCM
+
+            <div class="purpose-card">
+                <div class="icon-box">🛡️</div>
+                <h3>Resilienza Sistemica</h3>
+                <p>Costruiamo strutture capaci di assorbire shock di mercato e operativi. Utilizziamo il modello <span class="highlight-text">Athens-Alpha</span> per testare la tenuta della tua azienda sotto stress.</p>
+            </div>
+
+            <div class="purpose-card">
+                <div class="icon-box">📈</div>
+                <h3>Crescita Algoritmica</h3>
+                <p>Scalabilità senza perdita di controllo. Le finalità di RGandja convergono verso un'espansione misurabile, dove ogni incremento è supportato da dati granulari.</p>
             </div>
         </div>
-        <div class="info-block" style="padding-left: 40px;">
-          <span class="feature-icon">🛡️</span>
-          <h2>Protocolli di Sicurezza Immutabili</h2>
-          <p>
-            In un'era di incertezza normativa, RGandja integra la conformità direttamente nel calcolo strategico. Ogni output è accompagnato da un "Audit Trail" che ne giustifica la logica.
-          </p>
-          <ul class="custom-list">
-            <li><strong>Conformità "By Design":</strong> Filtri automatici per normative GDPR ed EU-AI Act.</li>
-            <li><strong>Integrità del Dato:</strong> Registro immutabile delle variabili utilizzate per ogni audit.</li>
-            <li><strong>Protezione Asset:</strong> Crittografia end-to-end su tutti i dati aziendali processati.</li>
-          </ul>
+
+        <div style="margin-top: 80px; background: rgba(212, 175, 55, 0.05); padding: 50px; border-radius: 15px; border: 1px dashed var(--accent-gold);">
+            <h3 class="text-center" style="color: var(--accent-gold);">Il Nostro Impegno Etico-Digitale</h3>
+            <p style="line-height: 1.8; text-align: center; max-width: 800px; margin: 0 auto;">
+                RGandja Enterprise si impegna a mantenere la massima trasparenza algoritmica. Ogni decisione suggerita dal nostro protocollo è tracciabile e verificabile, garantendo che l'automazione serva sempre il capitale umano, mai il contrario.
+            </p>
         </div>
-      </div>
-    </section>
+    </main>
 
-    <section class="section container grid-2" style="align-items: center;">
-      <div class="info-block">
-        <span class="feature-icon">📊</span>
-        <h2>Explainable Intelligence (X-AI)</h2>
-        <p>
-          Rompiamo la "scatola nera" dell'IA. RGandja non fornisce solo suggerimenti, ma illustra i <strong>Driving Factors</strong>: i nessi di causalità dietro ogni previsione.
-        </p>
-        <ul class="custom-list">
-          <li>Mappatura visiva delle correlazioni tra KPI aziendali.</li>
-          <li>Identificazione istantanea dei "colli di bottiglia" strategici.</li>
-          <li>Dashboard di controllo per la governance e i Board direttivi.</li>
-        </ul>
-      </div>
-      <div class="gold-card">
-        <h3 style="font-size: 1.6rem; margin-bottom: 20px; font-weight: 900; text-transform: uppercase; letter-spacing: -0.5px;">Soluzioni Enterprise</h3>
-        <p style="margin-bottom: 30px; font-weight: 600; line-height: 1.6; opacity: 0.9;">
-          Per organizzazioni che richiedono integrazioni API dirette, analisi di big data custom e supporto operativo prioritario 24/7.
-        </p>
-        <a href="prezzi.html" style="background: #000; color: #fff; text-decoration: none; padding: 20px; text-align: center; border-radius: 8px; font-weight: 800; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">Sblocca Protocolli Custom</a>
-      </div>
-    </section>
+    
 
-    <footer class="footer container text-center">
+    <footer class="footer container text-center" style="margin-top: 100px; padding-bottom: 50px;">
         <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 40px;">
-        <p>© 2026 <strong>RGandja</strong> — Strategic Engineering Division</p>
-        <p style="margin-top: 12px; font-size: 0.8rem; color: #636e7b;">
-            Atene, Grecia — EU Proprietary Technology License
+        <p style="color: var(--text-main); font-weight: 600; letter-spacing: 1px;">© 2026 <strong>RGANDJA ENTERPRISE ΜΟΝΟΠΡΟΣΩΠΗ ΙΚΕ</strong></p>
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 10px;">
+            Sepolion 42, 10445 Atene (Grecia) | P.IVA: EL803131007 | G.E.MI.: 190286401000
         </p>
-        <p style="margin-top: 25px; font-size: 0.85rem;">
-            <a href="privacy.html" style="color: #63b3ed; text-decoration: none; margin: 0 10px;">Privacy</a> | 
-            <a href="cookies.html" style="color: #63b3ed; text-decoration: none; margin: 0 10px;">Cookies</a> | 
-            <a href="imprint.html" style="color: #63b3ed; text-decoration: none; margin: 0 10px;">Note Legali</a>
+        <p style="margin: 25px 0;">
+            <a href="privacy.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-size: 0.85rem;">Privacy</a> | 
+            <a href="cookies.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-size: 0.85rem;">Cookies</a> | 
+            <a href="imprint.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-size: 0.85rem;">Note Legali</a>
         </p>
     </footer>
 
