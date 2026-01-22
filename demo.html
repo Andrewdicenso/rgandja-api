@@ -294,7 +294,7 @@
             };
 
             try {
-                const response = await fetch('http://127.0.0.1:8000/calcola', {
+                const response = await fetch('https://rgandja-api.onrender.com/calcola', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
@@ -331,7 +331,7 @@
             bottone.innerText = "CRIPTAZIONE E INVIO...";
             bottone.disabled = true;
 
-            fetch('http://127.0.0.1:8000/email/invia-report', {
+            fetch('https://rgandja-api.onrender.com/email/invia-report', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ 
