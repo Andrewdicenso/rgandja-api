@@ -82,21 +82,21 @@
             font-size: 0.8rem;
         }
 
+        /* Stato evidenziato dinamico */
         .featured-card { 
             border: 2px solid var(--accent-gold) !important; 
             transform: translateY(-15px);
-            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.3);
             background: rgba(15, 23, 42, 0.95) !important;
         }
 
         .highlight-glow { 
             animation: glow-premium 2s infinite alternate ease-in-out; 
-            border-color: var(--accent-gold) !important;
         }  
 
         @keyframes glow-premium { 
             from { box-shadow: 0 0 15px rgba(212, 175, 55, 0.1); } 
-            to { box-shadow: 0 0 40px rgba(212, 175, 55, 0.35); } 
+            to { box-shadow: 0 0 40px rgba(212, 175, 55, 0.45); } 
         }
 
         .license-tag { 
@@ -134,24 +134,13 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             backdrop-filter: blur(10px);
         }
-        #cookie-banner p { color: #fff; font-size: 0.9rem; margin: 0; max-width: 70%; }
-        #cookie-banner .btn-accept {
-            background: #d4af37;
-            color: #000;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
-        }
     </style>
 </head>
 <body>
 
     <div id="cookie-banner">
         <p>Utilizziamo i cookie per analizzare il traffico e migliorare l'esperienza sul Protocollo RGD-Alpha. <a href="cookies.html" style="color:#d4af37">Cookie Policy</a>.</p>
-        <button class="btn-accept" onclick="acceptCookies()">Accetto</button>
+        <button class="btn-accept" style="background: #d4af37; color: #000; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;" onclick="acceptCookies()">Accetto</button>
     </div>
 
     <script>
@@ -196,12 +185,13 @@
 
         <section class="container section">
             <div class="pricing-grid">
+                
                 <div class="pricing-card" id="card-junior">
                     <div class="tier-header">
+                        <div class="dynamic-badge" style="display:none;"></div>
                         <h2 style="color: #fff; margin-bottom: 5px; letter-spacing: -1px;">Protocollo JUNIOR</h2>
                         <p style="color: #63b3ed; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Startups & Professionals</p>
                     </div>
-                    
                     <ul class="feature-list">
                         <li>Analisi di 1 processo core</li>
                         <li>Nodi Neurali: 128 Standard</li>
@@ -209,13 +199,11 @@
                         <li>Supporto Tecnico via Ticket</li>
                         <li>Licenza Personale Nominale</li>
                     </ul>
-
                     <div class="price-box">
                         <p class="tier-label">Versione BASIC</p>
                         <p class="price-value">€360 <small style="font-size: 1rem; color: var(--text-muted); font-weight: 400;">/anno</small></p>
                         <span class="license-tag">FATTURAZIONE ANNUALE</span>
                     </div>
-
                     <div class="price-box" style="border-color: #3182ce; background: rgba(49, 130, 206, 0.05);">
                         <p class="tier-label" style="color:#63b3ed;">Versione FULL (Plus)</p>
                         <p class="price-value" style="color: #63b3ed;">€960 <small style="font-size: 1rem; color: var(--text-muted); font-weight: 400;">/anno</small></p>
@@ -224,13 +212,12 @@
                     <a href="contatti.html?tipo=junior" class="btn btn-outline" style="margin-top:30px; width:100%; text-align:center; text-decoration: none;">Richiedi Junior</a>
                 </div>
 
-                <div class="pricing-card featured-card" id="card-pmi">
+                <div class="pricing-card" id="card-pmi">
                     <div class="tier-header">
-                        <span class="badge-status" style="background: var(--accent-gold); color: #000; border:none; margin-bottom: 15px; font-weight: 900;">SCELTA STRATEGICA</span>
+                        <div class="dynamic-badge" style="display:none;"></div>
                         <h2 style="color: #fff; margin-bottom: 5px; letter-spacing: -1px;">Protocollo PMI</h2>
                         <p style="color: var(--accent-gold); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Efficienza Industriale</p>
                     </div>
-
                     <ul class="feature-list">
                         <li>Analisi Multi-processo (fino a 5)</li>
                         <li>Nodi Neurali: 1024 High-Performance</li>
@@ -238,12 +225,10 @@
                         <li>Audit di conformità RGD trimestrale</li>
                         <li>Licenza Multi-User (3 postazioni)</li>
                     </ul>
-
                     <div class="price-box">
                         <p class="tier-label">Versione BASIC</p>
                         <p class="price-value">€2.000 <small style="font-size: 1rem; color: var(--text-muted); font-weight: 400;">/anno</small></p>
                     </div>
-
                     <div class="price-box" style="background: rgba(212, 175, 55, 0.08); border-color: var(--accent-gold);">
                         <p class="tier-label" style="color: var(--accent-gold);">Versione FULL (Advanced)</p>
                         <p class="price-value">€4.640 <small style="font-size: 1rem; color: var(--text-muted); font-weight: 400;">/anno</small></p>
@@ -254,10 +239,10 @@
 
                 <div class="pricing-card" id="card-enterprise">
                     <div class="tier-header">
+                        <div class="dynamic-badge" style="display:none;"></div>
                         <h2 style="color: #fff; margin-bottom: 5px; letter-spacing: -1px;">ENTERPRISE</h2>
                         <p style="color: #63b3ed; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">HPC Infrastructure</p>
                     </div>
-
                     <ul class="feature-list">
                         <li>Processi e Nodi illimitati</li>
                         <li>Infrastruttura Dedicata (HPC Atene)</li>
@@ -265,13 +250,11 @@
                         <li>Account Manager Dedicato</li>
                         <li>SLA Garantito 99.9%</li>
                     </ul>
-
                     <div class="price-box">
                         <p class="tier-label">Setup & Deployment</p>
                         <p class="price-value">€9.600</p>
                         <span class="license-tag">UNA TANTUM</span>
                     </div>
-
                     <div class="price-box" style="border-color: #63b3ed;">
                         <p class="tier-label">Licenza Annuale</p>
                         <p class="price-value" style="font-size: 1.8rem; padding: 10px 0;">SU MISURA</p>
@@ -286,14 +269,9 @@
                     Le analisi del sistema RGandja sono supportate dal Protocollo di Certezza Matematica. Qualora l'ottimizzazione rilevata nel primo semestre 
                     risultasse inferiore al costo della licenza, <strong>RGANDJA ENTERPRISE</strong> fornirà un audit tecnico manuale gratuito e l'estensione del servizio per 6 mesi senza costi aggiuntivi.
                 </p>
-                <p style="margin-top: 20px; font-size: 0.75rem; color: var(--text-muted); font-style: italic;">
-                    Tutti i prezzi sono indicati al netto delle imposte applicabili. Operazione soggetta a regime fiscale Greco/EU.
-                </p>
             </div>
         </section>
     </main>
-
-    
 
     <footer class="footer container text-center">
         <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 40px;">
@@ -301,30 +279,48 @@
         <p style="margin-top: 10px; font-size: 0.85rem; color: var(--text-muted);">
             Sepolion 42, 10445 Atene (Grecia) | P.IVA: EL803131007 | G.E.MI.: 190286401000
         </p>
-        <p style="margin: 25px 0;">
-            <a href="privacy.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-size: 0.85rem;">Privacy</a> | 
-            <a href="cookies.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-size: 0.85rem;">Cookies</a> | 
-            <a href="imprint.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-size: 0.85rem;">Note Legali & Pagamenti</a>
-        </p>
     </footer>
 
     <script>
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             const tipo = urlParams.get('tipo'); 
+            
+            // Definiamo il badge stile RGandja
+            const badgeHTML = '<span class="badge-status" style="background: var(--accent-gold); color: #000; border:none; margin-bottom: 15px; font-weight: 900; padding: 8px 22px; border-radius: 4px; font-size: 0.7rem; display: inline-block; letter-spacing: 3px; text-transform: uppercase;">MODELLO OTTIMALE</span>';
+
             if(tipo) {
+                // RESET: Puliamo tutte le card da stati evidenziati
                 document.querySelectorAll('.pricing-card').forEach(c => {
                     c.classList.remove('featured-card');
                     c.classList.remove('highlight-glow');
+                    c.querySelector('.dynamic-badge').style.display = 'none';
+                    c.querySelector('.dynamic-badge').innerHTML = '';
                 });
+
+                // ATTIVAZIONE: Accendiamo solo quella richiesta
                 const targetCard = document.getElementById('card-' + tipo.toLowerCase());
                 if(targetCard) {
                     targetCard.classList.add('featured-card');
                     targetCard.classList.add('highlight-glow');
+                    
+                    // Inseriamo e mostriamo il badge
+                    const badgeContainer = targetCard.querySelector('.dynamic-badge');
+                    badgeContainer.innerHTML = badgeHTML;
+                    badgeContainer.style.display = 'block';
+
+                    // Scroll automatico
                     setTimeout(() => {
                         targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     }, 500);
                 }
+            } else {
+                // Se non c'è parametro nell'URL, impostiamo PMI come default statico (opzionale)
+                const pmi = document.getElementById('card-pmi');
+                pmi.classList.add('featured-card');
+                const badgeContainer = pmi.querySelector('.dynamic-badge');
+                badgeContainer.innerHTML = '<span class="badge-status" style="background: var(--accent-gold); color: #000; border:none; margin-bottom: 15px; font-weight: 900; padding: 8px 22px; border-radius: 4px; font-size: 0.7rem; display: inline-block; letter-spacing: 3px; text-transform: uppercase;">SCELTA STRATEGICA</span>';
+                badgeContainer.style.display = 'block';
             }
         }
     </script>
