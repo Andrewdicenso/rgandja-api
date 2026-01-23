@@ -16,6 +16,10 @@ app = FastAPI(
     version="6.2.0"
 )
 
+@app.get("/")
+def read_root():
+    return health()
+
 # Sicurezza CORS: Permette al sito RGandja di dialogare con l'API
 app.add_middleware(
     CORSMiddleware,
