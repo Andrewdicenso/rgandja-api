@@ -48,7 +48,7 @@
             background: rgba(15, 23, 42, 0.9) !important;
         }
         
-        /* Cookie Banner Blur */
+        /* Cookie Banner Blur - AGGIORNATO PER TASTO RIFIUTA */
         #cookie-banner {
             position: fixed;
             bottom: 20px; left: 20px; right: 20px;
@@ -77,11 +77,14 @@
 <body>
 
     <div id="cookie-banner">
-        <p style="color: #fff; font-size: 0.85rem; margin: 0; line-height: 1.4;">
+        <p style="color: #fff; font-size: 0.85rem; margin: 0; line-height: 1.4; max-width: 70%;">
             <strong>Protocollo Privacy:</strong> Utilizziamo sistemi di analisi per ottimizzare il cluster RGD-Alpha. 
-            Navigando accetti la nostra <a href="privacy.html" style="color:var(--accent-gold); text-decoration: underline;">Cookie Policy</a>.
+            Navigando accetti la nostra <a href="cookies.html" style="color:var(--accent-gold); text-decoration: underline;">Cookie Policy</a>.
         </p>
-        <button onclick="acceptCookies()" style="background:var(--accent-gold); border:none; padding:10px 25px; border-radius:4px; font-weight:900; cursor:pointer; margin-left:20px;">ACCONSENTO</button>
+        <div style="display: flex; gap: 10px;">
+            <button onclick="rejectCookies()" style="background:transparent; border:1px solid #fff; color:#fff; padding:10px 20px; border-radius:4px; cursor:pointer; font-size: 0.8rem;">RIFIUTA</button>
+            <button onclick="acceptCookies()" style="background:var(--accent-gold); border:none; padding:10px 25px; border-radius:4px; font-weight:900; cursor:pointer; font-size: 0.8rem;">ACCONSENTO</button>
+        </div>
     </div>
 
     <header class="header">
@@ -153,12 +156,16 @@
                 <h2 style="color: var(--accent-gold); font-size: 2rem; margin-bottom: 10px;">Prenota il tuo Early Access</h2>
                 <p style="color: #fff; margin-bottom: 15px; font-size: 1.1rem; font-weight: 700;">Ricevi un codice promozionale cumulativo per il lancio ufficiale.</p>
                 
-                <div style="max-width: 650px; margin: 40px auto;">
+                <p style="font-size: 0.75rem; color: #94a3b8; margin-bottom: 10px; text-align: center;">
+                    * Inviando il modulo, confermi di aver letto la <a href="privacy.html" style="color:var(--accent-gold);">Privacy Policy</a> e acconsenti al trattamento dei dati.
+                </p>
+
+                <div style="max-width: 650px; margin: 20px auto;">
                     <iframe width="100%" height="550" src="https://93e5a624.sibforms.com/serve/MUIFAEFX_u5-gctxyZyfXWSW7ZNEjwtzhqjPMiGxpuBe_H_tntDuWYenl1qQs5Vml_yjheGXozQ6aGw854LhB4iHW-6LKZSTL-3embhUJ0goAP7-zL4uqSoDzp0G61XMWNj66sM1YFelNMwwxri8qHrQpISjHRSMZFlCB_4g_Rp5LkXTba7CL-lwT_SWXMg42VG8aB9Dz_Jd0tjwCg==" frameborder="0" scrolling="auto" allowfullscreen style="border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);"></iframe>
                 </div>
 
                 <div class="legal-notice-form">
-                    <p>Iscrivendoti, accetti il trattamento dei dati secondo la nostra <a href="privacy.html" style="color: var(--accent-gold);">Privacy Policy</a>. Bonus riservato ai primi 50 nodi attivati.</p>
+                    <p>Bonus riservato ai primi 50 nodi attivati.</p>
                 </div>
             </div>
         </section>
@@ -170,8 +177,9 @@
         <div style="background: rgba(10, 14, 20, 0.5); padding: 40px; border-radius: 12px; border: 1px solid var(--border); display: inline-block; width: 100%; max-width: 900px;">
             <p style="font-size: 12px; color: #94a3b8; margin: 0; text-transform: uppercase; letter-spacing: 1px; line-height: 2;">
                 © 2026 <strong>RGANDJA ENTERPRISE ΜΟΝΟΠΡΟΣΩΠΗ ΙΚΕ</strong><br>
-                VAT (AFM): EL803131007 | G.E.MI.: 190286401000<br>
+                VAT (AFM): EL803131007 | G.E.MI.: 190286401000 | Capitale Sociale: € 1.000,00 i.v.<br>
                 Sede Legale: Sepolion 42, GR 104 45 – Atene (Grecia)<br>
+                <span style="color: #636e7b;">Soggetto alla vigilanza dell'Autorità Ellenica per la Protezione dei Dati (APDPX).</span><br>
                 Digital Operations: unit.athens@rgandja.com | <a href="imprint.html" style="color: var(--accent-gold); text-decoration: none;">Legal & IBAN</a>
             </p>
         </div>
@@ -191,7 +199,17 @@
             }, 300);
             localStorage.setItem('cookieConsent', 'true');
         }
-        if (localStorage.getItem('cookieConsent') === 'true') {
+
+        function rejectCookies() {
+            document.getElementById('cookie-banner').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('cookie-banner').style.display = 'none';
+            }, 300);
+            localStorage.setItem('cookieConsent', 'false');
+            // Qui potresti aggiungere codice per disabilitare script di tracciamento
+        }
+
+        if (localStorage.getItem('cookieConsent') === 'true' || localStorage.getItem('cookieConsent') === 'false') {
             document.getElementById('cookie-banner').style.display = 'none';
         }
     </script>
