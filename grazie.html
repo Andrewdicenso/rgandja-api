@@ -8,16 +8,17 @@
       gtag('js', new Date());
       gtag('config', 'G-6TTVMQFNY6');
       
-      // TRACCIAMENTO CONVERSIONE LEAD
-      gtag('event', 'generate_lead', {
-        'event_category': 'Contact',
-        'event_label': 'Successo Invio Form'
+      // TRACCIAMENTO CONVERSIONE ACQUISTO
+      gtag('event', 'purchase', {
+        'transaction_id': 'RGD-' + Date.now(),
+        'affiliation': 'Revolut Checkout',
+        'currency': 'EUR'
       });
     </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protocollo Acquisito - RGandja Intelligence</title>
+    <title>Transazione Completata - RGandja Intelligence</title>
     
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="style.css">
@@ -65,7 +66,7 @@
             border-radius: 8px;
             border-left: 4px solid var(--accent-gold);
             text-align: left;
-            min-height: 150px;
+            min-height: 180px;
             line-height: 1.7;
             box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
         }
@@ -90,6 +91,7 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: inline-block;
             border: none;
+            cursor: pointer;
         }
 
         .btn-home:hover {
@@ -109,6 +111,21 @@
             display: inline-block;
             text-transform: uppercase;
             letter-spacing: 1px;
+        }
+
+        .next-steps-list {
+            text-align: left;
+            color: var(--text-gray);
+            margin: 30px auto;
+            max-width: 500px;
+            font-size: 0.95rem;
+        }
+
+        .next-steps-list li {
+            margin-bottom: 15px;
+            list-style: none;
+            display: flex;
+            gap: 10px;
         }
     </style>
 </head>
@@ -130,34 +147,38 @@
         </div>
     </header>
 
-    
-
     <main class="section container" style="min-height: 85vh; display: flex; align-items: center; justify-content: center; padding: 40px 20px;">
         <div class="confirmation-card" style="max-width: 800px; width: 100%; padding: 60px; text-align: center;">
             <div class="check-icon">🛡️</div>
             
             <h1 style="color: #fff; letter-spacing: -1.5px; font-size: 2.5rem; margin-bottom: 15px;">
-                Protocollo Acquisito
+                Pagamento Autorizzato
             </h1>
 
             <div class="promo-success">
-                ✅ Sconto Early Access -20% Riservato
+                ✅ Transazione Verificata via Revolut
             </div>
             
-            <p style="color: var(--text-gray); font-size: 1.15rem; line-height: 1.8; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
-                La tua trasmissione è stata instradata correttamente verso i cluster di <strong>Atene</strong>.<br>
-                Analisi dei nodi in corso. Riceverai il report crittografato entro <strong>4 ore lavorative</strong>.
+            <p style="color: #a0aec0; font-size: 1.15rem; line-height: 1.8; margin-bottom: 20px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Il tuo investimento nel <strong>Protocollo RGD-Alpha</strong> è stato confermato.<br>
+                L'attivazione dei sistemi è in corso sui nodi di Atene.
             </p>
 
+            <div class="next-steps-list">
+                <li><span style="color:var(--accent-gold)">[1]</span> Riceverai la ricevuta di pagamento via email entro pochi minuti.</li>
+                <li><span style="color:var(--accent-gold)">[2]</span> Un nostro specialist procederà al deployment del tuo ambiente entro 24h.</li>
+                <li><span style="color:var(--accent-gold)">[3]</span> La fattura elettronica (IKE) verrà emessa e inviata ai tuoi recapiti fiscali.</li>
+            </div>
+
             <div id="status-terminal" class="status-terminal">
-                <span style="color: var(--accent-gold)">[SYSTEM]:</span> INIZIALIZZAZIONE LOG...
+                <span style="color: var(--accent-gold)">[SYSTEM]:</span> VERIFICA TRANSAZIONE IN CORSO...
             </div>
 
             <div style="margin-top: 50px; display: flex; flex-direction: column; align-items: center; gap: 25px;">
-                <a href="index.html" class="btn-home">Ritorna alla Home</a>
+                <a href="index.html" class="btn-home">Ritorna alla Dashboard</a>
                 
                 <div style="font-family: 'Fira Code', monospace; font-size: 0.75rem; color: #4a5568; letter-spacing: 1px; background: rgba(255,255,255,0.03); padding: 8px 15px; border-radius: 4px;">
-                    TRANSACTION ID: <span id="trans-id" style="color: var(--accent-gold);"></span> // STATUS: ENCRYPTED_STABLE
+                    REFERENCE ID: <span id="trans-id" style="color: var(--accent-gold);"></span> // STATUS: SECURE_PAYMENT_CONFIRMED
                 </div>
             </div>
         </div>
@@ -168,43 +189,42 @@
         <p style="color: var(--text-main); font-weight: 600; letter-spacing: 1px; margin-bottom: 5px;">
             © 2026 <strong>RGANDJA ENTERPRISE ΜΟΝΟΠΡΟΣΩΠΗ ΙΚΕ</strong>
         </p>
-        <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.6;">
+        <p style="font-size: 0.75rem; color: #4a5568; line-height: 1.6;">
             Sepolion 42, 10445 Atene (Grecia) | P.IVA: EL803131007 | G.E.MI.: 190286401000<br>
             Secure Strategic Unit // Node: Athens Alpha
         </p>
     </footer>
 
     <script>
-        // Generatore ID Transazione Professionale
+        // Generatore ID Transazione coerente con Revolut
         const timestamp = Date.now().toString().slice(-6);
         const rand = Math.floor(Math.random() * 9000) + 1000;
-        document.getElementById('trans-id').innerText = `RGD-${timestamp}-${rand}`;
+        document.getElementById('trans-id').innerText = `REV-${timestamp}-${rand}`;
 
-        // Simulazione Feed Terminale
+        // Simulazione Feed Terminale Operativo
         const term = document.getElementById('status-terminal');
         const logs = [
-            "Connessione sicura stabilita con Hub Atene-Alpha...",
-            "Controllo integrità pacchetti dati (Checksum)... [OK]",
-            "Crittografia RSA-4096 applicata al record.",
-            "Handshake eseguito con il cluster decisionale.",
-            "Inserimento in coda prioritaria RGD-Alpha.",
-            "Sconto Early Access convalidato (Code: EA2026).",
-            "Report preliminare in generazione...",
-            "FINE TRASMISSIONE. SESSIONE PROTETTA."
+            "Connessione sicura stabilita con Revolut Merchant API...",
+            "Stato pagamento: CAPTURED [Autorizzazione eseguita]",
+            "Generazione Record di Vendita RG-Alpha 2026...",
+            "Instradamento licenza verso i cluster di Atene...",
+            "Inizializzazione procedura di onboarding cliente...",
+            "Notifica inviata al dipartimento fatturazione IKE.",
+            "Handshake eseguito. Backup crittografato salvato.",
+            "SESSIONE DI ACQUISTO COMPLETATA CON SUCCESSO."
         ];
         
         let line = 0;
         function updateTerminal() {
             if (line < logs.length) {
                 term.innerHTML += `<br><span style="color: #27c93f;">></span> ${logs[line]}`;
-                term.scrollTop = term.scrollHeight; // Auto-scroll
+                term.scrollTop = term.scrollHeight;
                 line++;
-                setTimeout(updateTerminal, 800);
+                setTimeout(updateTerminal, 700);
             }
         }
         
-        // Inizia dopo un piccolo delay per effetto drammatico
-        setTimeout(updateTerminal, 1000);
+        setTimeout(updateTerminal, 800);
     </script>
 </body>
 </html>

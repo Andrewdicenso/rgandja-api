@@ -9,6 +9,8 @@
       gtag('config', 'G-6TTVMQFNY6');
     </script>
 
+    <script src="https://checkout.revolut.com/checkout.js"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prezzi e Licenze - RGandja Decision Intelligence</title>
@@ -82,7 +84,6 @@
             font-size: 0.8rem;
         }
 
-        /* Stato evidenziato dinamico */
         .featured-card { 
             border: 2px solid var(--accent-gold) !important; 
             transform: translateY(-15px);
@@ -133,6 +134,33 @@
             border-radius: 8px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             backdrop-filter: blur(10px);
+        }
+
+        /* Bottone Checkout Revolut Stile RGandja */
+        .btn-pay {
+            margin-top: 30px;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            display: block;
+            border: 1px solid var(--accent-gold);
+            background: transparent;
+            color: var(--accent-gold);
+        }
+
+        .btn-pay-gold {
+            background: var(--accent-gold);
+            color: #000;
+        }
+
+        .btn-pay:hover {
+            filter: brightness(1.2);
+            transform: scale(1.02);
         }
     </style>
 </head>
@@ -204,12 +232,14 @@
                         <p class="price-value">€360 <small style="font-size: 1rem; color: var(--text-muted); font-weight: 400;">/anno</small></p>
                         <span class="license-tag">FATTURAZIONE ANNUALE</span>
                     </div>
-                    <div class="price-box" style="border-color: #3182ce; background: rgba(49, 130, 206, 0.05);">
+                    <button class="btn-pay" onclick="handlePayment(360, 'Junior Basic')">Paga Junior Basic</button>
+                    
+                    <div class="price-box" style="border-color: #3182ce; background: rgba(49, 130, 206, 0.05); margin-top: 40px;">
                         <p class="tier-label" style="color:#63b3ed;">Versione FULL (Plus)</p>
                         <p class="price-value" style="color: #63b3ed;">€960 <small style="font-size: 1rem; color: var(--text-muted); font-weight: 400;">/anno</small></p>
                         <span class="license-tag" style="background: rgba(99, 179, 237, 0.1); color: #63b3ed; border-color: rgba(99, 179, 237, 0.2);">Support Prioritario</span>
                     </div>
-                    <a href="contatti.html?tipo=junior" class="btn btn-outline" style="margin-top:30px; width:100%; text-align:center; text-decoration: none;">Richiedi Junior</a>
+                    <button class="btn-pay" style="border-color:#3182ce; color:#3182ce;" onclick="handlePayment(960, 'Junior Full')">Paga Junior Full</button>
                 </div>
 
                 <div class="pricing-card" id="card-pmi">
@@ -229,12 +259,14 @@
                         <p class="tier-label">Versione BASIC</p>
                         <p class="price-value">€2.000 <small style="font-size: 1rem; color: var(--text-muted); font-weight: 400;">/anno</small></p>
                     </div>
-                    <div class="price-box" style="background: rgba(212, 175, 55, 0.08); border-color: var(--accent-gold);">
+                    <button class="btn-pay" onclick="handlePayment(2000, 'PMI Basic')">Paga PMI Basic</button>
+
+                    <div class="price-box" style="background: rgba(212, 175, 55, 0.08); border-color: var(--accent-gold); margin-top: 40px;">
                         <p class="tier-label" style="color: var(--accent-gold);">Versione FULL (Advanced)</p>
                         <p class="price-value">€4.640 <small style="font-size: 1rem; color: var(--text-muted); font-weight: 400;">/anno</small></p>
                         <span class="license-tag">TOP PRIORITY 24H APPLICATO</span>
                     </div>
-                    <a href="contatti.html?tipo=pmi" class="btn btn-gold" style="margin-top: 30px; width:100%; text-align:center; text-decoration: none;">Attiva Protocollo PMI</a>
+                    <button class="btn-pay btn-pay-gold" onclick="handlePayment(4640, 'PMI Full')">Attiva PMI Full</button>
                 </div>
 
                 <div class="pricing-card" id="card-enterprise">
@@ -255,11 +287,13 @@
                         <p class="price-value">€9.600</p>
                         <span class="license-tag">UNA TANTUM</span>
                     </div>
-                    <div class="price-box" style="border-color: #63b3ed;">
+                    <button class="btn-pay" style="border-color:#63b3ed; color:#63b3ed;" onclick="handlePayment(9600, 'Enterprise Setup')">Paga Setup Enterprise</button>
+
+                    <div class="price-box" style="border-color: #63b3ed; margin-top: 40px;">
                         <p class="tier-label">Licenza Annuale</p>
                         <p class="price-value" style="font-size: 1.8rem; padding: 10px 0;">SU MISURA</p>
                     </div>
-                    <a href="contatti.html?tipo=enterprise" class="btn btn-outline" style="margin-top: 30px; width:100%; border-color:#63b3ed; color:#63b3ed; text-align:center; text-decoration: none;">Contatta Advisory</a>
+                    <a href="contatti.html?tipo=enterprise" class="btn-pay" style="border-color:#63b3ed; color:#63b3ed; text-align:center;">Contatta Advisory</a>
                 </div>
             </div>
 
@@ -282,40 +316,72 @@
     </footer>
 
     <script>
+        // Funzione universale per gestire i pagamenti
+        async function handlePayment(amount, description) {
+            try {
+                // 1. Chiamata alla tua Netlify Function per creare l'ordine
+                const response = await fetch('/.netlify/functions/create-payment', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        amount: amount * 100, // Revolut vuole i centesimi (es: 360€ -> 36000)
+                        description: description 
+                    })
+                });
+
+                if (!response.ok) throw new Error('Errore nella creazione dell\'ordine');
+
+                const { public_id } = await response.json();
+
+                // 2. Apertura del Widget Revolut
+                // IMPORTANTE: Sostituisci la stringa sotto con la tua vera PUBLIC KEY da Revolut
+                const RC = await RevolutCheckout(public_id, 'pk_inserisci_qui_la_tua_public_key');
+
+                RC.payWithCard({
+                    onSuccess() {
+                        window.location.href = '/grazie.html'; // Pagina di successo
+                    },
+                    onError(error) {
+                        alert("Errore nel pagamento: " + error.message);
+                    },
+                    onCancel() {
+                        console.log("Pagamento annullato dall'utente");
+                    }
+                });
+
+            } catch (err) {
+                console.error(err);
+                alert("Si è verificato un problema tecnico. Riprova più tardi.");
+            }
+        }
+
+        // Gestione UI (Badge dinamici e scroll)
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             const tipo = urlParams.get('tipo'); 
             
-            // Definiamo il badge stile RGandja
             const badgeHTML = '<span class="badge-status" style="background: var(--accent-gold); color: #000; border:none; margin-bottom: 15px; font-weight: 900; padding: 8px 22px; border-radius: 4px; font-size: 0.7rem; display: inline-block; letter-spacing: 3px; text-transform: uppercase;">MODELLO OTTIMALE</span>';
 
             if(tipo) {
-                // RESET: Puliamo tutte le card da stati evidenziati
                 document.querySelectorAll('.pricing-card').forEach(c => {
                     c.classList.remove('featured-card');
                     c.classList.remove('highlight-glow');
                     c.querySelector('.dynamic-badge').style.display = 'none';
-                    c.querySelector('.dynamic-badge').innerHTML = '';
                 });
 
-                // ATTIVAZIONE: Accendiamo solo quella richiesta
                 const targetCard = document.getElementById('card-' + tipo.toLowerCase());
                 if(targetCard) {
                     targetCard.classList.add('featured-card');
                     targetCard.classList.add('highlight-glow');
-                    
-                    // Inseriamo e mostriamo il badge
                     const badgeContainer = targetCard.querySelector('.dynamic-badge');
                     badgeContainer.innerHTML = badgeHTML;
                     badgeContainer.style.display = 'block';
 
-                    // Scroll automatico
                     setTimeout(() => {
                         targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     }, 500);
                 }
             } else {
-                // Se non c'è parametro nell'URL, impostiamo PMI come default statico (opzionale)
                 const pmi = document.getElementById('card-pmi');
                 pmi.classList.add('featured-card');
                 const badgeContainer = pmi.querySelector('.dynamic-badge');
