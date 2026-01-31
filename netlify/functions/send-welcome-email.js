@@ -1,28 +1,51 @@
 const { Resend } = require('resend');
+
+// Inizializza Resend usando la chiave salvata su Netlify
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 exports.handler = async (event) => {
-  if (event.httpMethod !== "POST") return { statusCode: 405, body: "Method Not Allowed" };
-
-  const { customerEmail, customerName, planName } = JSON.parse(event.body);
+  // Accetta solo richieste POST
+  if (event.httpMethod !== "POST") {
+    return { statusCode: 405, body: "Method Not Allowed" };
+  }
 
   try {
-    await resend.emails.send({
-      from: 'RGandja Enterprise <info@mail.rgandja.com>', 
+    // Recupera i dati inviati dalla funzione create-payment
+    const { customerEmail, customerName, planName } = JSON.parse(event.body);
+
+    // Invio effettivo dell'email
+    const data = await resend.emails.send({
+      from: 'RGandja Enterprise <info@mail.rgandja.com>', // Il tuo sottodominio verificato
       to: [customerEmail],
-      subject: '🛡️ Benvenuto nel Protocollo RGD-Alpha',
+      subject: '🛡️ Protocollo RGD-Alpha: Accesso Autorizzato',
       html: `
-        <div style="font-family: sans-serif;">
-          <h2 style="color: #d4af37;">Benvenuto nel sistema, ${customerName}</h2>
-          <p>La tua licenza per il <strong>${planName}</strong> è stata attivata con successo.</p>
-          <p>I nostri cluster ad Atene stanno inizializzando il tuo nodo dedicato.</p>
+        <div style="font-family: 'Helvetica', sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #eee;">
+          <h2 style="color: #111; text-align: center;">Benvenuto nel Sistema, ${customerName}</h2>
+          <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+          <p>Siamo lieti di confermare che l'attivazione del tuo <strong>${planName}</strong> è stata completata con successo.</p>
+          <p>I nostri sistemi stanno inizializzando i parametri del tuo nodo dedicato. Riceverai a breve le credenziali di accesso crittografate in una comunicazione separata.</p>
+          <div style="background: #f9f9f9; padding: 15px; border-radius: 5px; margin: 20px 0;">
+            <p style="margin: 0; font-size: 0.9em; color: #666;"><strong>Dettagli Ordine:</strong><br>
+            Servizio: ${planName}<br>
+            Stato: Attivo</p>
+          </div>
+          <p>Se non hai richiesto tu questa attivazione, contatta immediatamente il supporto.</p>
           <br>
-          <p>Saluti,<br><strong>Andrew Di Censo</strong></p>
+          <p>Cordiali saluti,<br><strong>Andrew Di Censo</strong><br>RGandja Enterprise</p>
         </div>
       `
     });
-    return { statusCode: 200, body: JSON.stringify({ message: "Email inviata" }) };
+
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ message: "Email inviata con successo", id: data.id })
+    };
+
   } catch (error) {
-    return { statusCode: 500, body: JSON.stringify({ error: error.message }) };
+    console.error("Errore Resend:", error);
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: "Errore durante l'invio dell'email" })
+    };
   }
 };
