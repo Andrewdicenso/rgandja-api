@@ -10,12 +10,12 @@ exports.handler = async (event) => {
   }
 
   try {
-    // Recupera i dati inviati dalla funzione create-payment
+    // Recupera i dati dal frontend
     const { customerEmail, customerName, planName } = JSON.parse(event.body);
 
-    // Invio effettivo dell'email
-    const data = await resend.emails.send({
-      from: 'RGandja Enterprise <info@mail.rgandja.com>', // Il tuo sottodominio verificato
+    // Invio email tramite il sottodominio verificato
+    const { data, error } = await resend.emails.send({
+      from: 'Andrew - RGandja <info@mail.rgandja.com>', 
       to: [customerEmail],
       subject: '🛡️ Protocollo RGD-Alpha: Accesso Autorizzato',
       html: `
@@ -29,23 +29,27 @@ exports.handler = async (event) => {
             Servizio: ${planName}<br>
             Stato: Attivo</p>
           </div>
-          <p>Se non hai richiesto tu questa attivazione, contatta immediatamente il supporto.</p>
+          <p>Se non hai richiesto tu questa attivazione, contatta il supporto a supporto@rgandja.it.</p>
           <br>
           <p>Cordiali saluti,<br><strong>Andrew Di Censo</strong><br>RGandja Enterprise</p>
         </div>
       `
     });
 
+    if (error) {
+      throw new Error(error.message);
+    }
+
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: "Email inviata con successo", id: data.id })
+      body: JSON.stringify({ message: "Email inviata!", id: data.id })
     };
 
   } catch (error) {
-    console.error("Errore Resend:", error);
+    console.error("Errore Invio:", error.message);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: "Errore durante l'invio dell'email" })
+      body: JSON.stringify({ error: "Errore durante l'invio" })
     };
   }
 };
