@@ -1,7 +1,6 @@
 const axios = require('axios');
 
 exports.handler = async (event) => {
-  // Recupera la chiave API di Brevo dalle variabili d'ambiente di Netlify
   const BREVO_API_KEY = process.env.BREVO_API_KEY;
 
   if (event.httpMethod !== "POST") {
@@ -20,7 +19,7 @@ exports.handler = async (event) => {
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #eee;">
           <h2 style="color: #111;">Ciao ${customerName},</h2>
           <p>Grazie per esserti interessato alla nostra promozione esclusiva.</p>
-          <p>Il tuo posto è stato riservato con successo.</p>
+          <p>Il tuo posto è stato riservato con successo. Riceverai presto nuovi dettagli.</p>
           <br>
           <p>A presto,<br><strong>Andrew Di Censo</strong></p>
         </div>
@@ -37,7 +36,7 @@ exports.handler = async (event) => {
           <h2 style="color: #d00;">Nuovo Lead dal Sito!</h2>
           <p><strong>Nome:</strong> ${customerName}</p>
           <p><strong>Email:</strong> ${customerEmail}</p>
-          <p><strong>Azione:</strong> Richiesta Promozione</p>
+          <p><strong>Azione:</strong> Richiesta Promozione tramite Brevo</p>
         </div>
       `
     };
@@ -54,11 +53,10 @@ exports.handler = async (event) => {
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: "Invio cliente e notifica admin completati!" })
+      body: JSON.stringify({ message: "Processo completato con successo!" })
     };
 
   } catch (error) {
-    console.error("Errore invio Brevo:", error.message);
     return { 
       statusCode: 500, 
       body: JSON.stringify({ error: error.message }) 
