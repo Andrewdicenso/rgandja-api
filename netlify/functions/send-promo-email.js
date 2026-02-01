@@ -1,7 +1,6 @@
 const axios = require('axios');
 
 exports.handler = async (event) => {
-  // Recupera la chiave API di Brevo salvata su Netlify
   const BREVO_API_KEY = process.env.BREVO_API_KEY;
 
   if (event.httpMethod !== "POST") {
@@ -27,8 +26,7 @@ exports.handler = async (event) => {
       `
     };
 
-    // --- 2. EMAIL DI NOTIFICA PER TE (ADMIN) ---
-    // Inviamo questa notifica a Libero per evitare che Gmail la scarti come "auto-invio"
+    // --- 2. EMAIL DI NOTIFICA PER TE (ADMIN) SU LIBERO ---
     const adminData = {
       sender: { name: "Sistema Notifiche RGandja", email: "info@rgandja.com" },
       to: [{ email: "andrewdicenso@libero.it", name: "Andrew Admin" }],
@@ -38,31 +36,32 @@ exports.handler = async (event) => {
           <h2 style="color: #d00;">Nuovo Lead dal Sito!</h2>
           <p><strong>Nome:</strong> ${customerName}</p>
           <p><strong>Email:</strong> ${customerEmail}</p>
-          <p><strong>Azione:</strong> Richiesta Promozione tramite Brevo</p>
+          <p><strong>Azione:</strong> Richiesta Promozione</p>
         </div>
       `
     };
 
-    // Invio al cliente tramite API di Brevo
-    await axios.post('https://api.brevo.com/v3/smtp/email', customerData, {
-      headers: { 'api-key': BREVO_API_KEY, 'Content-Type': 'application/json' }
-    });
-
-    // Invio notifica amministrativa a Libero
-    await axios.post('https://api.brevo.com/v3/smtp/email', adminData, {
-      headers: { 'api-key': BREVO_API_KEY, 'Content-Type': 'application/json' }
-    });
+    // --- INVIO SIMULTANEO ---
+    // Promise.all assicura che entrambe le chiamate vengano completate
+    await Promise.all([
+      axios.post('https://api.brevo.com/v3/smtp/email', customerData, {
+        headers: { 'api-key': BREVO_API_KEY, 'Content-Type': 'application/json' }
+      }),
+      axios.post('https://api.brevo.com/v3/smtp/email', adminData, {
+        headers: { 'api-key': BREVO_API_KEY, 'Content-Type': 'application/json' }
+      })
+    ]);
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: "Processo completato con successo!" })
+      body: JSON.stringify({ message: "Entrambe le email sono state inviate!" })
     };
 
   } catch (error) {
-    console.error("Errore invio Brevo:", error.message);
+    console.error("Errore invio Brevo:", error.response ? error.response.data : error.message);
     return { 
       statusCode: 500, 
-      body: JSON.stringify({ error: error.message }) 
+      body: JSON.stringify({ error: "Errore durante l'invio delle email." }) 
     };
   }
 };
