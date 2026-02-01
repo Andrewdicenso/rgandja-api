@@ -1,6 +1,7 @@
 const axios = require('axios');
 
 exports.handler = async (event) => {
+  // Recupera la chiave API di Brevo salvata su Netlify
   const BREVO_API_KEY = process.env.BREVO_API_KEY;
 
   if (event.httpMethod !== "POST") {
@@ -27,9 +28,10 @@ exports.handler = async (event) => {
     };
 
     // --- 2. EMAIL DI NOTIFICA PER TE (ADMIN) ---
+    // Inviamo questa notifica a Libero per evitare che Gmail la scarti come "auto-invio"
     const adminData = {
       sender: { name: "Sistema Notifiche RGandja", email: "info@rgandja.com" },
-      to: [{ email: "info@rgandja.com", name: "Andrew Admin" }],
+      to: [{ email: "andrewdicenso@libero.it", name: "Andrew Admin" }],
       subject: `🚨 NUOVA PRENOTAZIONE: ${customerName}`,
       htmlContent: `
         <div style="font-family: Arial, sans-serif; padding: 20px; border: 2px solid #f00;">
@@ -41,12 +43,12 @@ exports.handler = async (event) => {
       `
     };
 
-    // Invio al cliente
+    // Invio al cliente tramite API di Brevo
     await axios.post('https://api.brevo.com/v3/smtp/email', customerData, {
       headers: { 'api-key': BREVO_API_KEY, 'Content-Type': 'application/json' }
     });
 
-    // Invio notifica a te
+    // Invio notifica amministrativa a Libero
     await axios.post('https://api.brevo.com/v3/smtp/email', adminData, {
       headers: { 'api-key': BREVO_API_KEY, 'Content-Type': 'application/json' }
     });
@@ -57,6 +59,7 @@ exports.handler = async (event) => {
     };
 
   } catch (error) {
+    console.error("Errore invio Brevo:", error.message);
     return { 
       statusCode: 500, 
       body: JSON.stringify({ error: error.message }) 
