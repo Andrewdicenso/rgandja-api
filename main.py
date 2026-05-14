@@ -62,11 +62,9 @@ class NeuralProcessor:
         attrito_umano = rapporto_assenze * 2.5
         
         # 3. Indice di Efficienza Neurale (IEN)
-        # Più alto è l'attrito, più basso è l'IEN
         ien = max(5, 100 - (attrito_energetico + attrito_umano))
         
         # 4. Probabilità di Successo (Funzione Sigmoide non lineare)
-        # Simula il rischio reale: oltre una certa soglia di inefficienza, il sistema crolla
         prob = round(100 / (1 + math.exp(-0.15 * (ien - 50))), 2)
         
         # 5. Stima Risparmio in base all'algoritmo scelto
@@ -87,11 +85,15 @@ def registra_log(tipo: str, messaggio: str):
         "tipo": tipo,
         "messaggio": messaggio
     }
-    with open("logs.json", "r+") as f:
-        logs = json.load(f)
-        logs.append(log_entry)
-        f.seek(0)
-        json.dump(logs[-500:], f, indent=2) # Mantiene solo gli ultimi 500 log
+    try:
+        with open("logs.json", "r+") as f:
+            logs = json.load(f)
+            logs.append(log_entry)
+            f.seek(0)
+            json.dump(logs[-500:], f, indent=2) # Mantiene solo gli ultimi 500 log
+            f.truncate()
+    except Exception:
+        pass # Evita crash se il file log è corrotto
 
 # --- ENDPOINT API ---
 
@@ -123,7 +125,7 @@ sulla resilienza aziendale.
         return {
             "risultato": report.strip(),
             "kpi": res,
-            "is_premium_locked": data.algoritmo.lower() != "junior" # Blocca PMI ed Enterprise
+            "is_premium_locked": data.algoritmo.lower() != "junior" # Blocca PMI ed Enterprise se non autorizzati
         }
     except Exception as e:
         registra_log("ERRORE", f"Errore nel calcolo: {str(e)}")
@@ -131,11 +133,10 @@ sulla resilienza aziendale.
 
 @app.post("/email/invia-report")
 async def invia_report(req: ReportEmailRequest):
-    # Nota: Assicurati di impostare la variabile d'ambiente BREVO_API_KEY sul server
     api_key = os.getenv('BREVO_API_KEY')
     if not api_key:
         registra_log("WARNING", "Email non inviata: API Key mancante")
-        return {"status": "debug", "message": "Email simulata correttamente (API Key non configurata)"}
+        return {"status": "debug", "message": "Email simulata (Configurazione mancante)"}
 
     configuration = sib_api_v3_sdk.Configuration()
     configuration.api_key['api-key'] = api_key
@@ -158,4 +159,4 @@ async def invia_report(req: ReportEmailRequest):
 
 @app.get("/healthcheck")
 def health():
-    return {"status": "online", "version": "6.2.0", "node": "Athens-01"}
+    return {"status": "online", "version": "6.2.0", "node": "Athens-01", "timestamp": datetime.datetime.utcnow().isoformat()}

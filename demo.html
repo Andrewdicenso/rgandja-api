@@ -154,7 +154,7 @@
 <body>
 
     <div id="cookie-banner">
-        <span style="color:white; font-size:0.85rem;">Piattaforma di analisi protetta. Ottimizzazione delle risorse e monitoraggio flussi. <a href="cookies.html" style="color:var(--accent-gold)">Info Cookie</a></span>
+        <span style="color:white; font-size:0.85rem;">Piattaforma di analisi protetta. Ottimizzazione delle risorse e monitoraggio flussi. <a href="/cookies" style="color:var(--accent-gold)">Info Cookie</a></span>
         <button onclick="acceptCookies()" style="background:var(--accent-gold); border:none; padding:8px 15px; border-radius:4px; font-weight:bold; cursor:pointer;">ACCONSENTO</button>
     </div>
 
@@ -165,11 +165,11 @@
                 <h1>RGandja</h1>
             </div>
             <nav class="main-nav">
-                <a href="index.html">Home</a>
-                <a href="chi-siamo.html">Chi Siamo</a>
-                <a href="prezzi.html">Prezzi</a>
-                <a href="demo.html" class="active-nav">Demo</a>
-                <a href="contatti.html">Contatti</a>
+                <a href="/home">Home</a>
+                <a href="/chi-siamo">Chi Siamo</a>
+                <a href="/prezzi">Prezzi</a>
+                <a href="/demo" class="active-nav">Demo</a>
+                <a href="/contatti">Contatti</a>
             </nav>
         </div>
     </header>
@@ -198,7 +198,7 @@
             <div style="margin-bottom: 30px; max-width: 420px; text-align: left;">
                 <label style="display: flex; align-items: flex-start; gap: 12px; cursor: pointer; color: var(--text-gray); font-family: sans-serif; font-size: 0.75rem; line-height: 1.4;">
                     <input type="checkbox" id="privacy-check" style="width: auto; margin-top: 2px;">
-                    <span>Ho preso visione della <a href="privacy.html" target="_blank" style="color: var(--accent-gold);">Informativa Privacy</a> e acconsento all'invio dell'analisi tecnica richiesta.</span>
+                    <span>Ho preso visione della <a href="/privacy" target="_blank" style="color: var(--accent-gold);">Informativa Privacy</a> e acconsento all'invio dell'analisi tecnica richiesta.</span>
                 </label>
             </div>
 
@@ -241,23 +241,20 @@
     <footer class="footer container text-center" style="margin-top: 100px; padding-bottom: 50px;">
         <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 40px;">
         <p style="color: var(--text-main); font-weight: 600; letter-spacing: 1px;">© 2026 <strong>RGANDJA ENTERPRISE</strong></p>
-        
-        <!-- RIFERIMENTI LEGALI E FISCALI - NASCOSTI IN MODALITÀ VETRINA -->
-        <!-- 
-        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 10px;">
-            Sede Operativa: Sepolion 42, 10445 Atene (Grecia) | International Business Unit<br>
-            P.IVA (AFM): EL803131007 | G.E.MI.: 190286401000
-        </p>
-        -->
-
         <p style="margin: 25px 0;">
-            <a href="privacy.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-size: 0.85rem;">Privacy</a> | 
-            <a href="cookies.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-size: 0.85rem;">Cookies</a> | 
-            <a href="contatti.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-size: 0.85rem;">Supporto Tecnico</a>
+            <a href="/privacy" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-size: 0.85rem;">Privacy</a> | 
+            <a href="/cookies" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-size: 0.85rem;">Cookies</a> | 
+            <a href="/contatti" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-size: 0.85rem;">Supporto Tecnico</a>
         </p>
     </footer>
 
     <script>
+        // --- FUNZIONE DI WARM-UP SERVER ---
+        window.addEventListener('load', function() {
+            // Sveglia il server Render appena la pagina è pronta
+            fetch('https://rgandja-api.onrender.com/').catch(e => {});
+        });
+
         function acceptCookies() {
             document.getElementById('cookie-banner').style.display = 'none';
             localStorage.setItem('cookieConsent', 'true');
@@ -349,7 +346,8 @@
             })
             .then(response => {
                 const scelto = document.getElementById('algoritmo').value;
-                window.location.href = `prezzi.html?tipo=${scelto}`;
+                // Redirect alla pagina prezzi con parametro pulito
+                window.location.href = `/prezzi?tipo=${scelto}`;
             });
         }
     </script>
