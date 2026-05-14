@@ -11,7 +11,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neural Playground v5.2 PRO - RGandja Decision Intelligence</title>
+    <title>Business Intelligence Sandbox | RGandja - Advanced Analysis</title>
     
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="style.css">
@@ -154,7 +154,7 @@
 <body>
 
     <div id="cookie-banner">
-        <span style="color:white; font-size:0.85rem;">Protocollo di sicurezza attivo. Monitoraggio nodi per scopi analitici RGD. <a href="cookies.html" style="color:var(--accent-gold)">Info Cookie</a></span>
+        <span style="color:white; font-size:0.85rem;">Piattaforma di analisi protetta. Ottimizzazione delle risorse e monitoraggio flussi. <a href="cookies.html" style="color:var(--accent-gold)">Info Cookie</a></span>
         <button onclick="acceptCookies()" style="background:var(--accent-gold); border:none; padding:8px 15px; border-radius:4px; font-weight:bold; cursor:pointer;">ACCONSENTO</button>
     </div>
 
@@ -175,57 +175,61 @@
     </header>
 
     <div class="container text-center" style="margin-top: 70px; margin-bottom: 40px;">
-        <span class="badge-status">SANDBOX ENVIRONMENT</span>
-        <h2 style="font-size: 2.5rem; letter-spacing: -1px; margin-top: 15px;">Neural Engine v5.2 Alpha</h2>
-        <p style="color: var(--text-muted); max-width: 600px; margin: 20px auto;">Interfaccia di simulazione limitata. Testa i parametri operativi sotto il Protocollo di Certezza.</p>
+        <span class="badge-status">SIMULATION MODULE</span>
+        <h2 style="font-size: 2.5rem; letter-spacing: -1px; margin-top: 15px;">RGD-Alpha Logic Engine</h2>
+        <p style="color: var(--text-muted); max-width: 650px; margin: 20px auto;">
+            Configura i parametri aziendali per analizzare l'efficienza dei flussi operativi. 
+            Questo modulo sandbox permette di testare la scalabilità dei modelli di Decision Intelligence.
+        </p>
     </div>
 
     <div class="terminal">
         <div id="paywall" class="paywall-overlay">
-            <div style="font-size: 4rem; margin-bottom: 20px;">🔒</div>
-            <h2 style="color: var(--accent-gold); margin-bottom: 15px; font-size: 2rem;">ANALISI COMPLETATA</h2>
+            <div style="font-size: 4rem; margin-bottom: 20px;">📊</div>
+            <h2 style="color: var(--accent-gold); margin-bottom: 15px; font-size: 2rem;">ANALISI DEI FLUSSI PRONTA</h2>
             <p style="max-width: 500px; color: var(--text-gray); margin-bottom: 30px; line-height: 1.6;">
-                I nodi neurali hanno processato i dati. Inserisci la tua email aziendale per decriptare il report e ricevere la <strong>Roadmap di Ottimizzazione 2026</strong>.
+                I nostri sistemi hanno completato l'elaborazione dei parametri inseriti. 
+                Richiedi il report dettagliato e la <strong>Strategia di Ottimizzazione 2026</strong> direttamente nella tua casella email.
             </p>
             
-            <input type="email" id="user-email" placeholder="nome@azienda.it" 
+            <input type="email" id="user-email" placeholder="email@tua-azienda.it" 
                    style="width: 100%; max-width: 420px; padding: 16px; margin-bottom: 20px; background: #fff; color: #000; font-weight: bold; border: none;">
             
             <div style="margin-bottom: 30px; max-width: 420px; text-align: left;">
                 <label style="display: flex; align-items: flex-start; gap: 12px; cursor: pointer; color: var(--text-gray); font-family: sans-serif; font-size: 0.75rem; line-height: 1.4;">
                     <input type="checkbox" id="privacy-check" style="width: auto; margin-top: 2px;">
-                    <span>Dichiaro di aver letto la <a href="privacy.html" target="_blank" style="color: var(--accent-gold);">Privacy Policy</a> e acconsento al trattamento dei dati per la ricezione dell'analisi.</span>
+                    <span>Ho preso visione della <a href="privacy.html" target="_blank" style="color: var(--accent-gold);">Informativa Privacy</a> e acconsento all'invio dell'analisi tecnica richiesta.</span>
                 </label>
             </div>
 
-            <button class="btn-execute" onclick="spedisciReport()">DECRIPTA & SCARICA REPORT</button>
+            <button class="btn-execute" onclick="spedisciReport()">RICEVI REPORT ANALISI</button>
         </div>
 
         <div class="term-header">
             <div class="dot" style="background:var(--term-red)"></div>
             <div class="dot" style="background:var(--term-yellow)"></div>
             <div class="dot" style="background:var(--term-green)"></div>
-            <span style="margin-left:15px; font-size:0.7rem; color:#4a5568; font-weight: 700;">RG-ALPHA-CORE // ATHENS_NODE_ACTIVE</span>
+            <span style="margin-left:15px; font-size:0.7rem; color:#4a5568; font-weight: 700;">RGD-ALPHA-SYSTEM // CORE_ANALYSIS_ACTIVE</span>
         </div>
 
         <div class="term-content" id="terminalMain">
             <div class="grid-inputs">
                 <div class="form-group">
-                    <label>Modello Logico</label>
+                    <label>Modello Operativo</label>
                     <select id="algoritmo">
-                        <option value="junior">Junior (Agile Start)</option>
-                        <option value="pmi" selected>PMI (Efficiency Boost)</option>
-                        <option value="enterprise">Enterprise (Max Resilience)</option>
+                        <option value="junior">Junior (Asset Optimization)</option>
+                        <option value="pmi" selected>PMI (Scale-up Strategy)</option>
+                        <option value="enterprise">Enterprise (Resilience & Compliance)</option>
                     </select>
                 </div>
-                <div class="form-group"><label>Superficie Operativa (mq)</label><input type="number" id="mq" value="250"></div>
-                <div class="form-group"><label>Capitale Umano (risorse)</label><input type="number" id="dipendenti" value="12"></div>
-                <div class="form-group"><label>Ore Inattività/Sett</label><input type="number" id="assenze" value="8"></div>
-                <div class="form-group"><label>Assorbimento Standby (W)</label><input type="number" id="watt" value="320"></div>
-                <div class="form-group"><label>Budget Operativo Annuo (€)</label><input type="number" id="budget" value="120000"></div>
+                <div class="form-group"><label>Area Operativa (mq)</label><input type="number" id="mq" value="250"></div>
+                <div class="form-group"><label>Risorse Umane</label><input type="number" id="dipendenti" value="12"></div>
+                <div class="form-group"><label>Ore Idle/Settimana</label><input type="number" id="assenze" value="8"></div>
+                <div class="form-group"><label>Assorbimento Infrastruttura (W)</label><input type="number" id="watt" value="320"></div>
+                <div class="form-group"><label>Budget Annuale Stimato (€)</label><input type="number" id="budget" value="120000"></div>
             </div>
 
-            <button onclick="runNeuralAnalysis()" class="btn-execute" id="btnRun">LANCIA ELABORAZIONE NEURALE</button>
+            <button onclick="runNeuralAnalysis()" class="btn-execute" id="btnRun">AVVIA ANALISI DEI DATI</button>
 
             <div id="resultBox">
                 <div id="loadingText" class="status-line"></div>
@@ -234,18 +238,22 @@
         </div>
     </div>
 
-    
-
     <footer class="footer container text-center" style="margin-top: 100px; padding-bottom: 50px;">
         <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 40px;">
-        <p style="color: var(--text-main); font-weight: 600; letter-spacing: 1px;">© 2026 <strong>RGANDJA ENTERPRISE ΜΟΝΟΠΡΟΣΩΠΗ ΙΚΕ</strong></p>
+        <p style="color: var(--text-main); font-weight: 600; letter-spacing: 1px;">© 2026 <strong>RGANDJA ENTERPRISE</strong></p>
+        
+        <!-- RIFERIMENTI LEGALI E FISCALI - NASCOSTI IN MODALITÀ VETRINA -->
+        <!-- 
         <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 10px;">
-            Sepolion 42, 10445 Atene (Grecia) | P.IVA: EL803131007 | G.E.MI.: 190286401000
+            Sede Operativa: Sepolion 42, 10445 Atene (Grecia) | International Business Unit<br>
+            P.IVA (AFM): EL803131007 | G.E.MI.: 190286401000
         </p>
+        -->
+
         <p style="margin: 25px 0;">
             <a href="privacy.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-size: 0.85rem;">Privacy</a> | 
             <a href="cookies.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-size: 0.85rem;">Cookies</a> | 
-            <a href="imprint.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-size: 0.85rem;">Note Legali</a>
+            <a href="contatti.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-size: 0.85rem;">Supporto Tecnico</a>
         </p>
     </footer>
 
@@ -267,15 +275,15 @@
             const finalOutput = document.getElementById("finalOutput");
 
             btn.disabled = true;
-            btn.innerText = "CALCOLO IN CORSO...";
+            btn.innerText = "ELABORAZIONE DATI...";
             resultBox.style.display = "block";
             
             const steps = [
-                "> Caricamento driver RGD-Alpha...",
-                "> Connessione ai nodi neurali di Atene...",
-                "> Iniezione parametri nel cluster...",
-                "> Analisi delle inefficienze...",
-                "> Ottimizzazione flussi in corso..."
+                "> Inizializzazione protocollo RGD-Alpha...",
+                "> Sincronizzazione con il cluster di analisi...",
+                "> Caricamento parametri strutturali...",
+                "> Identificazione colli di bottiglia...",
+                "> Generazione modelli di efficienza..."
             ];
 
             for (let step of steps) {
@@ -301,7 +309,7 @@
                 });
 
                 const data = await response.json();
-                loadingText.innerText = "> ELABORAZIONE COMPLETATA. NODI SINCRONIZZATI.";
+                loadingText.innerText = "> ELABORAZIONE COMPLETATA. MODELLO OTTIMIZZATO.";
                 finalOutput.innerHTML = data.risultato;
 
                 if(data.is_premium_locked) {
@@ -312,9 +320,9 @@
                     }, 2500);
                 }
             } catch (err) {
-                loadingText.innerText = "ERRORE: Cluster di Atene non raggiungibile. Riprovare.";
+                loadingText.innerText = "AVVISO: Connessione temporaneamente limitata. Riprovare.";
                 btn.disabled = false;
-                btn.innerText = "RIESEGUI ANALISI";
+                btn.innerText = "AVVIA NUOVA ANALISI";
             }
         }
 
@@ -323,12 +331,12 @@
             const privacyChecked = document.getElementById('privacy-check').checked;
             
             if (!privacyChecked || !emailUtente || !emailUtente.includes('@')) {
-                alert("Verifica i dati inseriti e accetta la Privacy Policy.");
+                alert("Per procedere, inserisci un'email valida e accetta l'informativa sulla privacy.");
                 return;
             }
 
             const bottone = document.querySelector('.paywall-overlay .btn-execute');
-            bottone.innerText = "CRIPTAZIONE E INVIO...";
+            bottone.innerText = "INVIO DOCUMENTAZIONE...";
             bottone.disabled = true;
 
             fetch('https://rgandja-api.onrender.com/email/invia-report', {

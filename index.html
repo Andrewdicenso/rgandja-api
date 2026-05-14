@@ -11,18 +11,14 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RGandja Enterprise - Decision Intelligence & AI Solutions</title>
+    <title>RGandja Enterprise | Decision Intelligence & Strategic Optimization</title>
     
-    <meta name="description" content="RGandja Enterprise: Soluzioni di Decision Intelligence e protocolli IA per la gestione del rischio e l'ottimizzazione aziendale.">
-    <meta property="og:title" content="RGandja - Intelligence Neurale">
-    <meta property="og:image" content="logo.png">
-
+    <meta name="description" content="Sistemi avanzati di supporto decisionale e architetture IA per l'ottimizzazione dei processi aziendali complessi attraverso il protocollo RGD-Alpha.">
+    
     <link rel="icon" type="image/png" href="logo.png">
-    <link rel="apple-touch-icon" href="logo.png">
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* Animazione Badge */
         @keyframes pulse-gold {
             0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
             70% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
@@ -31,60 +27,92 @@
         .badge-status {
             animation: pulse-gold 2s infinite;
             border: 1px solid var(--accent-gold);
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            font-weight: 800;
+            text-transform: uppercase;
         }
 
-        /* Hover Cards Avanzato */
         .card-expert {
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
             cursor: pointer;
             border: 1px solid var(--border);
-            position: relative;
-            overflow: hidden;
-        }
-        .card-expert:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent-gold);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-            background: rgba(15, 23, 42, 0.9) !important;
+            padding: 50px 40px;
+            background: rgba(15, 23, 42, 0.4);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         
-        /* Cookie Banner Blur - AGGIORNATO PER TASTO RIFIUTA */
+        .card-expert:hover {
+            transform: translateY(-12px);
+            border-color: var(--accent-gold);
+            background: rgba(15, 23, 42, 0.9) !important;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            letter-spacing: -1.5px;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .text-block-extended {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
         #cookie-banner {
             position: fixed;
-            bottom: 20px; left: 20px; right: 20px;
-            background: rgba(10, 14, 20, 0.9);
+            bottom: 25px; left: 25px; right: 25px;
+            background: rgba(10, 14, 20, 0.98);
             border: 1px solid var(--accent-gold);
-            padding: 20px;
+            padding: 25px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 9999;
+            z-index: 10000;
             border-radius: 12px;
-            backdrop-filter: blur(15px);
-            box-shadow: 0 10px 50px rgba(0,0,0,0.8);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 15px 60px rgba(0,0,0,0.8);
         }
 
-        .brevo-section iframe {
-            background: transparent;
-            border: 1px solid var(--border);
-            transition: border 0.3s;
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0;
         }
-        .brevo-section iframe:hover {
-            border-color: var(--accent-gold);
+
+        .feature-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            font-size: 1rem;
+            color: #e2e8f0;
+        }
+
+        .feature-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold);
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
     <div id="cookie-banner">
-        <p style="color: #fff; font-size: 0.85rem; margin: 0; line-height: 1.4; max-width: 70%;">
-            <strong>Protocollo Privacy:</strong> Utilizziamo sistemi di analisi per ottimizzare il cluster RGD-Alpha. 
-            Navigando accetti la nostra <a href="cookies.html" style="color:var(--accent-gold); text-decoration: underline;">Cookie Policy</a>.
+        <p style="color: #fff; font-size: 0.9rem; margin: 0; line-height: 1.5; max-width: 75%;">
+            <strong>Protocollo di Trasparenza Dati:</strong> Utilizziamo sistemi analitici proprietari per monitorare il traffico e ottimizzare le risorse del cluster HPC. 
+            Nessun dato sensibile viene ceduto a terze parti. <a href="cookies.html" style="color:var(--accent-gold); text-decoration: underline;">Informativa Estesa</a>.
         </p>
-        <div style="display: flex; gap: 10px;">
-            <button onclick="rejectCookies()" style="background:transparent; border:1px solid #fff; color:#fff; padding:10px 20px; border-radius:4px; cursor:pointer; font-size: 0.8rem;">RIFIUTA</button>
-            <button onclick="acceptCookies()" style="background:var(--accent-gold); border:none; padding:10px 25px; border-radius:4px; font-weight:900; cursor:pointer; font-size: 0.8rem;">ACCONSENTO</button>
-        </div>
+        <button onclick="acceptCookies()" style="background:var(--accent-gold); border:none; padding:12px 30px; border-radius:4px; font-weight:900; cursor:pointer; font-size: 0.85rem; letter-spacing: 1px;">ACCONSENTO</button>
     </div>
 
     <header class="header">
@@ -96,7 +124,6 @@
             <nav class="main-nav">
                 <a href="index.html" class="active-nav">Home</a>
                 <a href="chi-siamo.html">Chi Siamo</a>
-                <a href="prezzi.html">Prezzi</a>
                 <a href="demo.html">Demo</a>
                 <a href="contatti.html">Contatti</a>
             </nav>
@@ -104,112 +131,151 @@
     </header>
 
     <main>
+        <!-- HERO: Potenziata e con linguaggio tecnico raffinato -->
         <section class="hero-premium">
             <div class="container text-center">
-                <span class="badge-status">NEURAL NODE: ATHENS ALPHA-2026</span>
-                <h1 style="font-size: 3.5rem; letter-spacing: -2px;">L'Era della Decisione Infallibile</h1>
-                <p class="hero-subtitle" style="max-width: 800px; margin: 20px auto;">Implementiamo architetture di <strong>Decision Intelligence</strong> per trasformare l'incertezza operativa in vantaggio competitivo misurabile.</p>
-                
-                <div style="background: rgba(212,175,55,0.1); display: inline-block; padding: 10px 20px; border-radius: 4px; margin-top: 20px; border: 1px solid rgba(212,175,55,0.2);">
-                    <span style="color: var(--accent-gold); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem;">
-                        ⚡ Sconto Lancio -20% + Bonus Early Access Attivo
-                    </span>
-                </div>
-
-                <div class="cta-group" style="margin-top: 50px;">
-                    <a href="demo.html" class="btn btn-gold">Lancia Simulazione Neurale</a>
-                    <a href="prezzi.html" class="btn btn-outline" style="margin-left:15px;">Protocolli di Licenza</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="section container">
-            <div class="grid-3">
-                <div class="card-expert text-center" onclick="location.href='prezzi.html?tipo=junior'">
-                    <div style="font-size: 3rem; margin-bottom: 20px;">🚀</div>
-                    <h2 style="letter-spacing: 1px;">RGD-JUNIOR</h2>
-                    <p style="color: var(--accent-gold); font-weight: 700; margin-bottom: 15px; font-size: 0.75rem; letter-spacing: 2px;">GROWTH ENGINE</p>
-                    <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">Ottimizzazione dei flussi di cassa e analisi dei margini per Retail e Small Business. Efficienza immediata, costi contenuti.</p>
-                    <span style="display:inline-block; margin-top:25px; color:var(--accent-gold); font-weight:bold; font-size: 0.75rem;">CONFIGURA →</span>
-                </div>
-
-                <div class="card-expert text-center" style="border: 1px solid var(--accent-gold); background: rgba(20, 26, 35, 0.95);" onclick="location.href='prezzi.html?tipo=pmi'">
-                    <div style="font-size: 3rem; margin-bottom: 20px;">📊</div>
-                    <h2 style="letter-spacing: 1px;">RGD-PMI</h2>
-                    <p style="color: var(--accent-gold); font-weight: 700; margin-bottom: 15px; font-size: 0.75rem; letter-spacing: 2px;">NEURAL PRODUCTIVITY</p>
-                    <p style="font-size: 0.9rem; color: #fff; line-height: 1.6;">Suite predittiva per il monitoraggio della liquidità e il recupero del capitale umano. Progettato per la media impresa.</p>
-                    <span style="display:inline-block; margin-top:25px; color:var(--accent-gold); font-weight:bold; font-size: 0.75rem;">ATTIVA PROTOCOLLO →</span>
-                </div>
-
-                <div class="card-expert text-center" onclick="location.href='prezzi.html?tipo=enterprise'">
-                    <div style="font-size: 3rem; margin-bottom: 20px;">🛡️</div>
-                    <h2 style="letter-spacing: 1px;">RGD-MAX</h2>
-                    <p style="color: #63b3ed; font-weight: 700; margin-bottom: 15px; font-size: 0.75rem; letter-spacing: 2px;">QUANTUM RESILIENCE</p>
-                    <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">Gestione del rischio globale, Advisory fusioni e integrità dati Quantum-Ready per asset di scala Enterprise.</p>
-                    <span style="display:inline-block; margin-top:25px; color:#63b3ed; font-weight:bold; font-size: 0.75rem;">ADVISORY DEDICATA →</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="brevo-section">
-            <div class="container">
-                <h2 style="color: var(--accent-gold); font-size: 2rem; margin-bottom: 10px;">Prenota il tuo Early Access</h2>
-                <p style="color: #fff; margin-bottom: 15px; font-size: 1.1rem; font-weight: 700;">Ricevi un codice promozionale cumulativo per il lancio ufficiale.</p>
-                
-                <p style="font-size: 0.75rem; color: #94a3b8; margin-bottom: 10px; text-align: center;">
-                    * Inviando il modulo, confermi di aver letto la <a href="privacy.html" style="color:var(--accent-gold);">Privacy Policy</a> e acconsenti al trattamento dei dati.
+                <span class="badge-status">HPC CLUSTER ARCHITECTURE // ATHENS 2026</span>
+                <h1 style="font-size: 3.8rem; letter-spacing: -2px; margin-top: 25px; line-height: 1.1;">L'Architettura del<br><span style="color: var(--accent-gold);">Supporto Decisionale Avanzato</span></h1>
+                <p class="hero-subtitle" style="max-width: 900px; margin: 30px auto; font-size: 1.25rem; line-height: 1.8;">
+                    RGandja implementa protocolli di <strong>Decision Intelligence</strong> progettati per istituzioni e aziende che operano in scenari di estrema volatilità. Attraverso il cluster <strong>RGD-Alpha</strong>, trasformiamo la complessità dei dati in percorsi d'azione certi e misurabili.
                 </p>
+                
+                <div class="cta-group" style="margin-top: 60px; display: flex; gap: 20px; justify-content: center;">
+                    <a href="contatti.html" class="btn btn-gold" style="padding: 20px 40px;">Richiedi Audit Tecnico</a>
+                    <a href="demo.html" class="btn" style="border: 1px solid var(--border); padding: 20px 40px;">Esplora Protocollo Alpha</a>
+                </div>
+            </div>
+        </section>
 
-                <div style="max-width: 650px; margin: 20px auto;">
-                    <iframe width="100%" height="550" src="https://93e5a624.sibforms.com/serve/MUIFAEFX_u5-gctxyZyfXWSW7ZNEjwtzhqjPMiGxpuBe_H_tntDuWYenl1qQs5Vml_yjheGXozQ6aGw854LhB4iHW-6LKZSTL-3embhUJ0goAP7-zL4uqSoDzp0G61XMWNj66sM1YFelNMwwxri8qHrQpISjHRSMZFlCB_4g_Rp5LkXTba7CL-lwT_SWXMg42VG8aB9Dz_Jd0tjwCg==" frameborder="0" scrolling="auto" allowfullscreen style="border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);"></iframe>
+        <!-- SEZIONE: Chi Siamo Estesa (Intro) -->
+        <section class="section container" style="padding-top: 100px;">
+            <div class="grid-2" style="align-items: center; gap: 80px;">
+                <div>
+                    <h2 class="section-title">Oltre l'Algoritmo: <br><span style="color: var(--accent-gold);">Visione e Pragmatismo</span></h2>
+                    <p class="text-block-extended">
+                        RGandja Enterprise non è semplicemente un fornitore di software. Siamo un hub di ingegneria dei dati nato con l'obiettivo di colmare il divario tra la potenza computazionale grezza e le necessità strategiche del business moderno.
+                    </p>
+                    <p class="text-block-extended">
+                        La nostra filosofia si basa sul concetto di <strong>"Resilienza Analitica"</strong>: la capacità di un'organizzazione non solo di resistere agli shock di mercato, ma di trarre vantaggio dalle fluttuazioni attraverso una comprensione profonda e in tempo reale dei propri flussi operativi.
+                    </p>
+                    <ul class="feature-list">
+                        <li>Sviluppo di architetture neurali proprietarie non commerciali.</li>
+                        <li>Gestione diretta di nodi di calcolo ad alta densità ad Atene.</li>
+                        <li>Protezione crittografica end-to-end per ogni flusso di Advisory.</li>
+                    </ul>
+                </div>
+                <div style="background: var(--glass); padding: 50px; border-radius: 24px; border: 1px solid var(--border); box-shadow: inset 0 0 30px rgba(212,175,55,0.05);">
+                    <h3 style="margin-bottom: 20px; color: #fff;">Protocollo RGD-Alpha</h3>
+                    <p style="font-size: 1rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px;">
+                        Il nostro core engine analizza oltre 10.000 variabili al secondo per identificare inefficienze latenti. Non si tratta di automazione cieca, ma di un sistema di supporto che potenzia l'intelligenza umana del decisore aziendale.
+                    </p>
+                    <div style="display: flex; gap: 15px; margin-top: 30px;">
+                        <div style="background: rgba(212,175,55,0.1); padding: 15px; border-radius: 12px; flex: 1; text-align: center;">
+                            <span style="display: block; font-size: 1.5rem; font-weight: bold; color: var(--accent-gold);">99.8%</span>
+                            <span style="font-size: 0.7rem; text-transform: uppercase;">Uptime Cluster</span>
+                        </div>
+                        <div style="background: rgba(99, 179, 237, 0.1); padding: 15px; border-radius: 12px; flex: 1; text-align: center;">
+                            <span style="display: block; font-size: 1.5rem; font-weight: bold; color: #63b3ed;">256-BIT</span>
+                            <span style="font-size: 0.7rem; text-transform: uppercase;">Standard Crypto</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEZIONE: Soluzioni (Le 3 card) -->
+        <section class="section container" style="margin-top: 50px;">
+            <div class="text-center" style="margin-bottom: 60px;">
+                <h2 class="section-title">Protocolli di Operatività</h2>
+                <p style="color: var(--text-muted); max-width: 700px; margin: 0 auto;">Soluzioni scalabili progettate per diversi livelli di complessità aziendale, dall'ottimizzazione locale alla gestione di asset globali.</p>
+            </div>
+            <div class="grid-3" style="gap: 30px;">
+                <div class="card-expert" onclick="location.href='contatti.html?piano=junior'">
+                    <div>
+                        <div style="font-size: 2.8rem; margin-bottom: 25px;">📉</div>
+                        <h3>RGD-JUNIOR</h3>
+                        <p style="color: var(--accent-gold); font-weight: 800; margin-bottom: 20px; font-size: 0.75rem; letter-spacing: 2px;">PROCESS EFFICIENCY</p>
+                        <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 25px;">
+                            Ingresso nel mondo della Decision Intelligence. Monitoraggio dei flussi di cassa, analisi dei margini di errore operativo e stabilizzazione dei processi di liquidità per business dinamici.
+                        </p>
+                    </div>
+                    <span style="color:var(--accent-gold); font-size: 0.8rem; font-weight: bold; text-transform: uppercase;">Inizia l'Audit →</span>
                 </div>
 
-                <div class="legal-notice-form">
-                    <p>Bonus riservato ai primi 50 nodi attivati.</p>
+                <div class="card-expert" style="border: 1px solid var(--accent-gold); background: rgba(20, 26, 35, 0.6);" onclick="location.href='contatti.html?piano=pmi'">
+                    <div>
+                        <div style="font-size: 2.8rem; margin-bottom: 25px;">🧠</div>
+                        <h3>RGD-PMI</h3>
+                        <p style="color: var(--accent-gold); font-weight: 800; margin-bottom: 20px; font-size: 0.75rem; letter-spacing: 2px;">NEURAL STRATEGY</p>
+                        <p style="font-size: 0.95rem; color: #fff; line-height: 1.7; margin-bottom: 25px;">
+                            La suite definitiva per la media impresa. Integrazione di modelli predittivi di secondo livello, analisi dei trend di settore e sistemi di protezione del capitale operativo basati su IA.
+                        </p>
+                    </div>
+                    <span style="color:var(--accent-gold); font-size: 0.8rem; font-weight: bold; text-transform: uppercase;">Configura Advisory →</span>
+                </div>
+
+                <div class="card-expert" onclick="location.href='contatti.html?piano=enterprise'">
+                    <div>
+                        <div style="font-size: 2.8rem; margin-bottom: 25px;">💎</div>
+                        <h3>RGD-MAX</h3>
+                        <p style="color: #63b3ed; font-weight: 800; margin-bottom: 20px; font-size: 0.75rem; letter-spacing: 2px;">QUANTUM RESILIENCE</p>
+                        <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 25px;">
+                            Soluzioni per asset di classe Enterprise. Gestione della complessità su scala multinazionale, protocolli anti-fragilità e advisory dedicata per operazioni straordinarie e fusioni.
+                        </p>
+                    </div>
+                    <span style="color:#63b3ed; font-size: 0.8rem; font-weight: bold; text-transform: uppercase;">Linea Riservata →</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEZIONE: Perché la Grecia (Context Tecnico) -->
+        <section class="section" style="background: rgba(15, 23, 42, 0.5); border-top: 1px solid var(--border); padding: 100px 0;">
+            <div class="container grid-2" style="align-items: center; gap: 60px;">
+                <div style="order: 2;">
+                    <h2 class="section-title">Atene: Il Nostro <br><span style="color: #63b3ed;">Digital Hub</span></h2>
+                    <p class="text-block-extended">
+                        La scelta di stabilire il nostro quartier generale tecnologico ad Atene risponde a una visione strategica precisa: operare all'interno del mercato unico europeo sfruttando la crescita del polo High-Tech ellenico.
+                    </p>
+                    <p class="text-block-extended">
+                        Da qui, coordiniamo la manutenzione del cluster HPC e garantiamo la conformità ai più rigidi standard GDPR dell'Unione Europea, assicurando ai nostri partner internazionali la massima trasparenza legale e integrità tecnologica.
+                    </p>
+                </div>
+                <div style="order: 1; position: relative;">
+                    <div style="width: 100%; height: 350px; background: url('logo.png') center/contain no-repeat; filter: grayscale(1) opacity(0.2);"></div>
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 100%;">
+                        <span style="font-family: 'Courier New', Courier, monospace; font-size: 0.8rem; color: var(--accent-gold);">LOCATION: 37.9838° N, 23.7275° E</span>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer container text-center" style="padding-bottom: 60px;">
-        <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 40px;">
+    <footer class="footer container text-center" style="padding: 80px 0 60px;">
+        <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 50px;">
         
-        <div style="background: rgba(10, 14, 20, 0.5); padding: 40px; border-radius: 12px; border: 1px solid var(--border); display: inline-block; width: 100%; max-width: 900px;">
-            <p style="font-size: 12px; color: #94a3b8; margin: 0; text-transform: uppercase; letter-spacing: 1px; line-height: 2;">
-                © 2026 <strong>RGANDJA ENTERPRISE ΜΟΝΟΠΡΟΣΩΠΗ ΙΚΕ</strong><br>
-                VAT (AFM): EL803131007 | G.E.MI.: 190286401000 | Capitale Sociale: € 1.000,00 i.v.<br>
-                Sede Legale: Sepolion 42, GR 104 45 – Atene (Grecia)<br>
-                <span style="color: #636e7b;">Soggetto alla vigilanza dell'Autorità Ellenica per la Protezione dei Dati (APDPX).</span><br>
-                Digital Operations: unit.athens@rgandja.com | <a href="imprint.html" style="color: var(--accent-gold); text-decoration: none;">Legal & IBAN</a>
+        <div style="max-width: 1100px; margin: 0 auto 50px;">
+            <p style="font-size: 0.75rem; color: #4a5568; line-height: 2; text-transform: uppercase; letter-spacing: 1.2px; text-align: justify;">
+                <strong>Informativa Legale e Note di Rischio:</strong> RGandja Enterprise è un'organizzazione dedicata alla fornitura di soluzioni software, analisi dati e servizi di Decision Intelligence. I servizi offerti non comprendono attività di consulenza finanziaria personalizzata, sollecitazione al pubblico risparmio o gestione di portafogli titoli. Le analisi fornite dai protocolli RGD-Alpha sono strumenti di supporto tecnico-decisionale; ogni decisione operativa rimane ad esclusivo carico e rischio dell'utente finale. I dati storici non garantiscono rendimenti futuri. RGandja opera in conformità alle leggi della Repubblica Ellenica e alle direttive dell'Unione Europea in materia di protezione dati e commercio digitale.
             </p>
         </div>
 
-        <div style="margin-top: 30px;">
-            <a href="privacy.html" style="color: var(--text-muted); font-size: 0.8rem; margin: 0 15px;">Privacy Policy</a>
-            <a href="cookies.html" style="color: var(--text-muted); font-size: 0.8rem; margin: 0 15px;">Cookie Policy</a>
-            <a href="contatti.html" style="color: var(--text-muted); font-size: 0.8rem; margin: 0 15px;">Supporto</a>
+        <p style="color: var(--text-main); font-weight: 700; letter-spacing: 2px; font-size: 1.1rem;">© 2026 <strong>RGANDJA ENTERPRISE</strong></p>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 15px;">International Technical Cluster // Sepolion 42, Athens (GR)</p>
+        
+        <div style="margin-top: 40px; display: flex; justify-content: center; gap: 30px;">
+            <a href="privacy.html" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Privacy Policy</a>
+            <a href="cookies.html" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Cookie Policy</a>
+            <a href="contatti.html" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Advisory Legal</a>
         </div>
     </footer>
 
     <script>
         function acceptCookies() {
             document.getElementById('cookie-banner').style.opacity = '0';
-            setTimeout(() => {
-                document.getElementById('cookie-banner').style.display = 'none';
-            }, 300);
+            setTimeout(() => { document.getElementById('cookie-banner').style.display = 'none'; }, 400);
             localStorage.setItem('cookieConsent', 'true');
         }
-
-        function rejectCookies() {
-            document.getElementById('cookie-banner').style.opacity = '0';
-            setTimeout(() => {
-                document.getElementById('cookie-banner').style.display = 'none';
-            }, 300);
-            localStorage.setItem('cookieConsent', 'false');
-            // Qui potresti aggiungere codice per disabilitare script di tracciamento
-        }
-
-        if (localStorage.getItem('cookieConsent') === 'true' || localStorage.getItem('cookieConsent') === 'false') {
+        if (localStorage.getItem('cookieConsent') === 'true') {
             document.getElementById('cookie-banner').style.display = 'none';
         }
     </script>

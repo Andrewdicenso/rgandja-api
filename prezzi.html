@@ -9,14 +9,18 @@
       gtag('config', 'G-6TTVMQFNY6');
     </script>
 
-    <script src="https://checkout.revolut.com/checkout.js"></script>
+    <!-- Script Revolut disattivato per versione vetrina -->
+    <!-- <script src="https://checkout.revolut.com/checkout.js"></script> -->
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prezzi e Licenze - RGandja Decision Intelligence</title>
+    <title>Protocolli e Servizi | RGandja</title>
     
+    <meta name="description" content="Soluzioni di Decision Intelligence RGandja. Scalabilità per Junior, PMI ed Enterprise.">
     <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
     <link rel="stylesheet" href="style.css"> 
+    
     <style>
         .pricing-grid {
             display: grid;
@@ -93,7 +97,7 @@
 
         .highlight-glow { 
             animation: glow-premium 2s infinite alternate ease-in-out; 
-        }  
+        }   
 
         @keyframes glow-premium { 
             from { box-shadow: 0 0 15px rgba(212, 175, 55, 0.1); } 
@@ -103,7 +107,7 @@
         .license-tag { 
             font-size: 0.65rem; 
             background: rgba(16, 185, 129, 0.1);
-            color: var(--accent); 
+            color: #10b981; 
             padding: 4px 10px;
             border-radius: 4px;
             font-weight: 800; 
@@ -111,32 +115,6 @@
             border: 1px solid rgba(16, 185, 129, 0.2);
         }
 
-        .guarantee-box { 
-            background: var(--glass); 
-            border: 1px dashed var(--accent-gold); 
-            padding: 50px; 
-            border-radius: 24px; 
-            margin-top: 100px; 
-        }
-
-        #cookie-banner {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
-            background: rgba(15, 23, 42, 0.95);
-            border: 1px solid var(--accent-gold);
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 9999;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            backdrop-filter: blur(10px);
-        }
-
-        /* Bottone Checkout Revolut Stile RGandja */
         .btn-pay {
             margin-top: 30px;
             width: 100%;
@@ -167,19 +145,15 @@
 <body>
 
     <div id="cookie-banner">
-        <p>Utilizziamo i cookie per analizzare il traffico e migliorare l'esperienza sul Protocollo RGD-Alpha. <a href="cookies.html" style="color:#d4af37">Cookie Policy</a>.</p>
-        <button class="btn-accept" style="background: #d4af37; color: #000; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;" onclick="acceptCookies()">Accetto</button>
+        <p style="color: #fff; font-size: 0.85rem; margin: 0; line-height: 1.4; max-width: 70%;">
+            <strong>Protocollo Privacy:</strong> Utilizziamo sistemi di analisi per ottimizzare il cluster HPC RGD-Alpha. 
+            Navigando accetti la nostra <a href="cookies.html" style="color:var(--accent-gold); text-decoration: underline;">Cookie Policy</a>.
+        </p>
+        <div style="display: flex; gap: 10px;">
+            <button onclick="rejectCookies()" style="background:transparent; border:1px solid #fff; color:#fff; padding:10px 20px; border-radius:4px; cursor:pointer; font-size: 0.8rem;">RIFIUTA</button>
+            <button onclick="acceptCookies()" style="background:var(--accent-gold); border:none; padding:10px 25px; border-radius:4px; font-weight:900; cursor:pointer; font-size: 0.8rem;">ACCONSENTO</button>
+        </div>
     </div>
-
-    <script>
-        function acceptCookies() {
-            document.getElementById('cookie-banner').style.display = 'none';
-            localStorage.setItem('cookieConsent', 'true');
-        }
-        if (localStorage.getItem('cookieConsent') === 'true') {
-            document.getElementById('cookie-banner').style.display = 'none';
-        }
-    </script>
 
     <header class="header">
         <div class="header-inner container">
@@ -200,20 +174,25 @@
     <main>
         <section class="hero-premium">
             <div class="container text-center">
-                <span class="badge-status">SISTEMA DI LICENZE 2026</span>
-                <h1>Investi in Certezze</h1>
-                <p class="hero-subtitle">Tariffe trasparenti per l'implementazione del Protocollo RGD-Alpha.</p>
+                <span class="badge-status">ADVISORY & LICENSING 2026</span>
+                <h1>Efficienza e Supporto Strategico</h1>
+                <p class="hero-subtitle">Protocolli di implementazione scalabili basati sul sistema di analisi RGD-Alpha.</p>
+                
+                <!-- SEZIONE SCONTO DISATTIVATA -->
+                <!-- 
                 <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid var(--accent-gold); display: inline-block; padding: 15px 30px; border-radius: 50px; margin-top: 20px;">
                     <p style="color: var(--accent-gold); font-weight: 800; margin: 0; text-transform: uppercase; letter-spacing: 1px;">
-                        🔥 EARLY ACCESS: -20% EXTRA sul setup per i primi 50 nodi attivati!
+                        🔥 EARLY ACCESS: Condizioni di setup agevolate per le prime 50 licenze attivate!
                     </p>
                 </div>
+                -->
             </div>
         </section>
 
         <section class="container section">
             <div class="pricing-grid">
                 
+                <!-- JUNIOR -->
                 <div class="pricing-card" id="card-junior">
                     <div class="tier-header">
                         <div class="dynamic-badge" style="display:none;"></div>
@@ -221,54 +200,52 @@
                         <p style="color: #63b3ed; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Startups & Professionals</p>
                     </div>
                     <ul class="feature-list">
-                        <li>Analisi di 1 processo core</li>
-                        <li>Nodi Neurali: 128 Standard</li>
-                        <li>Report Predittivo semestrale</li>
+                        <li>Analisi di 1 processo core operativo</li>
+                        <li>Modulo Decisionale: 128 Standard</li>
+                        <li>Report di ottimizzazione semestrale</li>
                         <li>Supporto Tecnico via Ticket</li>
-                        <li>Licenza Personale Nominale</li>
+                        <li>Licenza d'uso SaaS individuale</li>
                     </ul>
+                    
+                    <!-- BOX PREZZI NASCOSTI -->
+                    <!-- 
                     <div class="price-box">
                         <p class="tier-label">Versione BASIC</p>
                         <p class="price-value">€360 <small style="font-size: 1rem; color: var(--text-muted); font-weight: 400;">/anno</small></p>
                         <span class="license-tag">FATTURAZIONE ANNUALE</span>
                     </div>
-                    <button class="btn-pay" onclick="handlePayment(360, 'Junior Basic')">Paga Junior Basic</button>
-                    
-                    <div class="price-box" style="border-color: #3182ce; background: rgba(49, 130, 206, 0.05); margin-top: 40px;">
-                        <p class="tier-label" style="color:#63b3ed;">Versione FULL (Plus)</p>
-                        <p class="price-value" style="color: #63b3ed;">€960 <small style="font-size: 1rem; color: var(--text-muted); font-weight: 400;">/anno</small></p>
-                        <span class="license-tag" style="background: rgba(99, 179, 237, 0.1); color: #63b3ed; border-color: rgba(99, 179, 237, 0.2);">Support Prioritario</span>
-                    </div>
-                    <button class="btn-pay" style="border-color:#3182ce; color:#3182ce;" onclick="handlePayment(960, 'Junior Full')">Paga Junior Full</button>
+                    -->
+
+                    <a href="contatti.html?piano=junior" class="btn-pay">Richiedi Informazioni</a>
                 </div>
 
+                <!-- PMI -->
                 <div class="pricing-card" id="card-pmi">
                     <div class="tier-header">
                         <div class="dynamic-badge" style="display:none;"></div>
                         <h2 style="color: #fff; margin-bottom: 5px; letter-spacing: -1px;">Protocollo PMI</h2>
-                        <p style="color: var(--accent-gold); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Efficienza Industriale</p>
+                        <p style="color: var(--accent-gold); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Ottimizzazione Flussi</p>
                     </div>
                     <ul class="feature-list">
-                        <li>Analisi Multi-processo (fino a 5)</li>
-                        <li>Nodi Neurali: 1024 High-Performance</li>
+                        <li>Analisi Multi-processo (fino a 5 flussi)</li>
+                        <li>Algoritmi predittivi High-Performance</li>
                         <li>Dashboard Decisionale Real-Time</li>
-                        <li>Audit di conformità RGD trimestrale</li>
-                        <li>Licenza Multi-User (3 postazioni)</li>
+                        <li>Audit di efficienza trimestrale</li>
+                        <li>Licenza Multi-User (fino a 3 postazioni)</li>
                     </ul>
+
+                    <!-- BOX PREZZI NASCOSTI -->
+                    <!-- 
                     <div class="price-box">
-                        <p class="tier-label">Versione BASIC</p>
+                        <p class="tier-label">Versione PROFESSIONAL</p>
                         <p class="price-value">€2.000 <small style="font-size: 1rem; color: var(--text-muted); font-weight: 400;">/anno</small></p>
                     </div>
-                    <button class="btn-pay" onclick="handlePayment(2000, 'PMI Basic')">Paga PMI Basic</button>
+                    -->
 
-                    <div class="price-box" style="background: rgba(212, 175, 55, 0.08); border-color: var(--accent-gold); margin-top: 40px;">
-                        <p class="tier-label" style="color: var(--accent-gold);">Versione FULL (Advanced)</p>
-                        <p class="price-value">€4.640 <small style="font-size: 1rem; color: var(--text-muted); font-weight: 400;">/anno</small></p>
-                        <span class="license-tag">TOP PRIORITY 24H APPLICATO</span>
-                    </div>
-                    <button class="btn-pay btn-pay-gold" onclick="handlePayment(4640, 'PMI Full')">Attiva PMI Full</button>
+                    <a href="contatti.html?piano=pmi" class="btn-pay btn-pay-gold">Contatta Advisory</a>
                 </div>
 
+                <!-- ENTERPRISE -->
                 <div class="pricing-card" id="card-enterprise">
                     <div class="tier-header">
                         <div class="dynamic-badge" style="display:none;"></div>
@@ -276,117 +253,79 @@
                         <p style="color: #63b3ed; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">HPC Infrastructure</p>
                     </div>
                     <ul class="feature-list">
-                        <li>Processi e Nodi illimitati</li>
-                        <li>Infrastruttura Dedicata (HPC Atene)</li>
+                        <li>Processi e flussi illimitati</li>
+                        <li>Infrastruttura di calcolo dedicata (Atene)</li>
                         <li>Integrazione API e Whitelabel</li>
-                        <li>Account Manager Dedicato</li>
+                        <li>Account Manager Tecnico Dedicato</li>
                         <li>SLA Garantito 99.9%</li>
                     </ul>
-                    <div class="price-box">
-                        <p class="tier-label">Setup & Deployment</p>
-                        <p class="price-value">€9.600</p>
-                        <span class="license-tag">UNA TANTUM</span>
-                    </div>
-                    <button class="btn-pay" style="border-color:#63b3ed; color:#63b3ed;" onclick="handlePayment(9600, 'Enterprise Setup')">Paga Setup Enterprise</button>
-
+                    
                     <div class="price-box" style="border-color: #63b3ed; margin-top: 40px;">
-                        <p class="tier-label">Licenza Annuale</p>
-                        <p class="price-value" style="font-size: 1.8rem; padding: 10px 0;">SU MISURA</p>
+                        <p class="tier-label">Soluzioni Custom</p>
+                        <p class="price-value" style="font-size: 1.8rem; padding: 10px 0;">SU PREVENTIVO</p>
                     </div>
-                    <a href="contatti.html?tipo=enterprise" class="btn-pay" style="border-color:#63b3ed; color:#63b3ed; text-align:center;">Contatta Advisory</a>
+                    
+                    <a href="contatti.html?tipo=enterprise" class="btn-pay" style="border-color:#63b3ed; color:#63b3ed; text-align:center;">Richiedi Fattibilità</a>
                 </div>
             </div>
 
-            <div class="guarantee-box text-center">
-                <h4 style="color:var(--accent-gold); font-size: 1.8rem; margin-bottom: 20px; letter-spacing: -1px;">🛡️ RG-Alpha Integrity Guarantee</h4>
+            <!-- GARANZIA E DATI FISCALI NASCOSTI -->
+            <!-- 
+            <div class="guarantee-box text-center" style="margin-top: 60px;">
+                <h4 style="color:var(--accent-gold); font-size: 1.8rem; margin-bottom: 20px; letter-spacing: -1px;">🛡️ RGD-Alpha Protocol Integrity</h4>
                 <p style="color:var(--text-muted); font-size:1.1rem; max-width: 850px; margin: 0 auto; line-height: 1.8;">
-                    Le analisi del sistema RGandja sono supportate dal Protocollo di Certezza Matematica. Qualora l'ottimizzazione rilevata nel primo semestre 
-                    risultasse inferiore al costo della licenza, <strong>RGANDJA ENTERPRISE</strong> fornirà un audit tecnico manuale gratuito e l'estensione del servizio per 6 mesi senza costi aggiuntivi.
+                    Le analisi fornite dal sistema RGandja sono supportate da rigidi protocolli di validazione tecnologica per garantire l'accuratezza dei modelli predittivi.
                 </p>
             </div>
+            -->
         </section>
     </main>
 
-    <footer class="footer container text-center">
+    <footer class="footer container text-center" style="padding-bottom: 60px;">
         <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 40px;">
-        <p style="color: var(--text-main); font-weight: 600; letter-spacing: 1px;">© 2026 <strong>RGANDJA ENTERPRISE ΜΟΝΟΠΡΟΣΩΠΗ ΙΚΕ</strong></p>
+        <p style="color: var(--text-main); font-weight: 600; letter-spacing: 1px;">© 2026 <strong>RGANDJA ENTERPRISE</strong></p>
         <p style="margin-top: 10px; font-size: 0.85rem; color: var(--text-muted);">
-            Sepolion 42, 10445 Atene (Grecia) | P.IVA: EL803131007 | G.E.MI.: 190286401000
+            International Operations Unit: unit.athens@rgandja.com
         </p>
     </footer>
 
     <script>
-        // Funzione universale per gestire i pagamenti
-        async function handlePayment(amount, description) {
-            try {
-                // 1. Chiamata alla tua Netlify Function per creare l'ordine
-                const response = await fetch('/.netlify/functions/create-payment', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ 
-                        amount: amount * 100, // Revolut vuole i centesimi (es: 360€ -> 36000)
-                        description: description 
-                    })
-                });
-
-                if (!response.ok) throw new Error('Errore nella creazione dell\'ordine');
-
-                const { public_id } = await response.json();
-
-                // 2. Apertura del Widget Revolut
-                // IMPORTANTE: Sostituisci la stringa sotto con la tua vera PUBLIC KEY da Revolut
-                const RC = await RevolutCheckout(public_id, 'pk_inserisci_qui_la_tua_public_key');
-
-                RC.payWithCard({
-                    onSuccess() {
-                        window.location.href = '/grazie.html'; // Pagina di successo
-                    },
-                    onError(error) {
-                        alert("Errore nel pagamento: " + error.message);
-                    },
-                    onCancel() {
-                        console.log("Pagamento annullato dall'utente");
-                    }
-                });
-
-            } catch (err) {
-                console.error(err);
-                alert("Si è verificato un problema tecnico. Riprova più tardi.");
-            }
+        function acceptCookies() {
+            document.getElementById('cookie-banner').style.display = 'none';
+            localStorage.setItem('cookieConsent', 'true');
+        }
+        function rejectCookies() {
+            document.getElementById('cookie-banner').style.display = 'none';
+            localStorage.setItem('cookieConsent', 'false');
+        }
+        if (localStorage.getItem('cookieConsent')) {
+            document.getElementById('cookie-banner').style.display = 'none';
         }
 
-        // Gestione UI (Badge dinamici e scroll)
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             const tipo = urlParams.get('tipo'); 
-            
             const badgeHTML = '<span class="badge-status" style="background: var(--accent-gold); color: #000; border:none; margin-bottom: 15px; font-weight: 900; padding: 8px 22px; border-radius: 4px; font-size: 0.7rem; display: inline-block; letter-spacing: 3px; text-transform: uppercase;">MODELLO OTTIMALE</span>';
 
             if(tipo) {
                 document.querySelectorAll('.pricing-card').forEach(c => {
-                    c.classList.remove('featured-card');
-                    c.classList.remove('highlight-glow');
+                    c.classList.remove('featured-card', 'highlight-glow');
                     c.querySelector('.dynamic-badge').style.display = 'none';
                 });
-
                 const targetCard = document.getElementById('card-' + tipo.toLowerCase());
                 if(targetCard) {
-                    targetCard.classList.add('featured-card');
-                    targetCard.classList.add('highlight-glow');
-                    const badgeContainer = targetCard.querySelector('.dynamic-badge');
-                    badgeContainer.innerHTML = badgeHTML;
-                    badgeContainer.style.display = 'block';
-
-                    setTimeout(() => {
-                        targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }, 500);
+                    targetCard.classList.add('featured-card', 'highlight-glow');
+                    const bc = targetCard.querySelector('.dynamic-badge');
+                    bc.innerHTML = badgeHTML;
+                    bc.style.display = 'block';
+                    setTimeout(() => targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' }), 500);
                 }
             } else {
                 const pmi = document.getElementById('card-pmi');
                 pmi.classList.add('featured-card');
-                const badgeContainer = pmi.querySelector('.dynamic-badge');
-                badgeContainer.innerHTML = '<span class="badge-status" style="background: var(--accent-gold); color: #000; border:none; margin-bottom: 15px; font-weight: 900; padding: 8px 22px; border-radius: 4px; font-size: 0.7rem; display: inline-block; letter-spacing: 3px; text-transform: uppercase;">SCELTA STRATEGICA</span>';
-                badgeContainer.style.display = 'block';
+                const bc = pmi.querySelector('.dynamic-badge');
+                bc.innerHTML = '<span class="badge-status" style="background: var(--accent-gold); color: #000; border:none; margin-bottom: 15px; font-weight: 900; padding: 8px 22px; border-radius: 4px; font-size: 0.7rem; display: inline-block; letter-spacing: 3px; text-transform: uppercase;">ANALISI STRATEGICA</span>';
+                bc.style.display = 'block';
             }
         }
     </script>
