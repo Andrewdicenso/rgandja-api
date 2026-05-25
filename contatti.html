@@ -8,212 +8,202 @@
       gtag('js', new Date());
       gtag('config', 'G-6TTVMQFNY6');
     </script>
-
+ 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contatti | RGandja Concierge Strategico</title>
-    
+    <title>Contatti | rgandja — Parliamo del tuo progetto</title>
+    <meta name="description" content="Hai domande su rgandja? Vuoi capire se fa al caso tuo? Scrivici — rispondiamo entro 24 ore.">
+ 
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --accent-gold: #d4af37; --border: #1a2332; --bg-dark: #05070a; }
-
         .form-control {
-            width: 100%; padding: 16px; border-radius: 8px; 
-            border: 1px solid var(--border); background: rgba(15, 23, 42, 0.6); 
+            width: 100%; padding: 16px; border-radius: 8px;
+            border: 1px solid var(--border); background: rgba(15, 23, 42, 0.6);
             color: white; font-family: 'Inter', sans-serif;
             margin-top: 8px; transition: all 0.3s ease;
             box-sizing: border-box; font-size: 0.95rem;
         }
-
-        .form-control:focus { 
-            border-color: var(--accent-gold); 
-            outline: none; 
-            box-shadow: 0 0 20px rgba(212,175,55,0.1); 
+        .form-control:focus {
+            border-color: var(--accent-gold);
+            outline: none;
+            box-shadow: 0 0 20px rgba(212,175,55,0.1);
             background: #0f172a;
         }
-
-        label { font-size: 0.7rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 2px; font-weight: 800; font-family: 'Fira Code', monospace; }
-        
+        label {
+            font-size: 0.7rem; color: var(--accent-gold);
+            text-transform: uppercase; letter-spacing: 2px;
+            font-weight: 800; font-family: 'Fira Code', monospace;
+        }
         .grid-contact-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        
-        .checkbox-group { 
-            display: flex; 
-            align-items: flex-start; 
-            gap: 15px; 
-            margin-top: 25px; 
-            padding: 20px; 
-            background: rgba(212, 175, 55, 0.03); 
-            border: 1px solid rgba(212, 175, 55, 0.1); 
-            border-radius: 12px; 
+        .checkbox-group {
+            display: flex; align-items: flex-start; gap: 15px; margin-top: 25px;
+            padding: 20px; background: rgba(212, 175, 55, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.1); border-radius: 12px;
         }
-
         .checkbox-group input { margin-top: 4px; accent-color: var(--accent-gold); transform: scale(1.2); }
-        .checkbox-group label { text-transform: none; font-weight: 400; letter-spacing: 0; color: #a0aec0; font-size: 0.85rem; line-height: 1.5; font-family: 'Inter', sans-serif; }
-        
-        .contact-sidebar { display: flex; flex-direction: column; gap: 25px; }
-        
-        .security-status { 
-            font-size: 0.65rem; 
-            color: #4a5568; 
-            display: flex; 
-            align-items: center; 
-            gap: 8px; 
-            margin-top: 15px; 
-            text-transform: uppercase; 
-            letter-spacing: 1px;
-            font-weight: 700;
-            font-family: 'Fira Code', monospace;
+        .checkbox-group label {
+            text-transform: none; font-weight: 400; letter-spacing: 0;
+            color: #a0aec0; font-size: 0.85rem; line-height: 1.5;
+            font-family: 'Inter', sans-serif;
         }
-
-        .location-badge {
-            display: inline-block;
-            padding: 4px 12px;
-            background: rgba(99, 179, 237, 0.1);
-            color: #63b3ed;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            margin-bottom: 10px;
+        .security-status {
+            font-size: 0.65rem; color: #4a5568; display: flex; align-items: center;
+            gap: 8px; margin-top: 15px; text-transform: uppercase; letter-spacing: 1px;
+            font-weight: 700; font-family: 'Fira Code', monospace;
         }
-
         #cookie-banner {
             position: fixed; bottom: 20px; left: 20px; right: 20px;
             background: rgba(15, 23, 42, 0.95); border: 1px solid var(--accent-gold);
             padding: 15px 25px; display: flex; justify-content: space-between;
             align-items: center; z-index: 9999; border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5); backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
         }
-
-        @media (max-width: 768px) { 
-            .grid-contact-fields { grid-template-columns: 1fr; } 
-            #cookie-banner { flex-direction: column; gap: 10px; text-align: center; } 
+        @media (max-width: 768px) {
+            .grid-contact-fields { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-
+ 
     <div id="cookie-banner">
-        <p style="color: #fff; font-size: 0.85rem; margin: 0;">Inviando questo modulo, accetti l'uso di cookie tecnici necessari al funzionamento del concierge. <a href="cookies.html" style="color:var(--accent-gold)">Cookie Policy</a>.</p>
+        <p style="color: #fff; font-size: 0.85rem; margin: 0;">Utilizziamo cookie tecnici necessari al funzionamento del sito. <a href="cookies.html" style="color:var(--accent-gold)">Cookie Policy</a>.</p>
         <button onclick="acceptCookies()" style="background: var(--accent-gold); border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-weight: bold;">Accetto</button>
     </div>
-
-    <header class="header">
-        <div class="header-inner container">
+ 
+<div class="header-inner container">
             <div class="header-brand">
                 <img src="logo.png" alt="Logo RGandja" class="brand-logo">
                 <h1>RGandja</h1>
             </div>
             <nav class="main-nav">
-                <a href="index.html">Home</a>
-                <a href="chi-siamo.html">Chi Siamo</a>
-                <a href="prezzi.html">Prezzi</a>
-                <a href="demo.html">Demo</a>
-                <a href="contatti.html" class="active-nav" style="color: var(--accent-gold); font-weight: bold;">Contatti</a>
+                <a href="/">Home</a>
+                <a href="/funzionalita">Funzionalità</a>
+                <a href="/metodo">Come Funziona</a>
+                <a href="/prezzi">Piani</a>
+                <a href="/chi-siamo">ChiSiamo</a>
+                <a href="contatti.html" class="active-nav">Contatti</a>
             </nav>
         </div>
     </header>
-
-    <main style="padding-top: 100px;">
+ 
+    <main style="padding-top: 80px;">
         <section class="hero-premium">
             <div class="container text-center">
-                <span class="badge-status" style="border: 1px solid var(--accent-gold); color: var(--accent-gold); padding: 5px 15px; border-radius: 20px; font-size: 0.75rem; letter-spacing: 2px;">SECURE HUB</span>
-                <h1 style="font-size: 3.5rem; margin-top: 20px; color: #fff;">Concierge Strategico</h1>
-                <p class="hero-subtitle" style="color: #a0aec0; max-width: 600px; margin: 20px auto;">Attiva il tuo <strong>Protocollo RGD-Alpha</strong> o richiedi un audit per la tua infrastruttura.</p>
+                <span class="badge-status" style="border: 1px solid var(--accent-gold); color: var(--accent-gold); padding: 6px 18px; border-radius: 20px; font-size: 0.75rem; letter-spacing: 1.5px; font-weight: 800; text-transform: uppercase; display: inline-block;">PARLIAMO</span>
+                <h1 style="font-size: 3rem; margin-top: 20px;">Scrivici.<br><span style="color: var(--accent-gold);">Rispondiamo entro 24 ore.</span></h1>
+                <p class="hero-subtitle" style="max-width: 600px; margin: 20px auto;">
+                    Hai domande su RGandja? Vuoi capire se fa al caso tuo? 
+                    Vuoi una demo personalizzata? Siamo costruttori — non commerciali. Parla direttamente con chi ha costruito il prodotto.
+                </p>
             </div>
         </section>
-
-        <section class="section container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; padding-bottom: 80px;">
-            <div class="contact-sidebar">
-                <div class="card-expert" style="background: rgba(10, 14, 20, 0.8); border: 1px solid var(--border); padding: 35px; border-radius: 12px; border-top: 3px solid var(--accent-gold);">
-                    <span class="location-badge">HQ EUROPE // HPC HUB</span>
-                    <h3 style="color:#fff; margin-bottom: 15px; letter-spacing: -0.5px; font-size: 1.5rem;">Sede Operativa</h3>
-                    <p style="color: #a0aec0; line-height: 1.6; margin-bottom: 20px;">
-                        <strong>RGANDJA ENTERPRISE ΜΟΝΟΠΡΟΣΩΠΗ ΙΚΕ</strong><br>
-                        Sepolion 42, GR 104 45<br>
-                        <strong>Atene, Grecia (UE)</strong>
+ 
+        <section class="section container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; padding-bottom: 100px;">
+ 
+            <!-- SIDEBAR -->
+            <div style="display: flex; flex-direction: column; gap: 25px;">
+                <div class="card-expert" style="background: rgba(10, 14, 20, 0.8); border: 1px solid var(--border); padding: 35px; border-radius: 16px; border-top: 3px solid var(--accent-gold);">
+                    <p style="color: var(--accent-gold); font-size: 0.7rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px;">Sede Operativa</p>
+                    <h3 style="color:#fff; margin-bottom: 15px; letter-spacing: -0.5px; font-size: 1.3rem;">RGandja</h3>
+                    <p style="color: #a0aec0; line-height: 1.8; margin-bottom: 15px; font-size: 0.9rem;">
+                        by RGandja Enterprise<br>
+                        <strong style="color: #fff;">Athens, Greece — European Union</strong>
                     </p>
-                    <p style="font-size: 0.8rem; color: #63b3ed; font-weight: 600; font-family: 'Fira Code', monospace;">
-                        Disponibilità: Lun–Ven | 09:00 - 18:00 (EET)
+                    <p style="font-size: 0.85rem; color: #63b3ed; font-weight: 600; font-family: 'Fira Code', monospace;">
+                        Lun–Ven | 09:00 - 18:00 (EET)
                     </p>
-                    <p style="font-size: 0.8rem; color: #a0aec0; margin-top: 10px;">
-                       Email: <a href="mailto:unit.athens@rgandja.com" style="color: var(--accent-gold); text-decoration: none;">unit.athens@rgandja.com</a>
+                    <p style="font-size: 0.85rem; color: #a0aec0; margin-top: 12px;">
+                        📧 <a href="mailto:info@rgandja.com" style="color: var(--accent-gold); text-decoration: none;">info@rgandja.com</a>
                     </p>
                 </div>
-
-                <div class="card-expert" style="background: rgba(15, 23, 42, 0.4); border: 1px solid var(--border); padding: 30px; border-radius: 12px;">
-                    <h3 style="color:#fff; margin-bottom: 12px; font-size: 1.1rem;">💎 Canale Prioritario</h3>
-                    <p style="font-size: 0.9rem; color: #a0aec0; line-height: 1.6;">
-                        I partner con licenza attiva accedono a una linea dedicata per supporto tecnico real-time e advisory strategica avanzata.
-                    </p>
+ 
+                <div class="card-expert" style="background: rgba(15, 23, 42, 0.4); border: 1px solid var(--border); padding: 30px; border-radius: 16px;">
+                    <h3 style="color:#fff; margin-bottom: 12px; font-size: 1rem;">Perché contattarci?</h3>
+                    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">
+                        <li style="font-size: 0.88rem; color: #a0aec0; display: flex; gap: 10px; align-items: flex-start;">
+                            <span style="color: var(--accent-gold); flex-shrink: 0;">→</span> Capire se RGandjafa al caso tuo
+                        </li>
+                        <li style="font-size: 0.88rem; color: #a0aec0; display: flex; gap: 10px; align-items: flex-start;">
+                            <span style="color: var(--accent-gold); flex-shrink: 0;">→</span> Richiedere una demo personalizzata
+                        </li>
+                        <li style="font-size: 0.88rem; color: #a0aec0; display: flex; gap: 10px; align-items: flex-start;">
+                            <span style="color: var(--accent-gold); flex-shrink: 0;">→</span> Chiedere un preventivo Enterprise
+                        </li>
+                        <li style="font-size: 0.88rem; color: #a0aec0; display: flex; gap: 10px; align-items: flex-start;">
+                            <span style="color: var(--accent-gold); flex-shrink: 0;">→</span> Fare domande tecniche sul prodotto
+                        </li>
+                        <li style="font-size: 0.88rem; color: #a0aec0; display: flex; gap: 10px; align-items: flex-start;">
+                            <span style="color: var(--accent-gold); flex-shrink: 0;">→</span> Accedere alle condizioni Early Adopter
+                        </li>
+                    </ul>
                 </div>
             </div>
-
-            <div class="card-expert" style="background: rgba(10, 14, 20, 0.95); border: 1px solid var(--border); padding: 45px; border-radius: 12px;">
+ 
+            <!-- FORM -->
+            <div class="card-expert" style="background: rgba(10, 14, 20, 0.95); border: 1px solid var(--border); padding: 45px; border-radius: 16px;">
                 <form name="contact-rgandja" method="POST" data-netlify="true" action="/grazie.html" id="contact-form">
                     <input type="hidden" name="form-name" value="contact-rgandja">
-                    
-                    <div class="form-group" style="margin-bottom: 25px;">
-                        <label>Organizzazione / Entity</label>
-                        <input type="text" name="azienda" class="form-control" placeholder="Nome della società o ente" required>
+ 
+                    <div class="form-group" style="margin-bottom: 22px;">
+                        <label>Nome / Azienda</label>
+                        <input type="text" name="azienda" class="form-control" placeholder="Il tuo nome o il nome dell'azienda" required>
                     </div>
-
+ 
                     <div class="grid-contact-fields">
-                        <div class="form-group" style="margin-bottom: 25px;">
-                            <label>Email Referente</label>
+                        <div class="form-group" style="margin-bottom: 22px;">
+                            <label>Email</label>
                             <input type="email" name="email" class="form-control" placeholder="nome@azienda.com" required>
                         </div>
-                        <div class="form-group" style="margin-bottom: 25px;">
-                            <label>Ambito di Interesse</label>
-                            <select name="obiettivo" id="select-protocol" class="form-control">
-                                <option value="junior">Protocollo RGD-Junior</option>
-                                <option value="pmi" selected>Protocollo RGD-PMI</option>
-                                <option value="enterprise">Protocollo RGD-Enterprise</option>
-                                <option value="support">Informazioni Tecniche / Audit</option>
+                        <div class="form-group" style="margin-bottom: 22px;">
+                            <label>Motivo del Contatto</label>
+                            <select name="obiettivo" id="select-motivo" class="form-control">
+                                <option value="demo">Voglio una Demo</option>
+                                <option value="starter">Piano Starter</option>
+                                <option value="pmi" selected>Piano PMI</option>
+                                <option value="enterprise">Piano Enterprise / Preventivo</option>
+                                <option value="info">Informazioni Generali</option>
                             </select>
                         </div>
                     </div>
-
-                    <div class="form-group" style="margin-bottom: 25px;">
-                        <label>Scenario Operativo</label>
-                        <textarea name="messaggio" class="form-control" rows="5" placeholder="Descrivi brevemente i processi che desideri ottimizzare..."></textarea>
+ 
+                    <div class="form-group" style="margin-bottom: 22px;">
+                        <label>Il tuo Messaggio</label>
+                        <textarea name="messaggio" class="form-control" rows="5" placeholder="Descrivici brevemente il tuo business e cosa vorresti ottenere…"></textarea>
                     </div>
-
+ 
                     <div class="checkbox-group">
                         <input type="checkbox" id="privacy" name="privacy_accepted" required>
                         <label for="privacy">
-                            Dichiaro di aver letto l'informativa ai sensi del GDPR e accetto la <a href="privacy.html" target="_blank" style="color: var(--accent-gold); text-decoration: none; font-weight: 700;">Privacy Policy</a> per il trattamento dei dati.
+                            Ho letto e accetto la <a href="privacy.html" target="_blank" style="color: var(--accent-gold); text-decoration: none; font-weight: 700;">Privacy Policy</a> per il trattamento dei dati personali ai sensi del GDPR.
                         </label>
                     </div>
-
-                    <button id="submit-btn" type="submit" class="btn-gold" style="margin-top: 30px; width: 100%; padding: 20px; background: var(--accent-gold); color: #000; border: none; border-radius: 8px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: 0.3s;">
-                        Invia Richiesta Advisory
+ 
+                    <button id="submit-btn" type="submit" style="margin-top: 30px; width: 100%; padding: 20px; background: var(--accent-gold); color: #000; border: none; border-radius: 8px; font-weight: 900; text-transform: uppercase; letter-spacing: 1.5px; cursor: pointer; transition: 0.3s; font-size: 0.85rem;">
+                        Invia Messaggio
                     </button>
-                    
+ 
                     <div class="security-status">
-                        <span style="color: #27c93f;">●</span> RSA-4096 BIT ENCRYPTION // NETLIFY SECURE HUB ACTIVE
+                        <span style="color: #27c93f;">●</span> Connessione sicura · GDPR Compliant · Nessuna cessione dati a terzi
                     </div>
                 </form>
             </div>
         </section>
     </main>
-
-    <footer class="footer container text-center" style="padding-bottom: 50px;">
+ 
+    <footer class="footer container text-center" style="padding: 60px 0;">
         <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 40px;">
-        <p style="color: #fff; font-weight: 600; letter-spacing: 1px;">© 2026 <strong>RGANDJA ENTERPRISE ΜΟΝΟΠΡΟΣΩΠΗ ΙΚΕ</strong></p>
-        <p style="margin-top: 15px; font-size: 0.85rem; color: #4a5568;">
-            Sepolion 42, GR 104 45, Atene, Grecia — International HPC Hub
-        </p>
-        <p style="margin: 20px 0;">
-            <a href="privacy.html" style="color: #4a5568; text-decoration: none; margin: 0 10px; font-size: 0.85rem;">Privacy</a> | 
-            <a href="cookies.html" style="color: #4a5568; text-decoration: none; margin: 0 10px; font-size: 0.85rem;">Cookies</a> | 
-            <a href="imprint.html" style="color: #4a5568; text-decoration: none; margin: 0 10px; font-size: 0.85rem;">Note Legali</a>
-        </p>
+        <p style="color: var(--text-main); font-weight: 700; letter-spacing: 2px; font-size: 1rem;">© 2026 <strong>RGANDJA</strong> · by RGandja Enterprise</p>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 10px;">International Operations · Athens, Greece (EU)</p>
+        <div style="margin-top: 30px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+            <a href="privacy.html" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Privacy Policy</a>
+            <a href="cookies.html" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Cookie Policy</a>
+            <a href="imprint.html" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Note Legali</a>
+        </div>
     </footer>
-
+ 
     <script>
-        // Gestione Banner Cookie
         function acceptCookies() {
             document.getElementById('cookie-banner').style.display = 'none';
             localStorage.setItem('cookieConsent', 'true');
@@ -221,23 +211,21 @@
         if (localStorage.getItem('cookieConsent') === 'true') {
             document.getElementById('cookie-banner').style.display = 'none';
         }
-
-        // Pre-selezione piano da URL
+ 
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
-            const plan = urlParams.get('piano');
-            if(plan) {
-                const select = document.getElementById('select-protocol');
-                if(select) select.value = plan.toLowerCase();
+            const piano = urlParams.get('piano');
+            if(piano) {
+                const select = document.getElementById('select-motivo');
+                if(select) select.value = piano.toLowerCase();
             }
         };
-
-        // Feedback invio form
+ 
         const form = document.getElementById('contact-form');
         const btn = document.getElementById('submit-btn');
         if(form && btn) {
             form.onsubmit = function() {
-                btn.innerHTML = "CRITTOGRAFIA IN CORSO...";
+                btn.innerHTML = "INVIO IN CORSO...";
                 btn.style.opacity = "0.7";
                 btn.style.cursor = "wait";
             };
@@ -245,3 +233,4 @@
     </script>
 </body>
 </html>
+ 

@@ -8,101 +8,68 @@
       gtag('js', new Date());
       gtag('config', 'G-6TTVMQFNY6');
     </script>
-
+ 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Il Metodo - RGandja Decision Intelligence</title>
-    
+    <title>Come Funziona | rgandja — 3 passi per controllare il tuo inventario</title>
+    <meta name="description" content="Scopri come funziona rgandja: carica il tuo file, il sistema calcola il rischio e ti mostra le proiezioni. Setup in 2 minuti, risultati immediati.">
+ 
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="style.css">
     <style>
-        :root {
-            --accent-gold: #d4af37;
-            --border: #1a2332;
-            --glass: rgba(10, 15, 25, 0.7);
-            --text-muted: #94a3b8;
-            --transition-smooth: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            --shadow-premium: 0 25px 50px rgba(0,0,0,0.5), 0 0 15px rgba(212, 175, 55, 0.05);
-        }
-
-        .method-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 80px;
-        }
-
         .step-card {
-            background: var(--glass);
+            background: rgba(15, 23, 42, 0.5);
             padding: 60px 45px;
-            border-radius: 12px;
+            border-radius: 20px;
             border: 1px solid var(--border);
             position: relative;
-            transition: var(--transition-smooth);
+            transition: all 0.4s ease;
             overflow: hidden;
-            backdrop-filter: blur(12px);
         }
-
         .step-card:hover {
-            transform: translateY(-15px);
+            transform: translateY(-10px);
             border-color: var(--accent-gold);
-            box-shadow: var(--shadow-premium);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
         }
-
         .step-num {
-            font-family: 'Inter', sans-serif;
-            font-size: 8rem;
+            font-size: 7rem;
             font-weight: 900;
-            color: rgba(212, 175, 55, 0.03);
+            color: rgba(212, 175, 55, 0.04);
             position: absolute;
-            top: -20px;
-            right: -10px;
+            top: 10px;
+            right: 20px;
             pointer-events: none;
             line-height: 1;
         }
-        
-        .ai-human-fusion {
-            font-size: 5.5rem;
-            filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.4));
-            text-align: center;
-            animation: pulse-gold 4s infinite ease-in-out;
-            position: relative;
-            z-index: 1;
-        }
-
-        @keyframes pulse-gold {
-            0%, 100% { transform: scale(1); filter: brightness(1); }
-            50% { transform: scale(1.05); filter: brightness(1.3); }
-        }
-
-        .logic-tag {
+        .step-tag {
             display: inline-block;
-            padding: 8px 16px;
+            padding: 6px 14px;
             background: rgba(39, 201, 63, 0.1);
             color: #27c93f;
             border-radius: 4px;
             font-size: 0.7rem;
             font-weight: 800;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             text-transform: uppercase;
-            letter-spacing: 2.5px;
+            letter-spacing: 2px;
             border: 1px solid rgba(39, 201, 63, 0.2);
         }
-
-        .active-nav {
-            color: var(--accent-gold) !important;
-            border-bottom: 2px solid var(--accent-gold);
+        .badge-status {
+            border: 1px solid var(--accent-gold);
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            display: inline-block;
         }
-
-        .info-block h3 {
-            color: #fff;
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-        }
+        .text-center { text-align: center; }
     </style>
 </head>
 <body>
-
+ 
     <header class="header">
         <div class="header-inner container">
             <div class="header-brand">
@@ -111,106 +78,173 @@
             </div>
             <nav class="main-nav">
                 <a href="index.html">Home</a>
+                <a href="funzionalita.html">Funzionalità</a>
+                <a href="metodo.html" class="active-nav">Come Funziona</a>
+                <a href="prezzi.html">Piani</a>
                 <a href="chi-siamo.html">Chi Siamo</a>
-                <a href="metodo.html" class="active-nav">Il Metodo</a>
-                <a href="prezzi.html">Prezzi</a>
-                <a href="demo.html">Demo</a>
                 <a href="contatti.html">Contatti</a>
             </nav>
         </div>
     </header>
-
+ 
     <main>
         <section class="hero-premium">
             <div class="container text-center">
-                <span class="badge-status">RGD-ALPHA PROTOCOL V.4.0</span>
-                <h1 style="font-size: 3.5rem;">Ingegneria Decisionale Applicata</h1>
-                <p class="hero-subtitle" style="max-width: 850px; margin: 0 auto;">
-                    Il sistema RGandja non si limita all'analisi. Il Protocollo <strong>RGD-Alpha</strong> progetta architetture deterministiche che isolano il valore dal rumore di mercato.
+                <span class="badge-status">COME FUNZIONA</span>
+                <h1 style="margin-top: 25px;">Da un file Excel<br><span style="color: var(--accent-gold);">a decisioni chiare. In 3 passi.</span></h1>
+                <p class="hero-subtitle" style="max-width: 750px; margin: 25px auto;">
+                    Non serve essere un esperto di dati. Non serve configurare nulla. 
+                    Hai un file con i tuoi prodotti — noi facciamo il resto.
                 </p>
             </div>
         </section>
-
+ 
+        <!-- 3 STEPS -->
         <section class="section container">
-            <div class="method-steps">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 35px; margin-top: 20px;">
+ 
                 <div class="step-card">
-                    <div class="step-num">01</div>
-                    <span class="logic-tag">Stress Test Analysis</span>
-                    <h3>Ingestione & Simulazione</h3>
-                    <p style="color: var(--text-muted); line-height: 1.7;">Acquisiamo i parametri core del tuo business. Attraverso il cluster neurale di Atene, simuliamo milioni di scenari per mappare il <strong>Lowest Friction Path (LFP)</strong>: la via di massima crescita con il minor attrito operativo.</p>
+                    <div class="step-num">1</div>
+                    <span class="step-tag">Passo 1</span>
+                    <div style="font-size: 3rem; margin-bottom: 20px;">📂</div>
+                    <h3 style="color: #fff; font-size: 1.6rem; margin-bottom: 15px; letter-spacing: -0.5px;">Carica il tuo file</h3>
+                    <p style="color: var(--text-muted); line-height: 1.8;">
+                        Esporta il tuo inventario da qualsiasi sistema (gestionale, Excel, Google Sheets) 
+                        in formato CSV o Excel e caricalo sulla piattaforma. 
+                        <strong style="color: #fff;">Due minuti, zero configurazione.</strong>
+                    </p>
+                    <p style="color: var(--text-muted); line-height: 1.8; margin-top: 15px;">
+                        Il sistema analizza automaticamente le colonne, riconosce prodotti, 
+                        quantità, date di scadenza e valore — anche se il tuo file non è "perfetto".
+                    </p>
                 </div>
-
+ 
+                <div class="step-card" style="border-color: rgba(212,175,55,0.3); background: rgba(20,26,35,0.7);">
+                    <div class="step-num">2</div>
+                    <span class="step-tag">Passo 2</span>
+                    <div style="font-size: 3rem; margin-bottom: 20px;">⚡</div>
+                    <h3 style="color: #fff; font-size: 1.6rem; margin-bottom: 15px; letter-spacing: -0.5px;">Il sistema analizza e calcola</h3>
+                    <p style="color: #e2e8f0; line-height: 1.8;">
+                        Il Risk Engine elabora ogni prodotto incrociando giacenza, rotazione storica, 
+                        scadenze e contesto settoriale. In pochi secondi ottieni un indice di rischio 
+                        per ogni articolo del tuo catalogo.
+                    </p>
+                    <p style="color: #e2e8f0; line-height: 1.8; margin-top: 15px;">
+                        <strong>Non solo dati grezzi</strong> — il sistema elabora anche proiezioni a 30 e 90 giorni 
+                        e genera automaticamente un piano d'azione per ogni categoria critica.
+                    </p>
+                </div>
+ 
                 <div class="step-card">
-                    <div class="step-num">02</div>
-                    <span class="logic-tag">Neural Shield</span>
-                    <h3>Validazione & Compliance</h3>
-                    <p style="color: var(--text-muted); line-height: 1.7;">Ogni soluzione viene passata attraverso il "Neural Shield". Filtriamo le opzioni secondo rigidi parametri di sicurezza legale, sostenibilità e protezione degli asset, scartando istantaneamente i rischi asimmetrici.</p>
+                    <div class="step-num">3</div>
+                    <span class="step-tag">Passo 3</span>
+                    <div style="font-size: 3rem; margin-bottom: 20px;">🎯</div>
+                    <h3 style="color: #fff; font-size: 1.6rem; margin-bottom: 15px; letter-spacing: -0.5px;">Agisci con certezza</h3>
+                    <p style="color: var(--text-muted); line-height: 1.8;">
+                        La War Room Dashboard mostra lo stato del tuo inventario con semafori immediati. 
+                        Vedi in 3 secondi cosa è critico, cosa richiede attenzione e cosa va bene.
+                    </p>
+                    <p style="color: var(--text-muted); line-height: 1.8; margin-top: 15px;">
+                        Per ogni prodotto a rischio, rgandja suggerisce un'azione concreta: 
+                        promozione, riordino anticipato, rotazione di magazzino o allerta al responsabile.
+                    </p>
                 </div>
-
-                <div class="step-card">
-                    <div class="step-num">03</div>
-                    <span class="logic-tag">Deterministic Output</span>
-                    <h3>Esecuzione Blindata</h3>
-                    <p style="color: var(--text-muted); line-height: 1.7;">Il risultato è un Protocollo d'Azione. Riceverai direttive esatte: timing di esecuzione, allocazione millimetrica del capitale e contromisure dinamiche pre-impostate per garantire la stabilità totale del progetto.</p>
-                </div>
+ 
             </div>
         </section>
-
+ 
+        <!-- DIFFERENZA CHIAVE -->
         <section class="section" style="background: #050810; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 100px 0;">
             <div class="container">
-                <div class="grid-2" style="align-items: center; gap: 60px;">
-                    <div class="info-block">
-                        <h2 style="color: #fff; margin-bottom: 30px; font-size: 2.5rem; letter-spacing: -1.5px;">Sinergia Core: Hybrid Intelligence</h2>
-                        <p style="font-size: 1.2rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 25px;">
-                            Utilizziamo il calcolo neurale avanzato per processare la complessità, ma il verdetto finale è regolato da logiche deterministiche. Questo elimina l'allucinazione tecnologica e garantisce risultati ripetibili.
+                <div class="grid-2" style="align-items: center; gap: 80px;">
+                    <div>
+                        <span style="color: var(--accent-gold); font-size: 0.7rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase;">La vera differenza</span>
+                        <h2 style="color: #fff; font-size: 2.2rem; margin: 15px 0 25px; letter-spacing: -1px;">
+                            Da reattivo a proattivo.<br>
+                            <span style="color: var(--accent-gold);">È questo che cambia tutto.</span>
+                        </h2>
+                        <p style="font-size: 1.1rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 25px;">
+                            Con un foglio Excel o un gestionale tradizionale, scopri il problema <em>quando è già successo</em>: 
+                            la merce è scaduta, il capitale è immobilizzato, il danno è fatto.
                         </p>
-                        <div style="border-left: 4px solid var(--accent-gold); padding-left: 30px; margin-top: 45px; background: rgba(212,175,55,0.05); padding-top: 20px; padding-bottom: 20px;">
-                            <p style="color: var(--accent-gold); font-weight: 700; font-style: italic; font-size: 1.15rem; margin: 0;">
-                                "Isoliamo le variabili. Quantifichiamo l'impatto. Blindiamo il futuro."
+                        <p style="font-size: 1.1rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 30px;">
+                            rgandja ti sposta in una posizione di vantaggio: vedi i problemi formarsi 
+                            con settimane di anticipo e puoi agire quando costa ancora poco.
+                        </p>
+                        <div style="border-left: 4px solid var(--accent-gold); padding: 20px 25px; background: rgba(212,175,55,0.05); border-radius: 0 12px 12px 0;">
+                            <p style="color: var(--accent-gold); font-weight: 700; font-style: italic; font-size: 1.1rem; margin: 0; line-height: 1.6;">
+                                "Smetti di guardare lo specchietto retrovisore. 
+                                Inizia a guardare la strada davanti a te."
                             </p>
                         </div>
                     </div>
-                    <div class="method-graphic text-center">
-                        <div class="ai-human-fusion">🧬</div>
-                        <p style="color: var(--accent-gold); font-family: 'Fira Code', monospace; letter-spacing: 5px; margin-top: 35px; font-size: 0.8rem; font-weight: 800; background: rgba(0,0,0,0.5); display: inline-block; padding: 10px 20px; border-radius: 4px; border: 1px solid rgba(212,175,55,0.2);">
-                            SYSTEM STATUS: OPTIMIZED
-                        </p>
+                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                        <div style="padding: 30px; border-radius: 16px; background: rgba(255,95,86,0.05); border: 1px solid rgba(255,95,86,0.15);">
+                            <p style="color: #ff5f56; font-size: 0.75rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px;">❌ Senza rgandja</p>
+                            <p style="color: var(--text-muted); line-height: 1.7; font-size: 0.95rem;">Controllo manuale dei dati. Scopri che la merce è scaduta quando è troppo tardi. Excel aggiornato quando qualcuno se ne ricorda. Zero visibilità sul futuro.</p>
+                        </div>
+                        <div style="padding: 30px; border-radius: 16px; background: rgba(39,201,63,0.05); border: 1px solid rgba(39,201,63,0.15);">
+                            <p style="color: #27c93f; font-size: 0.75rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px;">✓ Con rgandja</p>
+                            <p style="color: var(--text-muted); line-height: 1.7; font-size: 0.95rem;">Analisi automatica in pochi secondi. Alert preventivi su ogni prodotto a rischio. Proiezioni 30/90 giorni. Piano d'azione chiaro, sempre aggiornato.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <section class="section container text-center" style="padding: 120px 20px;">
-            <h2 style="margin-bottom: 30px; font-size: 2.8rem; letter-spacing: -1.5px;">Domina la Complessità</h2>
-            <p style="color: var(--text-muted); margin-bottom: 60px; max-width: 800px; margin-left: auto; margin-right: auto; font-size: 1.2rem; line-height: 1.7;">
-                Non lasciare la tua strategia al caso o a algoritmi non controllati. Implementa oggi stesso l'architettura decisionale utilizzata dai leader della resilienza globale.
+ 
+        <!-- SETTORI -->
+        <section class="section container text-center">
+            <h2 style="font-size: 2rem; letter-spacing: -1px; margin-bottom: 15px;">Funziona per il tuo settore</h2>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 50px; line-height: 1.7;">
+                rgandja riconosce automaticamente il contesto e calibra le soglie di rischio 
+                in base alle specifiche del tuo settore.
             </p>
-            <div style="display: flex; justify-content: center; gap: 25px; flex-wrap: wrap;">
-                <a href="demo.html" class="btn-gold" style="padding: 20px 45px; text-decoration: none; color: #000; font-weight: 900; border-radius: 6px; background: var(--accent-gold); text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 10px 30px rgba(212,175,55,0.3);">Avvia Analisi Protocollo</a>
-                <a href="contatti.html" style="padding: 20px 45px; text-decoration: none; color: var(--accent-gold); font-weight: 800; border-radius: 6px; border: 1px solid var(--accent-gold); text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s;">Consultazione Senior Advisor</a>
+            <div class="grid-3" style="gap: 20px; max-width: 900px; margin: 0 auto;">
+                <div style="padding: 30px 20px; border: 1px solid var(--border); border-radius: 16px; background: rgba(15,23,42,0.4);">
+                    <div style="font-size: 2rem; margin-bottom: 12px;">🍽️</div>
+                    <h4 style="color: #fff; font-size: 1rem; margin-bottom: 8px;">Alimentare & Food</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Scadenze, lotti, HACCP, deperibilità. Il settore più critico — quello dove perdi di più.</p>
+                </div>
+                <div style="padding: 30px 20px; border: 1px solid var(--border); border-radius: 16px; background: rgba(15,23,42,0.4);">
+                    <div style="font-size: 2rem; margin-bottom: 12px;">🔧</div>
+                    <h4 style="color: #fff; font-size: 1rem; margin-bottom: 8px;">Manifattura</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Componenti, lead time fornitori, saturazione magazzino. Anticipa i colli di bottiglia produttivi.</p>
+                </div>
+                <div style="padding: 30px 20px; border: 1px solid var(--border); border-radius: 16px; background: rgba(15,23,42,0.4);">
+                    <div style="font-size: 2rem; margin-bottom: 12px;">📦</div>
+                    <h4 style="color: #fff; font-size: 1rem; margin-bottom: 8px;">Retail & Distribuzione</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Stagionalità, rotazione, invenduto. Ottimizza i margini e riduci il capitale immobilizzato.</p>
+                </div>
+            </div>
+        </section>
+ 
+        <!-- CTA -->
+        <section class="section container text-center" style="padding-bottom: 120px;">
+            <h2 style="font-size: 2.3rem; letter-spacing: -1px; margin-bottom: 25px;">
+                Pronto a provarlo sul tuo inventario?
+            </h2>
+            <p style="color: var(--text-muted); max-width: 550px; margin: 0 auto 50px; font-size: 1.1rem; line-height: 1.7;">
+                Carica un file reale e vedi cosa trova rgandja. 
+                Gratis, senza carta di credito, in due minuti.
+            </p>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="demo.html" class="btn btn-gold" style="padding: 22px 50px;">Inizia Adesso — Gratis</a>
+                <a href="prezzi.html" class="btn" style="border: 1px solid var(--border); padding: 22px 50px;">Vedi i Piani</a>
             </div>
         </section>
     </main>
-
-    <footer class="footer container text-center" style="padding-bottom: 50px;">
-        <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 50px;">
-        <div style="margin-bottom: 40px;">
-            <p style="font-size: 0.8rem; color: #fff; font-weight: 700; margin-bottom: 10px; letter-spacing: 1px;">
-                © 2026 RGANDJA ENTERPRISE ΜΟΝΟΠΡΟΣΩΠΗ ΙΚΕ
-            </p>
-            <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.8;">
-                <!-- DATI SENSIBILI NASCOSTI PER VETRINA
-                VAT (AFM): EL803131007 | G.E.MI.: 190286401000 | Address: Sepolion 42, 10445 Atene (Grecia)
-                -->
-                Strategic Hub: Node Athens Alpha
-            </p>
+ 
+    <footer class="footer container text-center" style="padding: 60px 0;">
+        <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 40px;">
+        <p style="color: var(--text-main); font-weight: 700; letter-spacing: 2px; font-size: 1rem;">© 2026 <strong>RGANDJA</strong> · by RGandja Enterprise</p>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 10px;">International Operations · Athens, Greece (EU)</p>
+        <div style="margin-top: 30px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+            <a href="privacy.html" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Privacy Policy</a>
+            <a href="cookies.html" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Cookie Policy</a>
+            <a href="imprint.html" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Note Legali</a>
         </div>
-        <p>
-            <a href="privacy.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem; margin: 0 15px;">Privacy Policy</a>
-            <a href="cookies.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem; margin: 0 15px;">Cookie Policy</a>
-            <a href="imprint.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem; margin: 0 15px;">Note Legali</a>
-        </p>
     </footer>
-
+ 
 </body>
 </html>
+ 

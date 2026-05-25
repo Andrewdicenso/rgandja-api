@@ -225,6 +225,14 @@ input:focus, select:focus, textarea:focus {
     border-top: 1px solid var(--border);
 }
 
+.intro-piani h2 {
+    background: linear-gradient(90deg, rgba(212,175,55,0.15) 0%, rgba(212,175,55,0) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
 /* 8. ANIMAZIONI UTILITY */
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(30px); }

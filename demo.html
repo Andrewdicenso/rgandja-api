@@ -165,11 +165,12 @@
                 <h1>RGandja</h1>
             </div>
             <nav class="main-nav">
-                <a href="/home">Home</a>
-                <a href="/chi-siamo">Chi Siamo</a>
-                <a href="/prezzi">Prezzi</a>
-                <a href="/demo" class="active-nav">Demo</a>
-                <a href="/contatti">Contatti</a>
+                <a href="index.html" class="active-nav">Home</a>
+                <a href="funzionalita.html">Funzionalità</a>
+                <a href="metodo.html">Come Funziona</a>
+                <a href="prezzi.html">Piani</a>
+                <a href="chi-siamo.html">Chi Siamo</a>
+                <a href="contatti.html">Contatti</a>
             </nav>
         </div>
     </header>
@@ -184,14 +185,36 @@
     </div>
 
     <div class="terminal">
-        <div id="paywall" class="paywall-overlay">
-            <div style="font-size: 4rem; margin-bottom: 20px;">📊</div>
-            <h2 style="color: var(--accent-gold); margin-bottom: 15px; font-size: 2rem;">ANALISI DEI FLUSSI PRONTA</h2>
-            <p style="max-width: 500px; color: var(--text-gray); margin-bottom: 30px; line-height: 1.6;">
-                I nostri sistemi hanno completato l'elaborazione dei parametri inseriti. 
-                Richiedi il report dettagliato e la <strong>Strategia di Ottimizzazione 2026</strong> direttamente nella tua casella email.
-            </p>
-            
+        <div id="paywall" style="display:none;">
+    <h2 style="color:#d4af37; margin-bottom:20px;">Accesso riservato RGandja Neural Engine</h2>
+
+    <p style="max-width:600px; color:#f8fafc; line-height:1.6; font-size:0.95rem;">
+        Questa sezione fa parte del modello completo RGandja, che utilizza parametri avanzati e
+        algoritmi proprietari per la valutazione integrale dell’efficienza aziendale.
+        La versione dimostrativa mostra solo una sintesi parziale dei risultati.
+        L’accesso al sistema completo è riservato ai partner e alle aziende registrate.
+    </p>
+
+    <p style="color:#64748b; font-size:0.85rem; margin-top:20px;">
+        RGandja è una piattaforma di analisi predittiva e non costituisce offerta commerciale.
+        Tutte le simulazioni sono a scopo informativo e dimostrativo.
+    </<div id="paywall" style="display:none;">
+    <h2 style="color:#d4af37; margin-bottom:20px;">Accesso riservato RGandja Neural Engine</h2>
+
+    <p style="max-width:600px; color:#f8fafc; line-height:1.6; font-size:0.95rem;">
+        Questa sezione fa parte del modello completo RGandja, che utilizza parametri avanzati e
+        algoritmi proprietari per la valutazione integrale dell’efficienza aziendale.
+        La versione dimostrativa mostra solo una sintesi parziale dei risultati.
+        L’accesso al sistema completo è riservato ai partner e alle aziende registrate.
+    </p>
+
+    <p style="color:#64748b; font-size:0.85rem; margin-top:20px;">
+        RGandja è una piattaforma di analisi predittiva e non costituisce offerta commerciale.
+        Tutte le simulazioni sono a scopo informativo e dimostrativo.
+    </p>
+</div>
+p>
+</div>
             <input type="email" id="user-email" placeholder="email@tua-azienda.it" 
                    style="width: 100%; max-width: 420px; padding: 16px; margin-bottom: 20px; background: #fff; color: #000; font-weight: bold; border: none;">
             
@@ -346,8 +369,8 @@
             })
             .then(response => {
                 const scelto = document.getElementById('algoritmo').value;
-                // Redirect alla pagina prezzi con parametro pulito
-                window.location.href = `/prezzi?tipo=${scelto}`;
+                // Redirect alla pagina piani con parametro pulito
+                window.location.href = `/piani?tipo=${scelto}`;
             });
         }
     </script>
