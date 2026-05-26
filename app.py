@@ -109,7 +109,8 @@ def calcola():
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000, debug=True)
 
-    @app.route("/report", methods=["POST"])
+
+@app.route("/report", methods=["POST"])
 def report():
     data = request.get_json() or {}
     email = data.get("email")
