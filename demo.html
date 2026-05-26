@@ -1,401 +1,751 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6TTVMQFNY6"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-6TTVMQFNY6');
-    </script>
+  <meta charset="UTF-8">
+  <title>Business Intelligence Sandbox | RGandja - Advanced Analysis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sandbox di Business Intelligence RGandja per simulare analisi avanzate su PMI e studi professionali.">
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-soft: #0b1020;
+      --card: #111827;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.12);
+      --accent-strong: #0ea5e9;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --danger: #f97373;
+      --success: #4ade80;
+      --border: #1f2937;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.8);
+      --shadow-subtle: 0 10px 30px rgba(15, 23, 42, 0.6);
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+    }
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Business Intelligence Sandbox | RGandja - Advanced Analysis</title>
-    
-    <link rel="icon" type="image/png" href="logo.png">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        :root { 
-            --terminal-bg: #0a0e14; 
-            --term-red: #ff5f56;
-            --term-yellow: #ffbd2e;
-            --term-green: #27c93f;
-        }
+    * {
+      box-sizing: border-box;
+    }
 
-        body { 
-            background: #05070a; 
-            font-family: 'Fira Code', monospace; 
-            color: white; 
-            margin: 0; 
-        }
-        
-        .header { background: rgba(10, 14, 20, 0.98); border-bottom: 1px solid var(--border); }
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      background: radial-gradient(circle at top, #0b1120 0, #020617 45%, #000 100%);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
 
-        .terminal { 
-            background: var(--terminal-bg); 
-            border: 1px solid #1a2332; 
-            border-radius: 12px; 
-            max-width: 950px; 
-            margin: 60px auto; 
-            position: relative; 
-            overflow: hidden; 
-            box-shadow: 0 40px 100px rgba(0,0,0,0.9);
-        }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-        .term-header { 
-            background: #161b22; 
-            padding: 15px 20px; 
-            display: flex; 
-            gap: 10px; 
-            align-items: center; 
-            border-bottom: 1px solid #2d3748;
-        }
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-        .dot { width: 12px; height: 12px; border-radius: 50%; }
-        
-        .term-content { 
-            padding: 40px; 
-            transition: filter 0.6s cubic-bezier(0.4, 0, 0.2, 1); 
-        }
-        
-        .grid-inputs { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
-            gap: 20px; 
-            margin-bottom: 30px; 
-        }
+    /* HEADER */
 
-        .form-group label { 
-            display: block; 
-            margin-bottom: 10px; 
-            color: var(--accent-gold); 
-            font-size: 0.7rem; 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
-            font-weight: 700;
-        }
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.75), transparent);
+      border-bottom: 1px solid rgba(31, 41, 55, 0.7);
+    }
 
-        input, select { 
-            width: 100%; 
-            padding: 14px; 
-            background: #0d1117; 
-            border: 1px solid #30363d; 
-            color: #58a6ff; 
-            border-radius: 8px; 
-            font-family: 'Fira Code', monospace;
-            font-size: 0.9rem;
-            transition: border 0.3s;
-        }
+    .header-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 14px 20px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
 
-        input:focus { border-color: var(--accent-gold); outline: none; background: #161b22; }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-        .premium-blur { filter: blur(15px); opacity: 0.2; pointer-events: none; }
-        
-        .paywall-overlay { 
-            position: absolute; 
-            top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(5, 7, 10, 0.95); 
-            display: none; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            z-index: 1000; 
-            text-align: center; 
-            padding: 40px; 
-        }
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 20% 0, #38bdf8, #0ea5e9 40%, #0369a1 75%, #020617 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.35), 0 12px 30px rgba(8, 47, 73, 0.9);
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: 0.04em;
+    }
 
-        .btn-execute { 
-            background: var(--accent-gold); 
-            color: #000; 
-            border: none; 
-            padding: 22px 40px; 
-            border-radius: 8px; 
-            font-weight: 900; 
-            cursor: pointer; 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-        }
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
 
-        .btn-execute:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5); }
-        
-        #resultBox { 
-            margin-top: 30px; 
-            padding: 25px; 
-            border: 1px solid rgba(212, 175, 55, 0.3); 
-            border-radius: 10px; 
-            background: rgba(212, 175, 55, 0.02); 
-            display: none; 
-            font-size: 0.9rem;
-        }
+    .brand-name {
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
 
-        .status-line { color: var(--term-green); margin-bottom: 5px; font-size: 0.8rem; }
+    .brand-sub {
+      font-size: 11px;
+      color: var(--muted);
+    }
 
-        #cookie-banner {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
-            background: rgba(15, 23, 42, 0.95);
-            border: 1px solid var(--accent-gold);
-            padding: 15px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 9999;
-            border-radius: 8px;
-            backdrop-filter: blur(10px);
-        }
-    </style>
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 13px;
+    }
+
+    .nav-link {
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: var(--muted);
+      border: 1px solid transparent;
+      transition: all 0.18s ease-out;
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+      border-color: rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .nav-link--primary {
+      padding: 7px 14px;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      color: #0b1120;
+      font-weight: 600;
+      box-shadow: 0 12px 30px rgba(8, 47, 73, 0.9);
+    }
+
+    .nav-link--primary:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+    }
+
+    /* MAIN LAYOUT */
+
+    .main {
+      flex: 1;
+    }
+
+    .hero {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 20px 40px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 32px;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        padding-top: 22px;
+      }
+    }
+
+    /* LEFT COLUMN */
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px 4px 4px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.22), rgba(15, 23, 42, 0.95));
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      box-shadow: 0 12px 30px rgba(8, 47, 73, 0.9);
+      width: fit-content;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #e0f2fe;
+    }
+
+    .eyebrow-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #e0f2fe, #38bdf8 45%, #0ea5e9 80%);
+      box-shadow: 0 0 0 1px rgba(125, 211, 252, 0.7);
+    }
+
+    .hero-title {
+      font-size: clamp(26px, 3vw, 30px);
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-title span {
+      color: #7dd3fc;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 520px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .badge {
+      font-size: 11px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--muted);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-footnote {
+      margin-top: 10px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* RIGHT COLUMN – CARD */
+
+    .card {
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.12), transparent 55%), radial-gradient(circle at bottom right, rgba(15, 23, 42, 0.95), #020617 70%);
+      border-radius: 22px;
+      padding: 18px 18px 18px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .card-title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .card-eyebrow {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #bae6fd;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .card-subtitle {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .card-pill {
+      font-size: 11px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.7);
+      background: rgba(8, 47, 73, 0.9);
+      color: #e0f2fe;
+      white-space: nowrap;
+    }
+
+    .card-body {
+      margin-top: 6px;
+      padding: 10px 10px 12px;
+      border-radius: 16px;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 10px 12px;
+    }
+
+    @media (max-width: 720px) {
+      .form-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 12px;
+    }
+
+    .field-label {
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .field-label span {
+      color: #e5e7eb;
+    }
+
+    .field-helper {
+      font-size: 10px;
+      color: #6b7280;
+    }
+
+    .input,
+    .select {
+      width: 100%;
+      padding: 7px 9px;
+      border-radius: 10px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--text);
+      font-size: 12px;
+      outline: none;
+      transition: border-color 0.16s ease-out, box-shadow 0.16s ease-out, background 0.16s ease-out;
+    }
+
+    .input:focus,
+    .select:focus {
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.6);
+      background: #020617;
+    }
+
+    .input::placeholder {
+      color: #6b7280;
+    }
+
+    .card-footer {
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .primary-btn {
+      width: 100%;
+      border: none;
+      border-radius: 999px;
+      padding: 9px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      color: #0b1120;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 16px 40px rgba(8, 47, 73, 0.95);
+      transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, filter 0.12s ease-out;
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+      box-shadow: 0 18px 45px rgba(8, 47, 73, 1);
+    }
+
+    .primary-btn:active {
+      transform: translateY(0);
+      box-shadow: 0 10px 26px rgba(8, 47, 73, 0.9);
+    }
+
+    .primary-btn span.icon {
+      font-size: 15px;
+    }
+
+    .status-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+    }
+
+    .status-text-strong {
+      color: #bbf7d0;
+    }
+
+    .status-message {
+      font-size: 11px;
+      min-height: 14px;
+    }
+
+    .status-message--error {
+      color: var(--danger);
+    }
+
+    .status-message--success {
+      color: var(--success);
+    }
+
+    .status-message--info {
+      color: var(--muted);
+    }
+
+    /* FOOTER */
+
+    .footer {
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 14px 20px 18px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer a {
+      color: #9ca3af;
+    }
+
+    .footer a:hover {
+      color: #e5e7eb;
+    }
+  </style>
 </head>
 <body>
-
-    <div id="cookie-banner">
-        <span style="color:white; font-size:0.85rem;">Piattaforma di analisi protetta. Ottimizzazione delle risorse e monitoraggio flussi. <a href="/cookies" style="color:var(--accent-gold)">Info Cookie</a></span>
-        <button onclick="acceptCookies()" style="background:var(--accent-gold); border:none; padding:8px 15px; border-radius:4px; font-weight:bold; cursor:pointer;">ACCONSENTO</button>
-    </div>
-
-    <header class="header">
-        <div class="header-inner container">
-            <div class="header-brand">
-                <img src="logo.png" alt="Logo RGandja" class="brand-logo">
-                <h1>RGandja</h1>
-            </div>
-            <nav class="main-nav">
-                <a href="index.html" class="active-nav">Home</a>
-                <a href="funzionalita.html">Funzionalità</a>
-                <a href="metodo.html">Come Funziona</a>
-                <a href="prezzi.html">Piani</a>
-                <a href="chi-siamo.html">Chi Siamo</a>
-                <a href="contatti.html">Contatti</a>
-            </nav>
+<div class="page">
+  <header class="header">
+    <div class="header-inner">
+      <a href="https://rgandja.com" class="brand">
+        <div class="brand-mark">R</div>
+        <div class="brand-text">
+          <div class="brand-name">RGANDJA</div>
+          <div class="brand-sub">Business Intelligence per PMI e Studi</div>
         </div>
-    </header>
-
-    <div class="container text-center" style="margin-top: 70px; margin-bottom: 40px;">
-        <span class="badge-status">SIMULATION MODULE</span>
-        <h2 style="font-size: 2.5rem; letter-spacing: -1px; margin-top: 15px;">RGD-Alpha Logic Engine</h2>
-        <p style="color: var(--text-muted); max-width: 650px; margin: 20px auto;">
-            Configura i parametri aziendali per analizzare l'efficienza dei flussi operativi. 
-            Questo modulo sandbox permette di testare la scalabilità dei modelli di Decision Intelligence.
-        </p>
+      </a>
+      <nav class="nav">
+        <a href="https://rgandja.com" class="nav-link">Home</a>
+        <a href="https://rgandja.com/prodotti" class="nav-link">Prodotti</a>
+        <a href="https://rgandja.com/demo" class="nav-link">Demo</a>
+        <a href="https://rgandja.com/contatti" class="nav-link">Contatti</a>
+        <a href="https://rgandja.com/piani" class="nav-link nav-link--primary">Piani &amp; Prezzi</a>
+      </nav>
     </div>
+  </header>
 
-    <div class="terminal">
-        <div id="paywall" style="display:none;">
-    <h2 style="color:#d4af37; margin-bottom:20px;">Accesso riservato RGandja Neural Engine</h2>
+  <main class="main">
+    <section class="hero">
+      <!-- LEFT COLUMN -->
+      <div class="hero-left">
+        <div class="eyebrow">
+          <div class="eyebrow-dot"></div>
+          <span>Business Intelligence Sandbox</span>
+        </div>
+        <h1 class="hero-title">
+          Simula in tempo reale <span>l’analisi RGandja</span> sulla tua struttura operativa.
+        </h1>
+        <p class="hero-subtitle">
+          Inserisci pochi parametri chiave della tua PMI o studio professionale e osserva come un motore di Business Intelligence
+          strutturato trasforma numeri grezzi in decisioni operative, piani di intervento e priorità di investimento.
+        </p>
+        <div class="hero-badges">
+          <div class="badge">Nessun dato sensibile richiesto</div>
+          <div class="badge">Motore di scoring multi‑variabile</div>
+          <div class="badge">Output allineato ai piani Bronzo / Argento / Oro</div>
+        </div>
+        <p class="hero-footnote">
+          Questa sandbox è una dimostrazione guidata: la logica di calcolo è reale, ma i risultati sono a scopo illustrativo.
+        </p>
+      </div>
 
-    <p style="max-width:600px; color:#f8fafc; line-height:1.6; font-size:0.95rem;">
-        Questa sezione fa parte del modello completo RGandja, che utilizza parametri avanzati e
-        algoritmi proprietari per la valutazione integrale dell’efficienza aziendale.
-        La versione dimostrativa mostra solo una sintesi parziale dei risultati.
-        L’accesso al sistema completo è riservato ai partner e alle aziende registrate.
-    </p>
+      <!-- RIGHT COLUMN – CARD -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title-block">
+            <div class="card-eyebrow">Input di simulazione</div>
+            <div class="card-title">Modello Operativo PMI / Studio</div>
+            <div class="card-subtitle">
+              Compila i parametri essenziali: il motore RGandja calcolerà il profilo di complessità e suggerirà il piano più adatto.
+            </div>
+          </div>
+          <div class="card-pill">Analisi istantanea</div>
+        </div>
 
-    <p style="color:#64748b; font-size:0.85rem; margin-top:20px;">
-        RGandja è una piattaforma di analisi predittiva e non costituisce offerta commerciale.
-        Tutte le simulazioni sono a scopo informativo e dimostrativo.
-    </<div id="paywall" style="display:none;">
-    <h2 style="color:#d4af37; margin-bottom:20px;">Accesso riservato RGandja Neural Engine</h2>
-
-    <p style="max-width:600px; color:#f8fafc; line-height:1.6; font-size:0.95rem;">
-        Questa sezione fa parte del modello completo RGandja, che utilizza parametri avanzati e
-        algoritmi proprietari per la valutazione integrale dell’efficienza aziendale.
-        La versione dimostrativa mostra solo una sintesi parziale dei risultati.
-        L’accesso al sistema completo è riservato ai partner e alle aziende registrate.
-    </p>
-
-    <p style="color:#64748b; font-size:0.85rem; margin-top:20px;">
-        RGandja è una piattaforma di analisi predittiva e non costituisce offerta commerciale.
-        Tutte le simulazioni sono a scopo informativo e dimostrativo.
-    </p>
-</div>
-p>
-</div>
-            <input type="email" id="user-email" placeholder="email@tua-azienda.it" 
-                   style="width: 100%; max-width: 420px; padding: 16px; margin-bottom: 20px; background: #fff; color: #000; font-weight: bold; border: none;">
-            
-            <div style="margin-bottom: 30px; max-width: 420px; text-align: left;">
-                <label style="display: flex; align-items: flex-start; gap: 12px; cursor: pointer; color: var(--text-gray); font-family: sans-serif; font-size: 0.75rem; line-height: 1.4;">
-                    <input type="checkbox" id="privacy-check" style="width: auto; margin-top: 2px;">
-                    <span>Ho preso visione della <a href="/privacy" target="_blank" style="color: var(--accent-gold);">Informativa Privacy</a> e acconsento all'invio dell'analisi tecnica richiesta.</span>
+        <div class="card-body">
+          <form id="sandbox-form" autocomplete="on">
+            <div class="form-grid">
+              <div class="field">
+                <label class="field-label" for="ragione-sociale">
+                  <span>Ragione sociale</span>
+                  <span class="field-helper">facoltativo</span>
                 </label>
+                <input
+                  id="ragione-sociale"
+                  name="ragione-sociale"
+                  class="input"
+                  type="text"
+                  placeholder="Es. Studio Rossi &amp; Partners"
+                >
+              </div>
+
+              <div class="field">
+                <label class="field-label" for="settore">
+                  <span>Settore prevalente</span>
+                </label>
+                <select id="settore" name="settore" class="select" required>
+                  <option value="">Seleziona…</option>
+                  <option value="servizi-professionali">Servizi professionali</option>
+                  <option value="manifatturiero">Manifatturiero</option>
+                  <option value="edilizia-immobiliare">Edilizia / Immobiliare</option>
+                  <option value="commercio-retail">Commercio / Retail</option>
+                  <option value="logistica-trasporti">Logistica / Trasporti</option>
+                  <option value="altro">Altro</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label class="field-label" for="fatturato">
+                  <span>Fatturato annuo</span>
+                </label>
+                <select id="fatturato" name="fatturato" class="select" required>
+                  <option value="">Seleziona…</option>
+                  <option value="0-250k">Fino a 250.000 €</option>
+                  <option value="250k-2m">250.000 € – 2 M€</option>
+                  <option value="2m-10m">2 M€ – 10 M€</option>
+                  <option value="10m-plus">Oltre 10 M€</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label class="field-label" for="dipendenti">
+                  <span>Numero dipendenti</span>
+                </label>
+                <select id="dipendenti" name="dipendenti" class="select" required>
+                  <option value="">Seleziona…</option>
+                  <option value="1-5">1 – 5</option>
+                  <option value="6-20">6 – 20</option>
+                  <option value="21-50">21 – 50</option>
+                  <option value="51-plus">Oltre 50</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label class="field-label" for="area-operativa">
+                  <span>Area operativa (mq)</span>
+                  <span class="field-helper">stima</span>
+                </label>
+                <input
+                  id="area-operativa"
+                  name="area-operativa"
+                  class="input"
+                  type="number"
+                  min="10"
+                  step="10"
+                  placeholder="Es. 250"
+                  required
+                >
+              </div>
+
+              <div class="field">
+                <label class="field-label" for="email">
+                  <span>Email per ricevere il report demo</span>
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  class="input"
+                  type="email"
+                  placeholder="email@tua-azienda.it"
+                  required
+                >
+              </div>
             </div>
 
-            <button class="btn-execute" onclick="spedisciReport()">RICEVI REPORT ANALISI</button>
-        </div>
+            <div class="card-footer">
+              <button type="submit" id="avvia-analisi" class="primary-btn">
+                <span class="icon">▶</span>
+                <span>Avvia analisi dei dati</span>
+              </button>
 
-        <div class="term-header">
-            <div class="dot" style="background:var(--term-red)"></div>
-            <div class="dot" style="background:var(--term-yellow)"></div>
-            <div class="dot" style="background:var(--term-green)"></div>
-            <span style="margin-left:15px; font-size:0.7rem; color:#4a5568; font-weight: 700;">RGD-ALPHA-SYSTEM // CORE_ANALYSIS_ACTIVE</span>
-        </div>
-
-        <div class="term-content" id="terminalMain">
-            <div class="grid-inputs">
-                <div class="form-group">
-                    <label>Modello Operativo</label>
-                    <select id="algoritmo">
-                        <option value="junior">Junior (Asset Optimization)</option>
-                        <option value="pmi" selected>PMI (Scale-up Strategy)</option>
-                        <option value="enterprise">Enterprise (Resilience & Compliance)</option>
-                    </select>
+              <div class="status-row">
+                <div style="display:flex;align-items:center;gap:6px;">
+                  <div class="status-dot"></div>
+                  <span class="status-text-strong">Motore di scoring attivo</span>
                 </div>
-                <div class="form-group"><label>Area Operativa (mq)</label><input type="number" id="mq" value="250"></div>
-                <div class="form-group"><label>Risorse Umane</label><input type="number" id="dipendenti" value="12"></div>
-                <div class="form-group"><label>Ore Idle/Settimana</label><input type="number" id="assenze" value="8"></div>
-                <div class="form-group"><label>Assorbimento Infrastruttura (W)</label><input type="number" id="watt" value="320"></div>
-                <div class="form-group"><label>Budget Annuale Stimato (€)</label><input type="number" id="budget" value="120000"></div>
-            </div>
+                <span>Output allineato ai piani RGandja</span>
+              </div>
 
-            <button onclick="runNeuralAnalysis()" class="btn-execute" id="btnRun">AVVIA ANALISI DEI DATI</button>
-
-            <div id="resultBox">
-                <div id="loadingText" class="status-line"></div>
-                <div id="finalOutput" style="line-height: 1.8; color: #cbd5e0;"></div>
+              <div id="status-message" class="status-message status-message--info">
+                Compila i campi e avvia la simulazione: riceverai un report demo e verrai indirizzato ai piani suggeriti.
+              </div>
             </div>
+          </form>
         </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>© <span id="year"></span> RGandja. Tutti i diritti riservati.</div>
+      <div class="footer-links">
+        <a href="https://rgandja.com/privacy">Privacy</a>
+        <span>·</span>
+        <a href="https://rgandja.com/termini">Termini di utilizzo</a>
+      </div>
     </div>
+  </footer>
+</div>
 
-    <footer class="footer container text-center" style="margin-top: 100px; padding-bottom: 50px;">
-        <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 40px;">
-        <p style="color: var(--text-main); font-weight: 600; letter-spacing: 1px;">© 2026 <strong>RGANDJA ENTERPRISE</strong></p>
-        <p style="margin: 25px 0;">
-            <a href="/privacy" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-size: 0.85rem;">Privacy</a> | 
-            <a href="/cookies" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-size: 0.85rem;">Cookies</a> | 
-            <a href="/contatti" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-size: 0.85rem;">Supporto Tecnico</a>
-        </p>
-    </footer>
+<script>
+  // Anno dinamico footer
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-    <script>
-        // --- FUNZIONE DI WARM-UP SERVER ---
-        window.addEventListener('load', function() {
-            // Sveglia il server Render appena la pagina è pronta
-            fetch('https://rgandja-api.onrender.com/').catch(e => {});
-        });
+  const form = document.getElementById('sandbox-form');
+  const statusMessage = document.getElementById('status-message');
+  const button = document.getElementById('avvia-analisi');
 
-        function acceptCookies() {
-            document.getElementById('cookie-banner').style.display = 'none';
-            localStorage.setItem('cookieConsent', 'true');
-        }
-        if (localStorage.getItem('cookieConsent') === 'true') {
-            document.getElementById('cookie-banner').style.display = 'none';
-        }
+  function setStatus(type, text) {
+    statusMessage.className = 'status-message';
+    if (type === 'error') {
+      statusMessage.classList.add('status-message--error');
+    } else if (type === 'success') {
+      statusMessage.classList.add('status-message--success');
+    } else {
+      statusMessage.classList.add('status-message--info');
+    }
+    statusMessage.textContent = text;
+  }
 
-        async function runNeuralAnalysis() {
-            const btn = document.getElementById("btnRun");
-            const terminalMain = document.getElementById("terminalMain");
-            const paywall = document.getElementById("paywall");
-            const resultBox = document.getElementById("resultBox");
-            const loadingText = document.getElementById("loadingText");
-            const finalOutput = document.getElementById("finalOutput");
+  function decidePiano(fatturato, dipendenti) {
+    // Regole semplici ma chiare per la demo
+    if (fatturato === '0-250k' || dipendenti === '1-5') {
+      return 'bronzo';
+    }
+    if (fatturato === '250k-2m' || dipendenti === '6-20') {
+      return 'argento';
+    }
+    if (fatturato === '2m-10m' || dipendenti === '21-50') {
+      return 'argento';
+    }
+    return 'oro';
+  }
 
-            btn.disabled = true;
-            btn.innerText = "ELABORAZIONE DATI...";
-            resultBox.style.display = "block";
-            
-            const steps = [
-                "> Inizializzazione protocollo RGD-Alpha...",
-                "> Sincronizzazione con il cluster di analisi...",
-                "> Caricamento parametri strutturali...",
-                "> Identificazione colli di bottiglia...",
-                "> Generazione modelli di efficienza..."
-            ];
+  form.addEventListener('submit', async function (event) {
+    event.preventDefault();
 
-            for (let step of steps) {
-                loadingText.innerText = step;
-                await new Promise(r => setTimeout(r, 600));
-            }
-            
-            const payload = {
-                algoritmo: document.getElementById("algoritmo").value,
-                budget: parseFloat(document.getElementById("budget").value),
-                resilienza: true,
-                ore_assenze: parseFloat(document.getElementById("assenze").value),
-                standby_watt: parseFloat(document.getElementById("watt").value),
-                metri_quadri: parseFloat(document.getElementById("mq").value),
-                num_dipendenti: parseInt(document.getElementById("dipendenti").value)
-            };
+    const ragioneSociale = document.getElementById('ragione-sociale').value.trim();
+    const settore = document.getElementById('settore').value;
+    const fatturato = document.getElementById('fatturato').value;
+    const dipendenti = document.getElementById('dipendenti').value;
+    const areaOperativa = document.getElementById('area-operativa').value;
+    const email = document.getElementById('email').value.trim();
 
-            try {
-                const response = await fetch('https://rgandja-api.onrender.com/calcola', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
+    if (!settore || !fatturato || !dipendenti || !areaOperativa || !email) {
+      setStatus('error', 'Per avviare la simulazione compila tutti i campi obbligatori.');
+      return;
+    }
 
-                const data = await response.json();
-                loadingText.innerText = "> ELABORAZIONE COMPLETATA. MODELLO OTTIMIZZATO.";
-                finalOutput.innerHTML = data.risultato;
+    const pianoSuggerito = decidePiano(fatturato, dipendenti);
 
-                if(data.is_premium_locked) {
-                    setTimeout(() => {
-                        terminalMain.classList.add("premium-blur");
-                        paywall.style.display = "flex";
-                        window.scrollTo({ top: 200, behavior: 'smooth' });
-                    }, 2500);
-                }
-            } catch (err) {
-                loadingText.innerText = "AVVISO: Connessione temporaneamente limitata. Riprovare.";
-                btn.disabled = false;
-                btn.innerText = "AVVIA NUOVA ANALISI";
-            }
-        }
+    const payload = {
+      ragione_sociale: ragioneSociale || null,
+      settore,
+      fatturato,
+      dipendenti,
+      area_operativa_mq: Number(areaOperativa),
+      email,
+      piano_suggerito: pianoSuggerito,
+      origine: 'sandbox-demo-rgandja-api-github'
+    };
 
-        function spedisciReport() {
-            const emailUtente = document.getElementById('user-email').value;
-            const privacyChecked = document.getElementById('privacy-check').checked;
-            
-            if (!privacyChecked || !emailUtente || !emailUtente.includes('@')) {
-                alert("Per procedere, inserisci un'email valida e accetta l'informativa sulla privacy.");
-                return;
-            }
+    button.disabled = true;
+    button.style.opacity = '0.8';
+    setStatus('info', 'Invio in corso… stiamo generando il report demo.');
 
-            const bottone = document.querySelector('.paywall-overlay .btn-execute');
-            bottone.innerText = "INVIO DOCUMENTAZIONE...";
-            bottone.disabled = true;
+    try {
+      const response = await fetch('https://rgandja-api.onrender.com/email/invia-report', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
 
-            fetch('https://rgandja-api.onrender.com/email/invia-report', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ 
-                    email: emailUtente,
-                    pdf_link: "https://rgandja.com/reports/RGD-ALPHA-GEN-2026.pdf" 
-                })
-            })
-            .then(response => {
-                const scelto = document.getElementById('algoritmo').value;
-                // Redirect alla pagina piani con parametro pulito
-                window.location.href = `/piani?tipo=${scelto}`;
-            });
-        }
-    </script>
-</body>
-</html>         return;
-            }
+      if (!response.ok) {
+        throw new Error('Risposta non valida dal server');
+      }
 
-            const bottone = document.querySelector('.paywall-overlay .btn-execute');
-            bottone.innerText = "INVIO DOCUMENTAZIONE...";
-            bottone.disabled = true;
-
-            fetch('https://rgandja-api.onrender.com/email/invia-report', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ 
-                    email: emailUtente,
-                    pdf_link: "https://rgandja.com/reports/RGD-ALPHA-GEN-2026.pdf" 
-                })
-            })
-            .then(response => {
-                const scelto = document.getElementById('algoritmo').value;
-                // Redirect alla pagina piani con parametro pulito
-                window.location.href = `/piani?tipo=${scelto}`;
-            });
-        }
-    </script>
+      setStatus('success', 'Report demo generato. Verrai reindirizzato alla pagina dei piani suggeriti.');
+      // Piccola pausa per far leggere il messaggio
+      setTimeout(function () {
+        window.location.href = 'https://rgandja.com/piani?tipo=' + encodeURIComponent(pianoSuggerito);
+      }, 900);
+    } catch (error) {
+      console.error(error);
+      setStatus('error', 'Non è stato possibile completare la simulazione. Riprova tra qualche istante.');
+      button.disabled = false;
+      button.style.opacity = '1';
+    }
+  });
+</script>
 </body>
 </html>
