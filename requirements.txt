@@ -1,9 +1,3 @@
-fastapi
-uvicorn
-pydantic
-sib-api-v3-sdk
-email-validator
-
 pandas
 numpy
 python-dotenv
