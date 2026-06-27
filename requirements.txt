@@ -1,13 +1,5 @@
-pandas
-numpy
+Flask
+Flask-CORS
+requests
 python-dotenv
 cryptography
-openpyxl
-requests
-python-dateutil
-pytz
-plotly
-matplotlib
-seaborn
-Flask
-streamlit
