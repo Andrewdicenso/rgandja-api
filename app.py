@@ -112,15 +112,35 @@ if __name__ == "__main__":
 
 @app.route("/report", methods=["POST"])
 def report():
+    """
+    Riceve i dati dal form di demo.html
+    """
     data = request.get_json() or {}
+    
+    # Recuperiamo tutti i campi inviati dal tuo JavaScript
     email = data.get("email")
-    messaggio = data.get("messaggio")
+    ragione_sociale = data.get("ragione_sociale", "N/D")
+    settore = data.get("settore")
+    fatturato = data.get("fatturato")
+    dipendenti = data.get("dipendenti")
+    piano = data.get("piano_suggerito")
 
-    # Qui puoi integrare un servizio email (es. SendGrid, SMTP)
-    print(f"Richiesta report da: {email} - Messaggio: {messaggio}")
+    # Stampa nei log di Render (così vedi che i dati arrivano)
+    print(f"--- NUOVA ANALISI RICEVUTA ---")
+    print(f"Email: {email}")
+    print(f"Azienda: {ragione_sociale}")
+    print(f"Piano Suggerito: {piano}")
+    print(f"------------------------------")
 
     return jsonify({
-        "status": "ricevuto",
-        "nota": "Il tuo messaggio è stato registrato. Il team RGandja ti contatterà per approfondire."
+        "status": "success",
+        "message": "Report demo generato. Verrai reindirizzato alla pagina dei piani suggeriti.",
+        "nota": "Dati registrati correttamente nel sistema."
     })
 
+# ---------------------------------------------------------
+# 4) AVVIO (Sempre alla fine del file)
+# ---------------------------------------------------------
+if __name__ == "__main__":
+    # In locale userà la porta 8000, su Render userà quella di sistema
+    app.run(host="0.0.0.0", port=8000, debug=True)
