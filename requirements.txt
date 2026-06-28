@@ -3,4 +3,4 @@ Flask-CORS
 requests
 python-dotenv
 cryptography
-gunicorn
+gunicorn app:app
